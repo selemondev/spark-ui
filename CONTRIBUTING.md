@@ -1,16 +1,15 @@
-
 # Contributing
 
 Thank you for your valuable contribution and dedication to improving this project! We greatly appreciate your involvement. To ensure a smooth and cohesive collaboration, we have provided some guidelines to help you get started. Kindly take a moment to review them before submitting your contributions. Your efforts will undoubtedly make this project even better, and we look forward to working together on its success!.
-    
+
 ## Code of Conduct
-    
+
 This project is governed by the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md). By participating, you are expected to adhere to it.
-    
+
 ## Open Development
-    
+
 All work happens directly on GitHub. Both core team members and external contributors send pull requests which go through the same code review process.
-    
+
 ## Semantic Versioning
 
 This project follows semantic versioning. We release patch versions for bug fixes or other changes that do not change the behavior of the API, minor versions for new features that are backward-compatible, and major versions for any breaking changes.
@@ -23,6 +22,7 @@ Welcome to @spark-ui/monorepo! We value your feedback and contributions to make 
 
 Before reporting an issue, we ask you to:
 '
+
 1. **Search for Similar Issues** : Ensure you have searched through our existing issues to see if the problem or feature request has already been addressed or is under discussion.
 
 2. **Reproduce the Bug** : If reporting a bug, please provide the minimum code required to reproduce the issue. This will help us understand and resolve the problem more efficiently.
@@ -42,7 +42,6 @@ Commit messages are required to follow the [conventional-changelog standard](htt
 
 [optional footer(s)]
 ```
-
 
 👉 [Commit example](https://github.com/unocss/unocss/releases/tag/v0.39.0)
 
@@ -71,4 +70,3 @@ The following is a list of commit types:
 ## License
 
 By contributing your code to the repository, you agree to license your contribution under the [MIT license](./LICENSE).
-    

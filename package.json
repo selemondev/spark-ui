@@ -26,18 +26,37 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "clean": "rimraf packages/*/{dist,es,lib}",
+    "build:ui": "rimraf packages/*/{dist,es,lib} && nr -r -F \"./packages/ui\" build",
+    "build:cli": "rimraf packages/*/{dist,es,lib} && nr -r -F \"./packages/cli\" build",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "playground": "nr --filter @spark-ui/playground",
+    "docs": "nr --filter @spark-ui/docs",
+    "ui": "nr --filter @spark-ui/ui",
+    "postinstall": "simple-git-hooks",
+    "package-minor:updates": "npx taze@latest minor -r",
+    "package-major:updates": "npx taze@latest major -r"
   },
   "dependencies": {
     "typescript": "^5.6.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
+    "@antfu/ni": "^0.23.0",
     "@types/node": "^22.7.4",
     "@vitejs/plugin-vue": "^5.1.4",
     "eslint": "^9.11.1",
     "eslint-plugin-format": "^0.1.2",
+    "simple-git-hooks": "^2.11.1",
     "vitest": "^2.1.1"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "nlx lint-staged@latest"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,vue,md}": [
+      "nr lint:fix"
+    ]
   }
 }

@@ -1,29 +1,28 @@
 {
-    "compilerOptions": {
-       /* Base Options: */
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "target": "es2022",
-      "allowJs": true,
-      "resolveJsonModule": true,
-      "moduleDetection": "force",
-      "isolatedModules": true,
-      "verbatimModuleSyntax": true,
-  
-      /* Strictness */
-      "strict": true,
-      "noUncheckedIndexedAccess": true,
-      "noImplicitOverride": true,
-  
-      "module": "preserve",
-      "noEmit": true,
-      "lib": ["es2022"],
-    },
-    "exclude": [
-        "**/dist/**",
-        "**/node_modules/**",
-        "**/test/**",
-        "**/playground/src/components/**",
-        "**/packages/ui/src/components/**"
-      ]
-  }
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022"],
+    "moduleDetection": "force",
+
+    "module": "preserve",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    /* Strictness */
+    "strict": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
+    /* Base Options: */
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/test/**",
+    "**/playground/src/components/**",
+    "**/packages/ui/src/components/**"
+  ]
+}
