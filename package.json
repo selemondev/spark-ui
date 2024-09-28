@@ -1,0 +1,28 @@
+{
+  "name": "@spark-ui/monorepo",
+  "version": "0.0.0",
+  "description": "Experience The Magic Of Animated Components. Crafted With Vue, TypeScript, TailwindCss And Vueuse Motion",
+  "private": false,
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/selemondev/spark-ui.git"
+  },
+  "keywords": [
+    "animated-ui",
+    "ui",
+    "ui-components",
+    "vue3-ui-components",
+    "vue3-ui",
+    "nuxt-ui",
+    "nuxt-ui-components"
+  ],
+  "author": "Selemondev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/selemondev/spark-ui/issues"
+  },
+  "homepage": "https://github.com/selemondev/spark-ui"
+}
