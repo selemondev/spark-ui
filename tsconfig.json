@@ -18,12 +18,12 @@
       "module": "preserve",
       "noEmit": true,
       "lib": ["es2022"],
-      "exclude": [
+    },
+    "exclude": [
         "**/dist/**",
         "**/node_modules/**",
         "**/test/**",
         "**/playground/src/components/**",
         "**/packages/ui/src/components/**"
       ]
-    }
   }
