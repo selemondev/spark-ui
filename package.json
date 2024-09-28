@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": false,
+  "packageManager": "pnpm@9.4.0",
   "description": "Experience The Magic Of Animated Components. Crafted With Vue, TypeScript, TailwindCss And Vueuse Motion",
   "author": "Selemondev",
   "license": "MIT",
