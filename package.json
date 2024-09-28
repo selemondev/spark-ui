@@ -3,9 +3,7 @@
   "version": "0.0.0",
   "description": "Experience The Magic Of Animated Components. Crafted With Vue, TypeScript, TailwindCss And Vueuse Motion",
   "private": false,
-  "scripts": {
-    
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/selemondev/spark-ui.git"
@@ -24,5 +22,11 @@
   "bugs": {
     "url": "https://github.com/selemondev/spark-ui/issues"
   },
-  "homepage": "https://github.com/selemondev/spark-ui"
+  "homepage": "https://github.com/selemondev/spark-ui",
+  "dependencies": {
+    "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4"
+  }
 }
