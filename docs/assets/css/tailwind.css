@@ -84,11 +84,11 @@
   }
 
   .mask-radial-faded {
-    mask-image: radial-gradient(circle at center center, black, transparent 80%)
+    mask-image: radial-gradient(circle at center center, black, transparent 80%);
   }
 
   .mask-linear-faded {
-    mask-image: linear-gradient(black, transparent 70%)
+    mask-image: linear-gradient(black, transparent 70%);
   }
 
   .mask-keyboard {
@@ -98,8 +98,6 @@
   .mask-shortcutkeys {
     mask-image: linear-gradient(to right, transparent, black 40%, black calc(60%), transparent 100%);
   }
-
-  
 
   .step:before {
     @apply absolute w-9 h-9 bg-muted rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border-4 border-background;
@@ -121,7 +119,6 @@
 .fill-primary-light {
   fill: #00ffbb;
 }
-
 
 .fill-primary-dark {
   fill: #0d9373;
