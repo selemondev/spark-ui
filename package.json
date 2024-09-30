@@ -32,9 +32,9 @@
     "build:cli": "rimraf packages/*/{dist,es,lib} && nr -r -F \"./packages/cli\" build",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "playground": "nr --filter @spark-ui/playground",
-    "docs": "nr --filter @spark-ui/docs",
-    "ui": "nr --filter @spark-ui/ui",
+    "playground:dev": "nr --filter @spark-ui/playground dev",
+    "docs:dev": "nr --filter @spark-ui/docs dev",
+    "ui:dev": "nr --filter @spark-ui/ui dev",
     "postinstall": "simple-git-hooks",
     "package-minor:updates": "npx taze@latest minor -r",
     "package-major:updates": "npx taze@latest major -r"
