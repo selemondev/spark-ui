@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "guide": [
+        "./guide/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.d.ts",
+    "**/*.vue",
+    ".vitepress/env.d.ts"
+  ],
+  "exclude": [
+    "**/dist/**"
+  ]
+}

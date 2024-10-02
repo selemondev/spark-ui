@@ -1,0 +1,28 @@
+{
+  "name": "@spark-ui/docs",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Spark UI docs",
+  "keywords": [
+    "spark-ui",
+    "docs"
+  ],
+  "scripts": {
+    "dev": "vitepress dev --port 5555 --open --host",
+    "build": "vitepress build",
+    "serve": "vitepress serve"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "markdown-it": "^14.1.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.7.3",
+    "@iconify-json/carbon": "^1.2.1",
+    "@iconify-json/fluent-emoji": "^1.2.0",
+    "@iconify-json/logos": "^1.2.1",
+    "@iconify/vue": "^4.1.2",
+    "@types/markdown-it": "^13.0.9"
+  }
+}

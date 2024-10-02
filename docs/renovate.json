@@ -1,0 +1,38 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "rebaseWhen": "conflicted",
+  "schedule": [
+    "before 6am on the first day of the month"
+  ],
+  "baseBranches": [
+    "main"
+  ],
+  "rangeStrategy": "bump",
+  "ignoreDeps": [
+    "node",
+    "pnpm"
+  ],
+  "packageRules": [
+    {
+      "matchFiles": [
+        "package.json"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor",
+        "major"
+      ],
+      "groupName": "root",
+      "groupSlug": "shared-root",
+      "labels": [
+        "dependencies"
+      ],
+      "addLabels": [
+        "dependencies"
+      ]
+    }
+  ]
+}
