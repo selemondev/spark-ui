@@ -113,3 +113,8 @@ dist
 
 # Node dependencies
 node_modules
+
+# Vitepress
+
+docs/.vitepress/dist
+docs/.vitepress/cache
