@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { cn } from '../../lib/utils'
+import { cn } from '../../../lib/utils'
 import DotPattern from './DotPattern.vue'
 </script>
 

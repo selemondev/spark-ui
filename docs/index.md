@@ -47,4 +47,4 @@ features:
     link: "#"
 ---
 
-<demo src="./example/hello.vue" />
+<demo src="./src/example/animatedBeamDemo/Demo.vue" />
