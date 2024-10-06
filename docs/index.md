@@ -60,3 +60,5 @@ import Demos from './src/components/Demos.vue'
 <demo src="./src/example/skewedInfiniteScroll/Demo.vue" />
 
 <demo src="./src/example/letterUp/Demo.vue" />
+
+<demo src="./src/example/animatedShinyText/Demo.vue" />
