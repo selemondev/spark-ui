@@ -1,6 +1,7 @@
 <script lang='ts' setup name="demo-block">
 import { Icon } from '@iconify/vue'
 import { useClipboard, useToggle } from '@vueuse/core'
+import { useData } from 'vitepress'
 import { computed, ref } from 'vue'
 import { MagicString } from 'vue/compiler-sfc'
 import DotPattern from '../../../../src/components/spark-ui/DotPattern/DotPattern.vue'
@@ -8,6 +9,8 @@ import { cn } from '../../../../src/lib/utils'
 import { demoProps } from './index'
 
 const props = defineProps(demoProps)
+
+const vitePressData = useData()
 
 const decodedHighlightedCode = computed(() => {
   try {
@@ -60,7 +63,7 @@ function handleRefreshComponent() {
           </p>
         </div>
         <div class="relative">
-          <div class="flex justify-end pt-3 gap-2">
+          <div v-if="vitePressData.page.value.filePath !== 'index.md'" class="flex justify-end pt-3 gap-2">
             <a class="o-demo_action_item" group :href="github" target="_blank">
               <div class="o-demo_action_icon i-carbon-logo-github" />
               <div class="o-demo_tooltip" group-hover:opacity-100>
@@ -83,7 +86,9 @@ function handleRefreshComponent() {
         </div>
       </div>
     </div>
-    <div v-show="value" :class="`language-${lang} extra-class`" v-html="decodedHighlightedCode" />
+    <div>
+      <div v-show="value" :class="`language-${lang} extra-class`" v-html="decodedHighlightedCode" />
+    </div>
     <!-- <div
       class="relative flex h-72 w-full flex-col items-center justify-center c-#282f38  overflow-hidden rounded-lg border dark:bg-[#000000] [md:shadow-xl c-#282f38 overflow-x-scroll !border-gray-700 dark:bg-[#000000] dark:border-#fff flex-wrap [&:o-button-base]:!c-context vp-raw b"
     >
