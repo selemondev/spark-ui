@@ -48,3 +48,5 @@ features:
 ---
 
 <demo src="./src/example/animatedBeamDemo/Demo.vue" />
+
+<demo src="./src/example/animatedGradientText/Demo.vue" />
