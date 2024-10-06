@@ -17,7 +17,7 @@ export function getDemoComponent(
 ) {
   const componentName = `DemoComponent${index++}`
   path = normalizePath(path)
-  const github = `https://github.com/selemondev/windi-ui/tree/main/${path.split('/').slice(-4).join('/')}`
+  const github = `https://github.com/selemondev/spark-ui/tree/main/${path.split('/').slice(-4).join('/')}`
 
   injectImportStatement(env, componentName, path)
 
