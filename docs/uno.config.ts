@@ -24,7 +24,9 @@ export default defineConfig({
         mono: 'DM Mono',
       },
     }),
-    presetWind(),
+    presetWind({
+      attributifyPseudo: true,
+    }),
   ],
   transformers: [transformerVariantGroup(), transformerDirectives()],
   shortcuts: [

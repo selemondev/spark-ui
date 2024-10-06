@@ -64,3 +64,5 @@ import Demos from './src/components/Demos.vue'
 <demo src="./src/example/letterUp/Demo.vue" />
 
 <demo src="./src/example/animatedShinyText/Demo.vue" />
+
+<demo src="./src/example/bento/Demo.vue" />
