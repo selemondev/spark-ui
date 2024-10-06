@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { Icon } from '@iconify/vue'
-import AnimatedGradientText from '../../components/spark-ui/animatedGradientText/animatedGradientText.vue'
 import { cn } from '../../lib/utils'
+import AnimatedGradientText from './animatedGradientText.vue'
 </script>
 
 <template>
