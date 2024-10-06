@@ -1,6 +1,6 @@
 <script setup lang='ts'>
-import AnimatedList from '../../components/spark-ui/animatedBeam/AnimatedList.vue'
-import Notification from '../../components/spark-ui/animatedBeam/Notification.vue'
+import AnimatedList from './AnimatedList.vue'
+import Notification from './Notification.vue'
 
 let notifications = [
   {

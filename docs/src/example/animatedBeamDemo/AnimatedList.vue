@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed, onMounted, ref, useSlots } from 'vue'
-import { cn } from '../../../lib/utils'
+import { cn } from '../../lib/utils'
 
 const props = defineProps({
   class: {
@@ -74,11 +74,11 @@ function getLeave() {
 </script>
 
 <template>
-  <div :class="cn('border w-[600px] h-[370px] shadow-lg overflow-auto rounded-lg', $props.class)">
-    <transition-group name="animatedBeam" tag="div" class="flex flex-col-reverse items-center p-2" move-class="move">
+  <div :class="cn('border w-[600px] h-[370px] overflow-auto rounded-lg', $props.class)">
+    <transition-group name="animated-beam" tag="div" class="flex flex-col-reverse items-center p-2" move-class="move">
       <div
         v-for="(item, idx) in itemsToShow" :key="idx" v-motion :initial="getInitial(idx)"
-        :enter="getEnter(idx)" :leave="getLeave()" :class="cn('mx-auto w-full')"
+        :enter="getEnter(idx)" :leave="getLeave()" :class="cn('mx-auto w-full mb-4')"
       >
         <component :is="item" />
       </div>
