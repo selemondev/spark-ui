@@ -2,6 +2,7 @@ import { MotionPlugin } from '@vueuse/motion'
 import Theme from 'vitepress/theme'
 import { h, watch } from 'vue'
 import DemoBlock from '../components/demo-block'
+import HomeLayout from './HomeLayout.vue'
 import './overrides.css'
 import './rainbow.css'
 import './style.css'
@@ -12,7 +13,7 @@ let homePageStyle: HTMLStyleElement | undefined
 export default {
   extend: Theme,
   Layout: () => {
-    return h(Theme.Layout, null, {
+    return h(HomeLayout, null, {
     })
   },
   enhanceApp({ app, router }) {

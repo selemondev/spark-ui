@@ -1,9 +1,9 @@
 <script setup lang='ts'>
+import { useData } from 'vitepress'
 import { computed } from 'vue'
-import { useTheme } from '../../composables/useTheme'
 
-const { theme } = useTheme()
-const currentTheme = computed(() => theme.value === 'auto' ? '#1f2937' : theme.value === 'light' ? '#f3f4f6' : '')
+const { isDark } = useData()
+const currentTheme = computed(() => isDark.value ? '#1f2937' : '#f3f4f6')
 
 const items = [
   { id: '1', text: 'Spark UI' },
@@ -37,11 +37,11 @@ const items = [
         `,
         }"
       >
-        <div class="mx-auto grid animate-skew-scroll grid-cols-1 gap-5 sm:grid-cols-2">
+        <div class="mx-auto h-96 md:h-full grid animate-skew-scroll grid-cols-1 gap-5 sm:grid-cols-2">
           <div v-for="item in items" :key="item.id">
             <div
               :key="item.id"
-              class="flex cursor-pointer w-72 px-6 py-1 items-center space-x-2 rounded-md border-parent shadow-md transition-all hover:-translate-y-1 hover:translate-x-1 hover:scale-[1.025] hover:shadow-xl "
+              class="flex cursor-pointer w-56 md:w-56 lg:w-72 px-6 py-1 items-center space-x-2 rounded-md border-parent shadow-md transition-all hover:-translate-y-1 hover:translate-x-1 hover:scale-[1.025] hover:shadow-xl "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"

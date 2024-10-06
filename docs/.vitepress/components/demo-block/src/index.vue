@@ -44,7 +44,7 @@ function handleRefreshComponent() {
 <template>
   <div class="mt-6 relative">
     <div
-      class="relative flex h-[600px] w-full bg-[#fffefe] p-6 flex-col items-center justify-center overflow-hidden rounded-lg border-parent dark:border-none bg-background c-#282f38 overflow-x-scroll dark:bg-[#000000] flex-wrap [&:o-button-base]:!c-context vp-raw bg"
+      class="relative flex h-[600px] w-full bg-[#fffefe] flex-col items-center justify-center overflow-hidden rounded-lg border-parent dark:border-none bg-background c-#282f38 overflow-x-scroll dark:bg-[#000000] flex-wrap [&:o-button-base]:!c-context vp-raw bg"
     >
       <DotPattern
         class="absolute inset-0 size-full" :class="cn(
@@ -56,7 +56,7 @@ function handleRefreshComponent() {
           icon="ic:round-replay" class="text-black w-5 h-5 dark:text-white"
         />
       </button>
-      <div class="w-3/4 h-[500px] py-6">
+      <div class="relative w-[90%] md:w-3/4 h-[500px] py-6">
         <div class="border-child bg-white shadow-lg dark:bg-black relative rounded-md w-full h-full flex items-center justify-center dark:border-none">
           <p class="z-10">
             <slot :key="refreshKey" />

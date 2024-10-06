@@ -3,7 +3,5 @@ import LetterUp from './letter-up.vue'
 </script>
 
 <template>
-  <div class="grid place-items-center w-full min-h-screen">
-    <LetterUp words="Staggered Letter Pull Up" :delay="50" class="text-black dark:text-white" />
-  </div>
+  <LetterUp words="Staggered Letter Pull Up" :delay="50" class="text-black dark:text-white" />
 </template>

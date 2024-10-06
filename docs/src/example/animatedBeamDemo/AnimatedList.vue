@@ -74,7 +74,7 @@ function getLeave() {
 </script>
 
 <template>
-  <div :class="cn('border w-[600px] h-[370px] overflow-auto rounded-lg', $props.class)">
+  <div :class="cn('border w-[250px] h-[370px] md:w-[600px] overflow-auto rounded-lg', $props.class)">
     <transition-group name="animated-beam" tag="div" class="flex flex-col-reverse items-center p-2" move-class="move">
       <div
         v-for="(item, idx) in itemsToShow" :key="idx" v-motion :initial="getInitial(idx)"
