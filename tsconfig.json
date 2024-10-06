@@ -3,7 +3,7 @@
     "target": "es2022",
     "lib": ["es2022"],
     "moduleDetection": "force",
-
+    "baseUrl": ".",
     "module": "preserve",
     "resolveJsonModule": true,
     "allowJs": true,
