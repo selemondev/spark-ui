@@ -29,6 +29,8 @@
     "@tsconfig/node20": "^20.1.4",
     "@types/markdown-it": "^13.0.9",
     "@types/node": "^22.7.4",
-    "@vue/tsconfig": "^0.5.1"
+    "@vue/tsconfig": "^0.5.1",
+    "animated-tailwindcss": "^4.0.0",
+    "tailwindcss-animate": "^1.0.7"
   }
 }
