@@ -43,7 +43,7 @@ export default defineConfig({
       options: {
         appId: 'J80WVGDCRV',
         apiKey: 'ca4b17a48a4b73178c772c805c02a211',
-        indexName: 'ui-windi',
+        indexName: '',
       },
     },
     logo: '../icon.png',
@@ -52,7 +52,6 @@ export default defineConfig({
       { text: 'Guide', items: [
         { text: 'Introduction', link: '/guide/getting-started/index.md' },
         { text: 'Installation', link: '/guide/getting-started/installation.md' },
-        { text: 'Theme', link: '/guide/getting-started/theme.md' },
       ] },
       { text: 'Components', items: components },
       { text: 'Showcase', link: '' },
@@ -81,7 +80,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/selemondev/windi-ui' },
+      { icon: 'github', link: 'https://github.com/selemondev/spark-ui' },
     ],
     footer: {
       message: 'Released under the MIT License.',
@@ -90,11 +89,12 @@ export default defineConfig({
   },
   markdown: {
     config: (md) => {
-      applyPlugins(md)
+      applyPlugins(md);
     },
     theme: {
       light: 'vitesse-light',
       dark: 'vitesse-dark',
     },
+
   },
 })

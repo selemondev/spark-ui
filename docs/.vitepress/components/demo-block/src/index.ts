@@ -3,7 +3,7 @@ import type { ExtractPropTypes } from 'vue'
 export const demoProps = {
   github: {
     type: String,
-    default: 'https://github.com/selemondev/windi-ui',
+    default: 'https://github.com/selemondev/spark-ui',
   },
   codeSandBox: {
     type: String,

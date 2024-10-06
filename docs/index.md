@@ -15,7 +15,7 @@ hero:
       link: /guide/getting-started/#introduction
     - theme: alt
       text: Why Spark UI?
-      link: /guide/getting-started/#why-windi-ui
+      link: /guide/getting-started/#why-spark-ui
     - theme: alt
       text: View Components
       link: /guide/components/accordion.html
@@ -46,3 +46,5 @@ features:
     details: Customize any part of our beautiful components to match your style.
     link: "#"
 ---
+
+<demo src="./example/hello.vue" />

@@ -1,5 +1,4 @@
 import Theme from 'vitepress/theme'
-// https://vitepress.dev/guide/custom-theme
 import { h, watch } from 'vue'
 import DemoBlock from '../components/demo-block'
 import './overrides.css'
@@ -13,7 +12,6 @@ export default {
   extend: Theme,
   Layout: () => {
     return h(Theme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
     })
   },
   enhanceApp({ app, router }) {
