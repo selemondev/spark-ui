@@ -68,3 +68,5 @@ import Demos from './src/components/Demos.vue'
 <demo src="./src/example/bento/Demo.vue" />
 
 <demo src="./src/example/blurFade/Demo.vue" />
+
+<demo src="./src/example/blurIn/Demo.vue" />
