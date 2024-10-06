@@ -8,7 +8,7 @@ table {
 }
 
 .custom-block.tip .custom-block-title {
-  color: var(--vp-c-brand);
+  color: var(--vp-c-brand-1);
 }
 
 .VPHero .image-bg {
@@ -21,15 +21,16 @@ table {
   opacity: 0.2;
 }
 
+
 /**
-   * VitePress: Custom fix
-   * -------------------------------------------------------------------------- */
+ * VitePress: Custom fix
+ * -------------------------------------------------------------------------- */
 
 /*
-    Use lighter colors for links in dark mode for a11y.
-    Also specify some classes twice to have higher specificity
-    over scoped class data attribute.
-  */
+  Use lighter colors for links in dark mode for a11y.
+  Also specify some classes twice to have higher specificity
+  over scoped class data attribute.
+*/
 .dark .vp-doc a,
 .dark .vp-doc a > code,
 .dark .VPNavBarMenuLink.VPNavBarMenuLink:hover,
@@ -52,6 +53,7 @@ table {
   transition: color 0.25s;
 }
 
+
 /* VitePress Search */
 .VPLocalSearchBox .result {
   --vp-c-bg-search-result: var(--vp-c-bg);
@@ -63,14 +65,31 @@ table {
   --vp-c-bg-search-result: var(--vp-c-bg-soft) !important;
 }
 .VPLocalSearchBox .result .excerpt-gradient-top {
-  background: linear-gradient(var(--vp-c-bg-search-result), transparent) !important;
+  background: linear-gradient(var(--vp-c-bg-search-result),transparent) !important;
 }
 .VPLocalSearchBox .result .excerpt-gradient-bottom {
-  background: linear-gradient(transparent, var(--vp-c-bg-search-result)) !important;
+  background: linear-gradient(transparent,var(--vp-c-bg-search-result)) !important;
 }
 .VPLocalSearchBox .title-icon {
   display: none;
 }
 .VPLocalSearchBox .excerpt-wrapper {
   margin-top: 4px;
+}
+
+/* dark/light radial transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root),
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root),
+.dark::view-transition-old(root) {
+  z-index: 9999;
 }

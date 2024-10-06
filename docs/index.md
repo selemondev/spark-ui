@@ -47,6 +47,12 @@ features:
     link: "#"
 ---
 
+<script setup>
+import Demos from './src/components/Demos.vue'
+</script>
+
+<Demos />
+
 <demo src="./src/example/animatedBeamDemo/Demo.vue" />
 
 <demo src="./src/example/animatedGradientText/Demo.vue" />

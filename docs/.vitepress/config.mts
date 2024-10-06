@@ -39,12 +39,7 @@ export default defineConfig({
   ],
   themeConfig: {
     search: {
-      provider: 'algolia',
-      options: {
-        appId: 'J80WVGDCRV',
-        apiKey: 'ca4b17a48a4b73178c772c805c02a211',
-        indexName: '',
-      },
+      provider: 'local',
     },
     logo: '../icon.png',
     // https://vitepress.dev/reference/default-theme-config
