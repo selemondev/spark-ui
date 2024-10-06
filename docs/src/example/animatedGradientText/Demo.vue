@@ -21,3 +21,24 @@ import { cn } from '../../lib/utils'
     />
   </AnimatedGradientText>
 </template>
+
+<style>
+.animate-gradient {
+  background-size: var(--bg-size);
+  animation: gradientAnimation 8s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: var(--bg-size) 0;
+  }
+
+  50% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: var(--bg-size) 0;
+  }
+}
+</style>
