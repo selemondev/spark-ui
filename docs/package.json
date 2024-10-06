@@ -16,10 +16,12 @@
   "dependencies": {
     "@vueuse/motion": "^2.2.5",
     "clsx": "^2.1.1",
+    "cobe": "^0.6.3",
     "fs-extra": "^11.2.0",
     "markdown-it": "^14.1.0",
     "nanoid": "^5.0.7",
-    "tailwind-merge": "^2.5.3"
+    "tailwind-merge": "^2.5.3",
+    "vue-use-spring": "^0.3.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",

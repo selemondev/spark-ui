@@ -1,18 +1,11 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
     }
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.d.ts",
-    "**/*.vue",
-    ".vitepress/env.d.ts"
   ],
-  "exclude": [
-    "**/dist/**"
-  ]
+  "files": []
 }
