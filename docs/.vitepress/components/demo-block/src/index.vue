@@ -1,36 +1,62 @@
 <script lang='ts' setup name="demo-block">
+import { Icon } from '@iconify/vue'
 import { useClipboard, useToggle } from '@vueuse/core'
-import { computed } from 'vue'
-import DotPattern from '../../../../components/DotPattern/DotPattern.vue'
-import { cn } from '../../../../lib/utils'
+import { computed, ref } from 'vue'
+import { MagicString } from 'vue/compiler-sfc'
+import DotPattern from '../../../../src/components/spark-ui/DotPattern/DotPattern.vue'
+import { cn } from '../../../../src/lib/utils'
 import { demoProps } from './index'
 
 const props = defineProps(demoProps)
 
-const decodedHighlightedCode = computed(() =>
-  decodeURIComponent(props.highlightedCode),
-)
+const decodedHighlightedCode = computed(() => {
+  try {
+    const decodeHighlightedCode = decodeURIComponent(props.highlightedCode)
+    const updatedCode = updateImportPaths(decodeHighlightedCode)
+    return updatedCode
+  }
+  catch (error) {
+    console.error('Error decoding highlighted code:', error)
+    return props.highlightedCode
+  }
+})
+
+function updateImportPaths(code: string): string {
+  const magicString = new MagicString(code)
+
+  magicString.replaceAll('../../components/spark-ui/', '@/components/')
+  magicString.replaceAll('../../../lib/utils', '@/libs/utils')
+
+  return magicString.toString()
+}
 const { copy, copied } = useClipboard({ source: decodeURIComponent(props.code) })
 const [value, toggle] = useToggle()
+const refreshKey = ref(0)
+function handleRefreshComponent() {
+  refreshKey.value += 1
+}
 </script>
 
 <template>
-  <div class="mt-6">
+  <div class="mt-6 relative">
     <div
-      class="relative flex h-96 w-full bg-[#fffefe] p-6 flex-col items-center justify-center overflow-hidden rounded-lg border-parent dark:border-none bg-background md:shadow-md c-#282f38 overflow-x-scroll dark:bg-[#000000] flex-wrap [&:o-button-base]:!c-context vp-raw bg"
+      class="relative flex h-[600px] w-full bg-[#fffefe] p-6 flex-col items-center justify-center overflow-hidden rounded-lg border-parent dark:border-none bg-background md:shadow-md c-#282f38 overflow-x-scroll dark:bg-[#000000] flex-wrap [&:o-button-base]:!c-context vp-raw bg"
     >
-      <div class="w-full py-6 h-full">
-        <div class="border-child relative rounded-md w-full h-full flex items-center justify-center dark:border-none">
-          <p
-            class="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white"
-          >
-            <slot />
+      <DotPattern
+        class="absolute inset-0 size-full" :class="cn(
+          '[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]',
+        )"
+      />
+      <button type="button" class="absolute right-6 text-black top-2 hover:bg-[#F4F4F5] dark:hover:bg-[#27272A] p-2 rounded-md" @click="handleRefreshComponent">
+        <Icon
+          icon="ic:round-replay" class="text-black w-5 h-5 dark:text-white"
+        />
+      </button>
+      <div class="w-3/4 py-6">
+        <div class="border-child bg-white shadow-lg dark:bg-black relative rounded-md w-full h-full flex items-center justify-center dark:border-none">
+          <p class="z-10">
+            <slot :key="refreshKey" />
           </p>
-          <DotPattern
-            :class="cn(
-              '[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]',
-            )"
-          />
         </div>
         <div class="relative">
           <div class="flex justify-end pt-3 gap-2">
@@ -107,5 +133,13 @@ const [value, toggle] = useToggle()
 
 .border-child {
   border: 1px solid rgb(239, 239, 239);
+}
+
+.rotate-0 {
+  transform: rotate(0deg);
+}
+
+.rotate-45 {
+  transform: rotate(45deg);
 }
 </style>

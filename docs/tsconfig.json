@@ -3,9 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "guide": [
-        "./guide/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
   "include": [

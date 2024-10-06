@@ -9,11 +9,12 @@
     "docs"
   ],
   "scripts": {
-    "dev": "vitepress dev --port 5555 --open --host",
+    "dev": "vitepress dev --port 5555",
     "build": "vitepress build",
     "serve": "vitepress serve"
   },
   "dependencies": {
+    "@vueuse/motion": "^2.2.5",
     "clsx": "^2.1.1",
     "fs-extra": "^11.2.0",
     "markdown-it": "^14.1.0",
@@ -25,6 +26,9 @@
     "@iconify-json/fluent-emoji": "^1.2.0",
     "@iconify-json/logos": "^1.2.1",
     "@iconify/vue": "^4.1.2",
-    "@types/markdown-it": "^13.0.9"
+    "@tsconfig/node20": "^20.1.4",
+    "@types/markdown-it": "^13.0.9",
+    "@types/node": "^22.7.4",
+    "@vue/tsconfig": "^0.5.1"
   }
 }

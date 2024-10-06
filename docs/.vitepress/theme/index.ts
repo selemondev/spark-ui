@@ -1,3 +1,4 @@
+import { MotionPlugin } from '@vueuse/motion'
 import Theme from 'vitepress/theme'
 import { h, watch } from 'vue'
 import DemoBlock from '../components/demo-block'
@@ -16,6 +17,7 @@ export default {
   },
   enhanceApp({ app, router }) {
     app.component('Demo', DemoBlock)
+    app.use(MotionPlugin)
     if (typeof window === 'undefined')
       return
 
