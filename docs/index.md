@@ -76,3 +76,5 @@ import Demos from './src/components/Demos.vue'
 <demo src="./src/example/GradualSpacing/Demo.vue" />
 
 <demo src="./src/example/retroGrid/Demo.vue" />
+
+<demo src="./src/example/orbitingCircles/Demo.vue" />

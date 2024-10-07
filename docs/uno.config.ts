@@ -46,4 +46,21 @@ export default defineConfig({
       'overview_body_title': 'mb-2 flex items-center gap-2 !text-lg font-bold',
     },
   ],
+  theme: {
+    animation: {
+      keyframes: {
+        wiggle: '{0%,100% {transform:rotate(-3deg)} 50% {transform:rotate(30deg)}}',
+      },
+      durations: {
+        wiggle: '1s',
+      },
+      timingFns: {
+        wiggle: 'ease-in-out',
+      },
+      counts: {
+        wiggle: 'infinite',
+      },
+    },
+
+  },
 })

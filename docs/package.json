@@ -14,6 +14,7 @@
     "serve": "vitepress serve"
   },
   "dependencies": {
+    "@unocss/reset": "^0.63.3",
     "@vueuse/motion": "^2.2.5",
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",

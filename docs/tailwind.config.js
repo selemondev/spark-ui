@@ -5,7 +5,7 @@ const {
 } = require('tailwindcss/lib/util/flattenColorPalette')
 
 module.exports = withAnimations({
-  content: ['./docs/.vitepress/**/*.{js,ts,vue}', './src/**/*.{js,ts,vue,md}', './src/example/**/*.{vue}'],
+  content: ['./docs/.vitepress/**/*.{js,ts,vue}', './src/**/*.{js,ts,vue,md}', './src/example/**/*.{vue}', './docs/.vitepress/**/*.{js,ts,vue}', './docs/**/*.md'],
   darkMode: 'class',
   theme: {
     extend: {
