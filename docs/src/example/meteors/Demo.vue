@@ -4,7 +4,7 @@ import Meteors from './Meteors.vue'
 
 <template>
   <div
-    class="relative flex h-[450px] w-[500px] flex-col items-center justify-center overflow-hidden rounded-lg"
+    class="relative flex h-[450px] w-[300px] md:w-[500px] flex-col items-center justify-center overflow-hidden rounded-lg"
     border
   >
     <div class="absolute top-10 inset-x-0">

@@ -18,7 +18,7 @@ const theme = computed(() => {
 </script>
 
 <template>
-  <div class="stars h-[500px] absolute pointer-events-none inset-x-0 bottom-0 w-[500px] opacity-75" :class="{ accelerate: props.accelerate }">
+  <div class="stars h-[500px] absolute pointer-events-none inset-x-0 bottom-0 w-[300px] md:w-[500px] opacity-75" :class="{ accelerate: props.accelerate }">
     <div class="rounded-full bg-transparent" />
     <div class="rounded-full bg-transparent" />
     <div class="rounded-full bg-transparent" />
