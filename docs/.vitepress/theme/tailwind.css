@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fill-primary-light {
+    fill: #063528;
+  }
+  
+  .fill-primary-dark {
+    fill: #0d9373;
+  }
