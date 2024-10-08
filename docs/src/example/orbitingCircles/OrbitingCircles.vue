@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<OrbitingCirclesProps>(), {
 const className = cn(
   'absolute flex size-full animate-reverse transform-gpu animate-orbit items-center justify-center rounded-full border bg-none [animation-delay:calc(var(--delay)*1000ms)]',
   props.className,
-//   { 'animate-reverse': props.reverse },
+  { 'animate-orbit-reverse': props.reverse },
 )
 </script>
 
@@ -36,7 +36,8 @@ const className = cn(
       '--duration': props.duration,
       '--radius': props.radius,
       '--delay': -props.delay,
-    }" :class="className"
+    }"
+    :class="className"
   >
     <slot />
   </div>
@@ -56,16 +57,16 @@ const className = cn(
   animation: Orbit calc(var(--duration) * 1s) linear infinite;
 }
 
-@keyframes Reverse {
+@keyframes OrbitReverse {
   0% {
-    opacity: 1;
+    transform: rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg);
   }
   100% {
-    opacity: 1;
+    transform: rotate(-360deg) translateY(calc(var(--radius) * 1px)) rotate(360deg);
   }
 }
 
-.animate-reverse {
-  animation: Reverse var(--duration, 2s) ease-in-out reverse infinite;
+.animate-orbit-reverse {
+  animation: OrbitReverse calc(var(--duration) * 1s) linear infinite;
 }
 </style>
