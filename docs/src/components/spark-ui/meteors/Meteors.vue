@@ -12,16 +12,19 @@ const props = withDefaults(defineProps<MeteorsProps>(), {
 
 const meteorStyles = ref()
 
+const getRandomPosition = (max: number) => `${Math.floor(Math.random() * max)}px`
+const getRandomDelay = () => `${(Math.random() * 1 + 0.2).toFixed(2)}s`
+const getRandomDuration = () => `${Math.floor(Math.random() * 8 + 2)}s`
+
 watch(() => props.number, (val) => {
-  const styles = [...Array.of(val)].map(() => ({
+  const styles = Array.from({ length: val }, () => ({
     top: -5,
-    left: `${Math.floor(Math.random() * window.innerWidth)}px`,
-    animationDelay: `${Math.random() * 1 + 0.2}s`,
-    animationDuration: `${Math.floor(Math.random() * 8 + 2)}s`,
+    left: getRandomPosition(window.innerWidth),
+    animationDelay: getRandomDelay(),
+    animationDuration: getRandomDuration(),
   }))
   meteorStyles.value = styles
 }, {
-  deep: true,
   immediate: true,
 })
 </script>
