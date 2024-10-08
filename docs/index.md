@@ -30,16 +30,16 @@ features:
     details: Use any icon in your project from your favourite icon set.
     link: "#"
   - icon: 🛠️
-    title: On Demand Import
-    details: Spark UI comes with an intelligent resolver that automatically imports only used components.
+    title: Copy / paste components
+    details: Spark UI allows you to easily copy and paste components.
     link: "#"
   - icon: 📦
     title: Diverse Component Selection
-    details: Create your application effortlessly with our expansive collection of 50+ UI components.
+    details: Create your application effortlessly with our expansive collection of 20+ UI components.
     link: "#"
   - icon: ⚡️
     title: Powerful Tools
-    details: Spark UI is built on top of powerful tools such as TailwindCss, VueUse, Headless UI etc.
+    details: Spark UI is built on top of powerful tools such as TailwindCss, VueUse, @vueuse/motion etc.
     link: "#"
   - icon: 🎨
     title: Themeable
