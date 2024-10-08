@@ -4,7 +4,7 @@ import { useClipboard, useToggle } from '@vueuse/core'
 import { useData } from 'vitepress'
 import { computed, ref } from 'vue'
 import { MagicString } from 'vue/compiler-sfc'
-import DotPattern from '../../../../src/components/spark-ui/DotPattern/DotPattern.vue'
+import DotPattern from '../../../../src/components/spark-ui/dotPattern/DotPattern.vue'
 import { cn } from '../../../../src/lib/utils'
 import { demoProps } from './index'
 
