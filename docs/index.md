@@ -90,3 +90,5 @@ import Demos from './src/components/Demos.vue'
 <demo src="./src/example/particles/Demo.vue" />
 
 <demo src="./src/example/dotPattern/Demo.vue" />
+
+<demo src="./src/example/avatarCircle/Demo.vue" />
