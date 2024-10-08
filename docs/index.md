@@ -84,3 +84,5 @@ import Demos from './src/components/Demos.vue'
 <demo src="./src/example/typingAnimation/Demo.vue" />
 
 <demo src="./src/example/marquee/Demo.vue" />
+
+<demo src="./src/example/ripple/Demo.vue" />
