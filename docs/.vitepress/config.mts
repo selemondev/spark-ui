@@ -3,21 +3,27 @@ import { version } from '../../package.json'
 import { applyPlugins } from './plugins/code'
 
 const components = [
-  { text: 'Accordion', link: '/guide/components/accordion.md' },
-  { text: 'Alert', link: '/guide/components/alert.md' },
-  { text: 'Avatar', link: '/guide/components/avatar.md' },
-  { text: 'Badge', link: '/guide/components/badge.md' },
-  { text: 'Button', link: '/guide/components/button.md' },
-  { text: 'Checkbox', link: '/guide/components/checkbox.md' },
-  { text: 'Divider', link: '/guide/components/divider.md' },
-  { text: 'Icon', link: '/guide/components/icon.md' },
-  { text: 'Input', link: '/guide/components/input.md' },
-  { text: 'Kbd', link: '/guide/components/kbd.md' },
-  { text: 'Modal', link: '/guide/components/modal.md' },
-  { text: 'Switch', link: '/guide/components/switch.md' },
-  { text: 'Tag', link: '/guide/components/tag.md' },
+  { text: 'Animated Beam', link: '/content/components/animated-beam.md' },
+  { text: 'Animated Gradient Text', link: '/content/components/animated-gradient-text.md' },
+  { text: 'Animated List', link: '/content/components/animated-list.md' },
+  { text: 'Animated Shiny Text', link: '/content/components/animated-shiny-text.md' },
+  { text: 'Avatar Circle', link: '/content/components/avatar-circle.md' },
+  { text: 'Bento Grid', link: '/content/components/bento-grid.md' },
+  { text: 'Blur Fade', link: '/content/components/blur-fade.md' },
+  { text: 'Blur In', link: '/content/components/blur-in.md' },
+  { text: 'Dot Pattern', link: '/content/components/dot-pattern.md' },
+  { text: 'Globe', link: '/content/components/globe.md' },
+  { text: 'Gradual Spacing', link: '/content/components/gradual-spacing.md' },
+  { text: 'Letter Up', link: '/content/components/letter-up.md' },
+  { text: 'Marquee', link: '/content/components/marquee.md' },
+  { text: 'Meteors', link: '/content/components/meteors.md' },
+  { text: 'Orbiting Circles', link: '/content/components/orbiting-circles.md' },
+  { text: 'Particles', link: '/content/components/particles.md' },
+  { text: 'Retro Grid', link: '/content/components/retro-grid.md' },
+  { text: 'Skewed Infinite Scroll', link: '/content/components/skewed-infinite-scroll.md' },
+  { text: 'Typing Animation', link: '/content/components/typing-animation.md' },
 ]
-// https://vitepress.dev/reference/site-config
+
 export default defineConfig({
   vite: { plugins: [] },
   title: 'Spark UI',
@@ -42,11 +48,10 @@ export default defineConfig({
       provider: 'local',
     },
     logo: '../icon.png',
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Guide', items: [
-        { text: 'Introduction', link: '/guide/getting-started/index.md' },
-        { text: 'Installation', link: '/guide/getting-started/installation.md' },
+        { text: 'Introduction', link: '/content/guide/getting-started/index.md' },
+        { text: 'Installation', link: '/content/guide/getting-started/installation.md' },
       ] },
       { text: 'Components', items: components },
       { text: 'Showcase', link: '' },
@@ -55,14 +60,14 @@ export default defineConfig({
     ],
 
     sidebar: {
-      '/guide/': [
+      '/content/': [
         {
           text: '✨&nbsp;&nbsp; Getting Started',
           collapsed: true,
           items: [
-            { text: 'Introduction', link: '/guide/getting-started/index.md' },
-            { text: 'Installation', link: '/guide/getting-started/installation.md' },
-            { text: 'Theme', link: '/guide/getting-started/theme.md' },
+            { text: 'Introduction', link: '/content/guide/getting-started/index.md' },
+            { text: 'Installation', link: '/content/guide/getting-started/installation.md' },
+            { text: 'CLI', link: '/content/guide/getting-started/cli.md' },
           ],
         },
 
@@ -79,7 +84,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2023-PRESENT Selemon Brahanu',
+      copyright: 'Copyright © 2024-PRESENT Selemon Brahanu',
     },
   },
   markdown: {
