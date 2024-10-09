@@ -43,9 +43,13 @@ export default defineConfig({
       { href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap', rel: 'stylesheet' },
     ],
   ],
+  lastUpdated: true,
   themeConfig: {
     search: {
       provider: 'local',
+    },
+    editLink: {
+      pattern: 'https://github.com/selemondev/spark-ui/edit/main/docs/:path'
     },
     logo: '../icon.png',
     nav: [
@@ -81,6 +85,8 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/selemondev/spark-ui' },
+      { icon: 'twitter', link: 'https://twitter.com/selemondev' },
+      { icon: 'discord', link: 'https://discord.com/invite/87p2vpsat5' },
     ],
     footer: {
       message: 'Released under the MIT License.',
