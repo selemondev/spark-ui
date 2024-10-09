@@ -59,7 +59,7 @@ export default defineConfig({
       ] },
       { text: 'Components', items: components },
       { text: 'Showcase', link: '' },
-      { text: `v${version}`, link: ''},
+      { text: `v${version}`, link: '' },
 
     ],
 
