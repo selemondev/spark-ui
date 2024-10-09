@@ -49,31 +49,33 @@ features:
 
 <script setup>
 import Demos from './src/components/Demos.vue'
+import { ref } from "vue";
+
 </script>
 
 <Demos />
 
-<demo src="./src/example/animatedBeamDemo/Demo.vue" />
+<demo src="./src/example/animatedBeamDemo/Demo.vue" srcCode="./src/spark-ui-demos/blurIn/BlurIn.vue" />
 
-<demo src="./src/example/beam/Demo.vue" />
+<demo src="./src/example/beam/Demo.vue" srcCode="./src/components/Demos.vue" />
 
-<demo src="./src/example/animatedGradientText/Demo.vue" />
+<demo src="./src/example/animatedGradientText/Demo.vue" srcCode="./src/components/Demos.vue" />
 
-<demo src="./src/example/skewedInfiniteScroll/Demo.vue" />
+<demo src="./src/example/skewedInfiniteScroll/Demo.vue" srcCode="./src/components/Demos.vue" />
 
-<demo src="./src/example/letterUp/Demo.vue" />
+<demo src="./src/example/letterUp/Demo.vue" srcCode="./src/components/Demos.vue" />
 
-<demo src="./src/example/animatedShinyText/Demo.vue" />
+<demo src="./src/example/animatedShinyText/Demo.vue" srcCode="./src/components/Demos.vue" />
 
-<demo src="./src/example/bento/Demo.vue" />
+<demo src="./src/example/bento/Demo.vue" srcCode="./src/components/Demos.vue" />
 
-<demo src="./src/example/blurFade/Demo.vue" />
+<demo src="./src/example/blurFade/Demo.vue" srcCode="./src/components/Demos.vue" />
 
-<demo src="./src/example/blurIn/Demo.vue" />
+<demo src="./src/example/blurIn/Demo.vue" srcCode="./src/components/Demos.vue" />
 
-<demo src="./src/example/Globe/Demo.vue" />
+<demo src="./src/example/Globe/Demo.vue" srcCode="./src/components/Demos.vue" />
 
-<demo src="./src/example/GradualSpacing/Demo.vue" />
+<!-- <demo src="./src/example/GradualSpacing/Demo.vue" />
 
 <demo src="./src/example/retroGrid/Demo.vue" />
 
@@ -91,4 +93,4 @@ import Demos from './src/components/Demos.vue'
 
 <demo src="./src/example/dotPattern/Demo.vue" />
 
-<demo src="./src/example/avatarCircle/Demo.vue" />
+<demo src="./src/example/avatarCircle/Demo.vue" /> -->

@@ -62,8 +62,8 @@ function handleRefreshComponent() {
             <slot :key="refreshKey" />
           </p>
         </div>
-        <div class="relative">
-          <div v-if="vitePressData.page.value.filePath !== 'index.md'" class="flex justify-end pt-3 gap-2">
+        <div v-if="vitePressData.page.value.filePath !== 'index.md'" class="relative">
+          <div class="flex justify-end pt-3 gap-2">
             <a class="o-demo_action_item" group :href="github" target="_blank">
               <div class="o-demo_action_icon i-carbon-logo-github" />
               <div class="o-demo_tooltip" group-hover:opacity-100>
