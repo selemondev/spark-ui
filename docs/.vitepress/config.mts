@@ -59,7 +59,7 @@ export default defineConfig({
       ] },
       { text: 'Components', items: components },
       { text: 'Showcase', link: '' },
-      { text: `v${version}`, link: '' },
+      { text: `v${version}`, link: ''},
 
     ],
 
@@ -90,7 +90,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2024-PRESENT Selemon Brahanu',
+      copyright: 'Copyright © 2024-PRESENT Selemon Brahanu.',
     },
   },
   markdown: {
