@@ -13,7 +13,7 @@ let index = 1
 export function getDemoComponent(
   md: MarkdownRenderer,
   env: any,
-  { title, desc, path, code, ...props }: DemoInfos,
+  { title, desc, path, code, sourceCode, ...props }: DemoInfos,
 ) {
   const componentName = `DemoComponent${index++}`
   path = normalizePath(path)
@@ -21,10 +21,10 @@ export function getDemoComponent(
 
   injectImportStatement(env, componentName, path)
 
-  const highlightedCode = md.options.highlight!(code, props.lang || 'vue', '')
+  const highlightedCode = md.options.highlight!(sourceCode, props.lang || 'vue', '')
   return `
     <${DemoTag}
-      code="${encodeURIComponent(code)}"
+      code="${encodeURIComponent(sourceCode)}"
       highlightedCode="${encodeURIComponent(highlightedCode)}"
       src="${path}"
       title="${title ?? ''}"
@@ -58,7 +58,7 @@ export function genDemoByCode(
 
   return getDemoComponent(md, env, {
     path: demoPath,
-    code,
+    sourceCode,
   })
 }
 

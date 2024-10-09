@@ -38,7 +38,7 @@ export function demoBlockPlugin(md: MarkdownRenderer) {
 
       const props = parseProps(content)
 
-      if (!props.src)
+      if (!props.src || !props.srcCode)
         return defaultRender!(tokens, idx, options, env, self)
 
       const frontmatter = env.frontmatter
@@ -47,10 +47,14 @@ export function demoBlockPlugin(md: MarkdownRenderer) {
       const srcPath = resolve(mdDir, props.src)
       const code = fsExtra.readFileSync(srcPath, 'utf-8')
 
+      const srcCodePath = resolve(mdDir, props.srcCode)
+      const sourceCode = fsExtra.readFileSync(srcCodePath, 'utf-8')
+
       const demoScripts = getDemoComponent(md, env, {
         title: props.title,
         desc: props.desc,
         path: srcPath,
+        sourceCode,
         code,
         ...props,
       })

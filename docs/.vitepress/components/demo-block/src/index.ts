@@ -17,6 +17,10 @@ export const demoProps = {
     type: String,
     default: '',
   },
+  srcCode: {
+    type: String,
+    default: '',
+  },
   title: {
     type: String,
     default: '',
