@@ -49,7 +49,7 @@ export default defineConfig({
       provider: 'local',
     },
     editLink: {
-      pattern: 'https://github.com/selemondev/spark-ui/edit/main/docs/:path'
+      pattern: 'https://github.com/selemondev/spark-ui/edit/main/docs/:path',
     },
     logo: '../icon.png',
     nav: [
