@@ -12,13 +12,13 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/getting-started/#introduction
+      link: /content/guide/getting-started/#introduction
     - theme: alt
       text: Why Spark UI?
-      link: /guide/getting-started/#why-spark-ui
+      link: /content/guide/getting-started/#why-spark-ui
     - theme: alt
       text: View Components
-      link: /guide/components/accordion.html
+      link: /content/components/animated-beam.md
 
 features:
   - icon: 🦾
@@ -55,9 +55,9 @@ import { ref } from "vue";
 
 <Demos />
 
-<demo src="./src/example/animatedBeamDemo/Demo.vue" srcCode="./src/spark-ui-demos/blurIn/BlurIn.vue" />
+<demo src="./src/example/animatedList/Demo.vue" srcCode="./src/spark-ui-demos/blurIn/BlurIn.vue" />
 
-<demo src="./src/example/beam/Demo.vue" srcCode="./src/components/Demos.vue" />
+<demo src="./src/example/animatedBeam/Demo.vue" srcCode="./src/components/Demos.vue" />
 
 <demo src="./src/example/animatedGradientText/Demo.vue" srcCode="./src/components/Demos.vue" />
 
