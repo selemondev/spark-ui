@@ -28,7 +28,7 @@ const components = [
 export default defineConfig({
   vite: {
     plugins: [
-      groupIconVitePlugin()
+      groupIconVitePlugin(),
     ],
   },
   title: 'Spark UI',
@@ -100,7 +100,7 @@ export default defineConfig({
   },
   markdown: {
     config: (md) => {
-      applyPlugins(md);
+      applyPlugins(md)
       md.use(groupIconMdPlugin)
     },
     theme: {
