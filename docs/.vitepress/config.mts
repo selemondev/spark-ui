@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 import { version } from '../../package.json'
 import { applyPlugins } from './plugins/code'
 
@@ -25,7 +26,11 @@ const components = [
 ]
 
 export default defineConfig({
-  vite: { plugins: [] },
+  vite: {
+    plugins: [
+      groupIconVitePlugin()
+    ],
+  },
   title: 'Spark UI',
   description: 'Experience The Magic Of Animated Components. Crafted With Vue, TypeScript, TailwindCss And Vueuse Motion ✨',
   head: [
@@ -95,7 +100,8 @@ export default defineConfig({
   },
   markdown: {
     config: (md) => {
-      applyPlugins(md)
+      applyPlugins(md);
+      md.use(groupIconMdPlugin)
     },
     theme: {
       light: 'vitesse-light',
