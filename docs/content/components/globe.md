@@ -1,3 +1,56 @@
+# Globe
+
+An autorotating, interactive, and highly performant globe made using WebGL.
+
+<demo src="../../src/example/Globe/Demo.vue" srcCode="../../src/spark-ui-demos/globe/Globe.vue" />
+
+## Installation
+
+Install the following dependencies into your project:
+
+::: code-group
+
+```sh [npm]
+npm install cobe
+```
+
+```sh [yarn]
+yarn add cobe
+```
+
+```sh [pnpm]
+pnpm add cobe
+```
+
+```sh [bun]
+bun add cobe
+```
+
+:::
+
+::: code-group
+
+```sh [npm]
+npm install vue-use-spring
+```
+
+```sh [yarn]
+yarn add vue-use-spring
+```
+
+```sh [pnpm]
+pnpm add vue-use-spring
+```
+
+```sh [bun]
+bun add vue-use-spring
+```
+
+:::
+
+Then copy and paste the following code into your project:
+
+```vue [Globe.vue]
 <script setup lang="ts">
 import createGlobe from 'cobe'
 import { onMounted, ref } from 'vue'
@@ -97,3 +150,8 @@ function handleTouchMove(e: TouchEvent) {
     />
   </div>
 </template>
+```
+
+## Credits
+
+This component is built on top of [Cobe](https://cobe.vercel.app/) and [Vue Use Spring](https://github.com/posva/vue-use-spring).
