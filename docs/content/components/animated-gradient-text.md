@@ -6,11 +6,11 @@ An animated gradient background which transitions between colors for text.
 
 ## Installation
 
-Copy and past the following code into your project:
+Copy and paste the following code into your project:
 
 ```vue [AnimatedGradientText.vue]
 <script setup lang='ts'>
-import { cn } from '../../../lib/utils'
+import { cn } from '@/lib/utils'
 
 interface AnimatedGradientText {
   class?: string
@@ -61,4 +61,4 @@ module.exports = {
 
 | Prop  | Type   | Description              | Default |
 | ----- | ------ | ------------------------ | ------- |
-| class | string | The class to be applied. |         |
+| class | string | The class to be applied. | ""      |

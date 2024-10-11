@@ -6,7 +6,7 @@ An animated beam of light which travels along a path. Useful for showcasing the 
 
 ## Installation
 
-Copy and past the following code into your project:
+Copy and paste the following code into your project:
 
 ::: code-group
 
@@ -189,7 +189,7 @@ defineExpose({
 
 | Prop               | Type    | Description                                              | Default   |
 | ------------------ | ------- | -------------------------------------------------------- | --------- |
-| className          | string  | The class name for the component.                        | -         |
+| class              | string  | The class for the component.                             | -         |
 | containerRef       | ref     | The container ref.                                       | -         |
 | fromRef            | ref     | The ref of the element from which the beam should start. | -         |
 | toRef              | ref     | The ref of the element to which the beam should end.     | -         |

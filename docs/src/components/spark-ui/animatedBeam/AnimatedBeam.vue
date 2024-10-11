@@ -5,7 +5,7 @@ const props = withDefaults(defineProps<{
   containerRef: any
   fromRef: any
   toRef: any
-  className?: string
+  class?: string
   curvature?: number
   reverse?: boolean
   pathColor?: string
@@ -94,7 +94,7 @@ watch(props, (_) => {
 <template>
   <svg
     :width="svgDimensions?.width" :height="svgDimensions?.height" xmlns="http://www.w3.org/2000/svg" class="pointer-events-none absolute left-0 top-0 transform-gpu stroke-2" :class="[
-      props.className,
+      props.class,
     ]" :viewBox="`0 0 ${svgDimensions?.width} ${svgDimensions?.height}`"
   >
     <path

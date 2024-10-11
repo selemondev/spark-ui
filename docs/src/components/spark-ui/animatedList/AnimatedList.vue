@@ -2,29 +2,23 @@
 import { computed, onMounted, ref, useSlots } from 'vue'
 import { cn } from '../../../lib/utils'
 
-const props = defineProps({
-  class: {
-    type: String,
-    default: '',
-  },
-  delay: {
-    type: Number,
-    default: 1000,
-  },
+const props = withDefaults(defineProps<{
+  class?: string
+  delay?: number
+}>(), {
+  delay: 1000,
 })
 
 const slots = useSlots()
 const index = ref(0)
 const slotsArray = ref<any>([])
 
-onMounted(loadComponents)
-
 const itemsToShow = computed(() => {
   return slotsArray.value.slice(0, index.value)
 })
 
 async function loadComponents() {
-  slotsArray.value = slots.default ? slots.default()[0]?.children : []
+  slotsArray.value = slots.default ? slots.default()[0].children : []
 
   while (index.value < slotsArray.value.length) {
     index.value++
@@ -70,12 +64,14 @@ function getLeave() {
       damping: 40,
     },
   }
-}
+};
+
+onMounted(() => loadComponents())
 </script>
 
 <template>
   <div :class="cn('border w-[600px] h-[370px] shadow-lg overflow-auto rounded-lg', $props.class)">
-    <transition-group name="animatedBeam" tag="div" class="flex flex-col-reverse items-center p-2" move-class="move">
+    <transition-group name="list" tag="div" class="flex flex-col-reverse items-center p-2" move-class="move">
       <div
         v-for="(item, idx) in itemsToShow" :key="idx" v-motion :initial="getInitial(idx)"
         :enter="getEnter(idx)" :leave="getLeave()" :class="cn('mx-auto w-full')"
