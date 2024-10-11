@@ -53,9 +53,9 @@ import Demos from './src/components/Demos.vue'
 
 <Demos />
 
-<demo src="./src/example/animatedList/Demo.vue" srcCode="./src/spark-ui-demos/blurIn/BlurIn.vue" />
+<demo src="./src/example/animatedList/Demo.vue" srcCode="./src/example/animatedList/Demo.vue" />
 
-<demo src="./src/example/animatedBeam/Demo.vue" srcCode="./src/components/Demos.vue" />
+<demo src="./src/example/meteors/Demo.vue" srcCode="./src/example/meteors/Demo.vue" />
 
 <demo src="./src/example/animatedGradientText/Demo.vue" srcCode="./src/components/Demos.vue" />
 

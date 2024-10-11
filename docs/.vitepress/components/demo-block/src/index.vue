@@ -57,7 +57,7 @@ function handleRefreshComponent() {
           icon="ic:round-replay" class="text-black w-5 h-5 dark:text-white"
         />
       </button>
-      <div class="relative md:w-[90%] md:w-6/7 h-[500px] py-6">
+      <div :class="[vitePressData.page.value.filePath === 'index.md' ? 'md:w-3/4' : 'md:w-6/7']" class="relative w-[90%] h-[500px] py-6">
         <div class="border-child bg-white shadow-lg dark:bg-black relative rounded-md w-full h-full flex items-center justify-center dark:border-none">
           <p class="z-10">
             <slot :key="refreshKey" />
@@ -90,52 +90,12 @@ function handleRefreshComponent() {
     <div>
       <div v-show="value" :class="`language-${lang} extra-class`" v-html="decodedHighlightedCode" />
     </div>
-    <!-- <div
-      class="relative flex h-72 w-full flex-col items-center justify-center c-#282f38  overflow-hidden rounded-lg border dark:bg-[#000000] [md:shadow-xl c-#282f38 overflow-x-scroll !border-gray-700 dark:bg-[#000000] dark:border-#fff flex-wrap [&:o-button-base]:!c-context vp-raw b"
-    >
-      <p class="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white">
-        <slot />
-      </p>
-      <DotPattern
-        :class-name="cn(
-          '[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]',
-        )"
-      />
-    </div> -->
-    <!-- <div class="relative">
-        <div class="flex justify-end pt-3 gap-2">
-          <a class="o-demo_action_item" group :href="github" target="_blank">
-            <div class="o-demo_action_icon i-carbon-logo-github" />
-            <div class="o-demo_tooltip" group-hover:opacity-100>
-              Edit on GitHub
-            </div>
-          </a>
-          <a class="o-demo_action_item" group @click="copy()">
-            <div class="o-demo_action_icon i-carbon:copy" />
-            <div class="o-demo_tooltip" group-hover:opacity-100>
-              {{ copied ? 'Copied' : 'Copy code' }}
-            </div>
-          </a>
-          <a class="o-demo_action_item" group @click="toggle()">
-            <div class="o-demo_action_icon i-carbon:fit-to-width" />
-            <div class="o-demo_tooltip" group-hover:opacity-100>
-              {{ value ? 'Hide code' : 'Show code' }}
-            </div>
-          </a>
-        </div>
-        <div v-show="value" :class="`language-${lang} extra-class`" v-html="decodedHighlightedCode" />
-      </div> -->
   </div>
 </template>
 
 <style scoped>
 .border-parent {
   border: 1px solid #e4e4e7;
-}
-
-.dark .dark-border-parent {
-  border: 1px solid rgb(183, 23, 23);
-  /* dark mode border color */
 }
 
 .border-child {
