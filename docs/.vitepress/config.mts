@@ -8,7 +8,7 @@ const components = [
   { text: 'Animated Gradient Text', link: '/content/components/animated-gradient-text.md' },
   { text: 'Animated List', link: '/content/components/animated-list.md' },
   { text: 'Animated Shiny Text', link: '/content/components/animated-shiny-text.md' },
-  { text: 'Avatar Circle', link: '/content/components/avatar-circle.md' },
+  { text: 'Avatar Circle', link: '/content/components/avatar-circles.md' },
   { text: 'Bento Grid', link: '/content/components/bento-grid.md' },
   { text: 'Blur Fade', link: '/content/components/blur-fade.md' },
   { text: 'Blur In', link: '/content/components/blur-in.md' },

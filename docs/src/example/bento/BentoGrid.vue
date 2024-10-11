@@ -2,11 +2,11 @@
 import { cn } from '../../lib/utils'
 
 const props = defineProps<{
-  className: string
+  class?: string
 }>()
 const classStyle = cn(
   'grid w-full grid-cols-1 lg:grid-cols-2 gap-4',
-  props.className,
+  props.class,
 )
 </script>
 
