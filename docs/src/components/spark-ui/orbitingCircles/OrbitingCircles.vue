@@ -2,7 +2,7 @@
 import { cn } from '../../../lib/utils'
 
 interface OrbitingCirclesProps {
-  className?: string
+  class?: string
   reverse?: boolean
   duration?: number
   delay?: number
@@ -19,8 +19,8 @@ const props = withDefaults(defineProps<OrbitingCirclesProps>(), {
 
 const className = cn(
   'absolute flex size-full animate-reverse transform-gpu animate-orbit items-center justify-center rounded-full border bg-none [animation-delay:calc(var(--delay)*1000ms)]',
-  props.className,
-  { '[animate-direaction:reverse]': props.reverse },
+  props.class,
+  { '[animate-direction:reverse]': props.reverse },
 )
 </script>
 
