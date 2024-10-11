@@ -21,6 +21,7 @@ const components = [
   { text: 'Orbiting Circles', link: '/content/components/orbiting-circles.md' },
   { text: 'Particles', link: '/content/components/particles.md' },
   { text: 'Retro Grid', link: '/content/components/retro-grid.md' },
+  { text: 'Ripple', link: '/content/components/ripple.md' },
   { text: 'Skewed Infinite Scroll', link: '/content/components/skewed-infinite-scroll.md' },
   { text: 'Typing Animation', link: '/content/components/typing-animation.md' },
 ]
