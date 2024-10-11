@@ -30,9 +30,9 @@ watch(() => props.number, (val) => {
 </script>
 
 <template>
-  <div v-for="(style, idx) in meteorStyles" :key="idx" class="absolute">
+  <div v-for="(style, index) in meteorStyles" :key="index" class="absolute">
     <span
-      :key="idx" :class="cn(
+      :key="index" :class="cn(
         'pointer-events-none absolute left-1/2 top-1/2 size-0.5 rotate-[215deg] animate-meteor rounded-full bg-slate-500 shadow-[0_0_0_1px_#ffffff10]',
       )" :style="style"
     >
