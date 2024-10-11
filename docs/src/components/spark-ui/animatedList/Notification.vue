@@ -1,7 +1,14 @@
 <script setup lang='ts'>
 import { cn } from '../../../lib/utils'
 
-const props = defineProps(['name', 'description', 'icon', 'color', 'time'])
+const props = defineProps<{
+  name: string
+  class?: string
+  description: string
+  icon: string
+  color: string
+  time: string
+}>()
 
 const className = cn(
   'relative mx-auto min-h-fit w-full max-w-[400px] cursor-pointer overflow-hidden rounded-2xl p-3',
@@ -21,11 +28,11 @@ const className = cn(
         <span class="text-lg">{{ props.icon }}</span>
       </div>
       <div class="flex flex-col overflow-hidden">
-        <div class="flex flex-row items-center whitespace-pre text-lg font-medium ">
+        <figcaption class="flex flex-row items-center whitespace-pre text-lg font-medium ">
           <span class="text-sm text-black sm:text-lg">{{ props.name }}</span>
           <span class="mx-1">·</span>
           <span class="text-xs text-gray-500">{{ props.time }}</span>
-        </div>
+        </figcaption>
         <p class="text-sm font-normal">
           {{ props.description }}
         </p>
