@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { Icon } from '@iconify/vue'
-import BentoCard from './BentoCard.vue'
-import BentoGrid from './BentoGrid.vue'
+import BentoCard from '../../components/spark-ui/bento/BentoCard.vue'
+import BentoGrid from '../../components/spark-ui/bento/BentoGrid.vue'
 
 const features = [
   {
@@ -20,7 +20,7 @@ const features = [
     href: '/',
     cta: 'Learn more',
     background: 'absolute -right-20 -top-20 opacity-60',
-    class: 'col-span-3 lg:col-span-1',
+    class: 'col-span-3 lg:col-span-2',
   },
   {
     icon: 'radix-icons:globe',
@@ -35,15 +35,15 @@ const features = [
 </script>
 
 <template>
-  <div class="relative px-4">
+  <div class="grid place-items-center min-h-screen">
     <BentoGrid>
       <div v-for="feat in features" :key="feat.name" :class="feat.class">
-        <BentoCard :name="feat.name" class="h-48">
+        <BentoCard :name="feat.name">
           <div>
             <img :class="feat.background">
           </div>
           <div
-            class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6  space-y-3 transition-all duration-300 group-hover:-translate-y-10"
+            class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10"
           >
             <Icon
               :icon="feat.icon"
@@ -58,7 +58,7 @@ const features = [
           </div>
 
           <div
-            class="pointer-events-none absolute -bottom-6 left-2 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+            class="pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
           >
             <button class="pointer-events-auto">
               <a :href="feat.href">

@@ -1,11 +1,11 @@
 <script setup lang='ts'>
-import AvatarCircles from './AvatarCircles.vue'
+import AvatarCircles from '../../components/spark-ui/avatarCircle/AvatarCircles.vue'
 
 const avatarUrls = [
-  'https://github.com/selemondev.png',
   'https://avatars.githubusercontent.com/u/16860528',
-  'https://github.com/atinux.png',
-  'https://github.com/danielroe.png',
+  'https://avatars.githubusercontent.com/u/20110627',
+  'https://avatars.githubusercontent.com/u/106103625',
+  'https://avatars.githubusercontent.com/u/59228569',
 ]
 </script>
 
