@@ -2,25 +2,11 @@
 import { useData } from 'vitepress'
 import { computed } from 'vue'
 
+const props = defineProps<{
+  items: { id: string, text: string }[]
+}>()
 const { isDark } = useData()
 const currentTheme = computed(() => isDark.value ? '#1f2937' : '#f3f4f6')
-
-const items = [
-  { id: '1', text: 'Spark UI' },
-  { id: '2', text: 'Magic UI' },
-  { id: '3', text: 'Spark UI' },
-  { id: '4', text: 'Magic UI' },
-  { id: '5', text: 'Spark UI' },
-  { id: '6', text: 'Magic UI' },
-  {
-    id: '7',
-    text: 'Spark UI',
-  },
-  {
-    id: '8',
-    text: 'Magic UI',
-  },
-]
 </script>
 
 <template>
@@ -38,7 +24,7 @@ const items = [
         }"
       >
         <div class="mx-auto h-96 md:h-full grid animate-skew-scroll grid-cols-1 gap-5 sm:grid-cols-2">
-          <div v-for="item in items" :key="item.id">
+          <div v-for="item in props.items" :key="item.id">
             <div
               :key="item.id"
               class="flex cursor-pointer w-56 md:w-56 lg:w-72 px-6 py-1 items-center space-x-2 rounded-md border-parent shadow-md transition-all hover:-translate-y-1 hover:translate-x-1 hover:scale-[1.025] hover:shadow-xl "

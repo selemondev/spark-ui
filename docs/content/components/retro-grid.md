@@ -49,8 +49,6 @@ const props = withDefaults(defineProps<{
 
 ## Props
 
-## Props
-
 | Prop  | Type   | Description                 | Default |
 | ----- | ------ | --------------------------- | ------- |
 | class | string | The class for the component | ""      |

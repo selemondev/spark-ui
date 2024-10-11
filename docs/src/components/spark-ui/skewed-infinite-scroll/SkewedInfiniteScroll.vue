@@ -1,20 +1,7 @@
 <script setup lang='ts'>
-const items = [
-  { id: '1', text: 'Spark UI' },
-  { id: '2', text: 'Another One' },
-  { id: '3', text: 'Yet Another One' },
-  { id: '4', text: 'Yet Another One' },
-  { id: '5', text: 'Yet Another One' },
-  { id: '6', text: 'Yet Another One' },
-  {
-    id: '7',
-    text: 'Yet Another One',
-  },
-  {
-    id: '8',
-    text: 'Yet Another One',
-  },
-]
+const props = defineProps<{
+  items: { id: string, text: string }[]
+}>()
 </script>
 
 <template>
@@ -32,7 +19,7 @@ const items = [
         }"
       >
         <div class="mx-auto grid animate-skew-scroll grid-cols-1 gap-5 sm:grid-cols-2">
-          <div v-for="item in items" :key="item.id">
+          <div v-for="item in props.items" :key="item.id">
             <div
               :key="item.id"
               class="flex cursor-pointer w-72 p-6 items-center space-x-2 rounded-md border border-gray-100 dark:border-gray-800 px-5 shadow-md transition-all hover:-translate-y-1 hover:translate-x-1 hover:scale-[1.025] hover:shadow-xl "

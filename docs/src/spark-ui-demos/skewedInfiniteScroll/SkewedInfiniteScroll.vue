@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import SkewedInfiniteScroll from './SkewedInfiniteScroll.vue'
+import SkewedInfiniteScroll from '../../components/spark-ui/skewed-infinite-scroll/SkewedInfiniteScroll.vue'
 
 const items = [
   { id: '1', text: 'Spark UI' },
@@ -20,5 +20,7 @@ const items = [
 </script>
 
 <template>
-  <SkewedInfiniteScroll :items="items" />
+  <div class="grid place-items-center w-full min-h-screen">
+    <SkewedInfiniteScroll :items="items" />
+  </div>
 </template>
