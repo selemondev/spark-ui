@@ -28,6 +28,7 @@ function updateImportPaths(code: string): string {
   const magicString = new MagicString(code)
 
   magicString.replaceAll('../../components/spark-ui/', '@/components/')
+  magicString.replaceAll('../../components/icons/', '@/components/icons/')
   magicString.replaceAll('../../../lib/utils', '@/libs/utils')
   magicString.replaceAll('../../lib/utils', '@/libs/utils')
 
@@ -56,7 +57,7 @@ function handleRefreshComponent() {
           icon="ic:round-replay" class="text-black w-5 h-5 dark:text-white"
         />
       </button>
-      <div class="relative w-[90%] md:w-3/4 h-[500px] py-6">
+      <div class="relative md:w-[90%] md:w-6/7 h-[500px] py-6">
         <div class="border-child bg-white shadow-lg dark:bg-black relative rounded-md w-full h-full flex items-center justify-center dark:border-none">
           <p class="z-10">
             <slot :key="refreshKey" />

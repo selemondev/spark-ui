@@ -49,8 +49,6 @@ features:
 
 <script setup>
 import Demos from './src/components/Demos.vue'
-import { ref } from "vue";
-
 </script>
 
 <Demos />

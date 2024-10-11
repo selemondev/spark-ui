@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { nanoid } from 'nanoid'
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { onMounted, onUnmounted, ref, useId, watch } from 'vue'
 
 const props = withDefaults(defineProps<{
   containerRef: any
@@ -20,6 +19,8 @@ const props = withDefaults(defineProps<{
   startYOffset?: number
   endXOffset?: number
   endYOffset?: number
+  width?: number
+  height?: number
 }>(), {
   curvature: 0,
   reverse: false,
@@ -36,7 +37,7 @@ const props = withDefaults(defineProps<{
   endYOffset: 0,
 })
 
-const id = nanoid()
+const id = `pattern-${useId()}`
 
 const initial = {
   x1: '10%',
@@ -73,13 +74,21 @@ function updatePath() {
   }
 }
 
-watch(() => props, (_) => {
-  updatePath()
-}, { immediate: true, deep: true })
+const controller = new AbortController()
 
-onMounted(async () => {
-  await nextTick()
+onMounted(() => {
+  window.addEventListener('resize', updatePath, {
+    signal: controller.signal,
+  })
 })
+
+onUnmounted(() => {
+  controller.abort()
+})
+
+watch(props, (_) => {
+  updatePath()
+}, { deep: true })
 </script>
 
 <template>
