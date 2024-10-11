@@ -1,22 +1,6 @@
 <script setup lang='ts'>
-import { useData } from 'vitepress'
-import { computed } from 'vue'
-import Marquee from './Marquee.vue'
+import Marquee from '../../components/spark-ui/marquee/Marquee.vue'
 import ReviewCard from './ReviewCard.vue'
-
-const { isDark } = useData()
-
-const leftGradient = computed(() => {
-  return isDark.value
-    ? 'pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#000000] to-transparent'
-    : 'pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white to-transparent'
-})
-
-const rightGradient = computed(() => {
-  return isDark.value
-    ? 'pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#000000] to-transparent'
-    : 'pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white to-transparent'
-})
 
 const reviews = [
   {
@@ -44,22 +28,18 @@ const secondRow = reviews.slice(reviews.length / 2)
 </script>
 
 <template>
-  <div class="relative flex h-[400px] w-[300px] lg:w-[500px] flex-col items-center justify-center overflow-hidden rounded-lg">
-    <Marquee reverse class-name="[--duration:20s]">
+  <div class="relative flex h-[400px] w-[300px] lg:w-[800px] flex-row items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+    <Marquee pause-on-hover vertical class-name="[--duration:20s]">
       <div v-for="{ img, name, username, body } in firstRow" :key="username">
         <ReviewCard :key="username" :username="username" :img="img" :name="name" :body="body" />
       </div>
     </Marquee>
-    <Marquee pause-on-hover class-name="[--duration:20s]">
+    <Marquee reverse pause-on-hover vertical class-name="[--duration:20s]">
       <div v-for="{ img, name, username, body } in secondRow" :key="username">
         <ReviewCard :key="username" :username="username" :img="img" :name="name" :body="body" />
       </div>
     </Marquee>
-    <div
-      :class="rightGradient"
-    />
-    <div
-      :class="leftGradient"
-    />
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white dark:from-background" />
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white dark:from-background" />
   </div>
 </template>

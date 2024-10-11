@@ -2,7 +2,7 @@
 import { cn } from '../../../lib/utils'
 
 interface MarqueeProps {
-  className?: string
+  class?: string
   reverse?: boolean
   pauseOnHover?: boolean
   vertical?: boolean
@@ -34,7 +34,7 @@ const className = cn(
                                 'flex-row': !props.vertical,
                                 'flex-col': props.vertical,
                               },
-                              props.className,
+                              props.class,
     )"
   >
     <div v-for="i in Array(props.repeat).fill(0)" :key="i">
