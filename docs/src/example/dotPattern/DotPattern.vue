@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+import { useId } from 'vue'
 import { cn } from '../../lib/utils'
 
 interface DotPatternProps {
@@ -9,7 +10,7 @@ interface DotPatternProps {
   cx?: any
   cy?: any
   cr?: any
-  className?: string
+  class?: string
   [key: string]: any
 }
 const props = withDefaults(defineProps<DotPatternProps>(), {
@@ -21,16 +22,14 @@ const props = withDefaults(defineProps<DotPatternProps>(), {
   cy: 1,
   cr: 1,
 })
-const array = new Uint32Array(1)
-globalThis.crypto.getRandomValues(array)
-const id = `pattern-${array[0]}`
+const id = `pattern-${useId()}`
 </script>
 
 <template>
   <svg
     aria-hidden="true" :class="cn(
       'pointer-events-none absolute inset-0 h-full w-full fill-neutral-400/80',
-      props.className,
+      props.class,
     )" v-bind="props"
   >
     <defs>
