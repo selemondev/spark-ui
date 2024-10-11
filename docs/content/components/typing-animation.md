@@ -1,6 +1,17 @@
+# Typing Animation
+
+Characters appearing in typed animation
+
+<demo src="../../src/example/typingAnimation/Demo.vue" srcCode="../../src/spark-ui-demos/typingAnimation/TypingAnimation.vue" />
+
+## Installation
+
+Copy and paste the following code into your project:
+
+```vue [TypingAnimation.vue]
 <script setup lang='ts'>
+import { cn } from '@/lib/utils'
 import { ref, watch } from 'vue'
-import { cn } from '../../lib/utils'
 
 interface TypingAnimationProps {
   text: string
@@ -49,3 +60,12 @@ const className = cn(
     {{ displayedText ? displayedText : props.text }}
   </h1>
 </template>
+```
+
+## Props
+
+| Prop     | Type   | Description                                     | Default |
+| -------- | ------ | ----------------------------------------------- | ------- |
+| class    | string | The class for the component                     | ""      |
+| duration | number | The duration to wait in between each char type. | 300     |
+| text     | string | Text to animate.                                | ""      |
