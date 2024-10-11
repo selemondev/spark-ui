@@ -76,7 +76,6 @@ export default defineConfig({
           items: [
             { text: 'Introduction', link: '/content/guide/getting-started/index.md' },
             { text: 'Installation', link: '/content/guide/getting-started/installation.md' },
-            { text: 'CLI', link: '/content/guide/getting-started/cli.md' },
           ],
         },
 
