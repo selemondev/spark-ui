@@ -9,14 +9,14 @@ interface GradualSpacingProps {
   text: string
   duration?: number
   delayMultiple?: number
-  framerProps?: Variants
+  motionProps?: Variants
   class?: string
 };
 
 const props = withDefaults(defineProps<GradualSpacingProps>(), {
   duration: 50,
   delayMultiple: 40,
-  framerProps: () => ({
+  motionProps: () => ({
     hidden: { opacity: 0, x: -20 },
     visible: { opacity: 1, x: 0 },
   }),
@@ -34,8 +34,8 @@ const className = cn(
   <div class="flex justify-center space-x-1">
     <div v-for="(char, index) in letters" :key="index">
       <h1
-        v-motion :initial="props.framerProps.hidden" :visible="{
-          ...props.framerProps.visible,
+        v-motion :initial="props.motionProps.hidden" :visible="{
+          ...props.motionProps.visible,
           transition: {
             duration: props.duration,
             delay: index * props.delayMultiple,
