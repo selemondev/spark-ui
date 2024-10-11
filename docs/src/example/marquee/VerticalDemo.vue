@@ -44,22 +44,20 @@ const secondRow = reviews.slice(reviews.length / 2)
 </script>
 
 <template>
-  <div class="relative flex h-[400px] w-[300px] lg:w-[500px] flex-col items-center justify-center overflow-hidden rounded-lg">
-    <Marquee reverse class-name="[--duration:20s]">
+  <div
+    class="relative flex h-[400px] w-[300px] lg:w-[550px] flex-row items-center justify-center overflow-hidden rounded-lg"
+  >
+    <Marquee pause-on-hover vertical class="[--duration:20s]">
       <div v-for="{ img, name, username, body } in firstRow" :key="username">
         <ReviewCard :key="username" :username="username" :img="img" :name="name" :body="body" />
       </div>
     </Marquee>
-    <Marquee pause-on-hover class-name="[--duration:20s]">
+    <Marquee reverse vertical class="[--duration:20s]">
       <div v-for="{ img, name, username, body } in secondRow" :key="username">
         <ReviewCard :key="username" :username="username" :img="img" :name="name" :body="body" />
       </div>
     </Marquee>
-    <div
-      :class="rightGradient"
-    />
-    <div
-      :class="leftGradient"
-    />
+    <div :class="rightGradient" />
+    <div :class="leftGradient" />
   </div>
 </template>

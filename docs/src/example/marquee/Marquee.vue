@@ -3,7 +3,7 @@
 import { cn } from '../../lib/utils'
 
 interface MarqueeProps {
-  className?: string
+  class?: string
   reverse?: boolean
   pauseOnHover?: boolean
   vertical?: boolean
@@ -20,9 +20,10 @@ const props = withDefaults(defineProps<MarqueeProps>(), {
 const className = cn(
   'flex shrink-0 justify-around [gap:var(--gap)]',
   {
-    'animate-marquee-vertical flex-col': props.vertical,
-    'animate-marquee flex-row': !props.vertical,
-    'animate-marquee-reverse': props.reverse,
+    'animate-marquee-vertical flex-col': props.vertical && !props.reverse,
+    'animate-marquee-vertical-reverse flex-col': props.vertical && props.reverse,
+    'animate-marquee flex-row': !props.vertical && !props.reverse,
+    'animate-marquee-reverse': !props.vertical && props.reverse,
     'group-hover:[animation-play-state:paused]': props.pauseOnHover,
   },
 )
@@ -59,6 +60,10 @@ const className = cn(
   animation: MarqueeVertical var(--duration) linear infinite;
 }
 
+.animate-marquee-vertical-reverse {
+  animation: MarqueeVerticalReverse var(--duration) linear infinite;
+}
+
 @keyframes Marquee {
   0% {
     transform: translateX(0);
@@ -86,6 +91,16 @@ const className = cn(
 
   100% {
     transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes MarqueeVerticalReverse {
+  0% {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }
 </style>
