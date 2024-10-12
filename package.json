@@ -1,7 +1,7 @@
 {
   "name": "@spark-ui/monorepo",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "packageManager": "pnpm@9.11.0",
   "description": "Experience The Magic Of Animated Components. Crafted With Vue, TypeScript, TailwindCss And Vueuse Motion",
@@ -35,6 +35,7 @@
     "playground:dev": "nr --filter @spark-ui/playground dev",
     "docs:dev": "nr --filter @spark-ui/docs dev",
     "ui:dev": "nr --filter @spark-ui/ui dev",
+    "generate:release": "npx changelogen@latest --release",
     "postinstall": "simple-git-hooks",
     "package-minor:updates": "npx taze@latest minor -r",
     "package-major:updates": "npx taze@latest major -r"
