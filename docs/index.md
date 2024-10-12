@@ -57,16 +57,16 @@ import Demos from './src/components/Demos.vue'
 
 <demo src="./src/example/meteors/Demo.vue" srcCode="./src/example/meteors/Demo.vue" />
 
-<demo src="./src/example/animatedGradientText/Demo.vue" srcCode="./src/components/Demos.vue" />
+<demo src="./src/example/animatedGradientText/Demo.vue" srcCode="./src/example/animatedGradientText/Demo.vue" />
 
-<demo src="./src/example/skewedInfiniteScroll/Demo.vue" srcCode="./src/components/Demos.vue" />
+<demo src="./src/example/skewedInfiniteScroll/Demo.vue" srcCode="./src/example/skewedInfiniteScroll/Demo.vue" />
 
-<demo src="./src/example/animatedShinyText/Demo.vue" srcCode="./src/components/Demos.vue" />
+<demo src="./src/example/animatedShinyText/Demo.vue" srcCode="./src/example/animatedShinyText/Demo.vue" />
 
-<demo src="./src/example/bento/Demo.vue" srcCode="./src/components/Demos.vue" />
+<demo src="./src/example/bento/Demo.vue" srcCode="./src/example/bento/Demo.vue" />
 
-<demo src="./src/example/blurFade/Demo.vue" srcCode="./src/components/Demos.vue" />
+<demo src="./src/example/blurFade/Demo.vue" srcCode="./src/example/blurFade/Demo.vue" />
 
-<demo src="./src/example/blurIn/Demo.vue" srcCode="./src/components/Demos.vue" />
+<demo src="./src/example/blurIn/Demo.vue" srcCode="./src/example/blurIn/Demo.vue" />
 
-<demo src="./src/example/Globe/Demo.vue" srcCode="./src/components/Demos.vue" />
+<demo src="./src/example/globe/Demo.vue" srcCode="./src/example/globe/Demo.vue" />
