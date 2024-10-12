@@ -2,7 +2,7 @@
 
 An autorotating, interactive, and highly performant globe made using WebGL.
 
-<demo src="../../src/example/Globe/Demo.vue" srcCode="../../src/spark-ui-demos/globe/Globe.vue" />
+<demo src="../../src/example/globe/Demo.vue" srcCode="../../src/spark-ui-demos/globe/Globe.vue" />
 
 ## Installation
 
