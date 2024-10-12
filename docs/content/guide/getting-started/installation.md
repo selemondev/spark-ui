@@ -132,6 +132,41 @@ app.mount("#app");
 
 :::
 
+### Install Clsx and Tailwind Merge
+
+Install `clsx` and `tailwind-merge` by running the command below in your terminal:
+
+::: code-group
+
+```sh [npm]
+npm install clsx tailwind-merge
+```
+
+```sh [yarn]
+yarn add clsx tailwind-merge
+```
+
+```sh [pnpm]
+pnpm add clsx tailwind-merge
+```
+
+```sh [bun]
+bun add clsx tailwind-merge
+```
+
+:::
+
+Then, in your `./src/lib/utils.ts` file, configure it as shown below:
+
+```ts [utils.ts]
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+```
+
 ## Nuxt 3
 
 #### Create a new Nuxt 3 project
@@ -257,6 +292,41 @@ export default defineNuxtConfig({
     viewer: true,
   }
 })
+```
+
+### Install Clsx and Tailwind Merge
+
+Install `clsx` and `tailwind-merge` by running the command below in your terminal:
+
+::: code-group
+
+```sh [npm]
+npm install clsx tailwind-merge
+```
+
+```sh [yarn]
+yarn add clsx tailwind-merge
+```
+
+```sh [pnpm]
+pnpm add clsx tailwind-merge
+```
+
+```sh [bun]
+bun add clsx tailwind-merge
+```
+
+:::
+
+Then, in your `./lib/utils.ts` file, configure it as shown below:
+
+```ts [utils.ts]
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
 ```
 
 ## Next step
