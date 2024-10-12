@@ -2,7 +2,7 @@
 
 Word animation for gradual spacing between letters
 
-<demo src="../../src/example/GradualSpacing/Demo.vue" srcCode="../../src/spark-ui-demos/gradualSpacing/GradualSpacing.vue" />
+<demo src="../../src/example/gradualSpacing/Demo.vue" srcCode="../../src/spark-ui-demos/gradualSpacing/GradualSpacing.vue" />
 
 ## Installation
 
