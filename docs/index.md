@@ -61,8 +61,6 @@ import Demos from './src/components/Demos.vue'
 
 <demo src="./src/example/skewedInfiniteScroll/Demo.vue" srcCode="./src/components/Demos.vue" />
 
-<demo src="./src/example/letterUp/Demo.vue" srcCode="./src/components/Demos.vue" />
-
 <demo src="./src/example/animatedShinyText/Demo.vue" srcCode="./src/components/Demos.vue" />
 
 <demo src="./src/example/bento/Demo.vue" srcCode="./src/components/Demos.vue" />
@@ -72,23 +70,3 @@ import Demos from './src/components/Demos.vue'
 <demo src="./src/example/blurIn/Demo.vue" srcCode="./src/components/Demos.vue" />
 
 <demo src="./src/example/Globe/Demo.vue" srcCode="./src/components/Demos.vue" />
-
-<!-- <demo src="./src/example/GradualSpacing/Demo.vue" />
-
-<demo src="./src/example/retroGrid/Demo.vue" />
-
-<demo src="./src/example/orbitingCircles/Demo.vue" />
-
-<demo src="./src/example/meteors/Demo.vue" />
-
-<demo src="./src/example/typingAnimation/Demo.vue" />
-
-<demo src="./src/example/marquee/Demo.vue" />
-
-<demo src="./src/example/ripple/Demo.vue" />
-
-<demo src="./src/example/particles/Demo.vue" />
-
-<demo src="./src/example/dotPattern/Demo.vue" />
-
-<demo src="./src/example/avatarCircle/Demo.vue" /> -->

@@ -82,7 +82,7 @@ export default defineConfig({
 
         {
           text: '📦&nbsp;&nbsp; Components',
-          collapsed: true,
+          collapsed: false,
           items: components,
         },
       ],
