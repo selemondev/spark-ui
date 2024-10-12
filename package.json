@@ -28,7 +28,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "clean": "rimraf packages/*/{dist,es,lib}",
-    "build:ui": "rimraf packages/*/{dist,es,lib} && nr -r -F \"./packages/ui\" build",
+    "build:docs": "rimraf packages/*/{dist,es,lib} && nr -r -F \"./docs\" build",
     "build:cli": "rimraf packages/*/{dist,es,lib} && nr -r -F \"./packages/cli\" build",
     "test": "vitest",
     "coverage": "vitest run --coverage",
