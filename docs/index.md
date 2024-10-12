@@ -63,7 +63,7 @@ import Demos from './src/components/Demos.vue'
 
 <demo src="./src/example/animatedShinyText/Demo.vue" srcCode="./src/example/animatedShinyText/Demo.vue" />
 
-<demo src="./src/example/bento/Demo.vue" srcCode="./src/example/bento/Demo.vue" />
+<demo src="./src/example/retroGrid/Demo.vue" srcCode="./src/example/retroGrid/Demo.vue" />
 
 <demo src="./src/example/blurFade/Demo.vue" srcCode="./src/example/blurFade/Demo.vue" />
 
