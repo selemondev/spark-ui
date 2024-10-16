@@ -34,7 +34,7 @@ const className = cn(
   {
     'animate-marquee-vertical flex-col': props.vertical,
     'animate-marquee flex-row': !props.vertical,
-    'animate-marquee-reverse': props.reverse,
+    '[animation-direction:reverse]': props.reverse,
     'group-hover:[animation-play-state:paused]': props.pauseOnHover,
   },
 )

@@ -9,7 +9,7 @@ import DotPattern from './DotPattern.vue'
       Dot Pattern
     </p>
     <DotPattern
-      :class-name="cn(
+      :class="cn(
         '[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]',
       )"
     />
