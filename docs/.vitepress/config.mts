@@ -49,7 +49,8 @@ export default defineConfig({
       { href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap', rel: 'stylesheet' },
     ],
     [
-      'script', { src: '/_vercel/insights/script.js', defer: 'true' },
+      'script',
+      { src: '/_vercel/insights/script.js', defer: 'true' },
     ],
   ],
   lastUpdated: true,
