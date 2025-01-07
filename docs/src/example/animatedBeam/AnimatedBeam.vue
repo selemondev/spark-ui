@@ -2,7 +2,7 @@
 import { onMounted, onUnmounted, ref, useId, watch } from 'vue'
 
 const props = withDefaults(defineProps<{
-  containerRef: any
+  containerRef: HTMLElement | undefined
   fromRef: any
   toRef: any
   class?: string
