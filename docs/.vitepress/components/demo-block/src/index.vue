@@ -33,8 +33,20 @@ function updateImportPaths(code: string): string {
   magicString.replaceAll('../../lib/utils', '@/libs/utils')
 
   return magicString.toString()
-}
-const { copy, copied } = useClipboard({ source: decodeURIComponent(props.code) })
+};
+
+const normalizeImportPath = computed(() => {
+  try {
+    const decodeHighlightedCode = decodeURIComponent(props.code)
+    const updatedCode = updateImportPaths(decodeHighlightedCode)
+    return updatedCode
+  }
+  catch (error) {
+    console.error('Error decoding code:', error)
+    return props.code
+  }
+})
+const { copy, copied } = useClipboard({ source: normalizeImportPath.value })
 const [value, toggle] = useToggle()
 const refreshKey = ref(0)
 function handleRefreshComponent() {
