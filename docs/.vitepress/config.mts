@@ -6,6 +6,7 @@ import { applyPlugins } from './plugins/code'
 
 const newComponents = [
   { text: '3D Pin', link: '/content/components/3d-pin.md' },
+  { text: 'Animated Tooltip', link: '/content/components/animated-tooltip.md' },
 ]
 
 const components = [
