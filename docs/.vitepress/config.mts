@@ -3,11 +3,11 @@ import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-i
 import { version } from '../../package.json'
 import { applyPlugins } from './plugins/code'
 
-
 const newComponents = [
   { text: '3D Pin', link: '/content/components/3d-pin.md' },
   { text: 'Animated Tooltip', link: '/content/components/animated-tooltip.md' },
   { text: 'Terminal', link: '/content/components/terminal.md' },
+  { text: 'Hero Video Dialog', link: '/content/components/hero-video-dialog.md' },
 ]
 
 const components = [
@@ -101,7 +101,7 @@ export default defineConfig({
           text: '📦&nbsp;&nbsp; Components',
           collapsed: false,
           items: components,
-        }
+        },
       ],
     },
 
