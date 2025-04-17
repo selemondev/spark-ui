@@ -3,6 +3,11 @@ import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-i
 import { version } from '../../package.json'
 import { applyPlugins } from './plugins/code'
 
+
+const newComponents = [
+  { text: '3D Pin', link: '/content/components/3d-pin.md' },
+]
+
 const components = [
   { text: 'Animated Beam', link: '/content/components/animated-beam.md' },
   { text: 'Animated Gradient Text', link: '/content/components/animated-gradient-text.md' },
@@ -85,10 +90,16 @@ export default defineConfig({
         },
 
         {
+          text: '📦&nbsp;&nbsp; New Components',
+          collapsed: false,
+          items: newComponents,
+        },
+
+        {
           text: '📦&nbsp;&nbsp; Components',
           collapsed: false,
           items: components,
-        },
+        }
       ],
     },
 
