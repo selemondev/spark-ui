@@ -3,6 +3,7 @@
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { nextTick, provide } from 'vue'
+import ScrollProgress from '../../src/example/scroll-progress/ScrollProgress.vue'
 
 const { isDark } = useData()
 
@@ -43,10 +44,7 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
 </script>
 
 <template>
-  <!-- eslint-disable-next-line vue/component-name-in-template-casing -->
+  <ScrollProgress />
   <DefaultTheme.Layout>
-    <!-- <template #home-features-after>
-      <HomePage />
-    </template> -->
   </DefaultTheme.Layout>
 </template>
