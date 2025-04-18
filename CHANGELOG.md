@@ -1,6 +1,47 @@
 # Changelog
 
 
+## v0.0.2
+
+[compare changes](https://github.com/selemondev/spark-ui/compare/v0.0.1...v0.0.2)
+
+### 🚀 Enhancements
+
+- Add 3D-Pin ([c326203](https://github.com/selemondev/spark-ui/commit/c326203))
+- Add animated tooltip ([ce88807](https://github.com/selemondev/spark-ui/commit/ce88807))
+- Add terminal ([317a61b](https://github.com/selemondev/spark-ui/commit/317a61b))
+- Add hero dialog ([92647cb](https://github.com/selemondev/spark-ui/commit/92647cb))
+- Add scroll progress ([509c381](https://github.com/selemondev/spark-ui/commit/509c381))
+- Add aurora text ([f15c71d](https://github.com/selemondev/spark-ui/commit/f15c71d))
+- Add resizable navbar ([789b1a5](https://github.com/selemondev/spark-ui/commit/789b1a5))
+
+### 🩹 Fixes
+
+- **docs:** Fixed Github edit links pointing to non existing files on main ([c659700](https://github.com/selemondev/spark-ui/commit/c659700))
+- Marquee class props ([75aff44](https://github.com/selemondev/spark-ui/commit/75aff44))
+- Animated-beam prop types ([abae10b](https://github.com/selemondev/spark-ui/commit/abae10b))
+- Normalize import path ([4b21000](https://github.com/selemondev/spark-ui/commit/4b21000))
+
+### 💅 Refactors
+
+- Remove unused components ([4b351f5](https://github.com/selemondev/spark-ui/commit/4b351f5))
+
+### 🏡 Chore
+
+- **release:** V0.0.1 ([d28820e](https://github.com/selemondev/spark-ui/commit/d28820e))
+- Release ([4894e28](https://github.com/selemondev/spark-ui/commit/4894e28))
+- Add analytics ([1fef5e8](https://github.com/selemondev/spark-ui/commit/1fef5e8))
+- Lint ([fca4e9f](https://github.com/selemondev/spark-ui/commit/fca4e9f))
+
+### 🎨 Styles
+
+- Fix nav items hovered background color ([8e5f168](https://github.com/selemondev/spark-ui/commit/8e5f168))
+
+### ❤️ Contributors
+
+- [Selemondev](https://github.com/selemondev)
+- [Thomas Thomsen](twt@outlook.dk)
+
 ## v0.0.1
 
 
