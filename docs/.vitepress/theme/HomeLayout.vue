@@ -3,9 +3,33 @@
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { nextTick, provide } from 'vue'
+import Navbar from "../../src/example/resizable-navbar/Navbar.vue";
+import NavBody from "../../src/example/resizable-navbar/NavBody.vue";
+import NavItems from "../../src/example/resizable-navbar/NavItems.vue";
+import MobileNav from "../../src/example/resizable-navbar/MobileNav.vue";
+import NavbarLogo from "../../src/example/resizable-navbar/NavbarLogo.vue";
+import NavbarButton from "../../src/example/resizable-navbar/NavbarButton.vue";
+import MobileNavHeader from "../../src/example/resizable-navbar/MobileNavHeader.vue";
+import MobileNavToggle from "../../src/example/resizable-navbar/MobileNavToggle.vue";
+import MobileNavMenu from "../../src/example/resizable-navbar/MobileNav.vue";
 import ScrollProgress from '../../src/example/scroll-progress/ScrollProgress.vue'
+import { ref } from 'vue';
+const isMenuOpen = ref(false);
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+const closeMenu = () => {
+  isMenuOpen.value = false;
+};
 
-const { isDark } = useData()
+const navItems = [
+  { name: 'Home', link: '/' },
+  { name: 'Components', link: '/content/components/animated-beam.html' },
+  { name: 'Showcase', link: '/' },
+  { name: 'Github', link: 'https://github.com/selemondev' },
+  { name: 'Twitter', link: 'https://twitter.com/selemondev' }
+];
+const { isDark, params } = useData()
 
 function enableTransitions() {
   return 'startViewTransition' in document
@@ -45,6 +69,33 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
 
 <template>
   <ScrollProgress />
+  <Navbar v-if="useData()?.page?.value?.title === 'Resizable Navbar'">
+    <template #default="{ visible }">
+      <NavBody :visible="visible">
+        <NavbarLogo />
+        <NavItems :items="navItems" @item-click="closeMenu" />
+        <NavbarButton to="/" variant="primary">Get Started</NavbarButton>
+      </NavBody>
+
+      <MobileNav :visible="visible">
+        <MobileNavHeader>
+          <NavbarLogo />
+          <MobileNavToggle :is-open="isMenuOpen" @click="toggleMenu" />
+        </MobileNavHeader>
+
+        <MobileNavMenu :is-open="isMenuOpen" @close="closeMenu">
+          <a v-for="(item, idx) in navItems" :key="`mobile-link-${idx}`" :href="item.link" @click="closeMenu"
+            class="w-full px-4 py-2 text-neutral-600 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 rounded-md">
+            {{ item.name }}
+          </a>
+
+          <NavbarButton to="/" variant="dark" class="w-full dark:text-black mt-4" @click="closeMenu">
+            Get Started
+          </NavbarButton>
+        </MobileNavMenu>
+      </MobileNav>
+    </template>
+  </Navbar>
   <DefaultTheme.Layout>
   </DefaultTheme.Layout>
 </template>

@@ -10,6 +10,7 @@ const newComponents = [
   { text: 'Hero Video Dialog', link: '/content/components/hero-video-dialog.md' },
   { text: 'Scroll Progress', link: '/content/components/scroll-progress.md' },
   { text: 'Aurora Text', link: '/content/components/aurora.md' },
+  { text: 'Resizable Navbar', link: '/content/components/resizable-navbar.md' }
 ]
 
 const components = [
