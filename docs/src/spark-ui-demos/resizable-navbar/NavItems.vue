@@ -3,7 +3,6 @@ import { ref } from 'vue';
 defineProps<{
   items: Array<{ name: string; link: string }>;
   className?: string;
-  onItemClick?: () => void;
 }>()
 
 const hovered = ref<number | null>(null);
