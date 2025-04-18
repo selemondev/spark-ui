@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 
 const props = defineProps<{
-  visible: boolean;
+  visible?: boolean;
   className?: string;
 }>();
 

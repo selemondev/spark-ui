@@ -4,17 +4,12 @@ import { ref } from 'vue';
 defineProps<{
   items: Array<{ name: string; link: string }>;
   className?: string;
-  onItemClick?: () => void;
 }>()
 
 const hovered = ref<number | null>(null);
 const emits = defineEmits(['itemClick']);
 const handleItemHover = (idx: number) => {
   hovered.value = idx;
-};
-
-const clearHover = () => {
-  hovered.value = null;
 };
 
 const handleClick = () => {
@@ -24,7 +19,6 @@ const handleClick = () => {
 
 <template>
   <div 
-    @mouseleave="clearHover"
     class="absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-zinc-600 transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2"
     :class="className"
   >
@@ -36,13 +30,7 @@ const handleClick = () => {
       @click="handleClick"
       class="relative px-4 py-2 text-neutral-600"
     >
-      <transition name="fade">
-        <div 
-          v-if="hovered === idx" 
-          class="absolute inset-0 h-full w-full rounded-full bg-gray-100"
-        />
-      </transition>
-      <span class="relative z-20 dark:text-white">{{ item?.name }}</span>
+      <span class="relative z-20 dark:text-gray-300 dark:hover:text-white text-gray-600 hover:text-black transition-colors duration-200 ease-in">{{ item?.name }}</span>
     </a>
   </div>
 </template>

@@ -118,7 +118,7 @@ const isRouterLink = computed(() => props.to !== undefined);
 import { computed } from 'vue';
 
 const props = defineProps<{
-  visible: boolean;
+  visible?: boolean;
   className?: string;
 }>();
 
@@ -158,7 +158,6 @@ import { ref } from 'vue';
 defineProps<{
   items: Array<{ name: string; link: string }>;
   className?: string;
-  onItemClick?: () => void;
 }>()
 
 const hovered = ref<number | null>(null);
