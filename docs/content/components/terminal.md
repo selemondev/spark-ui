@@ -161,19 +161,19 @@ watch(
 
 | Prop      | Type   | Description                  | Default |
 | --------- | ------ | ---------------------------- | ------- |
-| className | string | The class for the component. | -       |
+| `className` | string | The class for the component. | -       |
 
 ### AnimatedSpan
 
 | Prop      | Type   | Description                                        | Default |
 | --------- | ------ | -------------------------------------------------- | ------- |
-| delay     | number | Delay in milliseconds before the animation starts. | 0       |
-| className | string | The class for the component.                       | -       |
+| `delay`     | number | Delay in milliseconds before the animation starts. | 0       |
+| `className` | string | The class for the component.                       | -       |
 
 ### TypingAnimation
 
 | Prop      | Type   | Description                                        | Default |
 | --------- | ------ | -------------------------------------------------- | ------- |
-| delay     | number | Delay in milliseconds before the animation starts. | 0       |
-| className | string | The class for the component.                       | -       |
-| duration  | number | Duration in milliseconds for each character typed. | 100     |
+| `delay`     | number | Delay in milliseconds before the animation starts. | 0       |
+| `className` | string | The class for the component.                       | -       |
+| `duration`  | number | Duration in milliseconds for each character typed. | 100     |

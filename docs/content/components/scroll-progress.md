@@ -44,4 +44,4 @@ const { scrollYProgress } = useScroll();
 
 | Prop              | Type   | Default | Description                            |
 | ----------------- | ------ | ------- | -------------------------------------- |
-| className         | string | -       | The class name to be applied to the component |
+| `className`         | string | -       | The class name to be applied to the component |

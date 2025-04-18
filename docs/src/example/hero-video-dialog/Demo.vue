@@ -7,14 +7,14 @@ import HeroVideoDialog from './HeroVideoDialog.vue'
     <HeroVideoDialog
       class="block dark:hidden"
       animation-style="from-center"
-      video-src="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
+      video-src="https://www.youtube.com/embed/9JRT60ESGiI?si=gp4Yt6qE4-qHxOCg"
       thumbnail-src="https://startup-template-sage.vercel.app/hero-light.png"
       thumbnail-alt="Hero Video"
     />
     <HeroVideoDialog
       class="hidden dark:block"
       animation-style="from-center"
-      video-src="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
+      video-src="https://www.youtube.com/embed/9JRT60ESGiI?si=gp4Yt6qE4-qHxOCg"
       thumbnail-src="https://startup-template-sage.vercel.app/hero-dark.png"
       thumbnail-alt="Hero Video"
     />

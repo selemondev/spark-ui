@@ -84,6 +84,6 @@ module.exports = {
 
 | Prop               | Type   | Description                                         | Default |
 | ------------------ | ------ | --------------------------------------------------- | ------- |
-| className          | string | The class for the component.                        | -       |
-| colors             | string[]| Array of colors used for the aurora effect         | ["#FF0080", "#7928CA", "#0070F3", "#38bdf8"]      |
-| speed              | number | Animation speed multiplier (1 is default, 2 is twice as fast) | 1       |
+| `className`          | string | The class for the component.                        | -       |
+| `colors`             | string[]| Array of colors used for the aurora effect         | ["#FF0080", "#7928CA", "#0070F3", "#38bdf8"]      |
+| `speed`              | number | Animation speed multiplier (1 is default, 2 is twice as fast) | 1       |

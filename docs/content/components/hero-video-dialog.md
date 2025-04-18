@@ -156,10 +156,10 @@ const selectedAnimation = animationVariants[props.animationStyle]
 
 | Prop           | Type   | Description                      | Default           |
 | -------------- | ------ | -------------------------------- | ----------------- |
-| animationStyle | string | Animation style for the dialog   | "from-center"     |
-| videoSrc       | string | URL of the video to be played    | -                 |
-| thumbnailSrc   | string | URL of the thumbnail image       | -                 |
-| thumbnailAlt   | string | Alt text for the thumbnail image | "Video thumbnail" |
+| `animationStyle` | string | Animation style for the dialog   | "from-center"     |
+| `videoSrc`       | string | URL of the video to be played    | -                 |
+| `thumbnailSrc`   | string | URL of the thumbnail image       | -                 |
+| `thumbnailAlt`   | string | Alt text for the thumbnail image | "Video thumbnail" |
 
 ## Animation Styles
 
