@@ -73,6 +73,28 @@ module.exports = withAnimations({
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
+        'aurora': {
+          '0%': {
+            backgroundPosition: '0% 50%',
+            transform: 'rotate(-5deg) scale(0.9)',
+          },
+          '25%': {
+            backgroundPosition: '50% 100%',
+            transform: 'rotate(5deg) scale(1.1)',
+          },
+          '50%': {
+            backgroundPosition: '100% 50%',
+            transform: 'rotate(-3deg) scale(0.95)',
+          },
+          '75%': {
+            backgroundPosition: '50% 0%',
+            transform: 'rotate(3deg) scale(1.05)',
+          },
+          '100%': {
+            backgroundPosition: '0% 50%',
+            transform: 'rotate(-5deg) scale(0.9)',
+          },
+        },
         'ripple': {
           '0%, 100%': {
             transform: 'translate(-50%, -50%) scale(1)',
@@ -165,6 +187,7 @@ module.exports = withAnimations({
         'accordion-down': 'accordion-down 0.2s ease-out',
         'skew-scroll': 'skew-scroll 20s linear infinite',
         'ripple': 'ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite',
+        'aurora': 'aurora 8s ease-in-out infinite alternate',
         'backgroundPositionSpin':
           'background-position-spin 3000ms infinite alternate',
         'grid': 'grid 15s linear infinite',
