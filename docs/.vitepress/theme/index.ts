@@ -1,5 +1,4 @@
 import { MotionPlugin } from '@vueuse/motion'
-import posthog from 'posthog-js'
 import Theme from 'vitepress/theme'
 import { h, watch } from 'vue'
 import DemoBlock from '../components/demo-block'
@@ -32,13 +31,6 @@ export default {
   },
 }
 
-function initPostHog() {
-  return posthog.init(import.meta.env.VITE_POSTHOG_API_KEY!, {
-    api_host: import.meta.env.VITE_POSTHOG_API_HOST!,
-    defaults: '2025-05-24',
-  })
-}
-
 function updateHomePageStyle(value: boolean) {
   if (value) {
     if (homePageStyle)
@@ -58,5 +50,4 @@ function updateHomePageStyle(value: boolean) {
     homePageStyle.remove()
     homePageStyle = undefined
   };
-  initPostHog()
 }
