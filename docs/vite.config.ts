@@ -1,25 +1,38 @@
+/* eslint-disable node/prefer-global/process */
 import { fileURLToPath, URL } from 'node:url'
 import UnoCSS from 'unocss/vite'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
+import { vitePostHog } from 'vite-plugin-posthog'
 
-export default defineConfig({
-  optimizeDeps: {
-    exclude: [
-      'vitepress',
+export default ({ mode }: { mode: string }) => {
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
+  return defineConfig({
+    optimizeDeps: {
+      exclude: [
+        'vitepress',
+      ],
+    },
+    server: {
+      hmr: {
+        overlay: false,
+      },
+    },
+    plugins: [
+      UnoCSS(),
+      vitePostHog({
+        apiKey: process.env.VITE_POSTHOG_API_KEY!,
+        hostUrl: process.env.VITE_POSTHOG_API_HOST!,
+        config: {
+          autocapture: true,
+          capture_pageview: true,
+        },
+      }),
     ],
-  },
-  server: {
-    hmr: {
-      overlay: false,
+    resolve: {
+      alias: {
+        find: '@',
+        replacement: fileURLToPath(new URL('./src', import.meta.url)),
+      },
     },
-  },
-  plugins: [
-    UnoCSS(),
-  ],
-  resolve: {
-    alias: {
-      find: '@',
-      replacement: fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
-})
+  })
+}

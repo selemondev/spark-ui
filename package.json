@@ -45,8 +45,8 @@
     "cross-env": "^7.0.3",
     "lucide-vue-next": "^0.488.0",
     "motion-v": "1.0.0-beta.2",
-    "posthog-js": "^1.256.2",
     "typescript": "^5.8.3",
+    "vite-plugin-posthog": "^2.1.0",
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
