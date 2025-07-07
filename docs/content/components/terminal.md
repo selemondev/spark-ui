@@ -159,21 +159,21 @@ watch(
 
 ### Terminal
 
-| Prop      | Type   | Description                  | Default |
-| --------- | ------ | ---------------------------- | ------- |
+| Prop        | Type   | Description                  | Default |
+| ----------- | ------ | ---------------------------- | ------- |
 | `className` | string | The class for the component. | -       |
 
 ### AnimatedSpan
 
-| Prop      | Type   | Description                                        | Default |
-| --------- | ------ | -------------------------------------------------- | ------- |
+| Prop        | Type   | Description                                        | Default |
+| ----------- | ------ | -------------------------------------------------- | ------- |
 | `delay`     | number | Delay in milliseconds before the animation starts. | 0       |
 | `className` | string | The class for the component.                       | -       |
 
 ### TypingAnimation
 
-| Prop      | Type   | Description                                        | Default |
-| --------- | ------ | -------------------------------------------------- | ------- |
+| Prop        | Type   | Description                                        | Default |
+| ----------- | ------ | -------------------------------------------------- | ------- |
 | `delay`     | number | Delay in milliseconds before the animation starts. | 0       |
 | `className` | string | The class for the component.                       | -       |
 | `duration`  | number | Duration in milliseconds for each character typed. | 100     |

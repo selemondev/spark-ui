@@ -9,7 +9,7 @@ const newComponents = [
   { text: 'Hero Video Dialog', link: '/content/components/hero-video-dialog.md' },
   { text: 'Scroll Progress', link: '/content/components/scroll-progress.md' },
   { text: 'Aurora Text', link: '/content/components/aurora.md' },
-  { text: 'Resizable Navbar', link: '/content/components/resizable-navbar.md' }
+  { text: 'Resizable Navbar', link: '/content/components/resizable-navbar.md' },
 ]
 
 const components = [
@@ -114,7 +114,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2024-PRESENT Selemon Brahanu.',
+      copyright: `Copyright © ${new Date().getFullYear()}-PRESENT Selemon Brahanu.`,
     },
   },
   markdown: {
