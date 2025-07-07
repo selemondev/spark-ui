@@ -154,8 +154,8 @@ const selectedAnimation = animationVariants[props.animationStyle]
 
 ## Props
 
-| Prop           | Type   | Description                      | Default           |
-| -------------- | ------ | -------------------------------- | ----------------- |
+| Prop             | Type   | Description                      | Default           |
+| ---------------- | ------ | -------------------------------- | ----------------- |
 | `animationStyle` | string | Animation style for the dialog   | "from-center"     |
 | `videoSrc`       | string | URL of the video to be played    | -                 |
 | `thumbnailSrc`   | string | URL of the thumbnail image       | -                 |

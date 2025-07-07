@@ -9,36 +9,39 @@ A beautiful aurora text effect
 Copy and paste the following code into your project:
 
 ::: code-group
+
 ```vue [AuroraText.vue]
 <script setup lang='ts'>
 interface AuroraTextProps {
-    className?: string;
-    colors?: string[];
-    speed?: number;
+  className?: string
+  colors?: string[]
+  speed?: number
 }
 const props = withDefaults(defineProps<AuroraTextProps>(), {
-    colors: () => (["#FF0080", "#7928CA", "#0070F3", "#38bdf8"]),
-    speed: 1,
-});
+  colors: () => (['#FF0080', '#7928CA', '#0070F3', '#38bdf8']),
+  speed: 1,
+})
 const gradientStyle = {
-    backgroundImage: `linear-gradient(135deg, ${props.colors.join(", ")}, ${props.colors[0]
-        })`,
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    animationDuration: `${10 / props.speed}s`,
-};
+  backgroundImage: `linear-gradient(135deg, ${props.colors.join(', ')}, ${props.colors[0]
+  })`,
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  animationDuration: `${10 / props.speed}s`,
+}
 </script>
 
 <template>
-    <span :class="`relative inline-block ${props.className}`">
-        <span class="sr-only">
-            <slot />
-        </span>
-        <span class="relative animate-aurora bg-[length:200%_auto] bg-clip-text text-transparent" :style="gradientStyle"
-            aria-hidden="true">
-            <slot />
-        </span>
+  <span :class="`relative inline-block ${props.className}`">
+    <span class="sr-only">
+      <slot />
     </span>
+    <span
+      class="relative animate-aurora bg-[length:200%_auto] bg-clip-text text-transparent" :style="gradientStyle"
+      aria-hidden="true"
+    >
+      <slot />
+    </span>
+  </span>
 </template>
 ```
 
@@ -47,10 +50,10 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        "aurora": 'aurora 8s ease-in-out infinite alternate',
+        aurora: 'aurora 8s ease-in-out infinite alternate',
       },
       keyframes: {
-        'aurora': {
+        aurora: {
           '0%': {
             backgroundPosition: '0% 50%',
             transform: 'rotate(-5deg) scale(0.9)',
@@ -77,13 +80,13 @@ module.exports = {
   },
 }
 ```
-:::
 
+:::
 
 ## Props
 
-| Prop               | Type   | Description                                         | Default |
-| ------------------ | ------ | --------------------------------------------------- | ------- |
-| `className`          | string | The class for the component.                        | -       |
-| `colors`             | string[]| Array of colors used for the aurora effect         | ["#FF0080", "#7928CA", "#0070F3", "#38bdf8"]      |
-| `speed`              | number | Animation speed multiplier (1 is default, 2 is twice as fast) | 1       |
+| Prop        | Type     | Description                                                   | Default                                      |
+| ----------- | -------- | ------------------------------------------------------------- | -------------------------------------------- |
+| `className` | string   | The class for the component.                                  | -                                            |
+| `colors`    | string[] | Array of colors used for the aurora effect                    | ["#FF0080", "#7928CA", "#0070F3", "#38bdf8"] |
+| `speed`     | number   | Animation speed multiplier (1 is default, 2 is twice as fast) | 1                                            |
