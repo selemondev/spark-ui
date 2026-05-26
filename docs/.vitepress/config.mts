@@ -92,6 +92,7 @@ export default defineConfig({
           items: [
             { text: 'Introduction', link: '/content/guide/getting-started/index.md' },
             { text: 'Installation', link: '/content/guide/getting-started/installation.md' },
+            { text: 'AI Agent Integration', link: '/content/guide/ai-agent-integration.md' },
           ],
         },
 
