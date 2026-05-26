@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "linkset": [
+    {
+      "anchor": "https://spark-ui.vercel.app/",
+      "service-desc": [
+        {
+          "href": "https://github.com/selemondev/spark-ui",
+          "type": "text/html",
+          "title": "Spark UI GitHub Repository"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://spark-ui.vercel.app/content/guide/getting-started/",
+          "type": "text/html",
+          "title": "Spark UI Documentation"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://spark-ui.vercel.app/",
+          "type": "text/html",
+          "title": "Spark UI - Animated Components for Vue"
+        }
+      ]
+    },
+    {
+      "anchor": "https://www.npmjs.com/package/@spark-ui/vue",
+      "item": [
+        {
+          "href": "https://www.npmjs.com/package/@spark-ui/vue",
+          "type": "application/json",
+          "title": "Spark UI NPM Package"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://spark-ui.vercel.app/content/guide/getting-started/installation",
+          "type": "text/html",
+          "title": "Installation Guide"
+        }
+      ]
+    }
+  ]
+}
