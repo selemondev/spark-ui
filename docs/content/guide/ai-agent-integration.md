@@ -7,6 +7,7 @@ Spark UI documentation is designed to be agent-friendly, implementing modern sta
 ### 1. Robots.txt with AI Crawler Rules
 
 We provide explicit rules for AI crawlers including:
+
 - GPTBot (OpenAI)
 - OAI-SearchBot (OpenAI Search)
 - Claude-Web (Anthropic)
@@ -26,6 +27,7 @@ Content-Signal: ai-train=yes, search=yes, ai-input=yes
 ```
 
 This tells AI systems that our content:
+
 - ✅ Can be used for AI training
 - ✅ Can be indexed for search
 - ✅ Can be used as input to AI models
@@ -67,6 +69,7 @@ Link: </.well-known/agent-skills/index.json>; rel="agent-skills"
 We implement WebMCP (Web Machine Context Protocol) to expose tools to AI agents via the browser:
 
 **Available Tools:**
+
 - `searchComponents` - Search for components by name
 - `getComponentDetails` - Get details about a specific component
 - `getInstallationInstructions` - Get installation guide
@@ -123,6 +126,7 @@ Test the agent-readiness of this site at:
 ## Standards Compliance
 
 This implementation follows:
+
 - ✅ RFC 9309 - Robots Exclusion Protocol
 - ✅ RFC 8288 - Web Linking (Link headers)
 - ✅ RFC 9727 - API Catalog

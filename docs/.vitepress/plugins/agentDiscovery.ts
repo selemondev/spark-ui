@@ -11,7 +11,7 @@ export function agentDiscoveryPlugin(): Plugin {
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         const url = req.url || ''
-        
+
         // Add Link headers for agent discovery on homepage
         if (url === '/' || url === '/index.html') {
           const linkHeaders = [
@@ -23,10 +23,10 @@ export function agentDiscoveryPlugin(): Plugin {
             '</sitemap.xml>; rel="sitemap"; type="application/xml"',
             '</robots.txt>; rel="robots"',
           ]
-          
+
           res.setHeader('Link', linkHeaders.join(', '))
         }
-        
+
         // Support markdown content negotiation
         // If Accept header includes text/markdown, we should ideally convert HTML to markdown
         const acceptHeader = req.headers.accept || ''
@@ -36,14 +36,14 @@ export function agentDiscoveryPlugin(): Plugin {
           // For now, we set the appropriate header to indicate support
           res.setHeader('Vary', 'Accept')
         }
-        
+
         next()
       })
     },
     configurePreviewServer(server) {
       server.middlewares.use((req, res, next) => {
         const url = req.url || ''
-        
+
         // Add Link headers for agent discovery on homepage
         if (url === '/' || url === '/index.html') {
           const linkHeaders = [
@@ -55,15 +55,15 @@ export function agentDiscoveryPlugin(): Plugin {
             '</sitemap.xml>; rel="sitemap"; type="application/xml"',
             '</robots.txt>; rel="robots"',
           ]
-          
+
           res.setHeader('Link', linkHeaders.join(', '))
         }
-        
+
         const acceptHeader = req.headers.accept || ''
         if (acceptHeader.includes('text/markdown')) {
           res.setHeader('Vary', 'Accept')
         }
-        
+
         next()
       })
     },

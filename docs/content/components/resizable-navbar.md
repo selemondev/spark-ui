@@ -9,7 +9,7 @@ A navbar that changes width on scroll, responsive and animated.
 Install the following dependencies
 
 ```bash
-pnpm add lucide-vue-next@latest
+pnpm add @lucide/vue
 ```
 
 ## Installation
@@ -309,7 +309,7 @@ defineProps<{
 
 ```vue [MobileNavToggle.vue]
 <script setup lang="ts">
-import { Menu, X } from 'lucide-vue-next'
+import { Menu, X } from '@lucide/vue'
 
 defineProps<{
   isOpen: boolean

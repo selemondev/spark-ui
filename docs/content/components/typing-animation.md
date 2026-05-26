@@ -10,8 +10,8 @@ Copy and paste the following code into your project:
 
 ```vue [TypingAnimation.vue]
 <script setup lang='ts'>
-import { cn } from '@/lib/utils'
 import { ref, watch } from 'vue'
+import { cn } from '@/lib/utils'
 
 interface TypingAnimationProps {
   text: string

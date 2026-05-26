@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import type { MotionProps } from 'motion-v'
-import { cn } from '@/lib/utils'
 import { motion } from 'motion-v'
+import { cn } from '@/lib/utils'
 
 interface AnimatedSpanProps extends MotionProps {
   delay?: number

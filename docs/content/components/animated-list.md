@@ -12,8 +12,8 @@ Copy and paste the following code into your project:
 
 ```vue [AnimatedList.vue]
 <script lang="ts" setup>
-import { cn } from '@/lib/utils'
 import { computed, onMounted, ref, useSlots } from 'vue'
+import { cn } from '@/lib/utils'
 
 const props = withDefaults(defineProps<{
   class?: string
