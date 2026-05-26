@@ -1,0 +1,36 @@
+{
+  "$schema": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2127",
+  "serverInfo": {
+    "name": "spark-ui",
+    "version": "0.0.2",
+    "description": "Spark UI - Experience The Magic Of Animated Components. Crafted With Vue, TypeScript, TailwindCss And Vueuse Motion"
+  },
+  "capabilities": {
+    "resources": true,
+    "tools": false,
+    "prompts": false
+  },
+  "transport": {
+    "type": "http",
+    "endpoint": "https://spark-ui.vercel.app"
+  },
+  "resources": [
+    {
+      "uri": "spark-ui://components",
+      "name": "Spark UI Components",
+      "description": "Access to all Spark UI animated components documentation",
+      "mimeType": "text/html"
+    },
+    {
+      "uri": "spark-ui://guide",
+      "name": "Getting Started Guide",
+      "description": "Installation and setup instructions for Spark UI",
+      "mimeType": "text/html"
+    }
+  ],
+  "links": {
+    "documentation": "https://spark-ui.vercel.app/content/guide/getting-started/",
+    "repository": "https://github.com/selemondev/spark-ui",
+    "homepage": "https://spark-ui.vercel.app"
+  }
+}

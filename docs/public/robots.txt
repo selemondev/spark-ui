@@ -1,0 +1,44 @@
+# robots.txt for Spark UI
+# https://www.rfc-editor.org/rfc/rfc9309
+
+# Default rules for all crawlers
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_vercel/
+
+# AI Crawler rules - OpenAI GPTBot
+User-agent: GPTBot
+Allow: /
+
+# AI Crawler rules - OpenAI Search
+User-agent: OAI-SearchBot
+Allow: /
+
+# AI Crawler rules - Anthropic Claude
+User-agent: Claude-Web
+Allow: /
+
+# AI Crawler rules - Google Extended (Bard/Gemini)
+User-agent: Google-Extended
+Allow: /
+
+# AI Crawler rules - Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# AI Crawler rules - Cohere
+User-agent: cohere-ai
+Allow: /
+
+# AI Crawler rules - Common Crawl
+User-agent: CCBot
+Allow: /
+
+# Content Signals - Declare AI content usage preferences
+# https://contentsignals.org/
+# https://datatracker.ietf.org/doc/draft-romm-aipref-contentsignals/
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+# Sitemap
+Sitemap: https://spark-ui.vercel.app/sitemap.xml

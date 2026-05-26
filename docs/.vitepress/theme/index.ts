@@ -3,6 +3,7 @@ import Theme from 'vitepress/theme'
 import { h, watch } from 'vue'
 import DemoBlock from '../components/demo-block'
 import HomeLayout from './HomeLayout.vue'
+import { initWebMCP } from './webmcp'
 import 'virtual:group-icons.css'
 import './overrides.css'
 import './rainbow.css'
@@ -22,6 +23,9 @@ export default {
     app.use(MotionPlugin)
     if (typeof window === 'undefined')
       return
+
+    // Initialize WebMCP for AI agent integration
+    initWebMCP()
 
     watch(
       () => router.route.data.relativePath,
