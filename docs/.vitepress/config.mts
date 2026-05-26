@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 import { version } from '../../package.json'
 import { applyPlugins } from './plugins/code'
+import { agentDiscoveryPlugin } from './plugins/agentDiscovery'
 
 const newComponents = [
   { text: 'Animated Tooltip', link: '/content/components/animated-tooltip.md' },
@@ -39,6 +40,7 @@ export default defineConfig({
   vite: {
     plugins: [
       groupIconVitePlugin(),
+      agentDiscoveryPlugin(),
     ],
   },
   title: 'Spark UI',
