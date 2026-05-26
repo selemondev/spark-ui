@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { Play, XIcon } from 'lucide-vue-next'
+import { Play, XIcon } from '@lucide/vue'
 import { AnimatePresence, motion } from 'motion-v'
 import { ref } from 'vue'
 import { cn } from '../../lib/utils'
