@@ -9,7 +9,7 @@ A hero video dialog component.
 Install the following dependencies
 
 ```bash
-pnpm add motion-v lucide-vue-next@latest
+pnpm add motion-v @lucide/vue
 ```
 
 Copy and paste the following code into your project:
@@ -18,10 +18,10 @@ Copy and paste the following code into your project:
 
 ```vue [HeroVideoDialog.vue]
 <script setup lang='ts'>
-import { cn } from '@/lib/utils'
-import { Play, XIcon } from 'lucide-vue-next'
+import { Play, XIcon } from '@lucide/vue'
 import { AnimatePresence, motion } from 'motion-v'
 import { ref } from 'vue'
+import { cn } from '@/lib/utils'
 type AnimationStyle =
   | 'from-bottom'
   | 'from-center'

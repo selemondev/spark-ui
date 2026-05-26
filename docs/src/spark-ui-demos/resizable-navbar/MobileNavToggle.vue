@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Menu, X } from 'lucide-vue-next'
+import { Menu, X } from '@lucide/vue'
 
 defineProps({
   isOpen: Boolean,

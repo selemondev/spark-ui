@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { MotionProps } from 'motion-v'
-import { cn } from '@/lib/utils'
 import { motion } from 'motion-v'
 import { nextTick, ref, useSlots, watch } from 'vue'
+import { cn } from '@/lib/utils'
 
 interface TypingAnimationProps extends MotionProps {
   className?: string

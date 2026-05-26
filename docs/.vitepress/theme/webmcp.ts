@@ -2,7 +2,7 @@
  * WebMCP (Web Machine Context Protocol) Integration
  * https://webmachinelearning.github.io/webmcp/
  * https://developer.chrome.com/blog/webmcp-epp
- * 
+ *
  * This script provides tools to AI agents via the navigator.modelContext API
  */
 
@@ -38,7 +38,7 @@ interface WebMCPTool {
 function initWebMCP() {
   // Check if WebMCP API is available
   if (typeof window === 'undefined' || !navigator.modelContext) {
-    console.log('WebMCP API not available in this browser')
+    console.warn('WebMCP API not available in this browser')
     return
   }
 
@@ -58,18 +58,37 @@ function initWebMCP() {
       },
       execute: async (params: { query: string }) => {
         const components = [
-          'Animated Beam', 'Animated Gradient Text', 'Animated List', 
-          'Animated Shiny Text', 'Animated Tooltip', 'Avatar Circle',
-          'Bento Grid', 'Blur Fade', 'Blur In', 'Dot Pattern',
-          'Globe', 'Gradual Spacing', 'Hero Video Dialog', 'Letter Up',
-          'Marquee', 'Meteors', 'Orbiting Circles', 'Particles',
-          'Resizable Navbar', 'Retro Grid', 'Ripple', 'Scroll Progress',
-          'Skewed Infinite Scroll', 'Terminal', 'Typing Animation', 'Aurora Text',
+          'Animated Beam',
+          'Animated Gradient Text',
+          'Animated List',
+          'Animated Shiny Text',
+          'Animated Tooltip',
+          'Avatar Circle',
+          'Bento Grid',
+          'Blur Fade',
+          'Blur In',
+          'Dot Pattern',
+          'Globe',
+          'Gradual Spacing',
+          'Hero Video Dialog',
+          'Letter Up',
+          'Marquee',
+          'Meteors',
+          'Orbiting Circles',
+          'Particles',
+          'Resizable Navbar',
+          'Retro Grid',
+          'Ripple',
+          'Scroll Progress',
+          'Skewed Infinite Scroll',
+          'Terminal',
+          'Typing Animation',
+          'Aurora Text',
         ]
-        
+
         const query = params.query.toLowerCase()
         const results = components.filter(c => c.toLowerCase().includes(query))
-        
+
         return {
           results,
           count: results.length,
@@ -93,7 +112,7 @@ function initWebMCP() {
       execute: async (params: { componentName: string }) => {
         const componentSlug = params.componentName.toLowerCase().replace(/\s+/g, '-')
         const url = `/content/components/${componentSlug}`
-        
+
         return {
           componentName: params.componentName,
           documentationUrl: url,
@@ -133,12 +152,12 @@ function initWebMCP() {
       execute: async (params: { componentName: string }) => {
         const componentSlug = params.componentName.toLowerCase().replace(/\s+/g, '-')
         const url = `/content/components/${componentSlug}`
-        
+
         // Navigate to the component page
         if (window.location.pathname !== url) {
           window.location.href = url
         }
-        
+
         return {
           componentName: params.componentName,
           navigatedTo: url,
@@ -158,8 +177,9 @@ function initWebMCP() {
         version: '0.0.2',
       },
     })
-    console.log('WebMCP tools registered successfully')
-  } catch (error) {
+    console.warn('WebMCP tools registered successfully')
+  }
+  catch (error) {
     console.error('Failed to register WebMCP tools:', error)
   }
 }
@@ -168,7 +188,8 @@ function initWebMCP() {
 if (typeof window !== 'undefined') {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initWebMCP)
-  } else {
+  }
+  else {
     initWebMCP()
   }
 }

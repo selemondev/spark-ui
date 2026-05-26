@@ -10,8 +10,8 @@ Copy and paste the following code into your project:
 
 ```vue [DotPattern.vue]
 <script setup lang='ts'>
-import { cn } from '@/lib/utils'
 import { useId } from 'vue'
+import { cn } from '@/lib/utils'
 
 interface DotPatternProps {
   width?: any

@@ -5,25 +5,28 @@ This directory contains resources for AI agent discovery and integration, follow
 ## Files
 
 ### `/api-catalog`
-**Standard:** RFC 9727  
-**Purpose:** API catalog for automated API discovery  
-**Content-Type:** `application/linkset+json`  
+
+**Standard:** RFC 9727
+**Purpose:** API catalog for automated API discovery
+**Content-Type:** `application/linkset+json`
 **Documentation:** https://www.rfc-editor.org/rfc/rfc9727
 
 Contains linkset describing the Spark UI documentation, GitHub repository, and NPM package information.
 
 ### `/mcp/server-card.json`
-**Standard:** SEP-1649 (Model Context Protocol)  
-**Purpose:** MCP Server Card for agent discovery  
-**Content-Type:** `application/json`  
+
+**Standard:** SEP-1649 (Model Context Protocol)
+**Purpose:** MCP Server Card for agent discovery
+**Content-Type:** `application/json`
 **Documentation:** https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2127
 
 Provides metadata about Spark UI's MCP server capabilities, including available resources and tools for AI agents.
 
 ### `/agent-skills/index.json`
-**Standard:** Agent Skills Discovery RFC v0.2.0  
-**Purpose:** Agent skills discovery index  
-**Content-Type:** `application/json`  
+
+**Standard:** Agent Skills Discovery RFC v0.2.0
+**Purpose:** Agent skills discovery index
+**Content-Type:** `application/json`
 **Documentation:** https://github.com/cloudflare/agent-skills-discovery-rfc
 
 Lists all available agent skills and resources for automated discovery by AI agents.
@@ -31,17 +34,21 @@ Lists all available agent skills and resources for automated discovery by AI age
 ## Related Files
 
 ### `/robots.txt`
+
 Located at the site root, contains:
+
 - Standard crawl rules for web crawlers
 - Explicit User-agent directives for AI crawlers (GPTBot, Claude-Web, Google-Extended, etc.)
 - Content Signals declaring AI content usage preferences
 - Sitemap reference
 
 **Standards:**
+
 - RFC 9309 (Robots Exclusion Protocol)
 - Content Signals (https://contentsignals.org/)
 
 ### `/sitemap.xml`
+
 Located at the site root, contains canonical URLs for all documentation pages.
 
 **Standard:** https://www.sitemaps.org/protocol.html

@@ -19,8 +19,8 @@ Copy and paste the following code into your project:
 ```vue [AnimatedSpan.vue]
 <script setup lang='ts'>
 import type { MotionProps } from 'motion-v'
-import { cn } from '@/lib/utils'
 import { motion } from 'motion-v'
+import { cn } from '@/lib/utils'
 interface AnimatedSpanProps extends MotionProps {
   delay?: number
   className?: string
@@ -80,9 +80,9 @@ const props = defineProps<TerminalProps>()
 ```vue [TypingAnimation.vue]
 <script setup lang="ts">
 import type { MotionProps } from 'motion-v'
-import { cn } from '@/lib/utils'
 import { motion } from 'motion-v'
 import { nextTick, ref, useSlots, watch } from 'vue'
+import { cn } from '@/lib/utils'
 
 interface TypingAnimationProps extends MotionProps {
   className?: string

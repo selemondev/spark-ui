@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 import { version } from '../../package.json'
-import { applyPlugins } from './plugins/code'
 import { agentDiscoveryPlugin } from './plugins/agentDiscovery'
+import { applyPlugins } from './plugins/code'
 
 const newComponents = [
   { text: 'Animated Tooltip', link: '/content/components/animated-tooltip.md' },
