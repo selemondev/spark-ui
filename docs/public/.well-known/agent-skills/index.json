@@ -8,43 +8,37 @@
       "name": "robots-txt",
       "type": "discovery",
       "description": "robots.txt with clear crawl rules for AI agents and web crawlers",
-      "url": "https://spark-ui.vercel.app/robots.txt",
-      "sha256": ""
+      "url": "https://spark-ui.vercel.app/robots.txt"
     },
     {
       "name": "sitemap",
       "type": "discovery",
       "description": "sitemap.xml listing all canonical URLs for the documentation site",
-      "url": "https://spark-ui.vercel.app/sitemap.xml",
-      "sha256": ""
+      "url": "https://spark-ui.vercel.app/sitemap.xml"
     },
     {
       "name": "api-catalog",
       "type": "discovery",
       "description": "API catalog for automated API discovery per RFC 9727",
-      "url": "https://spark-ui.vercel.app/.well-known/api-catalog",
-      "sha256": ""
+      "url": "https://spark-ui.vercel.app/.well-known/api-catalog"
     },
     {
       "name": "mcp-server-card",
       "type": "integration",
       "description": "MCP Server Card for agent discovery (SEP-1649)",
-      "url": "https://spark-ui.vercel.app/.well-known/mcp/server-card.json",
-      "sha256": ""
+      "url": "https://spark-ui.vercel.app/.well-known/mcp/server-card.json"
     },
     {
       "name": "component-library",
       "type": "resource",
       "description": "Access to Spark UI animated component library documentation",
-      "url": "https://spark-ui.vercel.app/content/guide/getting-started/",
-      "sha256": ""
+      "url": "https://spark-ui.vercel.app/content/guide/getting-started/"
     },
     {
       "name": "installation",
       "type": "action",
       "description": "Instructions for installing and setting up Spark UI",
-      "url": "https://spark-ui.vercel.app/content/guide/getting-started/installation",
-      "sha256": ""
+      "url": "https://spark-ui.vercel.app/content/guide/getting-started/installation"
     }
   ]
 }

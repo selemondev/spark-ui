@@ -15,9 +15,9 @@ export function agentDiscoveryPlugin(): Plugin {
         // Add Link headers for agent discovery on homepage
         if (url === '/' || url === '/index.html') {
           const linkHeaders = [
-            '</well-known/api-catalog>; rel="api-catalog"',
-            '</well-known/mcp/server-card.json>; rel="mcp-server-card"',
-            '</well-known/agent-skills/index.json>; rel="agent-skills"',
+            '</.well-known/api-catalog>; rel="api-catalog"',
+            '</.well-known/mcp/server-card.json>; rel="mcp-server-card"',
+            '</.well-known/agent-skills/index.json>; rel="agent-skills"',
             '<https://github.com/selemondev/spark-ui>; rel="service-desc"; type="text/html"',
             '</content/guide/getting-started/>; rel="service-doc"; type="text/html"',
             '</sitemap.xml>; rel="sitemap"; type="application/xml"',
