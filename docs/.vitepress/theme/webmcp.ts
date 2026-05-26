@@ -37,7 +37,7 @@ interface WebMCPTool {
 
 function initWebMCP() {
   // Check if WebMCP API is available
-  if (typeof window === 'undefined' || !window.navigator.modelContext) {
+  if (typeof window === 'undefined' || !navigator.modelContext) {
     console.log('WebMCP API not available in this browser')
     return
   }
@@ -150,7 +150,7 @@ function initWebMCP() {
 
   // Provide context to AI agents
   try {
-    window.navigator.modelContext?.provideContext({
+    navigator.modelContext?.provideContext({
       tools,
       metadata: {
         name: 'Spark UI Documentation',
