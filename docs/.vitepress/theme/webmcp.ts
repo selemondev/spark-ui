@@ -6,6 +6,24 @@
  * This script provides tools to AI agents via the navigator.modelContext API
  */
 
+// Extend Navigator interface to include modelContext
+declare global {
+  interface Navigator {
+    modelContext?: {
+      provideContext: (context: WebMCPContext) => void
+    }
+  }
+}
+
+interface WebMCPContext {
+  tools: WebMCPTool[]
+  metadata?: {
+    name: string
+    description: string
+    version: string
+  }
+}
+
 interface WebMCPTool {
   name: string
   description: string
@@ -19,7 +37,7 @@ interface WebMCPTool {
 
 function initWebMCP() {
   // Check if WebMCP API is available
-  if (typeof window === 'undefined' || !(window.navigator as any).modelContext) {
+  if (typeof window === 'undefined' || !window.navigator.modelContext) {
     console.log('WebMCP API not available in this browser')
     return
   }
@@ -132,7 +150,7 @@ function initWebMCP() {
 
   // Provide context to AI agents
   try {
-    (window.navigator as any).modelContext.provideContext({
+    window.navigator.modelContext?.provideContext({
       tools,
       metadata: {
         name: 'Spark UI Documentation',
