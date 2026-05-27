@@ -19,7 +19,7 @@ Copy and paste the following code into your project:
 ```vue [ScrollProgress.vue]
 <script setup lang='ts'>
 import type { HTMLAttributes } from 'vue'
-import { useMotionValue, motion, type MotionProps, useScroll } from 'motion-v'
+import { motion, type MotionProps, useMotionValue, useScroll } from 'motion-v'
 import { onMounted, onUnmounted } from 'vue'
 import { cn } from '@/lib/utils'
 interface ScrollProgressProps extends Omit<HTMLAttributes, keyof MotionProps> {};

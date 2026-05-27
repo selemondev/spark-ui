@@ -8,6 +8,23 @@ export const config = {
   ],
 }
 
+function countTokens(content: string): number {
+  return Math.ceil(content.length / 4)
+}
+
+function createMarkdownResponse(content: string): Response {
+  return new Response(content, {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/markdown; charset=utf-8',
+      'Vary': 'Accept',
+      'X-Markdown-Tokens': String(countTokens(content)),
+      'X-Content-Source': 'vitepress-markdown',
+      'Cache-Control': 'public, max-age=3600',
+    },
+  })
+}
+
 export default async function middleware(request: Request) {
   const acceptHeader = request.headers.get('accept') || ''
 
@@ -49,23 +66,12 @@ export default async function middleware(request: Request) {
 
   if (mdResponse.ok) {
     const content = await mdResponse.text()
-    const tokens = Math.ceil(content.length / 4)
-
-    return new Response(content, {
-      status: 200,
-      headers: {
-        'Content-Type': 'text/markdown; charset=utf-8',
-        'Vary': 'Accept',
-        'X-Markdown-Tokens': String(tokens),
-        'X-Content-Source': 'vitepress-markdown',
-        'Cache-Control': 'public, max-age=3600',
-      },
-    })
+    return createMarkdownResponse(content)
   }
 
   // If directory-style path, try index.md
   if (!pathname.endsWith('.md')) {
-    const trimmed = pathname.endsWith('/') ? pathname.slice(1, -1) : pathname.slice(1)
+    const trimmed = pathname.slice(1).replace(/\/$/, '')
     const indexMdPath = `/_markdown/${trimmed}/index.md`
     const indexMdUrl = new URL(indexMdPath, request.url)
     const indexMdResponse = await fetch(indexMdUrl.toString(), {
@@ -74,18 +80,7 @@ export default async function middleware(request: Request) {
 
     if (indexMdResponse.ok) {
       const content = await indexMdResponse.text()
-      const tokens = Math.ceil(content.length / 4)
-
-      return new Response(content, {
-        status: 200,
-        headers: {
-          'Content-Type': 'text/markdown; charset=utf-8',
-          'Vary': 'Accept',
-          'X-Markdown-Tokens': String(tokens),
-          'X-Content-Source': 'vitepress-markdown',
-          'Cache-Control': 'public, max-age=3600',
-        },
-      })
+      return createMarkdownResponse(content)
     }
   }
 
