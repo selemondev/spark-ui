@@ -1,6 +1,7 @@
 <script setup lang='ts'>
 import type { HTMLAttributes } from 'vue'
-import { motion, type MotionProps, useScroll } from 'motion-v'
+import { useMotionValue, motion, type MotionProps, useScroll } from 'motion-v'
+import { onMounted, onUnmounted } from 'vue'
 import { cn } from '../../lib/utils'
 
 interface ScrollProgressProps extends Omit<HTMLAttributes, keyof MotionProps> {};
@@ -10,7 +11,13 @@ interface Props extends /* @vue-ignore */ ScrollProgressProps {
 }
 
 const props = defineProps<Props>()
-const { scrollYProgress } = useScroll()
+const scrollYProgress = useMotionValue(0)
+
+onMounted(() => {
+  const { scrollYProgress: progress } = useScroll()
+  const unsubscribe = progress.on('change', (v: number) => scrollYProgress.set(v))
+  onUnmounted(() => unsubscribe())
+})
 </script>
 
 <template>
