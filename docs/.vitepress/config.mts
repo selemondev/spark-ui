@@ -3,6 +3,7 @@ import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-i
 import { version } from '../../package.json'
 import { agentDiscoveryPlugin } from './plugins/agentDiscovery'
 import { applyPlugins } from './plugins/code'
+import { markdownForAgentsPlugin } from './plugins/markdownForAgents'
 
 const newComponents = [
   { text: 'Animated Tooltip', link: '/content/components/animated-tooltip.md' },
@@ -41,6 +42,7 @@ export default defineConfig({
     plugins: [
       groupIconVitePlugin(),
       agentDiscoveryPlugin(),
+      markdownForAgentsPlugin(),
     ],
   },
   title: 'Spark UI',

@@ -1,7 +1,7 @@
 import type { Plugin } from 'vite'
 
 /**
- * Vite plugin to add Link response headers and support markdown content negotiation
+ * Vite plugin to add Link response headers for agent discovery
  * RFC 8288: https://www.rfc-editor.org/rfc/rfc8288
  * RFC 9727: https://www.rfc-editor.org/rfc/rfc9727
  */
@@ -27,16 +27,6 @@ export function agentDiscoveryPlugin(): Plugin {
           res.setHeader('Link', linkHeaders.join(', '))
         }
 
-        // Support markdown content negotiation
-        // If Accept header includes text/markdown, we should ideally convert HTML to markdown
-        const acceptHeader = req.headers.accept || ''
-        if (acceptHeader.includes('text/markdown')) {
-          // Note: VitePress doesn't natively support markdown output
-          // This would require additional implementation to convert HTML to markdown
-          // For now, we set the appropriate header to indicate support
-          res.setHeader('Vary', 'Accept')
-        }
-
         next()
       })
     },
@@ -57,11 +47,6 @@ export function agentDiscoveryPlugin(): Plugin {
           ]
 
           res.setHeader('Link', linkHeaders.join(', '))
-        }
-
-        const acceptHeader = req.headers.accept || ''
-        if (acceptHeader.includes('text/markdown')) {
-          res.setHeader('Vary', 'Accept')
         }
 
         next()

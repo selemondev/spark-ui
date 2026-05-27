@@ -39,6 +39,12 @@
       "type": "action",
       "description": "Instructions for installing and setting up Spark UI",
       "url": "https://spark-ui.vercel.app/content/guide/getting-started/installation"
+    },
+    {
+      "name": "markdown-negotiation",
+      "type": "content-negotiation",
+      "description": "Supports Accept: text/markdown content negotiation. Requests with Accept: text/markdown receive markdown responses with Content-Type: text/markdown and X-Markdown-Tokens header.",
+      "url": "https://spark-ui.vercel.app/"
     }
   ]
 }
