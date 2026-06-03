@@ -1,4 +1,4 @@
-import type { Plugin } from 'vite'
+import type { Plugin } from "vite-plus";
 
 /**
  * Vite plugin to add Link response headers for agent discovery
@@ -7,13 +7,13 @@ import type { Plugin } from 'vite'
  */
 export function agentDiscoveryPlugin(): Plugin {
   return {
-    name: 'vite-plugin-agent-discovery',
+    name: "vite-plugin-agent-discovery",
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
-        const url = req.url || ''
+        const url = req.url || "";
 
         // Add Link headers for agent discovery on homepage
-        if (url === '/' || url === '/index.html') {
+        if (url === "/" || url === "/index.html") {
           const linkHeaders = [
             '</.well-known/api-catalog>; rel="api-catalog"',
             '</.well-known/mcp/server-card.json>; rel="mcp-server-card"',
@@ -22,20 +22,20 @@ export function agentDiscoveryPlugin(): Plugin {
             '</content/guide/getting-started/>; rel="service-doc"; type="text/html"',
             '</sitemap.xml>; rel="sitemap"; type="application/xml"',
             '</robots.txt>; rel="robots"',
-          ]
+          ];
 
-          res.setHeader('Link', linkHeaders.join(', '))
+          res.setHeader("Link", linkHeaders.join(", "));
         }
 
-        next()
-      })
+        next();
+      });
     },
     configurePreviewServer(server) {
       server.middlewares.use((req, res, next) => {
-        const url = req.url || ''
+        const url = req.url || "";
 
         // Add Link headers for agent discovery on homepage
-        if (url === '/' || url === '/index.html') {
+        if (url === "/" || url === "/index.html") {
           const linkHeaders = [
             '</.well-known/api-catalog>; rel="api-catalog"',
             '</.well-known/mcp/server-card.json>; rel="mcp-server-card"',
@@ -44,13 +44,13 @@ export function agentDiscoveryPlugin(): Plugin {
             '</content/guide/getting-started/>; rel="service-doc"; type="text/html"',
             '</sitemap.xml>; rel="sitemap"; type="application/xml"',
             '</robots.txt>; rel="robots"',
-          ]
+          ];
 
-          res.setHeader('Link', linkHeaders.join(', '))
+          res.setHeader("Link", linkHeaders.join(", "));
         }
 
-        next()
-      })
+        next();
+      });
     },
-  }
+  };
 }

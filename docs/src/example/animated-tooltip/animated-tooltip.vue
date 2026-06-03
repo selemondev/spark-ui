@@ -1,47 +1,46 @@
-<script setup lang='ts'>
-import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'motion-v'
-import { ref } from 'vue'
+<script setup lang="ts">
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "motion-v";
+import { ref } from "vue";
 
 export interface Items {
-  id: number
-  name: string
-  designation: string
-  image: string
+  id: number;
+  name: string;
+  designation: string;
+  image: string;
 }
 const props = defineProps<{
-  items: Items[]
-}>()
+  items: Items[];
+}>();
 
-const hoveredIndex = ref<number | null>(null)
-const springConfig = { stiffness: 100, damping: 5 }
-const x = useMotionValue(0)
-const rotate = useSpring(
-  useTransform(x, [-100, 100], [-45, 45]),
-  springConfig,
-)
+const hoveredIndex = ref<number | null>(null);
+const springConfig = { stiffness: 100, damping: 5 };
+const x = useMotionValue(0);
+const rotate = useSpring(useTransform(x, [-100, 100], [-45, 45]), springConfig);
 // translate the tooltip
-const translateX = useSpring(
-  useTransform(x, [-100, 100], [-50, 50]),
-  springConfig,
-)
+const translateX = useSpring(useTransform(x, [-100, 100], [-50, 50]), springConfig);
 function handleMouseMove(event: any) {
-  const halfWidth = event.target.offsetWidth / 2
-  x.set(event.offsetX - halfWidth)
+  const halfWidth = event.target.offsetWidth / 2;
+  x.set(event.offsetX - halfWidth);
 }
 </script>
 
 <template>
   <div v-for="(item, idx) in props.items" :key="idx">
     <div
-      :key="item.name" class="group relative -mr-4" @mouseenter="() => hoveredIndex = item.id"
-      @mouseleave="() => hoveredIndex = null"
+      :key="item.name"
+      class="group relative -mr-4"
+      @mouseenter="() => (hoveredIndex = item.id)"
+      @mouseleave="() => (hoveredIndex = null)"
     >
       <AnimatePresence mode="popLayout">
         <div v-if="hoveredIndex === item.id">
           <motion.div
             :initial="{
-              opacity: 0, y: 20, scale: 0.6,
-            }" :animate="{
+              opacity: 0,
+              y: 20,
+              scale: 0.6,
+            }"
+            :animate="{
               opacity: 1,
               y: 0,
               scale: 1,
@@ -50,9 +49,13 @@ function handleMouseMove(event: any) {
                 stiffness: 260,
                 damping: 10,
               },
-            }" :exit="{
-              opacity: 0, y: 20, scale: 0.6,
-            }" :style="{
+            }"
+            :exit="{
+              opacity: 0,
+              y: 20,
+              scale: 0.6,
+            }"
+            :style="{
               translateX,
               rotate,
               whiteSpace: 'nowrap',
@@ -75,9 +78,13 @@ function handleMouseMove(event: any) {
         </div>
       </AnimatePresence>
       <img
-        :src="item.image" :alt="item.name" height="100" width="100" class="relative !m-0 h-14 w-14 rounded-full border-2 border-white object-cover object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-105"
+        :src="item.image"
+        :alt="item.name"
+        height="100"
+        width="100"
+        class="relative !m-0 h-14 w-14 rounded-full border-2 border-white object-cover object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-105"
         @mousemove="handleMouseMove"
-      >
+      />
     </div>
   </div>
 </template>

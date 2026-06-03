@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import Angular from '../../components/icons/angular.vue'
-import Astro from '../../components/icons/astro.vue'
-import Qwik from '../../components/icons/qwik.vue'
-import React from '../../components/icons/react.vue'
-import Svelte from '../../components/icons/svelte.vue'
-import Vite from '../../components/icons/vite-icon.vue'
-import Vue from '../../components/icons/vue.vue'
-import AnimatedBeam from '../../components/spark-ui/animated-beam/animated-beam.vue'
-import Circle from '../../components/spark-ui/animated-beam/circle.vue'
+import { ref } from "vue";
+import Angular from "../../components/icons/angular.vue";
+import Astro from "../../components/icons/astro.vue";
+import Qwik from "../../components/icons/qwik.vue";
+import React from "../../components/icons/react.vue";
+import Svelte from "../../components/icons/svelte.vue";
+import Vite from "../../components/icons/vite-icon.vue";
+import Vue from "../../components/icons/vue.vue";
+import AnimatedBeam from "../../components/spark-ui/animated-beam/animated-beam.vue";
+import Circle from "../../components/spark-ui/animated-beam/circle.vue";
 
-const containerRef = ref<HTMLDivElement>()
-const div1Ref = ref()
-const div2Ref = ref()
-const div3Ref = ref()
-const div4Ref = ref()
-const div5Ref = ref()
-const div6Ref = ref()
-const div7Ref = ref()
+const containerRef = ref<HTMLDivElement>();
+const div1Ref = ref();
+const div2Ref = ref();
+const div3Ref = ref();
+const div4Ref = ref();
+const div5Ref = ref();
+const div6Ref = ref();
+const div7Ref = ref();
 </script>
 
 <template>

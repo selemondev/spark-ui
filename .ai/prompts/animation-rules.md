@@ -7,8 +7,15 @@ When a MagicUI source component uses Framer Motion (`framer-motion` or `motion/r
 Import primitives from `motion-v`, mirroring the React API:
 
 ```ts
-import type { MotionProps } from 'motion-v'
-import { AnimatePresence, motion, useMotionValue, useScroll, useSpring, useTransform } from 'motion-v'
+import type { MotionProps } from "motion-v";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "motion-v";
 ```
 
 ## Required Behavior Mappings

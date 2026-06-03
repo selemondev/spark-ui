@@ -1,5 +1,5 @@
-<script setup lang='ts'>
-import Meteors from '../../components/spark-ui/meteors/meteors.vue'
+<script setup lang="ts">
+import Meteors from "../../components/spark-ui/meteors/meteors.vue";
 </script>
 
 <template>

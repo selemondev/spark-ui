@@ -9,29 +9,29 @@ A light glare effect which pans across text making it appear as if it is shimmer
 Copy and paste the following code into your project:
 
 ```vue [animated-shiny-text.vue]
-<script setup lang='ts'>
-import { cn } from '@/lib/utils'
+<script setup lang="ts">
+import { cn } from "@/lib/utils";
 
 interface AnimatedShinyTextProps {
-  class?: string
-  shimmerWidth?: number
+  class?: string;
+  shimmerWidth?: number;
 }
 
 const props = withDefaults(defineProps<AnimatedShinyTextProps>(), {
-  shimmerWidth: 100
-})
+  shimmerWidth: 100,
+});
 
 const className = cn(
-  'mx-auto max-w-md text-neutral-600/70 dark:text-neutral-400/70',
+  "mx-auto max-w-md text-neutral-600/70 dark:text-neutral-400/70",
 
   // Shimmer effect
-  'animate-shimmer bg-clip-text bg-no-repeat [background-position:0_0] [background-size:var(--shimmer-width)_100%] [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]',
+  "animate-shimmer bg-clip-text bg-no-repeat [background-position:0_0] [background-size:var(--shimmer-width)_100%] [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]",
 
   // Shimmer gradient
-  'bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent  dark:via-white/80',
+  "bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent  dark:via-white/80",
 
   props.class,
-)
+);
 </script>
 
 <template>
@@ -48,21 +48,21 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'shiny-text': 'shiny-text 8s infinite',
+        "shiny-text": "shiny-text 8s infinite",
       },
       keyframes: {
-        'shiny-text': {
-          '0%, 90%, 100%': {
-            'background-position': 'calc(-100% - var(--shimmer-width)) 0',
+        "shiny-text": {
+          "0%, 90%, 100%": {
+            "background-position": "calc(-100% - var(--shimmer-width)) 0",
           },
-          '30%, 60%': {
-            'background-position': 'calc(100% + var(--shimmer-width)) 0',
+          "30%, 60%": {
+            "background-position": "calc(100% + var(--shimmer-width)) 0",
           },
         },
       },
     },
   },
-}
+};
 ```
 
 ## Props

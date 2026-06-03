@@ -1,34 +1,37 @@
-<script setup lang='ts'>
-import { cn } from '../../../lib/utils'
+<script setup lang="ts">
+import { cn } from "../../../lib/utils";
 
 const props = defineProps<{
-  name: string
-  class?: string
-  description: string
-  icon: string
-  color: string
-  time: string
-}>()
+  name: string;
+  class?: string;
+  description: string;
+  icon: string;
+  color: string;
+  time: string;
+}>();
 
 const className = cn(
-  'relative mx-auto min-h-fit w-full max-w-[400px] cursor-pointer overflow-hidden rounded-2xl p-3',
+  "relative mx-auto min-h-fit w-full max-w-[400px] cursor-pointer overflow-hidden rounded-2xl p-3",
   // animation styles
-  'transition-all duration-200 ease-in-out hover:scale-[103%]',
+  "transition-all duration-200 ease-in-out hover:scale-[103%]",
   // light styles
-  'bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]',
+  "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
   // dark styles
-  'transform-gpu dark:bg-transparent dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]',
-)
+  "transform-gpu dark:bg-transparent dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+);
 </script>
 
 <template>
   <figure :class="className">
     <div class="flex flex-row bg-white border rounded-xl shadow-md py-2 items-center px-2 gap-4">
-      <div class="flex size-10 items-center justify-center rounded-2xl" :style="{ backgroundColor: props.color }">
+      <div
+        class="flex size-10 items-center justify-center rounded-2xl"
+        :style="{ backgroundColor: props.color }"
+      >
         <span class="text-lg">{{ props.icon }}</span>
       </div>
       <div class="flex flex-col overflow-hidden">
-        <figcaption class="flex flex-row items-center whitespace-pre text-lg font-medium ">
+        <figcaption class="flex flex-row items-center whitespace-pre text-lg font-medium">
           <span class="text-sm text-black sm:text-lg">{{ props.name }}</span>
           <span class="mx-1">·</span>
           <span class="text-xs text-gray-500">{{ props.time }}</span>

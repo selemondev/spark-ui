@@ -1,18 +1,22 @@
-import type { ComponentHistory, ComponentRegistry } from './types.ts'
-import path from 'node:path'
-import { readJson, registryDir, writeJson } from './registry-utils.ts'
+import type { ComponentHistory, ComponentRegistry } from "./types.ts";
+import path from "node:path";
+import { readJson, registryDir, writeJson } from "./registry-utils";
 
-const now = new Date().toISOString()
-const historyPath = path.join(registryDir, 'component-history.json')
+const now = new Date().toISOString();
+const historyPath = path.join(registryDir, "component-history.json");
 const history = readJson<ComponentHistory>(historyPath, {
-  $schema: './component-history.schema.json',
+  $schema: "./component-history.schema.json",
   generatedAt: now,
   components: {},
-})
-const missing = readJson<ComponentRegistry>(path.join(registryDir, 'missing-components.json'), { components: [] })
-const sparkui = readJson<ComponentRegistry>(path.join(registryDir, 'spark-ui.json'), { components: [] })
-const sparkSlugs = new Set(sparkui.components.map(component => component.slug))
-const missingSlugs = new Set(missing.components.map(component => component.slug))
+});
+const missing = readJson<ComponentRegistry>(path.join(registryDir, "missing-components.json"), {
+  components: [],
+});
+const sparkui = readJson<ComponentRegistry>(path.join(registryDir, "spark-ui.json"), {
+  components: [],
+});
+const sparkSlugs = new Set(sparkui.components.map((component) => component.slug));
+const missingSlugs = new Set(missing.components.map((component) => component.slug));
 
 for (const component of missing.components) {
   const current = history.components[component.slug] ?? {
@@ -21,15 +25,15 @@ for (const component of missing.components) {
     firstSeenAt: now,
     issueNumber: null,
     mergedPullRequest: null,
-  }
+  };
 
   history.components[component.slug] = {
     ...current,
     name: component.name,
     sourcePath: component.sourcePath,
     latestSeenAt: now,
-    status: current.status === 'issue-created' ? 'issue-created' : 'missing',
-  }
+    status: current.status === "issue-created" ? "issue-created" : "missing",
+  };
 }
 
 for (const [slug, component] of Object.entries(history.components)) {
@@ -37,12 +41,14 @@ for (const [slug, component] of Object.entries(history.components)) {
     history.components[slug] = {
       ...component,
       latestSeenAt: now,
-      status: 'ported',
-    }
+      status: "ported",
+    };
   }
 }
 
-history.generatedAt = now
-history.$schema = './component-history.schema.json'
-writeJson(historyPath, history)
-console.log(`Updated registry history for ${Object.keys(history.components).length} tracked components`)
+history.generatedAt = now;
+history.$schema = "./component-history.schema.json";
+writeJson(historyPath, history);
+console.log(
+  `Updated registry history for ${Object.keys(history.components).length} tracked components`,
+);

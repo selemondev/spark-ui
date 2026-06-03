@@ -1,6 +1,5 @@
 # Changelog
 
-
 ## v0.0.2
 
 [compare changes](https://github.com/selemondev/spark-ui/compare/v0.0.1...v0.0.2)
@@ -43,7 +42,6 @@
 - [Thomas Thomsen](twt@outlook.dk)
 
 ## v0.0.1
-
 
 ### 🚀 Enhancements
 
@@ -127,4 +125,3 @@
 
 - Selemondev <selemondev19@gmail.com>
 - Selemondev19@gmail.com <selemondev19@gmail.com>
-

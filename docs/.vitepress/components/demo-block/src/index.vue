@@ -1,56 +1,54 @@
-<script lang='ts' setup name="demo-block">
-import { Icon } from '@iconify/vue'
-import { useClipboard, useToggle } from '@vueuse/core'
-import { useData } from 'vitepress'
-import { computed, ref } from 'vue'
-import { MagicString } from 'vue/compiler-sfc'
-import { cn } from '../../../../src/lib/utils'
-import DotPattern from '../../dot-pattern/dot-pattern.vue'
-import { demoProps } from './index'
+<script lang="ts" setup name="demo-block">
+import { Icon } from "@iconify/vue";
+import { useClipboard, useToggle } from "@vueuse/core";
+import { useData } from "vitepress";
+import { computed, ref } from "vue";
+import { MagicString } from "vue/compiler-sfc";
+import { cn } from "../../../../src/lib/utils";
+import DotPattern from "../../dot-pattern/dot-pattern.vue";
+import { demoProps } from "./index";
 
-const props = defineProps(demoProps)
+const props = defineProps(demoProps);
 
-const vitePressData = useData()
+const vitePressData = useData();
 
 const decodedHighlightedCode = computed(() => {
   try {
-    const decodeHighlightedCode = decodeURIComponent(props.highlightedCode)
-    const updatedCode = updateImportPaths(decodeHighlightedCode)
-    return updatedCode
+    const decodeHighlightedCode = decodeURIComponent(props.highlightedCode);
+    const updatedCode = updateImportPaths(decodeHighlightedCode);
+    return updatedCode;
+  } catch (error) {
+    console.error("Error decoding highlighted code:", error);
+    return props.highlightedCode;
   }
-  catch (error) {
-    console.error('Error decoding highlighted code:', error)
-    return props.highlightedCode
-  }
-})
+});
 
 function updateImportPaths(code: string): string {
-  const magicString = new MagicString(code)
+  const magicString = new MagicString(code);
 
-  magicString.replaceAll('../../components/spark-ui/', '@/components/')
-  magicString.replaceAll('../../components/icons/', '@/components/icons/')
-  magicString.replaceAll('../../../lib/utils', '@/libs/utils')
-  magicString.replaceAll('../../lib/utils', '@/libs/utils')
+  magicString.replaceAll("../../components/spark-ui/", "@/components/");
+  magicString.replaceAll("../../components/icons/", "@/components/icons/");
+  magicString.replaceAll("../../../lib/utils", "@/libs/utils");
+  magicString.replaceAll("../../lib/utils", "@/libs/utils");
 
-  return magicString.toString()
-};
+  return magicString.toString();
+}
 
 const normalizeImportPath = computed(() => {
   try {
-    const decodeHighlightedCode = decodeURIComponent(props.code)
-    const updatedCode = updateImportPaths(decodeHighlightedCode)
-    return updatedCode
+    const decodeHighlightedCode = decodeURIComponent(props.code);
+    const updatedCode = updateImportPaths(decodeHighlightedCode);
+    return updatedCode;
+  } catch (error) {
+    console.error("Error decoding code:", error);
+    return props.code;
   }
-  catch (error) {
-    console.error('Error decoding code:', error)
-    return props.code
-  }
-})
-const { copy, copied } = useClipboard({ source: normalizeImportPath.value })
-const [value, toggle] = useToggle()
-const refreshKey = ref(0)
+});
+const { copy, copied } = useClipboard({ source: normalizeImportPath.value });
+const [value, toggle] = useToggle();
+const refreshKey = ref(0);
 function handleRefreshComponent() {
-  refreshKey.value += 1
+  refreshKey.value += 1;
 }
 </script>
 
@@ -60,9 +58,8 @@ function handleRefreshComponent() {
       class="relative flex h-[600px] w-full bg-[#fffefe] flex-col items-center justify-center overflow-hidden rounded-lg border-parent dark:border-none bg-background c-#282f38 overflow-x-scroll dark:bg-[#000000] flex-wrap [&:o-button-base]:!c-context vp-raw bg"
     >
       <DotPattern
-        class="absolute inset-0 size-full" :class="cn(
-          '[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]',
-        )"
+        class="absolute inset-0 size-full"
+        :class="cn('[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]')"
       />
       <button
         type="button"
@@ -89,16 +86,14 @@ function handleRefreshComponent() {
               <div class="o-demo_action_icon">
                 <Icon icon="carbon:logo-github" />
               </div>
-              <div class="o-demo_tooltip" group-hover:opacity-100>
-                Edit on GitHub
-              </div>
+              <div class="o-demo_tooltip" group-hover:opacity-100>Edit on GitHub</div>
             </a>
             <a class="o-demo_action_item" group @click="copy()">
               <div class="o-demo_action_icon">
                 <Icon icon="carbon:copy" />
               </div>
               <div class="o-demo_tooltip" group-hover:opacity-100>
-                {{ copied ? 'Copied' : 'Copy code' }}
+                {{ copied ? "Copied" : "Copy code" }}
               </div>
             </a>
             <a class="o-demo_action_item" group @click="toggle()">
@@ -106,7 +101,7 @@ function handleRefreshComponent() {
                 <Icon icon="carbon:fit-to-width" />
               </div>
               <div class="o-demo_tooltip" group-hover:opacity-100>
-                {{ value ? 'Hide code' : 'Show code' }}
+                {{ value ? "Hide code" : "Show code" }}
               </div>
             </a>
           </div>

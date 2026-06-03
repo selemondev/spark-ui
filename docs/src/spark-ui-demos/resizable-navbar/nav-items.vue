@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
 defineProps<{
-  items: Array<{ name: string, link: string }>
-  className?: string
-}>()
+  items: Array<{ name: string; link: string }>;
+  className?: string;
+}>();
 
-const emits = defineEmits(['itemClick'])
-const hovered = ref<number | null>(null)
+const emits = defineEmits(["itemClick"]);
+const hovered = ref<number | null>(null);
 function handleItemHover(idx: number) {
-  hovered.value = idx
+  hovered.value = idx;
 }
 
 function clearHover() {
-  hovered.value = null
+  hovered.value = null;
 }
 
 function handleClick() {
-  emits('itemClick')
+  emits("itemClick");
 }
 </script>
 

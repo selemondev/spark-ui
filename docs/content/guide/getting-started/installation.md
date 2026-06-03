@@ -159,11 +159,11 @@ bun add clsx tailwind-merge
 Then, in your `./src/lib/utils.ts` file, configure it as shown below:
 
 ```ts [utils.ts]
-import { type ClassValue, clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 ```
 
@@ -232,19 +232,21 @@ then add the following into your `nuxt.config.ts` file:
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss'],
-  tailwindcss: { // [!code focus]
-    cssPath: ['~/assets/css/tailwind.css', { injectPosition: 'first' }], // [!code focus]
-    configPath: 'tailwind.config', // [!code focus]
-    exposeConfig: { // [!code focus]
-      level: 2 // [!code focus]
+  modules: ["@nuxtjs/tailwindcss"],
+  tailwindcss: {
+    // [!code focus]
+    cssPath: ["~/assets/css/tailwind.css", { injectPosition: "first" }], // [!code focus]
+    configPath: "tailwind.config", // [!code focus]
+    exposeConfig: {
+      // [!code focus]
+      level: 2, // [!code focus]
     }, // [!code focus]
     config: {}, // [!code focus]
     viewer: true, // [!code focus]
-  } // [!code focus]
-})
+  }, // [!code focus]
+});
 ```
 
 ### Install @vueuse/motion
@@ -279,19 +281,19 @@ Then, add the module to the modules array as shown below:
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@vueuse/motion/nuxt'], // [!code focus]
+  modules: ["@nuxtjs/tailwindcss", "@vueuse/motion/nuxt"], // [!code focus]
   tailwindcss: {
-    cssPath: ['~/assets/css/tailwind.css', { injectPosition: 'first' }],
-    configPath: 'tailwind.config',
+    cssPath: ["~/assets/css/tailwind.css", { injectPosition: "first" }],
+    configPath: "tailwind.config",
     exposeConfig: {
-      level: 2
+      level: 2,
     },
     config: {},
     viewer: true,
-  }
-})
+  },
+});
 ```
 
 ### Install Clsx and Tailwind Merge
@@ -321,11 +323,11 @@ bun add clsx tailwind-merge
 Then, in your `./lib/utils.ts` file, configure it as shown below:
 
 ```ts [utils.ts]
-import { type ClassValue, clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 ```
 

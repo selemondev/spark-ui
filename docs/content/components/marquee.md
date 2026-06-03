@@ -11,44 +11,45 @@ Copy and paste the following code into your project:
 ::: code-group
 
 ```vue [marquee.vue]
-<script setup lang='ts'>
-import { cn } from '@/lib/utils'
+<script setup lang="ts">
+import { cn } from "@/lib/utils";
 
 interface MarqueeProps {
-  class?: string
-  reverse?: boolean
-  pauseOnHover?: boolean
-  vertical?: boolean
-  repeat?: number
-  [key: string]: any
-};
+  class?: string;
+  reverse?: boolean;
+  pauseOnHover?: boolean;
+  vertical?: boolean;
+  repeat?: number;
+  [key: string]: any;
+}
 
 const props = withDefaults(defineProps<MarqueeProps>(), {
   pauseOnHover: false,
   vertical: false,
   repeat: 4,
-})
+});
 
-const className = cn(
-  'flex shrink-0 justify-around [gap:var(--gap)]',
-  {
-    'animate-marquee-vertical flex-col': props.vertical,
-    'animate-marquee flex-row': !props.vertical,
-    '[animation-direction:reverse]': props.reverse,
-    'group-hover:[animation-play-state:paused]': props.pauseOnHover,
-  },
-)
+const className = cn("flex shrink-0 justify-around [gap:var(--gap)]", {
+  "animate-marquee-vertical flex-col": props.vertical,
+  "animate-marquee flex-row": !props.vertical,
+  "[animation-direction:reverse]": props.reverse,
+  "group-hover:[animation-play-state:paused]": props.pauseOnHover,
+});
 </script>
 
 <template>
   <div
-    v-bind="props" :class="cn('group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]',
-                              {
-                                'flex-row': !props.vertical,
-                                'flex-col': props.vertical,
-                              },
-                              props.class,
-    )"
+    v-bind="props"
+    :class="
+      cn(
+        'group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]',
+        {
+          'flex-row': !props.vertical,
+          'flex-col': props.vertical,
+        },
+        props.class,
+      )
+    "
   >
     <div v-for="i in Array(props.repeat).fill(0)" :key="i">
       <div :key="i" :class="className">
@@ -60,26 +61,28 @@ const className = cn(
 ```
 
 ```vue [review-card.vue]
-<script setup lang='ts'>
-import { cn } from '@/lib/utils'
+<script setup lang="ts">
+import { cn } from "@/lib/utils";
 
 const props = defineProps<{
-  img: string
-  name: string
-  username: string
-  body: string
-}>()
+  img: string;
+  name: string;
+  username: string;
+  body: string;
+}>();
 </script>
 
 <template>
   <div
-    :class="cn(
-      'relative w-64 cursor-pointer overflow-hidden h-36 flex flex-col space-y-1 rounded-xl px-4',
-      '  border-gray-950/[.1] bg-gray-950/[.01] border-parent hover:bg-gray-950/[.05]',
-    )"
+    :class="
+      cn(
+        'relative w-64 cursor-pointer overflow-hidden h-36 flex flex-col space-y-1 rounded-xl px-4',
+        '  border-gray-950/[.1] bg-gray-950/[.01] border-parent hover:bg-gray-950/[.05]',
+      )
+    "
   >
     <div class="flex items-center space-x-2">
-      <img class="rounded-full" width="32" height="32" :src="props.img">
+      <img class="rounded-full" width="32" height="32" :src="props.img" />
       <p class="flex flex-col space-y-1">
         <span class="text-sm font-medium dark:text-white">
           {{ props.name }}
@@ -114,22 +117,22 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'marquee': 'marquee var(--duration) linear infinite',
-        'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
       },
       keyframes: {
-        'marquee': {
-          from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(calc(-100% - var(--gap)))' },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
         },
-        'marquee-vertical': {
-          from: { transform: 'translateY(0)' },
-          to: { transform: 'translateY(calc(-100% - var(--gap)))' },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
       },
     },
   },
-}
+};
 ```
 
 ## Examples

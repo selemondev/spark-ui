@@ -12,7 +12,18 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["name", "slug", "sourcePath", "sourceFiles", "dependencies", "usesAnimation", "usesFramerMotion", "usesMotion", "demoFiles", "docsFiles"],
+        "required": [
+          "name",
+          "slug",
+          "sourcePath",
+          "sourceFiles",
+          "dependencies",
+          "usesAnimation",
+          "usesFramerMotion",
+          "usesMotion",
+          "demoFiles",
+          "docsFiles"
+        ],
         "properties": {
           "name": { "type": "string" },
           "slug": { "type": "string" },

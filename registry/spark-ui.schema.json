@@ -12,7 +12,15 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["name", "slug", "path", "sourceFiles", "docsExists", "examplesExists", "testsExists"],
+        "required": [
+          "name",
+          "slug",
+          "path",
+          "sourceFiles",
+          "docsExists",
+          "examplesExists",
+          "testsExists"
+        ],
         "properties": {
           "name": { "type": "string" },
           "slug": { "type": "string" },

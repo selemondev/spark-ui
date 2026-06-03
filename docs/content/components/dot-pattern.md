@@ -9,20 +9,20 @@ A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
 Copy and paste the following code into your project:
 
 ```vue [dot-pattern.vue]
-<script setup lang='ts'>
-import { useId } from 'vue'
-import { cn } from '@/lib/utils'
+<script setup lang="ts">
+import { useId } from "vue";
+import { cn } from "@/lib/utils";
 
 interface DotPatternProps {
-  width?: any
-  height?: any
-  x?: any
-  y?: any
-  cx?: any
-  cy?: any
-  cr?: any
-  className?: string
-  [key: string]: any
+  width?: any;
+  height?: any;
+  x?: any;
+  y?: any;
+  cx?: any;
+  cy?: any;
+  cr?: any;
+  className?: string;
+  [key: string]: any;
 }
 const props = withDefaults(defineProps<DotPatternProps>(), {
   width: 16,
@@ -32,22 +32,28 @@ const props = withDefaults(defineProps<DotPatternProps>(), {
   cx: 1,
   cy: 1,
   cr: 1,
-})
+});
 
-const id = `pattern-${useId()}`
+const id = `pattern-${useId()}`;
 </script>
 
 <template>
   <svg
-    aria-hidden="true" :class="cn(
-      'pointer-events-none absolute inset-0 h-full w-full fill-neutral-400/80',
-      props.className,
-    )" v-bind="props"
+    aria-hidden="true"
+    :class="
+      cn('pointer-events-none absolute inset-0 h-full w-full fill-neutral-400/80', props.className)
+    "
+    v-bind="props"
   >
     <defs>
       <pattern
-        :id="id" :width="props.width" :height="props.height" patternUnits="userSpaceOnUse"
-        patternContentUnits="userSpaceOnUse" :x="props.x" :y="props.y"
+        :id="id"
+        :width="props.width"
+        :height="props.height"
+        patternUnits="userSpaceOnUse"
+        patternContentUnits="userSpaceOnUse"
+        :x="props.x"
+        :y="props.y"
       >
         <circle id="pattern-circle" :cx="props.cx" :cy="props.cy" :r="props.cr" />
       </pattern>

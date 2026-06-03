@@ -11,23 +11,22 @@ Copy and paste the following code into your project:
 ::: code-group
 
 ```vue [aurora-text.vue]
-<script setup lang='ts'>
+<script setup lang="ts">
 interface AuroraTextProps {
-  className?: string
-  colors?: string[]
-  speed?: number
+  className?: string;
+  colors?: string[];
+  speed?: number;
 }
 const props = withDefaults(defineProps<AuroraTextProps>(), {
-  colors: () => (['#FF0080', '#7928CA', '#0070F3', '#38bdf8']),
+  colors: () => ["#FF0080", "#7928CA", "#0070F3", "#38bdf8"],
   speed: 1,
-})
+});
 const gradientStyle = {
-  backgroundImage: `linear-gradient(135deg, ${props.colors.join(', ')}, ${props.colors[0]
-  })`,
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
+  backgroundImage: `linear-gradient(135deg, ${props.colors.join(", ")}, ${props.colors[0]})`,
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
   animationDuration: `${10 / props.speed}s`,
-}
+};
 </script>
 
 <template>
@@ -36,7 +35,8 @@ const gradientStyle = {
       <slot />
     </span>
     <span
-      class="relative animate-aurora bg-[length:200%_auto] bg-clip-text text-transparent" :style="gradientStyle"
+      class="relative animate-aurora bg-[length:200%_auto] bg-clip-text text-transparent"
+      :style="gradientStyle"
       aria-hidden="true"
     >
       <slot />
@@ -50,35 +50,35 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        aurora: 'aurora 8s ease-in-out infinite alternate',
+        aurora: "aurora 8s ease-in-out infinite alternate",
       },
       keyframes: {
         aurora: {
-          '0%': {
-            backgroundPosition: '0% 50%',
-            transform: 'rotate(-5deg) scale(0.9)',
+          "0%": {
+            backgroundPosition: "0% 50%",
+            transform: "rotate(-5deg) scale(0.9)",
           },
-          '25%': {
-            backgroundPosition: '50% 100%',
-            transform: 'rotate(5deg) scale(1.1)',
+          "25%": {
+            backgroundPosition: "50% 100%",
+            transform: "rotate(5deg) scale(1.1)",
           },
-          '50%': {
-            backgroundPosition: '100% 50%',
-            transform: 'rotate(-3deg) scale(0.95)',
+          "50%": {
+            backgroundPosition: "100% 50%",
+            transform: "rotate(-3deg) scale(0.95)",
           },
-          '75%': {
-            backgroundPosition: '50% 0%',
-            transform: 'rotate(3deg) scale(1.05)',
+          "75%": {
+            backgroundPosition: "50% 0%",
+            transform: "rotate(3deg) scale(1.05)",
           },
-          '100%': {
-            backgroundPosition: '0% 50%',
-            transform: 'rotate(-5deg) scale(0.9)',
+          "100%": {
+            backgroundPosition: "0% 50%",
+            transform: "rotate(-5deg) scale(0.9)",
           },
         },
       },
     },
   },
-}
+};
 ```
 
 :::

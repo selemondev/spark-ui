@@ -1,18 +1,20 @@
-<script setup lang='ts'>
-import { cn } from '@/lib/utils'
+<script setup lang="ts">
+import { cn } from "@/lib/utils";
 
 interface TerminalProps {
-  className?: string
-};
-const props = defineProps<TerminalProps>()
+  className?: string;
+}
+const props = defineProps<TerminalProps>();
 </script>
 
 <template>
   <div
-    :class="cn(
-      'z-0 min-h-[300px] w-full max-w-lg rounded-xl border border-gray-300 bg-white',
-      props.className,
-    )"
+    :class="
+      cn(
+        'z-0 min-h-[300px] w-full max-w-lg rounded-xl border border-gray-300 bg-white',
+        props.className,
+      )
+    "
   >
     <div class="flex flex-col gap-y-2 border-b border-gray-300 p-4">
       <div class="flex flex-row gap-x-2">

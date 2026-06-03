@@ -1,25 +1,38 @@
-<script setup lang='ts'>
-import Nitro from '../../components/icons/nitro.vue'
-import Nuxt from '../../components/icons/nuxt.vue'
-import ViteIcon from '../../components/icons/vite-icon.vue'
-import Vitest from '../../components/icons/vitest.vue'
-import Vue from '../../components/icons/vue.vue'
-import OrbitingCircles from '../../components/spark-ui/orbiting-circles/orbiting-circles.vue'
+<script setup lang="ts">
+import Nitro from "../../components/icons/nitro.vue";
+import Nuxt from "../../components/icons/nuxt.vue";
+import ViteIcon from "../../components/icons/vite-icon.vue";
+import Vitest from "../../components/icons/vitest.vue";
+import Vue from "../../components/icons/vue.vue";
+import OrbitingCircles from "../../components/spark-ui/orbiting-circles/orbiting-circles.vue";
 </script>
 
 <template>
-  <div class="relative flex h-[500px] w-[300px] md:w-[600px] flex-col items-center justify-center overflow-hidden">
+  <div
+    class="relative flex h-[500px] w-[300px] md:w-[600px] flex-col items-center justify-center overflow-hidden"
+  >
     <span
       class="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-black"
     >
       Circle
     </span>
 
-    <OrbitingCircles class="size-[30px] border-none bg-transparent" :duration="20" :delay="10" :radius="70">
+    <OrbitingCircles
+      class="size-[30px] border-none bg-transparent"
+      :duration="20"
+      :delay="10"
+      :radius="70"
+    >
       <Nuxt />
     </OrbitingCircles>
 
-    <OrbitingCircles class="size-[30px] border-none bg-transparent" :duration="20" :delay="10" :radius="100" reverse>
+    <OrbitingCircles
+      class="size-[30px] border-none bg-transparent"
+      :duration="20"
+      :delay="10"
+      :radius="100"
+      reverse
+    >
       <Nitro />
     </OrbitingCircles>
 
@@ -31,7 +44,13 @@ import OrbitingCircles from '../../components/spark-ui/orbiting-circles/orbiting
       <Vitest />
     </OrbitingCircles>
 
-    <OrbitingCircles class="size-[30px] border-none bg-transparent" :duration="40" :delay="10" :radius="45" reverse>
+    <OrbitingCircles
+      class="size-[30px] border-none bg-transparent"
+      :duration="40"
+      :delay="10"
+      :radius="45"
+      reverse
+    >
       <Vue />
     </OrbitingCircles>
   </div>

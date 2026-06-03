@@ -1,24 +1,30 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-import { computed } from 'vue'
+import { useData } from "vitepress";
+import { computed } from "vue";
 
-const props = withDefaults(defineProps<{
-  accelerate?: boolean
-  color?: string
-}>(), {
-  accelarate: false,
-  color: '#00DC82',
-})
+const props = withDefaults(
+  defineProps<{
+    accelerate?: boolean;
+    color?: string;
+  }>(),
+  {
+    accelarate: false,
+    color: "#00DC82",
+  },
+);
 
-const { isDark } = useData()
+const { isDark } = useData();
 
 const theme = computed(() => {
-  return isDark.value ? props.color : 'red'
-})
+  return isDark.value ? props.color : "red";
+});
 </script>
 
 <template>
-  <div class="stars h-[400px] absolute pointer-events-none inset-x-0 bottom-0 w-[300px] md:w-[500px] opacity-75" :class="{ accelerate: props.accelerate }">
+  <div
+    class="stars h-[400px] absolute pointer-events-none inset-x-0 bottom-0 w-[300px] md:w-[500px] opacity-75"
+    :class="{ accelerate: props.accelerate }"
+  >
     <div class="rounded-full bg-transparent" />
     <div class="rounded-full bg-transparent" />
     <div class="rounded-full bg-transparent" />

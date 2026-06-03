@@ -1,5 +1,5 @@
-<script setup lang='ts'>
-import GradualSpacing from './gradual-spacing.vue'
+<script setup lang="ts">
+import GradualSpacing from "./gradual-spacing.vue";
 </script>
 
 <template>

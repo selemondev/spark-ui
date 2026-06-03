@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
 defineProps<{
-  items: Array<{ name: string, link: string }>
-  className?: string
-}>()
+  items: Array<{ name: string; link: string }>;
+  className?: string;
+}>();
 
-const emits = defineEmits(['itemClick'])
-const hovered = ref<number | null>(null)
+const emits = defineEmits(["itemClick"]);
+const hovered = ref<number | null>(null);
 function handleItemHover(idx: number) {
-  hovered.value = idx
+  hovered.value = idx;
 }
 
 function handleClick() {
-  emits('itemClick')
+  emits("itemClick");
 }
 </script>
 
@@ -30,7 +30,10 @@ function handleClick() {
       @mouseenter="handleItemHover(idx)"
       @click="handleClick"
     >
-      <span class="relative z-20 dark:text-gray-300 dark:hover:text-white text-gray-600 hover:text-black transition-colors duration-200 ease-in">{{ item?.name }}</span>
+      <span
+        class="relative z-20 dark:text-gray-300 dark:hover:text-white text-gray-600 hover:text-black transition-colors duration-200 ease-in"
+        >{{ item?.name }}</span
+      >
     </a>
   </div>
 </template>

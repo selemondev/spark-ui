@@ -1,32 +1,32 @@
-<script setup lang='ts'>
-import Marquee from '../../components/spark-ui/marquee/marquee.vue'
+<script setup lang="ts">
+import Marquee from "../../components/spark-ui/marquee/marquee.vue";
 
 const logos = [
   {
-    name: 'Microsoft',
-    img: 'https://picsum.photos/id/1/200/300',
+    name: "Microsoft",
+    img: "https://picsum.photos/id/1/200/300",
   },
   {
-    name: 'Apple',
-    img: 'https://picsum.photos/id/2/200/300',
+    name: "Apple",
+    img: "https://picsum.photos/id/2/200/300",
   },
   {
-    name: 'Google',
-    img: 'https://picsum.photos/id/3/200/300',
+    name: "Google",
+    img: "https://picsum.photos/id/3/200/300",
   },
   {
-    name: 'Facebook',
-    img: 'https://picsum.photos/id/4/200/300',
+    name: "Facebook",
+    img: "https://picsum.photos/id/4/200/300",
   },
   {
-    name: 'LinkedIn',
-    img: 'https://picsum.photos/id/5/200/300',
+    name: "LinkedIn",
+    img: "https://picsum.photos/id/5/200/300",
   },
   {
-    name: 'Twitter',
-    img: 'https://picsum.photos/id/6/200/300',
+    name: "Twitter",
+    img: "https://picsum.photos/id/6/200/300",
   },
-]
+];
 </script>
 
 <template>
@@ -36,16 +36,20 @@ const logos = [
     >
       <div class="flex flex-row gap-4">
         <Marquee
-          vertical class="h-96 justify-center overflow-hidden [--duration:60s] [--gap:1rem]" :style="{
-            transform: 'translateX(0px) translateY(0px) translateZ(-50px) rotateX(0deg) rotateY(-20deg) rotateZ(10deg) scale(1.5)',
-          }
-          "
+          vertical
+          class="h-96 justify-center overflow-hidden [--duration:60s] [--gap:1rem]"
+          :style="{
+            transform:
+              'translateX(0px) translateY(0px) translateZ(-50px) rotateX(0deg) rotateY(-20deg) rotateZ(10deg) scale(1.5)',
+          }"
         >
           <div v-for="(logo, index) in logos" :key="index">
             <img
-              :key="index" :src="logo.img" :alt="logo.name"
+              :key="index"
+              :src="logo.img"
+              :alt="logo.name"
               class="mx-auto h-full w-3/4 cursor-pointer rounded-xl border border-neutral-300 transition-all duration-300 hover:ring-1 hover:ring-neutral-300"
-            >
+            />
           </div>
         </Marquee>
         <div

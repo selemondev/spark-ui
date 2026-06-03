@@ -1,37 +1,37 @@
-<script setup lang='ts'>
-import { Icon } from '@iconify/vue'
-import BentoCard from '../../components/spark-ui/bento-grid/bento-card.vue'
-import BentoGrid from '../../components/spark-ui/bento-grid/bento-grid.vue'
+<script setup lang="ts">
+import { Icon } from "@iconify/vue";
+import BentoCard from "../../components/spark-ui/bento-grid/bento-card.vue";
+import BentoGrid from "../../components/spark-ui/bento-grid/bento-grid.vue";
 
 const features = [
   {
-    icon: 'radix-icons:file-text',
-    name: 'Save your files',
-    description: 'We automatically save your files as you type.',
-    href: '/',
-    cta: 'Learn more',
-    background: 'absolute -right-20 -top-20 opacity-60',
-    class: 'col-span-3 lg:col-span-1',
+    icon: "radix-icons:file-text",
+    name: "Save your files",
+    description: "We automatically save your files as you type.",
+    href: "/",
+    cta: "Learn more",
+    background: "absolute -right-20 -top-20 opacity-60",
+    class: "col-span-3 lg:col-span-1",
   },
   {
-    icon: 'radix-icons:input',
-    name: 'Full text search',
-    description: 'Search through all your files in one place.',
-    href: '/',
-    cta: 'Learn more',
-    background: 'absolute -right-20 -top-20 opacity-60',
-    class: 'col-span-3 lg:col-span-2',
+    icon: "radix-icons:input",
+    name: "Full text search",
+    description: "Search through all your files in one place.",
+    href: "/",
+    cta: "Learn more",
+    background: "absolute -right-20 -top-20 opacity-60",
+    class: "col-span-3 lg:col-span-2",
   },
   {
-    icon: 'radix-icons:globe',
-    name: 'Multilingual',
-    description: 'Supports 100+ languages and counting.',
-    href: '/',
-    cta: 'Learn more',
-    background: 'absolute -right-20 -top-20 opacity-60',
-    class: 'col-span-3 lg:col-span-2',
+    icon: "radix-icons:globe",
+    name: "Multilingual",
+    description: "Supports 100+ languages and counting.",
+    href: "/",
+    cta: "Learn more",
+    background: "absolute -right-20 -top-20 opacity-60",
+    class: "col-span-3 lg:col-span-2",
   },
-]
+];
 </script>
 
 <template>
@@ -40,7 +40,7 @@ const features = [
       <div v-for="feat in features" :key="feat.name" :class="feat.class">
         <BentoCard :name="feat.name">
           <div>
-            <img :class="feat.background">
+            <img :class="feat.background" />
           </div>
           <div
             class="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10"

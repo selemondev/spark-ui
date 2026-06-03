@@ -1,6 +1,6 @@
-<script setup lang='ts'>
-import DotPattern from '../../components/spark-ui/dot-pattern/dot-pattern.vue'
-import { cn } from '../../lib/utils'
+<script setup lang="ts">
+import DotPattern from "../../components/spark-ui/dot-pattern/dot-pattern.vue";
+import { cn } from "../../lib/utils";
 </script>
 
 <template>
@@ -14,9 +14,12 @@ import { cn } from '../../lib/utils'
         Dot Pattern
       </p>
       <DotPattern
-        :width="20" :height="20" :cx="1" :cy="1" :cr="1" :class="cn(
-          '[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]',
-        )"
+        :width="20"
+        :height="20"
+        :cx="1"
+        :cy="1"
+        :cr="1"
+        :class="cn('[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]')"
       />
     </div>
   </div>

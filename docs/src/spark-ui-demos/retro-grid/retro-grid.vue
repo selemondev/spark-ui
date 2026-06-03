@@ -1,5 +1,5 @@
-<script setup lang='ts'>
-import RetroGrid from '../../components/spark-ui/retro-grid/retro-grid.vue'
+<script setup lang="ts">
+import RetroGrid from "../../components/spark-ui/retro-grid/retro-grid.vue";
 </script>
 
 <template>

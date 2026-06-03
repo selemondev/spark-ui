@@ -20,43 +20,45 @@ Copy and paste the following code into your project:
 
 ```vue [navbar.vue]
 <script setup lang="ts">
-import type { Slot } from 'vue'
-import { onMounted, onUnmounted, ref } from 'vue'
+import type { Slot } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 const props = defineProps<{
-  className?: string
-}>()
+  className?: string;
+}>();
 
-const navbarRef = ref(null)
-const visible = ref(false)
+const navbarRef = ref(null);
+const visible = ref(false);
 
 function handleScroll() {
   if (window.scrollY > 100) {
-    visible.value = true
-  }
-  else {
-    visible.value = false
+    visible.value = true;
+  } else {
+    visible.value = false;
   }
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
+  window.addEventListener("scroll", handleScroll);
+});
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+  window.removeEventListener("scroll", handleScroll);
+});
 
 function provide(slot: Slot) {
-  if (!slot)
-    return
+  if (!slot) return;
   return {
-    visible: visible.value
-  }
+    visible: visible.value,
+  };
 }
 </script>
 
 <template>
-  <div ref="navbarRef" class="sticky inset-x-0 top-0 md:top-10 z-50 w-full" :class="props.className">
+  <div
+    ref="navbarRef"
+    class="sticky inset-x-0 top-0 md:top-10 z-50 w-full"
+    :class="props.className"
+  >
     <div class="w-full grid place-items-center pt-10">
       <div class="max-w-4xl w-full">
         <slot v-bind="provide($slots?.default)" />
@@ -68,28 +70,33 @@ function provide(slot: Slot) {
 
 ```vue [navbar-button.vue]
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from "vue";
 const props = defineProps<{
-  href?: string
-  to?: string
-  variant?: 'primary' | 'secondary' | 'dark' | 'gradient'
-  className?: string
-}>()
+  href?: string;
+  to?: string;
+  variant?: "primary" | "secondary" | "dark" | "gradient";
+  className?: string;
+}>();
 
-const baseStyles = 'px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center'
+const baseStyles =
+  "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 
 const variantStyles: Record<string, string> = {
-  primary: 'shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]',
-  secondary: 'bg-transparent shadow-none dark:text-white',
-  dark: 'bg-black text-white shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]',
-  gradient: 'bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]'
-}
+  primary:
+    "shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
+  secondary: "bg-transparent shadow-none dark:text-white",
+  dark: "bg-black text-white shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
+  gradient:
+    "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
+};
 
 const classes = computed(() => {
-  return [baseStyles, props.variant && variantStyles[props.variant], props.className].filter(Boolean).join(' ')
-})
+  return [baseStyles, props.variant && variantStyles[props.variant], props.className]
+    .filter(Boolean)
+    .join(" ");
+});
 
-const isRouterLink = computed(() => props.to !== undefined)
+const isRouterLink = computed(() => props.to !== undefined);
 </script>
 
 <template>
@@ -103,15 +110,14 @@ const isRouterLink = computed(() => props.to !== undefined)
 ```
 
 ```vue [navbar-logo.vue]
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <a
     href="/"
     class="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
   >
-    <img src="https://spark-ui.dev/icon.png" alt="logo" width="30" height="30">
+    <img src="https://spark-ui.dev/icon.png" alt="logo" width="30" height="30" />
     <span class="font-medium text-black dark:text-white">Spark UI</span>
   </a>
 </template>
@@ -119,33 +125,35 @@ const isRouterLink = computed(() => props.to !== undefined)
 
 ```vue [nav-body.vue]
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from "vue";
 
 const props = defineProps<{
-  visible?: boolean
-  className?: string
-}>()
+  visible?: boolean;
+  className?: string;
+}>();
 
 const navBodyStyles = computed(() => {
   return {
-    backdropFilter: props.visible ? 'blur(10px)' : 'none',
+    backdropFilter: props.visible ? "blur(10px)" : "none",
     boxShadow: props.visible
-      ? '0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset'
-      : 'none',
-    width: props.visible ? '40%' : '100%',
-    transform: props.visible ? 'translateY(20px)' : 'translateY(0)',
-    minWidth: '800px',
-    transition: 'all 0.3s'
-  }
-})
+      ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
+      : "none",
+    width: props.visible ? "40%" : "100%",
+    transform: props.visible ? "translateY(20px)" : "translateY(0)",
+    minWidth: "800px",
+    transition: "all 0.3s",
+  };
+});
 
 const navBodyClasses = computed(() => {
   return [
-    'relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent',
-    props.visible && 'bg-white/80 dark:bg-neutral-950/80',
-    props.className
-  ].filter(Boolean).join(' ')
-})
+    "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
+    props.visible && "bg-white/80 dark:bg-neutral-950/80",
+    props.className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+});
 </script>
 
 <template>
@@ -157,25 +165,25 @@ const navBodyClasses = computed(() => {
 
 ```vue [nav-items.vue]
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
 defineProps<{
-  items: Array<{ name: string, link: string }>
-  className?: string
-}>()
+  items: Array<{ name: string; link: string }>;
+  className?: string;
+}>();
 
-const emits = defineEmits(['itemClick'])
-const hovered = ref<number | null>(null)
+const emits = defineEmits(["itemClick"]);
+const hovered = ref<number | null>(null);
 function handleItemHover(idx: number) {
-  hovered.value = idx
+  hovered.value = idx;
 }
 
 function clearHover() {
-  hovered.value = null
+  hovered.value = null;
 }
 
 function handleClick() {
-  emits('itemClick')
+  emits("itemClick");
 }
 </script>
 
@@ -219,35 +227,37 @@ function handleClick() {
 
 ```vue [mobile-nav.vue]
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from "vue";
 
 const props = defineProps<{
-  visible: boolean
-  className?: string
-}>()
+  visible: boolean;
+  className?: string;
+}>();
 
 const mobileNavStyles = computed(() => {
   return {
-    backdropFilter: props.visible ? 'blur(10px)' : 'none',
+    backdropFilter: props.visible ? "blur(10px)" : "none",
     boxShadow: props.visible
-      ? '0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset'
-      : 'none',
-    width: props.visible ? '90%' : '100%',
-    paddingRight: props.visible ? '12px' : '0px',
-    paddingLeft: props.visible ? '12px' : '0px',
-    borderRadius: props.visible ? '4px' : '2rem',
-    transform: props.visible ? 'translateY(20px)' : 'translateY(0)',
-    transition: 'all 0.3s'
-  }
-})
+      ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
+      : "none",
+    width: props.visible ? "90%" : "100%",
+    paddingRight: props.visible ? "12px" : "0px",
+    paddingLeft: props.visible ? "12px" : "0px",
+    borderRadius: props.visible ? "4px" : "2rem",
+    transform: props.visible ? "translateY(20px)" : "translateY(0)",
+    transition: "all 0.3s",
+  };
+});
 
 const mobileNavClasses = computed(() => {
   return [
-    'relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden',
-    props.visible && 'bg-white/80 dark:bg-neutral-950/80',
-    props.className
-  ].filter(Boolean).join(' ')
-})
+    "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
+    props.visible && "bg-white/80 dark:bg-neutral-950/80",
+    props.className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+});
 </script>
 
 <template>
@@ -260,8 +270,8 @@ const mobileNavClasses = computed(() => {
 ```vue [mobile-nav-header.vue]
 <script setup lang="ts">
 const props = defineProps<{
-  className?: string
-}>()
+  className?: string;
+}>();
 </script>
 
 <template>
@@ -274,9 +284,9 @@ const props = defineProps<{
 ```vue [mobile-nav-menu.vue]
 <script setup lang="ts">
 defineProps<{
-  isOpen: boolean
-  className?: string
-}>()
+  isOpen: boolean;
+  className?: string;
+}>();
 </script>
 
 <template>
@@ -309,16 +319,16 @@ defineProps<{
 
 ```vue [mobile-nav-toggle.vue]
 <script setup lang="ts">
-import { Menu, X } from '@lucide/vue'
+import { Menu, X } from "@lucide/vue";
 
 defineProps<{
-  isOpen: boolean
-}>()
+  isOpen: boolean;
+}>();
 
-const emit = defineEmits(['click'])
+const emit = defineEmits(["click"]);
 
 function handleClick() {
-  emit('click')
+  emit("click");
 }
 </script>
 

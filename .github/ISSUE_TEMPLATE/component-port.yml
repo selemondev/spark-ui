@@ -1,6 +1,6 @@
 name: MagicUI Component Port
 description: Request a SparkUI port of a MagicUI component.
-title: '[Agent] Port ComponentName from MagicUI'
+title: "[Agent] Port ComponentName from MagicUI"
 labels:
   - magic-ui-sync
   - agent-generated

@@ -1,5 +1,5 @@
-<script setup lang='ts'>
-import BlurIn from '../../components/spark-ui/blur-in/blur-in.vue'
+<script setup lang="ts">
+import BlurIn from "../../components/spark-ui/blur-in/blur-in.vue";
 </script>
 
 <template>

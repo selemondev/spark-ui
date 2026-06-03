@@ -1,5 +1,5 @@
-<script setup lang='ts'>
-import Globe from '../../components/spark-ui/globe/globe.vue'
+<script setup lang="ts">
+import Globe from "../../components/spark-ui/globe/globe.vue";
 </script>
 
 <template>

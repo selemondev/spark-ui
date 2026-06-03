@@ -2,7 +2,7 @@
 defineProps({
   className: String,
   isOpen: Boolean,
-})
+});
 </script>
 
 <template>

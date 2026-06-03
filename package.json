@@ -1,32 +1,31 @@
 {
   "name": "@spark-ui/monorepo",
-  "type": "module",
   "version": "0.0.2",
   "private": false,
-  "packageManager": "pnpm@9.15.9",
   "description": "Experience The Magic Of Animated Components. Crafted With Vue, TypeScript, TailwindCss And Vueuse Motion",
-  "author": "Selemondev",
-  "license": "MIT",
+  "keywords": [
+    "animated-ui",
+    "nuxt-ui",
+    "nuxt-ui-components",
+    "ui",
+    "ui-components",
+    "vue3-ui",
+    "vue3-ui-components"
+  ],
   "homepage": "https://github.com/selemondev/spark-ui",
+  "bugs": {
+    "url": "https://github.com/selemondev/spark-ui/issues"
+  },
+  "license": "MIT",
+  "author": "Selemondev",
   "repository": {
     "type": "git",
     "url": "https://github.com/selemondev/spark-ui.git"
   },
-  "bugs": {
-    "url": "https://github.com/selemondev/spark-ui/issues"
-  },
-  "keywords": [
-    "animated-ui",
-    "ui",
-    "ui-components",
-    "vue3-ui-components",
-    "vue3-ui",
-    "nuxt-ui",
-    "nuxt-ui-components"
-  ],
+  "type": "module",
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "vp lint .",
+    "lint:fix": "vp lint . --fix",
     "build": "pnpm --filter @spark-ui/docs build",
     "typecheck": "vue-tsc -b docs/tsconfig.json && tsc --noEmit -p scripts/tsconfig.json",
     "typecheck:scripts": "tsc --noEmit -p scripts/tsconfig.json",
@@ -38,8 +37,8 @@
     "clean": "rimraf packages/*/{dist,es,lib}",
     "build:docs": "rimraf packages/*/{dist,es,lib} && nr -r -F \"./docs\" build",
     "build:cli": "rimraf packages/*/{dist,es,lib} && nr -r -F \"./packages/cli\" build",
-    "test": "vitest",
-    "coverage": "vitest run --coverage",
+    "test": "vp test",
+    "coverage": "vp test run --coverage",
     "playground:dev": "nr --filter @spark-ui/playground dev",
     "docs:dev": "nr --filter @spark-ui/docs dev",
     "ui:dev": "nr --filter @spark-ui/ui dev",
@@ -49,55 +48,49 @@
     "package-major:updates": "npx taze@latest major -r"
   },
   "dependencies": {
-    "@lucide/vue": "^1.16.0",
-    "@vue/compiler-core": "^3.5.13",
+    "@lucide/vue": "^1.17.0",
+    "@vue/compiler-core": "^3.5.35",
     "cross-env": "^7.0.3",
     "motion-v": "1.0.0-beta.2",
-    "typescript": "^5.8.3",
+    "typescript": "^5.9.3",
     "vite-plugin-posthog": "^2.1.0",
-    "vitepress-plugin-group-icons": "^1.2.4",
-    "vue-router": "^4.5.0"
+    "vitepress-plugin-group-icons": "^1.7.5",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.16.0",
     "@antfu/ni": "^0.23.2",
-    "@shikijs/transformers": "^3.2.2",
-    "@tsconfig/node20": "^20.1.4",
-    "@types/node": "^22.14.1",
-    "@vitejs/plugin-vue": "^5.2.3",
-    "@vitest/coverage-v8": "^2.1.9",
-    "@vitest/ui": "^2.1.9",
-    "@vue/test-utils": "^2.4.6",
+    "@shikijs/transformers": "^3.23.0",
+    "@tsconfig/node20": "^20.1.9",
+    "@types/node": "^22.19.19",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitest/coverage-v8": "^4.1.8",
+    "@vitest/ui": "^4.1.8",
+    "@vue/test-utils": "^2.4.10",
     "@vueuse/core": "^11.3.0",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9.24.0",
+    "autoprefixer": "^10.5.0",
     "eslint-plugin-format": "^0.1.3",
     "flexsearch": "^0.7.43",
     "jiti": "^2.7.0",
     "jsdom": "^25.0.1",
-    "lint-staged": "^16.1.2",
-    "postcss": "^8.5.3",
+    "postcss": "^8.5.15",
     "postcss-prefix-selector": "^1.16.1",
     "rimraf": "^5.0.10",
-    "sass": "^1.86.3",
-    "shiki": "^3.2.2",
-    "simple-git-hooks": "^2.12.1",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.3",
+    "sass": "^1.100.0",
+    "shiki": "^3.23.0",
+    "simple-git-hooks": "^2.13.1",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3",
     "unocss": "^0.63.6",
-    "vite": "^5.4.19",
-    "vite-plugin-dts": "^4.5.3",
-    "vitepress": "^1.6.3",
-    "vitest": "^2.1.9",
-    "vue": "^3.5.13",
-    "vue-tsc": "^2.2.8"
+    "vite": "catalog:",
+    "vite-plugin-dts": "^4.5.4",
+    "vite-plus": "catalog:",
+    "vitepress": "^1.6.4",
+    "vitest": "catalog:",
+    "vue": "^3.5.35",
+    "vue-tsc": "^2.2.12"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm dlx lint-staged"
+    "pre-commit": "vp staged"
   },
-  "lint-staged": {
-    "*.{js,ts,tsx,vue,md}": [
-      "nr lint:fix"
-    ]
-  }
+  "packageManager": "pnpm@9.15.9"
 }

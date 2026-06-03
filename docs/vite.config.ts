@@ -1,16 +1,14 @@
 /* eslint-disable node/prefer-global/process */
-import { fileURLToPath, URL } from 'node:url'
-import UnoCSS from 'unocss/vite'
-import { defineConfig, loadEnv } from 'vite'
-import { vitePostHog } from 'vite-plugin-posthog'
+import { fileURLToPath, URL } from "node:url";
+import UnoCSS from "unocss/vite";
+import { defineConfig, loadEnv } from "vite-plus";
+import { vitePostHog } from "vite-plugin-posthog";
 
 export default ({ mode }: { mode: string }) => {
-  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
   return defineConfig({
     optimizeDeps: {
-      exclude: [
-        'vitepress',
-      ],
+      exclude: ["vitepress"],
     },
     server: {
       hmr: {
@@ -30,9 +28,9 @@ export default ({ mode }: { mode: string }) => {
     ],
     resolve: {
       alias: {
-        find: '@',
-        replacement: fileURLToPath(new URL('./src', import.meta.url)),
+        find: "@",
+        replacement: fileURLToPath(new URL("./src", import.meta.url)),
       },
     },
-  })
-}
+  });
+};

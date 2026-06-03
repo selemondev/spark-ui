@@ -1,11 +1,11 @@
-<script setup lang='ts'>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { ref } from "vue";
 
-const circleRef = ref()
+const circleRef = ref();
 
 defineExpose({
   circleRef,
-})
+});
 </script>
 
 <template>

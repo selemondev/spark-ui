@@ -1,5 +1,5 @@
-<script setup lang='ts'>
-import BlurIn from './blur-in.vue'
+<script setup lang="ts">
+import BlurIn from "./blur-in.vue";
 </script>
 
 <template>

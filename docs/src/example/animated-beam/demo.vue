@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import AnimatedBeam from './animated-beam.vue'
-import Circle from './circle.vue'
+import { ref } from "vue";
+import AnimatedBeam from "./animated-beam.vue";
+import Circle from "./circle.vue";
 
-const containerRef = ref<HTMLElement>()
-const div1Ref = ref<HTMLElement>()
-const div2Ref = ref<HTMLElement>()
-const div3Ref = ref<HTMLElement>()
-const div4Ref = ref<HTMLElement>()
-const div5Ref = ref<HTMLElement>()
-const div6Ref = ref<HTMLElement>()
-const div7Ref = ref<HTMLElement>()
+const containerRef = ref<HTMLElement>();
+const div1Ref = ref<HTMLElement>();
+const div2Ref = ref<HTMLElement>();
+const div3Ref = ref<HTMLElement>();
+const div4Ref = ref<HTMLElement>();
+const div5Ref = ref<HTMLElement>();
+const div6Ref = ref<HTMLElement>();
+const div7Ref = ref<HTMLElement>();
 </script>
 
 <template>
@@ -56,8 +56,13 @@ const div7Ref = ref<HTMLElement>()
         <Circle ref="div4Ref">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 128 128">
             <linearGradient
-              id="deviconAngular0" x1="14.704" x2="110.985" y1="46.27" y2="92.024"
-              gradientTransform="matrix(1 0 0 -1 0 130)" gradientUnits="userSpaceOnUse"
+              id="deviconAngular0"
+              x1="14.704"
+              x2="110.985"
+              y1="46.27"
+              y2="92.024"
+              gradientTransform="matrix(1 0 0 -1 0 130)"
+              gradientUnits="userSpaceOnUse"
             >
               <stop offset="0" stop-color="#e40035" />
               <stop offset=".24" stop-color="#f60a48" />
@@ -71,8 +76,13 @@ const div7Ref = ref<HTMLElement>()
               d="m124.5 21.3l-4.4 68.6L78.3 0zm-29 88.7L64 128l-31.5-18l6.4-15.5h50.3zM64 34.1l16.5 40.2h-33zM7.9 89.9L3.5 21.3L49.7 0z"
             />
             <linearGradient
-              id="deviconAngular1" x1="28.733" x2="91.742" y1="117.071" y2="45.195"
-              gradientTransform="matrix(1 0 0 -1 0 130)" gradientUnits="userSpaceOnUse"
+              id="deviconAngular1"
+              x1="28.733"
+              x2="91.742"
+              y1="117.071"
+              y2="45.195"
+              gradientTransform="matrix(1 0 0 -1 0 130)"
+              gradientUnits="userSpaceOnUse"
             >
               <stop offset="0" stop-color="#ff31d9" />
               <stop offset="1" stop-color="#ff5be1" stop-opacity="0" />

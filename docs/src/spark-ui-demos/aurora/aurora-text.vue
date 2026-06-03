@@ -1,20 +1,19 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 interface AuroraTextProps {
-  className?: string
-  colors?: string[]
-  speed?: number
+  className?: string;
+  colors?: string[];
+  speed?: number;
 }
 const props = withDefaults(defineProps<AuroraTextProps>(), {
-  colors: () => (['#FF0080', '#7928CA', '#0070F3', '#38bdf8']),
+  colors: () => ["#FF0080", "#7928CA", "#0070F3", "#38bdf8"],
   speed: 1,
-})
+});
 const gradientStyle = {
-  backgroundImage: `linear-gradient(135deg, ${props.colors.join(', ')}, ${props.colors[0]
-  })`,
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
+  backgroundImage: `linear-gradient(135deg, ${props.colors.join(", ")}, ${props.colors[0]})`,
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
   animationDuration: `${10 / props.speed}s`,
-}
+};
 </script>
 
 <template>
@@ -23,7 +22,8 @@ const gradientStyle = {
       <slot />
     </span>
     <span
-      class="relative animate-aurora bg-[length:200%_auto] bg-clip-text text-transparent" :style="gradientStyle"
+      class="relative animate-aurora bg-[length:200%_auto] bg-clip-text text-transparent"
+      :style="gradientStyle"
       aria-hidden="true"
     >
       <slot />

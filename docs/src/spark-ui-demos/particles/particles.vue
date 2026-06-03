@@ -1,6 +1,6 @@
-<script setup lang='ts'>
-import HeroBackground from '../../components/spark-ui/particles/particles-background.vue'
-import HeroParticles from '../../components/spark-ui/particles/particles.vue'
+<script setup lang="ts">
+import HeroBackground from "../../components/spark-ui/particles/particles-background.vue";
+import HeroParticles from "../../components/spark-ui/particles/particles.vue";
 </script>
 
 <template>

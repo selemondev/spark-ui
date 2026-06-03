@@ -1,5 +1,5 @@
-<script setup lang='ts'>
-import HeroVideoDialog from './hero-video-dialog.vue'
+<script setup lang="ts">
+import HeroVideoDialog from "./hero-video-dialog.vue";
 </script>
 
 <template>

@@ -1,15 +1,21 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
-  accelerate?: boolean
-  color?: string
-}>(), {
-  accelarate: false,
-  color: '#00DC82',
-})
+const props = withDefaults(
+  defineProps<{
+    accelerate?: boolean;
+    color?: string;
+  }>(),
+  {
+    accelarate: false,
+    color: "#00DC82",
+  },
+);
 </script>
 
 <template>
-  <div class="stars w-screen h-screen absolute pointer-events-none inset-x-0 bottom-0 opacity-75" :class="{ accelerate: props.accelerate }">
+  <div
+    class="stars w-screen h-screen absolute pointer-events-none inset-x-0 bottom-0 opacity-75"
+    :class="{ accelerate: props.accelerate }"
+  >
     <div class="rounded-full bg-transparent" />
     <div class="rounded-full bg-transparent" />
     <div class="rounded-full bg-transparent" />

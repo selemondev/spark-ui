@@ -1,102 +1,102 @@
-<script setup lang='ts'>
-import { ref } from 'vue'
-import MobileNavHeader from './mobile-nav-header.vue'
-import MobileNavMenu from './mobile-nav-menu.vue'
-import MobileNavToggle from './mobile-nav-toggle.vue'
-import MobileNav from './mobile-nav.vue'
-import NavBody from './nav-body.vue'
-import NavItems from './nav-items.vue'
-import NavbarButton from './navbar-button.vue'
-import NavbarLogo from './navbar-logo.vue'
-import Navbar from './navbar.vue'
+<script setup lang="ts">
+import { ref } from "vue";
+import MobileNavHeader from "./mobile-nav-header.vue";
+import MobileNavMenu from "./mobile-nav-menu.vue";
+import MobileNavToggle from "./mobile-nav-toggle.vue";
+import MobileNav from "./mobile-nav.vue";
+import NavBody from "./nav-body.vue";
+import NavItems from "./nav-items.vue";
+import NavbarButton from "./navbar-button.vue";
+import NavbarLogo from "./navbar-logo.vue";
+import Navbar from "./navbar.vue";
 
-const isMenuOpen = ref(false)
+const isMenuOpen = ref(false);
 function toggleMenu() {
-  isMenuOpen.value = !isMenuOpen.value
+  isMenuOpen.value = !isMenuOpen.value;
 }
 function closeMenu() {
-  isMenuOpen.value = false
+  isMenuOpen.value = false;
 }
 
 const navItems = [
-  { name: 'Home', link: '/' },
-  { name: 'Features', link: '/features' },
-  { name: 'Pricing', link: '/pricing' },
-  { name: 'About', link: '/about' },
-  { name: 'Contact', link: '/contact' },
-]
+  { name: "Home", link: "/" },
+  { name: "Features", link: "/features" },
+  { name: "Pricing", link: "/pricing" },
+  { name: "About", link: "/about" },
+  { name: "Contact", link: "/contact" },
+];
 const boxes = [
   {
     id: 1,
-    title: 'The',
-    width: 'md:col-span-1',
-    height: 'h-60',
-    bg: 'bg-gray-100',
+    title: "The",
+    width: "md:col-span-1",
+    height: "h-60",
+    bg: "bg-gray-100",
   },
   {
     id: 2,
-    title: 'First',
-    width: 'md:col-span-2',
-    height: 'h-60',
-    bg: 'bg-gray-100',
+    title: "First",
+    width: "md:col-span-2",
+    height: "h-60",
+    bg: "bg-gray-100",
   },
   {
     id: 3,
-    title: 'Rule',
-    width: 'md:col-span-1',
-    height: 'h-60',
-    bg: 'bg-gray-100',
+    title: "Rule",
+    width: "md:col-span-1",
+    height: "h-60",
+    bg: "bg-gray-100",
   },
   {
     id: 4,
-    title: 'Of',
-    width: 'md:col-span-3',
-    height: 'h-60',
-    bg: 'bg-gray-100',
+    title: "Of",
+    width: "md:col-span-3",
+    height: "h-60",
+    bg: "bg-gray-100",
   },
   {
     id: 5,
-    title: 'F',
-    width: 'md:col-span-1',
-    height: 'h-60',
-    bg: 'bg-gray-100',
+    title: "F",
+    width: "md:col-span-1",
+    height: "h-60",
+    bg: "bg-gray-100",
   },
   {
     id: 6,
-    title: 'Club',
-    width: 'md:col-span-2',
-    height: 'h-60',
-    bg: 'bg-gray-100',
+    title: "Club",
+    width: "md:col-span-2",
+    height: "h-60",
+    bg: "bg-gray-100",
   },
   {
     id: 7,
-    title: 'Is',
-    width: 'md:col-span-2',
-    height: 'h-60',
-    bg: 'bg-gray-100',
+    title: "Is",
+    width: "md:col-span-2",
+    height: "h-60",
+    bg: "bg-gray-100",
   },
   {
     id: 8,
-    title: 'You',
-    width: 'md:col-span-1',
-    height: 'h-60',
-    bg: 'bg-gray-100',
+    title: "You",
+    width: "md:col-span-1",
+    height: "h-60",
+    bg: "bg-gray-100",
   },
   {
     id: 9,
-    title: 'Do NOT TALK about',
-    width: 'md:col-span-2',
-    height: 'h-60',
-    bg: 'bg-gray-100',
+    title: "Do NOT TALK about",
+    width: "md:col-span-2",
+    height: "h-60",
+    bg: "bg-gray-100",
   },
   {
     id: 10,
-    title: 'F Club',
-    width: 'md:col-span-1',
-    height: 'h-60',
-    bg: 'bg-gray-100',
+    title: "F Club",
+    width: "md:col-span-1",
+    height: "h-60",
+    bg: "bg-gray-100",
   },
-]
+];
 </script>
 
 <template>
@@ -106,9 +106,7 @@ const boxes = [
         <NavBody :visible="visible">
           <NavbarLogo />
           <NavItems :items="navItems" @item-click="closeMenu" />
-          <NavbarButton to="/signup" variant="primary">
-            Get Started
-          </NavbarButton>
+          <NavbarButton to="/signup" variant="primary"> Get Started </NavbarButton>
         </NavBody>
 
         <MobileNav :visible="visible">
@@ -119,7 +117,10 @@ const boxes = [
 
           <MobileNavMenu :is-open="isMenuOpen" @close="closeMenu">
             <a
-              v-for="(item, idx) in navItems" :key="`mobile-link-${idx}`" :href="item.link" class="w-full px-4 py-2 text-neutral-600 hover:bg-gray-100 rounded-md"
+              v-for="(item, idx) in navItems"
+              :key="`mobile-link-${idx}`"
+              :href="item.link"
+              class="w-full px-4 py-2 text-neutral-600 hover:bg-gray-100 rounded-md"
               @click="closeMenu"
             >
               {{ item.name }}
@@ -143,11 +144,10 @@ const boxes = [
       </p>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
         <div
-          v-for="box in boxes" :key="box.id" class="flex items-center justify-center rounded-lg p-4 shadow-sm" :class="[
-            box.width,
-            box.height,
-            box.bg,
-          ]"
+          v-for="box in boxes"
+          :key="box.id"
+          class="flex items-center justify-center rounded-lg p-4 shadow-sm"
+          :class="[box.width, box.height, box.bg]"
         >
           <h2 class="text-xl font-medium">
             {{ box.title }}

@@ -1,19 +1,20 @@
-<script setup lang='ts'>
-import { useData } from 'vitepress'
-import { computed } from 'vue'
+<script setup lang="ts">
+import { useData } from "vitepress";
+import { computed } from "vue";
 
 const props = defineProps<{
-  items: { id: string, text: string }[]
-}>()
-const { isDark } = useData()
-const currentTheme = computed(() => isDark.value ? '#1f2937' : '#f3f4f6')
+  items: { id: string; text: string }[];
+}>();
+const { isDark } = useData();
+const currentTheme = computed(() => (isDark.value ? "#1f2937" : "#f3f4f6"));
 </script>
 
 <template>
   <div>
     <div class="flex items-center justify-center">
       <div
-        class="relative w-full max-w-screen-lg overflow-hidden" :style="{
+        class="relative w-full max-w-screen-lg overflow-hidden"
+        :style="{
           maskComposite: 'intersect',
           maskImage: `
           linear-gradient(to right,  transparent, black 5rem),
@@ -23,15 +24,24 @@ const currentTheme = computed(() => isDark.value ? '#1f2937' : '#f3f4f6')
         `,
         }"
       >
-        <div class="mx-auto h-96 md:h-full grid animate-skew-scroll grid-cols-1 gap-5 sm:grid-cols-2">
+        <div
+          class="mx-auto h-96 md:h-full grid animate-skew-scroll grid-cols-1 gap-5 sm:grid-cols-2"
+        >
           <div v-for="item in props.items" :key="item.id">
             <div
               :key="item.id"
-              class="flex cursor-pointer w-56 md:w-56 lg:w-72 px-6 py-1 items-center space-x-2 rounded-md border-parent shadow-md transition-all hover:-translate-y-1 hover:translate-x-1 hover:scale-[1.025] hover:shadow-xl "
+              class="flex cursor-pointer w-56 md:w-56 lg:w-72 px-6 py-1 items-center space-x-2 rounded-md border-parent shadow-md transition-all hover:-translate-y-1 hover:translate-x-1 hover:scale-[1.025] hover:shadow-xl"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
-                stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 class="h-6 w-6 flex-none text-red-500"
               >
                 <path

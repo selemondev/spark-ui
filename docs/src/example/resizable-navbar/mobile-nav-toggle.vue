@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { Menu, X } from '@lucide/vue'
+import { Menu, X } from "@lucide/vue";
 
 defineProps<{
-  isOpen: boolean
-}>()
+  isOpen: boolean;
+}>();
 
-const emit = defineEmits(['click'])
+const emit = defineEmits(["click"]);
 
 function handleClick() {
-  emit('click')
+  emit("click");
 }
 </script>
 

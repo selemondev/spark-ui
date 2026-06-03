@@ -1,47 +1,50 @@
-<script setup lang='ts'>
-import { ref, watch } from 'vue'
-import { cn } from '../../lib/utils'
+<script setup lang="ts">
+import { ref, watch } from "vue";
+import { cn } from "../../lib/utils";
 
 interface TypingAnimationProps {
-  text: string
-  duration?: number
-  class?: string
+  text: string;
+  duration?: number;
+  class?: string;
 }
 
 const props = withDefaults(defineProps<TypingAnimationProps>(), {
   duration: 300,
-})
+});
 
-const displayedText = ref('')
-const i = ref(0)
+const displayedText = ref("");
+const i = ref(0);
 
 function handleTypingEffect(d: number, n: number) {
   const typingEffect = setInterval(() => {
     if (n < props.text.length) {
-      displayedText.value = props.text.substring(0, n + 1)
-      n = n + 1
+      displayedText.value = props.text.substring(0, n + 1);
+      n = n + 1;
+    } else {
+      clearInterval(typingEffect);
     }
-    else {
-      clearInterval(typingEffect)
-    }
-  }, d)
+  }, d);
 
   return () => {
-    clearInterval(typingEffect)
-  }
+    clearInterval(typingEffect);
+  };
 }
 
-watch(() => [props.duration, i.value], ([d, n]) => {
-  handleTypingEffect(d, n)
-}, {
-  deep: true,
-  immediate: true,
-})
+watch(
+  () => [props.duration, i.value],
+  ([d, n]) => {
+    handleTypingEffect(d, n);
+  },
+  {
+    deep: true,
+    immediate: true,
+  },
+);
 
 const className = cn(
-  'font-sans text-center text-4xl font-bold leading-[5rem] tracking-[-0.02em] drop-shadow-sm dark:text-white',
+  "font-sans text-center text-4xl font-bold leading-[5rem] tracking-[-0.02em] drop-shadow-sm dark:text-white",
   props.class,
-)
+);
 </script>
 
 <template>

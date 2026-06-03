@@ -1,5 +1,5 @@
-<script setup lang='ts'>
-import TypingAnimation from '../../components/spark-ui/typing-animation/typing-animation.vue'
+<script setup lang="ts">
+import TypingAnimation from "../../components/spark-ui/typing-animation/typing-animation.vue";
 </script>
 
 <template>

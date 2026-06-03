@@ -1,8 +1,8 @@
 <script setup lang="ts">
 defineProps<{
-  isOpen: boolean
-  className?: string
-}>()
+  isOpen: boolean;
+  className?: string;
+}>();
 </script>
 
 <template>

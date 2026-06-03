@@ -1,109 +1,96 @@
-import type { MarkdownRenderer } from 'vitepress'
-import type { DemoInfos } from './types'
-import { dirname, join, sep } from 'node:path'
-import fsExtra from 'fs-extra'
-import { DemoTag } from './constants'
+import type { MarkdownRenderer } from "vitepress";
+import type { DemoInfos } from "./types";
+import { dirname, join, sep } from "node:path";
+import fsExtra from "fs-extra";
+import { DemoTag } from "./constants";
 
-const scriptRE = /<\/script>/
-const scriptLangTsRE = /<\s*script[^>]*\blang=['"]ts['"][^>]*/
-const scriptSetupRE = /<\s*script[^>]*\bsetup\b[^>]*/
-const scriptClientRE = /<\s*script[^>]*\bclient\b[^>]*/
+const scriptRE = /<\/script>/;
+const scriptLangTsRE = /<\s*script[^>]*\blang=['"]ts['"][^>]*/;
+const scriptSetupRE = /<\s*script[^>]*\bsetup\b[^>]*/;
+const scriptClientRE = /<\s*script[^>]*\bclient\b[^>]*/;
 
-let index = 1
+let index = 1;
 export function getDemoComponent(
   md: MarkdownRenderer,
   env: any,
   { title, desc, path, code, sourceCode, ...props }: DemoInfos,
 ) {
-  const componentName = `DemoComponent${index++}`
-  path = normalizePath(path)
-  const github = `https://github.com/selemondev/spark-ui/blob/dev/docs/${path.split('/').slice(-4).join('/')}`
+  const componentName = `DemoComponent${index++}`;
+  path = normalizePath(path);
+  const github = `https://github.com/selemondev/spark-ui/blob/dev/docs/${path.split("/").slice(-4).join("/")}`;
 
-  injectImportStatement(env, componentName, path)
+  injectImportStatement(env, componentName, path);
 
-  const highlightedCode = md.options.highlight!(sourceCode, props.lang || 'vue', '')
+  const highlightedCode = md.options.highlight!(sourceCode, props.lang || "vue", "");
   return `
     <${DemoTag}
       code="${encodeURIComponent(sourceCode)}"
       highlightedCode="${encodeURIComponent(highlightedCode)}"
       src="${path}"
-      title="${title ?? ''}"
-      desc="${desc ?? ''}"
+      title="${title ?? ""}"
+      desc="${desc ?? ""}"
       github="${github}"
     >
         <${componentName}></${componentName}>
     </${DemoTag}>
-  `.trim()
+  `.trim();
 }
 
-let fenceIndex = 1
-export function genDemoByCode(
-  md: MarkdownRenderer,
-  env: any,
-  path: string,
-  code: string,
-) {
-  let demoName = ''
-  let demoPath = ''
+let fenceIndex = 1;
+export function genDemoByCode(md: MarkdownRenderer, env: any, path: string, code: string) {
+  let demoName = "";
+  let demoPath = "";
 
   while (true) {
-    demoName = `demo-${fenceIndex++}.vue`
-    demoPath = join(dirname(path), demoName)
-    if (!fsExtra.existsSync(demoPath))
-      break
+    demoName = `demo-${fenceIndex++}.vue`;
+    demoPath = join(dirname(path), demoName);
+    if (!fsExtra.existsSync(demoPath)) break;
   }
 
-  fsExtra.createFileSync(demoPath)
-  fsExtra.writeFileSync(demoPath, code)
+  fsExtra.createFileSync(demoPath);
+  fsExtra.writeFileSync(demoPath, code);
 
   return getDemoComponent(md, env, {
     path: demoPath,
-    sourceCode,
-  })
+    code,
+    sourceCode: code,
+  });
 }
 
 function normalizePath(path: string) {
-  return path.split(sep).join('/')
+  return path.split(sep).join("/");
 }
 
-function injectImportStatement(
-  env: any,
-  componentName: string,
-  path: string,
-) {
-  const componentRegistStatement
-    = `import ${componentName} from '${path}'`.trim()
+function injectImportStatement(env: any, componentName: string, path: string) {
+  const componentRegistStatement = `import ${componentName} from '${path}'`.trim();
 
-  if (!env?.sfcBlocks?.scripts)
-    env.sfcBlocks.scripts = []
-  const tags = env.sfcBlocks.scripts as { content: string }[]
+  if (!env?.sfcBlocks?.scripts) env.sfcBlocks.scripts = [];
+  const tags = env.sfcBlocks.scripts as { content: string }[];
 
-  const isUsingTS
-    = tags.findIndex(tag => scriptLangTsRE.test(tag.content)) > -1
+  const isUsingTS = tags.findIndex((tag) => scriptLangTsRE.test(tag.content)) > -1;
   const existingSetupScriptIndex = tags?.findIndex((tag) => {
     return (
-      scriptRE.test(tag.content)
-      && scriptSetupRE.test(tag.content)
-      && !scriptClientRE.test(tag.content)
-    )
-  })
+      scriptRE.test(tag.content) &&
+      scriptSetupRE.test(tag.content) &&
+      !scriptClientRE.test(tag.content)
+    );
+  });
 
   if (existingSetupScriptIndex > -1) {
-    const tagSrc = tags[existingSetupScriptIndex]
+    const tagSrc = tags[existingSetupScriptIndex];
     tags[existingSetupScriptIndex].content = tagSrc.content.replace(
       scriptRE,
       `${componentRegistStatement}
 
       </script>`,
-    )
-  }
-  else {
+    );
+  } else {
     tags.unshift({
       content: `
-        <script ${isUsingTS ? 'lang="ts"' : ''} setup >
+        <script ${isUsingTS ? 'lang="ts"' : ""} setup >
           ${componentRegistStatement}
         </script>
       `.trim(),
-    })
+    });
   }
 }

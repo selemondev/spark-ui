@@ -1,7 +1,7 @@
-<script setup lang='ts'>
-import AnimatedSpan from './animated-span.vue'
-import Terminal from './terminal.vue'
-import TypingAnimation from './typing-animation.vue'
+<script setup lang="ts">
+import AnimatedSpan from "./animated-span.vue";
+import Terminal from "./terminal.vue";
+import TypingAnimation from "./typing-animation.vue";
 </script>
 
 <template>

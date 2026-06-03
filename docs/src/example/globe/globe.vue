@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import createGlobe from 'cobe'
-import { onMounted, ref } from 'vue'
-import { useSpring } from 'vue-use-spring'
+import createGlobe from "cobe";
+import { onMounted, ref } from "vue";
+import { useSpring } from "vue-use-spring";
 
-const canvasRef = ref<HTMLCanvasElement | null>(null)
-const pointerInteracting = ref<number | null>(null)
-const pointerInteractionMovement = ref(0)
-const phi = ref(0)
+const canvasRef = ref<HTMLCanvasElement | null>(null);
+const pointerInteracting = ref<number | null>(null);
+const pointerInteractionMovement = ref(0);
+const phi = ref(0);
 
 const api = useSpring(
   { r: 0 },
@@ -16,7 +16,7 @@ const api = useSpring(
     friction: 40,
     precision: 0.001,
   },
-)
+);
 
 onMounted(() => {
   createGlobe(canvasRef.value!, {
@@ -42,42 +42,42 @@ onMounted(() => {
       if (!pointerInteracting.value) {
         // Called on every animation frame.
         // `state` will be an empty object, return updated params.
-        phi.value += 0.005
+        phi.value += 0.005;
       }
-      state.phi = phi.value + api.r
+      state.phi = phi.value + api.r;
     },
-  })
-  canvasRef.value!.style.opacity = '1'
-})
+  });
+  canvasRef.value!.style.opacity = "1";
+});
 
 function handlePointerDown(e: PointerEvent) {
-  pointerInteracting.value = e.clientX - pointerInteractionMovement.value
-  canvasRef.value!.style.cursor = 'grabbing'
+  pointerInteracting.value = e.clientX - pointerInteractionMovement.value;
+  canvasRef.value!.style.cursor = "grabbing";
 }
 
 function handlePointerUp(_: PointerEvent) {
-  pointerInteracting.value = null
-  canvasRef.value!.style.cursor = 'grab'
+  pointerInteracting.value = null;
+  canvasRef.value!.style.cursor = "grab";
 }
 
 function handlePointerOut(_: PointerEvent) {
-  pointerInteracting.value = null
-  canvasRef.value!.style.cursor = 'grab'
+  pointerInteracting.value = null;
+  canvasRef.value!.style.cursor = "grab";
 }
 
 function handleMouseMove(e: MouseEvent) {
   if (pointerInteracting.value !== null) {
-    const delta = e.clientX - pointerInteracting.value
-    pointerInteractionMovement.value = delta
-    api.r = delta / 200
+    const delta = e.clientX - pointerInteracting.value;
+    pointerInteractionMovement.value = delta;
+    api.r = delta / 200;
   }
 }
 
 function handleTouchMove(e: TouchEvent) {
   if (pointerInteracting.value !== null && e.touches[0]) {
-    const delta = e.touches[0].clientX - pointerInteracting.value
-    pointerInteractionMovement.value = delta
-    api.r = delta / 100
+    const delta = e.touches[0].clientX - pointerInteracting.value;
+    pointerInteractionMovement.value = delta;
+    api.r = delta / 100;
   }
 }
 </script>

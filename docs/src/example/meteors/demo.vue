@@ -1,5 +1,5 @@
-<script setup lang='ts'>
-import Meteors from './meteors.vue'
+<script setup lang="ts">
+import Meteors from "./meteors.vue";
 </script>
 
 <template>

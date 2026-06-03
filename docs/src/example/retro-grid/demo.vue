@@ -1,5 +1,5 @@
-<script setup lang='ts'>
-import RetroGrid from './retro-grid.vue'
+<script setup lang="ts">
+import RetroGrid from "./retro-grid.vue";
 </script>
 
 <template>

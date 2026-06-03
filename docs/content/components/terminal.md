@@ -17,28 +17,31 @@ Copy and paste the following code into your project:
 ::: code-group
 
 ```vue [animated-span.vue]
-<script setup lang='ts'>
-import type { MotionProps } from 'motion-v'
-import { motion } from 'motion-v'
-import { cn } from '@/lib/utils'
+<script setup lang="ts">
+import type { MotionProps } from "motion-v";
+import { motion } from "motion-v";
+import { cn } from "@/lib/utils";
 interface AnimatedSpanProps extends MotionProps {
-  delay?: number
-  className?: string
-};
+  delay?: number;
+  className?: string;
+}
 const props = withDefaults(defineProps<AnimatedSpanProps>(), {
-  delay: 0
-})
+  delay: 0,
+});
 </script>
 
 <template>
   <motion.div
-    :initial="{ opacity: 0, y: -5 }" :animate="{
-      opacity: 1, y: 0,
-    }" :transition="{
-      duration: 0.3, delay: props.delay / 1000,
-    }" :class="cn(
-      'grid text-sm font-normal tracking-tight', props.className,
-    )"
+    :initial="{ opacity: 0, y: -5 }"
+    :animate="{
+      opacity: 1,
+      y: 0,
+    }"
+    :transition="{
+      duration: 0.3,
+      delay: props.delay / 1000,
+    }"
+    :class="cn('grid text-sm font-normal tracking-tight', props.className)"
   >
     <slot />
   </motion.div>
@@ -46,20 +49,22 @@ const props = withDefaults(defineProps<AnimatedSpanProps>(), {
 ```
 
 ```vue [terminal.vue]
-<script setup lang='ts'>
-import { cn } from '@/lib/utils'
+<script setup lang="ts">
+import { cn } from "@/lib/utils";
 interface TerminalProps {
-  className?: string
-};
-const props = defineProps<TerminalProps>()
+  className?: string;
+}
+const props = defineProps<TerminalProps>();
 </script>
 
 <template>
   <div
-    :class="cn(
-      'z-0 min-h-[300px] w-full max-w-lg rounded-xl border border-gray-300 bg-background',
-      props.className,
-    )"
+    :class="
+      cn(
+        'z-0 min-h-[300px] w-full max-w-lg rounded-xl border border-gray-300 bg-background',
+        props.className,
+      )
+    "
   >
     <div class="flex flex-col gap-y-2 border-b border-gray-300 p-4">
       <div class="flex flex-row gap-x-2">
@@ -79,75 +84,69 @@ const props = defineProps<TerminalProps>()
 
 ```vue [typing-animation.vue]
 <script setup lang="ts">
-import type { MotionProps } from 'motion-v'
-import { motion } from 'motion-v'
-import { nextTick, ref, useSlots, watch } from 'vue'
-import { cn } from '@/lib/utils'
+import type { MotionProps } from "motion-v";
+import { motion } from "motion-v";
+import { nextTick, ref, useSlots, watch } from "vue";
+import { cn } from "@/lib/utils";
 
 interface TypingAnimationProps extends MotionProps {
-  className?: string
-  duration?: number
-  delay?: number
+  className?: string;
+  duration?: number;
+  delay?: number;
 }
 
 const props = withDefaults(defineProps<TypingAnimationProps>(), {
   duration: 60,
-  delay: 0
-})
+  delay: 0,
+});
 
-const MotionComponent = motion.create('span', {
-  forwardMotionProps: true
-})
+const MotionComponent = motion.create("span", {
+  forwardMotionProps: true,
+});
 
-const displayedText = ref('')
-const started = ref(false)
-const slots = useSlots()
+const displayedText = ref("");
+const started = ref(false);
+const slots = useSlots();
 
 watch(
   () => props.delay,
   (val) => {
     const startTimeout = setTimeout(() => {
-      started.value = true
-    }, val)
-    return () => clearTimeout(startTimeout)
+      started.value = true;
+    }, val);
+    return () => clearTimeout(startTimeout);
   },
-  { immediate: true }
-)
+  { immediate: true },
+);
 
 watch(
   () => [props.duration, started.value],
   async () => {
-    if (!started.value)
-      return
+    if (!started.value) return;
 
-    await nextTick()
+    await nextTick();
 
-    const slotContent = slots.default?.()?.[0]?.children ?? ''
-    if (typeof slotContent !== 'string')
-      return
+    const slotContent = slots.default?.()?.[0]?.children ?? "";
+    if (typeof slotContent !== "string") return;
 
-    let i = 0
-    displayedText.value = ''
+    let i = 0;
+    displayedText.value = "";
     const typingEffect = setInterval(() => {
       if (i < slotContent.length) {
-        displayedText.value = slotContent.substring(0, i + 1)
-        i++
+        displayedText.value = slotContent.substring(0, i + 1);
+        i++;
+      } else {
+        clearInterval(typingEffect);
       }
-      else {
-        clearInterval(typingEffect)
-      }
-    }, props.duration)
+    }, props.duration);
 
-    return () => clearInterval(typingEffect)
-  }
-)
+    return () => clearInterval(typingEffect);
+  },
+);
 </script>
 
 <template>
-  <MotionComponent
-
-    :class="cn('text-sm font-normal tracking-tight', props.className)"
-  >
+  <MotionComponent :class="cn('text-sm font-normal tracking-tight', props.className)">
     {{ displayedText }}
   </MotionComponent>
 </template>

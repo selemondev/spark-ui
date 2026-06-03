@@ -1,5 +1,5 @@
-<script setup lang='ts'>
-import Globe from './globe.vue'
+<script setup lang="ts">
+import Globe from "./globe.vue";
 </script>
 
 <template>

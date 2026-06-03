@@ -1,42 +1,42 @@
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes } from "vue";
 
 export const demoProps = {
   github: {
     type: String,
-    default: 'https://github.com/selemondev/spark-ui',
+    default: "https://github.com/selemondev/spark-ui",
   },
   codeSandBox: {
     type: String,
-    default: 'https://codesandbox.io/',
+    default: "https://codesandbox.io/",
   },
   highlightedCode: {
     type: String,
-    default: '',
+    default: "",
   },
   code: {
     type: String,
-    default: '',
+    default: "",
   },
   srcCode: {
     type: String,
-    default: '',
+    default: "",
   },
   title: {
     type: String,
-    default: '',
+    default: "",
   },
   desc: {
     type: String,
-    default: '',
+    default: "",
   },
   lang: {
     type: String,
-    default: 'vue',
+    default: "vue",
   },
   expand: {
     type: Boolean,
     default: false,
   },
-} as const
+} as const;
 
-export type DemoProps = ExtractPropTypes<typeof demoProps>
+export type DemoProps = ExtractPropTypes<typeof demoProps>;

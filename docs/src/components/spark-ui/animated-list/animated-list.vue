@@ -1,33 +1,36 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref, useSlots } from 'vue'
-import { cn } from '../../../lib/utils'
+import { computed, onMounted, ref, useSlots } from "vue";
+import { cn } from "../../../lib/utils";
 
-const props = withDefaults(defineProps<{
-  class?: string
-  delay?: number
-}>(), {
-  delay: 1000,
-})
+const props = withDefaults(
+  defineProps<{
+    class?: string;
+    delay?: number;
+  }>(),
+  {
+    delay: 1000,
+  },
+);
 
-const slots = useSlots()
-const index = ref(0)
-const slotsArray = ref<any>([])
+const slots = useSlots();
+const index = ref(0);
+const slotsArray = ref<any>([]);
 
 const itemsToShow = computed(() => {
-  return slotsArray.value.slice(0, index.value)
-})
+  return slotsArray.value.slice(0, index.value);
+});
 
 async function loadComponents() {
-  slotsArray.value = slots.default ? slots.default()[0].children : []
+  slotsArray.value = slots.default ? slots.default()[0].children : [];
 
   while (index.value < slotsArray.value.length) {
-    index.value++
-    await delay(props.delay)
+    index.value++;
+    await delay(props.delay);
   }
 }
 
 async function delay(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function getInitial(idx: number) {
@@ -36,7 +39,7 @@ function getInitial(idx: number) {
         scale: 0,
         opacity: 0,
       }
-    : undefined
+    : undefined;
 }
 function getEnter(idx: number) {
   return idx === index.value - 1
@@ -45,12 +48,12 @@ function getEnter(idx: number) {
         opacity: 1,
         y: 0,
         transition: {
-          type: 'spring',
+          type: "spring",
           stiffness: 250,
           damping: 40,
         },
       }
-    : undefined
+    : undefined;
 }
 
 function getLeave() {
@@ -59,22 +62,32 @@ function getLeave() {
     opacity: 0,
     y: 0,
     transition: {
-      type: 'spring',
+      type: "spring",
       stiffness: 350,
       damping: 40,
     },
-  }
-};
+  };
+}
 
-onMounted(() => loadComponents())
+onMounted(() => loadComponents());
 </script>
 
 <template>
   <div :class="cn('border w-[600px] h-[370px] shadow-lg overflow-auto rounded-lg', $props.class)">
-    <transition-group name="list" tag="div" class="flex flex-col-reverse items-center p-2" move-class="move">
+    <transition-group
+      name="list"
+      tag="div"
+      class="flex flex-col-reverse items-center p-2"
+      move-class="move"
+    >
       <div
-        v-for="(item, idx) in itemsToShow" :key="idx" v-motion :initial="getInitial(idx)"
-        :enter="getEnter(idx)" :leave="getLeave()" :class="cn('mx-auto w-full')"
+        v-for="(item, idx) in itemsToShow"
+        :key="idx"
+        v-motion
+        :initial="getInitial(idx)"
+        :enter="getEnter(idx)"
+        :leave="getLeave()"
+        :class="cn('mx-auto w-full')"
       >
         <component :is="item" />
       </div>
