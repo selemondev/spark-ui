@@ -91,19 +91,19 @@ All discovery resources are available at standard `.well-known` paths:
 
 ```bash
 # API Catalog
-curl https://spark-ui.vercel.app/.well-known/api-catalog
+curl https://ui.selemon.dev/.well-known/api-catalog
 
 # MCP Server Card
-curl https://spark-ui.vercel.app/.well-known/mcp/server-card.json
+curl https://ui.selemon.dev/.well-known/mcp/server-card.json
 
 # Agent Skills Index
-curl https://spark-ui.vercel.app/.well-known/agent-skills/index.json
+curl https://ui.selemon.dev/.well-known/agent-skills/index.json
 
 # Robots.txt
-curl https://spark-ui.vercel.app/robots.txt
+curl https://ui.selemon.dev/robots.txt
 
 # Sitemap
-curl https://spark-ui.vercel.app/sitemap.xml
+curl https://ui.selemon.dev/sitemap.xml
 ```
 
 ### WebMCP Integration

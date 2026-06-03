@@ -89,9 +89,9 @@ These resources enable:
 
 You can verify these resources are properly configured:
 
-- Check robots.txt: https://spark-ui.vercel.app/robots.txt
-- Check sitemap: https://spark-ui.vercel.app/sitemap.xml
-- Check API catalog: https://spark-ui.vercel.app/.well-known/api-catalog
-- Check MCP card: https://spark-ui.vercel.app/.well-known/mcp/server-card.json
-- Check agent skills: https://spark-ui.vercel.app/.well-known/agent-skills/index.json
+- Check robots.txt: https://ui.selemon.dev/robots.txt
+- Check sitemap: https://ui.selemon.dev/sitemap.xml
+- Check API catalog: https://ui.selemon.dev/.well-known/api-catalog
+- Check MCP card: https://ui.selemon.dev/.well-known/mcp/server-card.json
+- Check agent skills: https://ui.selemon.dev/.well-known/agent-skills/index.json
 - Test with: https://isitagentready.com/

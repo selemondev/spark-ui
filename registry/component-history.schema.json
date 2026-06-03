@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://spark-ui.dev/schemas/component-history.schema.json",
+  "$id": "https://ui.selemon.dev/schemas/component-history.schema.json",
   "title": "MagicUI Sync History",
   "type": "object",
   "required": ["generatedAt", "components"],

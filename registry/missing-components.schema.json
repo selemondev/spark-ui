@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://spark-ui.dev/schemas/missing-components.schema.json",
+  "$id": "https://ui.selemon.dev/schemas/missing-components.schema.json",
   "title": "Missing MagicUI Components",
   "type": "object",
   "required": ["generatedAt", "count", "components"],

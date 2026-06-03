@@ -12,7 +12,7 @@
   },
   "transport": {
     "type": "http",
-    "endpoint": "https://spark-ui.vercel.app"
+    "endpoint": "https://ui.selemon.dev"
   },
   "resources": [
     {
@@ -29,8 +29,8 @@
     }
   ],
   "links": {
-    "documentation": "https://spark-ui.vercel.app/content/guide/getting-started/",
+    "documentation": "https://ui.selemon.dev/content/guide/getting-started/",
     "repository": "https://github.com/selemondev/spark-ui",
-    "homepage": "https://spark-ui.vercel.app"
+    "homepage": "https://ui.selemon.dev"
   }
 }

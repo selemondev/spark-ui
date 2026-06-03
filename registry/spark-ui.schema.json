@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://spark-ui.dev/schemas/spark-ui.schema.json",
+  "$id": "https://ui.selemon.dev/schemas/spark-ui.schema.json",
   "title": "SparkUI Registry",
   "type": "object",
   "required": ["generatedAt", "source", "components"],

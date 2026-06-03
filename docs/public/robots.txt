@@ -41,4 +41,4 @@ Allow: /
 Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Sitemap
-Sitemap: https://spark-ui.vercel.app/sitemap.xml
+Sitemap: https://ui.selemon.dev/sitemap.xml
