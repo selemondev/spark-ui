@@ -1,24 +1,37 @@
-# Animation Migration Rules
+# Animation Migration Rules (Framer Motion to Motion for Vue)
 
-Framer Motion behavior must be migrated to Motion for Vue. Do not replace advanced Framer Motion behavior with plain CSS animations.
+When a MagicUI source component uses Framer Motion (`framer-motion` or `motion/react`), migrate its behavior to Motion for Vue (the `motion-v` package). Preserve the animation's intent and feel; do not downgrade rich, interactive motion into plain CSS.
 
-## Required Mappings
+## Imports
 
-- `motion.*` React elements become Motion for Vue components or directives.
-- Framer variants become equivalent Vue-side variant objects.
-- Spring transitions preserve stiffness, damping, mass, bounce, and duration where possible.
-- Stagger orchestration must preserve parent/child timing.
-- `whileHover`, `whileTap`, drag, pan, and gesture states must remain interactive.
-- Viewport and in-view animations must stay viewport-aware.
-- Scroll-linked animations must stay scroll-linked.
-- Layout animations and shared layout concepts must be preserved when the library supports them.
-- `AnimatePresence` behavior must be represented with Vue transitions or Motion for Vue presence APIs when available.
+Import primitives from `motion-v`, mirroring the React API:
+
+```ts
+import type { MotionProps } from 'motion-v'
+import { AnimatePresence, motion, useMotionValue, useScroll, useSpring, useTransform } from 'motion-v'
+```
+
+## Required Behavior Mappings
+
+| Framer Motion (React)                         | Motion for Vue (`motion-v`)                                                          |
+| --------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `motion.*` elements                           | `<motion.* />` components or directives                                              |
+| `variants` objects                            | Equivalent Vue-side variant objects                                                  |
+| Spring transitions                            | Preserve `stiffness`, `damping`, `mass`, `bounce`, and `duration` where possible     |
+| Stagger orchestration                         | Preserve parent/child timing                                                         |
+| `whileHover`, `whileTap`, drag, pan, gestures | Keep interactive and gesture-aware                                                   |
+| Viewport / in-view animations                 | Stay viewport-aware                                                                  |
+| Scroll-linked animations (`useScroll`)        | Stay scroll-linked                                                                   |
+| Layout / shared-layout animations             | Preserve when `motion-v` supports them                                               |
+| `AnimatePresence`                             | Use the `motion-v` presence API, or Vue transitions when no direct equivalent exists |
 
 ## Forbidden Simplifications
 
-- Do not convert Framer Motion springs to generic CSS `transition` values.
-- Do not replace scroll or viewport animation with a one-time CSS animation.
-- Do not remove gestures because Vue syntax is different.
+- Do not convert Framer Motion springs into generic CSS `transition` values.
+- Do not replace scroll-linked or viewport animation with a one-time CSS animation.
+- Do not drop gestures because the Vue syntax differs.
 - Do not flatten variants into static classes.
 
-If a Motion for Vue feature is unavailable, document the limitation in the PR and preserve the closest equivalent behavior with Vue and browser APIs.
+## When a Feature Is Missing
+
+If a Motion for Vue feature is unavailable, document the limitation in the pull request and preserve the closest equivalent behavior using `motion-v`, Vue transitions, and guarded browser APIs.
