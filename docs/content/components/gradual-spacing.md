@@ -2,13 +2,13 @@
 
 Word animation for gradual spacing between letters
 
-<demo src="../../src/example/gradualSpacing/Demo.vue" srcCode="../../src/spark-ui-demos/gradualSpacing/GradualSpacing.vue" />
+<demo src="../../src/example/gradual-spacing/demo.vue" srcCode="../../src/spark-ui-demos/gradual-spacing/gradual-spacing.vue" />
 
 ## Installation
 
 Copy and paste the following code into your project:
 
-```vue [GradualSpacing.vue]
+```vue [gradual-spacing.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 

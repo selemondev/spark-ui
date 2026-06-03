@@ -2,13 +2,13 @@
 
 A background dot pattern made with SVGs, fully customizable using Tailwind CSS.
 
-<demo src="../../src/example/dotPattern/Demo.vue" srcCode="../../src/spark-ui-demos/dotPattern/DotPattern.vue" />
+<demo src="../../src/example/dot-pattern/demo.vue" srcCode="../../src/spark-ui-demos/dot-pattern/dot-pattern.vue" />
 
 ## Installation
 
 Copy and paste the following code into your project:
 
-```vue [DotPattern.vue]
+```vue [dot-pattern.vue]
 <script setup lang='ts'>
 import { useId } from 'vue'
 import { cn } from '@/lib/utils'
@@ -61,7 +61,7 @@ const id = `pattern-${useId()}`
 
 #### Linear Gradient
 
-<demo src="../../src/example/dotPattern/DotPatternLinearGradient.vue" srcCode="../../src/spark-ui-demos/dotPattern/DotPatternLinearGradient.vue" />
+<demo src="../../src/example/dot-pattern/dot-pattern-linear-gradient.vue" srcCode="../../src/spark-ui-demos/dot-pattern/dot-pattern-linear-gradient.vue" />
 
 ## Props
 

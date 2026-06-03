@@ -48,25 +48,25 @@ features:
 ---
 
 <script setup>
-import Demos from './src/components/Demos.vue'
+import Demos from './src/components/demos.vue'
 </script>
 
 <Demos />
 
-<demo src="./src/example/animatedList/Demo.vue" srcCode="./src/example/animatedList/Demo.vue" />
+<demo src="./src/example/animated-list/demo.vue" srcCode="./src/example/animated-list/demo.vue" />
 
-<demo src="./src/example/meteors/Demo.vue" srcCode="./src/example/meteors/Demo.vue" />
+<demo src="./src/example/meteors/demo.vue" srcCode="./src/example/meteors/demo.vue" />
 
-<demo src="./src/example/animatedGradientText/Demo.vue" srcCode="./src/example/animatedGradientText/Demo.vue" />
+<demo src="./src/example/animated-gradient-text/demo.vue" srcCode="./src/example/animated-gradient-text/demo.vue" />
 
-<demo src="./src/example/skewedInfiniteScroll/Demo.vue" srcCode="./src/example/skewedInfiniteScroll/Demo.vue" />
+<demo src="./src/example/skewed-infinite-scroll/demo.vue" srcCode="./src/example/skewed-infinite-scroll/demo.vue" />
 
-<demo src="./src/example/animatedShinyText/Demo.vue" srcCode="./src/example/animatedShinyText/Demo.vue" />
+<demo src="./src/example/animated-shiny-text/demo.vue" srcCode="./src/example/animated-shiny-text/demo.vue" />
 
-<demo src="./src/example/retroGrid/Demo.vue" srcCode="./src/example/retroGrid/Demo.vue" />
+<demo src="./src/example/retro-grid/demo.vue" srcCode="./src/example/retro-grid/demo.vue" />
 
-<demo src="./src/example/blurFade/Demo.vue" srcCode="./src/example/blurFade/Demo.vue" />
+<demo src="./src/example/blur-fade/demo.vue" srcCode="./src/example/blur-fade/demo.vue" />
 
-<demo src="./src/example/blurIn/Demo.vue" srcCode="./src/example/blurIn/Demo.vue" />
+<demo src="./src/example/blur-in/demo.vue" srcCode="./src/example/blur-in/demo.vue" />
 
-<demo src="./src/example/globe/Demo.vue" srcCode="./src/example/globe/Demo.vue" />
+<demo src="./src/example/globe/demo.vue" srcCode="./src/example/globe/demo.vue" />

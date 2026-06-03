@@ -1,0 +1,459 @@
+{
+  "$schema": "./spark-ui.schema.json",
+  "generatedAt": "2026-06-03T01:37:16.931Z",
+  "source": {
+    "componentRoot": "docs/src/components/spark-ui",
+    "docsRoot": "docs/content/components",
+    "exampleRoots": [
+      "docs/src/example",
+      "docs/src/spark-ui-demos"
+    ],
+    "testsRoot": "tests"
+  },
+  "components": [
+    {
+      "name": "AnimatedBeam",
+      "slug": "animated-beam",
+      "path": "docs/src/components/spark-ui/animated-beam",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/animated-beam/animated-beam.vue",
+        "docs/src/components/spark-ui/animated-beam/circle.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/animated-beam.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/animated-beam/animated-beam-bi-directional.vue",
+        "docs/src/example/animated-beam/animated-beam-multiple-inputs.vue",
+        "docs/src/example/animated-beam/animated-beam-uni-directional.vue",
+        "docs/src/example/animated-beam/animated-beam.vue",
+        "docs/src/example/animated-beam/circle.vue",
+        "docs/src/example/animated-beam/demo.vue",
+        "docs/src/spark-ui-demos/animated-beam/animated-beam-bi-directional.vue",
+        "docs/src/spark-ui-demos/animated-beam/animated-beam-multiple-inputs.vue",
+        "docs/src/spark-ui-demos/animated-beam/animated-beam-uni-directional.vue",
+        "docs/src/spark-ui-demos/animated-beam/animated-beam.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "AnimatedGradientText",
+      "slug": "animated-gradient-text",
+      "path": "docs/src/components/spark-ui/animated-gradient-text",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/animated-gradient-text/animated-gradient-text.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/animated-gradient-text.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/animated-gradient-text/animated-gradient-text.vue",
+        "docs/src/example/animated-gradient-text/demo.vue",
+        "docs/src/spark-ui-demos/animated-gradient-text/animated-gradient-text.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "AnimatedList",
+      "slug": "animated-list",
+      "path": "docs/src/components/spark-ui/animated-list",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/animated-list/animated-list.vue",
+        "docs/src/components/spark-ui/animated-list/notification.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/animated-list.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/animated-list/animated-list.vue",
+        "docs/src/example/animated-list/demo.vue",
+        "docs/src/example/animated-list/notification.vue",
+        "docs/src/spark-ui-demos/animated-list/animated-list.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "AnimatedShinyText",
+      "slug": "animated-shiny-text",
+      "path": "docs/src/components/spark-ui/animated-shiny-text",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/animated-shiny-text/animated-shiny-text.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/animated-shiny-text.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/animated-shiny-text/animated-shiny-text.vue",
+        "docs/src/example/animated-shiny-text/demo.vue",
+        "docs/src/spark-ui-demos/animated-shiny-text/animated-shiny-text.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "AvatarCircles",
+      "slug": "avatar-circles",
+      "path": "docs/src/components/spark-ui/avatar-circles",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/avatar-circles/avatar-circles.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/avatar-circles.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/avatar-circles/avatar-circles.vue",
+        "docs/src/example/avatar-circles/demo.vue",
+        "docs/src/spark-ui-demos/avatar-circles/avatar-circles.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "BentoGrid",
+      "slug": "bento-grid",
+      "path": "docs/src/components/spark-ui/bento-grid",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/bento-grid/bento-card.vue",
+        "docs/src/components/spark-ui/bento-grid/bento-grid.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/bento-grid.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/bento-grid/bento-card.vue",
+        "docs/src/example/bento-grid/bento-grid.vue",
+        "docs/src/example/bento-grid/demo.vue",
+        "docs/src/spark-ui-demos/bento-grid/bento-grid.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "BlurFade",
+      "slug": "blur-fade",
+      "path": "docs/src/components/spark-ui/blur-fade",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/blur-fade/blur-fade.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/blur-fade.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/blur-fade/blur-fade.vue",
+        "docs/src/example/blur-fade/demo.vue",
+        "docs/src/spark-ui-demos/blur-fade/blur-fade.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "BlurIn",
+      "slug": "blur-in",
+      "path": "docs/src/components/spark-ui/blur-in",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/blur-in/blur-in.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/blur-in.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/blur-in/blur-in.vue",
+        "docs/src/example/blur-in/demo.vue",
+        "docs/src/spark-ui-demos/blur-in/blur-in.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "DotPattern",
+      "slug": "dot-pattern",
+      "path": "docs/src/components/spark-ui/dot-pattern",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/dot-pattern/dot-pattern.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/dot-pattern.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/dot-pattern/demo.vue",
+        "docs/src/example/dot-pattern/dot-pattern-linear-gradient.vue",
+        "docs/src/example/dot-pattern/dot-pattern.vue",
+        "docs/src/spark-ui-demos/dot-pattern/dot-pattern-linear-gradient.vue",
+        "docs/src/spark-ui-demos/dot-pattern/dot-pattern.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "Globe",
+      "slug": "globe",
+      "path": "docs/src/components/spark-ui/globe",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/globe/globe.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/globe.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/globe/demo.vue",
+        "docs/src/example/globe/globe.vue",
+        "docs/src/spark-ui-demos/globe/globe.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "GradualSpacing",
+      "slug": "gradual-spacing",
+      "path": "docs/src/components/spark-ui/gradual-spacing",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/gradual-spacing/gradual-spacing.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/gradual-spacing.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/gradual-spacing/demo.vue",
+        "docs/src/example/gradual-spacing/gradual-spacing.vue",
+        "docs/src/spark-ui-demos/gradual-spacing/gradual-spacing.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "LetterUp",
+      "slug": "letter-up",
+      "path": "docs/src/components/spark-ui/letter-up",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/letter-up/letter-up.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/letter-up.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/letter-up/demo.vue",
+        "docs/src/example/letter-up/letter-up.vue",
+        "docs/src/spark-ui-demos/letter-up/letter-up.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "Marquee",
+      "slug": "marquee",
+      "path": "docs/src/components/spark-ui/marquee",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/marquee/marquee.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/marquee.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/marquee/3d-demo.vue",
+        "docs/src/example/marquee/demo.vue",
+        "docs/src/example/marquee/marquee.vue",
+        "docs/src/example/marquee/review-card.vue",
+        "docs/src/example/marquee/vertical-demo.vue",
+        "docs/src/spark-ui-demos/marquee/3d-marquee.vue",
+        "docs/src/spark-ui-demos/marquee/marquee.vue",
+        "docs/src/spark-ui-demos/marquee/review-card.vue",
+        "docs/src/spark-ui-demos/marquee/vertical-marquee.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "Meteors",
+      "slug": "meteors",
+      "path": "docs/src/components/spark-ui/meteors",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/meteors/meteors.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/meteors.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/meteors/demo.vue",
+        "docs/src/example/meteors/meteors.vue",
+        "docs/src/spark-ui-demos/meteors/meteors.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "OrbitingCircles",
+      "slug": "orbiting-circles",
+      "path": "docs/src/components/spark-ui/orbiting-circles",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/orbiting-circles/orbiting-circles.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/orbiting-circles.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/orbiting-circles/demo.vue",
+        "docs/src/example/orbiting-circles/orbiting-circles.vue",
+        "docs/src/spark-ui-demos/orbiting-circles/orbiting-circles.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "Particles",
+      "slug": "particles",
+      "path": "docs/src/components/spark-ui/particles",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/particles/particles-background.vue",
+        "docs/src/components/spark-ui/particles/particles.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/particles.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/particles/demo.vue",
+        "docs/src/example/particles/particles-background.vue",
+        "docs/src/example/particles/particles.vue",
+        "docs/src/spark-ui-demos/particles/particles.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "RetroGrid",
+      "slug": "retro-grid",
+      "path": "docs/src/components/spark-ui/retro-grid",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/retro-grid/retro-grid.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/retro-grid.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/retro-grid/demo.vue",
+        "docs/src/example/retro-grid/retro-grid.vue",
+        "docs/src/spark-ui-demos/retro-grid/retro-grid.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "Ripple",
+      "slug": "ripple",
+      "path": "docs/src/components/spark-ui/ripple",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/ripple/ripple.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/ripple.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/ripple/demo.vue",
+        "docs/src/example/ripple/ripple.vue",
+        "docs/src/spark-ui-demos/ripple/ripple.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "SkewedInfiniteScroll",
+      "slug": "skewed-infinite-scroll",
+      "path": "docs/src/components/spark-ui/skewed-infinite-scroll",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/skewed-infinite-scroll/skewed-infinite-scroll.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/skewed-infinite-scroll.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/skewed-infinite-scroll/demo.vue",
+        "docs/src/example/skewed-infinite-scroll/skewed-infinite-scroll.vue",
+        "docs/src/spark-ui-demos/skewed-infinite-scroll/skewed-infinite-scroll.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    },
+    {
+      "name": "TypingAnimation",
+      "slug": "typing-animation",
+      "path": "docs/src/components/spark-ui/typing-animation",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/typing-animation/typing-animation.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/typing-animation.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/terminal/typing-animation.vue",
+        "docs/src/example/typing-animation/demo.vue",
+        "docs/src/example/typing-animation/typing-animation.vue",
+        "docs/src/spark-ui-demos/terminal/typing-animation.vue",
+        "docs/src/spark-ui-demos/typing-animation/typing-animation.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": ""
+    }
+  ]
+}

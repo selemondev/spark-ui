@@ -2,13 +2,13 @@
 
 Overlapping circles of avatars.
 
-<demo src="../../src/example/avatarCircle/Demo.vue" srcCode="../../src/spark-ui-demos/avatarCircle/AvatarCircles.vue" />
+<demo src="../../src/example/avatar-circles/demo.vue" srcCode="../../src/spark-ui-demos/avatar-circles/avatar-circles.vue" />
 
 ## Installation
 
 Copy and paste the following code into your project:
 
-```vue [AvatarCircles.vue]
+```vue [avatar-circles.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 

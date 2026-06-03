@@ -2,7 +2,7 @@
 
 Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.
 
-<demo src="../../src/example/particles/Demo.vue" srcCode="../../src/spark-ui-demos/particles/Particles.vue" />
+<demo src="../../src/example/particles/demo.vue" srcCode="../../src/spark-ui-demos/particles/particles.vue" />
 
 ## Installation
 
@@ -10,7 +10,7 @@ Copy and paste the following code into your project:
 
 ::: code-group
 
-```vue [Particles.vue]
+```vue [particles.vue]
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
   accelerate?: boolean
@@ -1607,7 +1607,7 @@ const props = withDefaults(defineProps<{
 </style>
 ```
 
-```vue [ParticlesBackground.vue]
+```vue [particles-background.vue]
 <script setup lang='ts'>
 const props = withDefaults(defineProps<{
   color?: string

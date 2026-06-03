@@ -2,13 +2,13 @@
 
 A light glare effect which pans across text making it appear as if it is shimmering.
 
-<demo src="../../src/example/animatedShinyText/Demo.vue" srcCode="../../src/spark-ui-demos/animatedShinyText/AnimatedShinyText.vue" />
+<demo src="../../src/example/animated-shiny-text/demo.vue" srcCode="../../src/spark-ui-demos/animated-shiny-text/animated-shiny-text.vue" />
 
 ## Installation
 
 Copy and paste the following code into your project:
 
-```vue [AnimatedShinyText.vue]
+```vue [animated-shiny-text.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 

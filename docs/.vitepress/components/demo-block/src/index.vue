@@ -5,7 +5,7 @@ import { useData } from 'vitepress'
 import { computed, ref } from 'vue'
 import { MagicString } from 'vue/compiler-sfc'
 import { cn } from '../../../../src/lib/utils'
-import DotPattern from '../../dotPattern/DotPattern.vue'
+import DotPattern from '../../dot-pattern/dot-pattern.vue'
 import { demoProps } from './index'
 
 const props = defineProps(demoProps)

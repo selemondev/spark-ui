@@ -27,6 +27,13 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "build": "pnpm --filter @spark-ui/docs build",
+    "typecheck": "vue-tsc -b docs/tsconfig.json",
+    "sync:magic-ui": "node scripts/clone-magic-ui.mjs && node scripts/build-magic-ui-registry.mjs && node scripts/build-spark-ui-registry.mjs && node scripts/compare-registries.mjs && node scripts/update-component-history.mjs && node scripts/normalize-repository.mjs",
+    "sync:magic-ui:issues": "node scripts/create-agent-issues.mjs",
+    "validate:agent-pr": "node scripts/validate-component.mjs",
+    "normalize:repository": "node scripts/normalize-repository.mjs",
+    "normalize:repository:check": "node scripts/normalize-repository.mjs --check",
     "clean": "rimraf packages/*/{dist,es,lib}",
     "build:docs": "rimraf packages/*/{dist,es,lib} && nr -r -F \"./docs\" build",
     "build:cli": "rimraf packages/*/{dist,es,lib} && nr -r -F \"./packages/cli\" build",

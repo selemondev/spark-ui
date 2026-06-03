@@ -2,7 +2,7 @@
 
 A cool tooltip that reveals on hover, follows mouse pointer.
 
-<demo src="../../src/example/animatedToolTip/Demo.vue" srcCode="../../src/spark-ui-demos/animatedToolTip/Demo.vue" />
+<demo src="../../src/example/animated-tooltip/demo.vue" srcCode="../../src/spark-ui-demos/animated-tooltip/demo.vue" />
 
 ## Installation
 

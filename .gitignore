@@ -118,3 +118,6 @@ node_modules
 
 docs/.vitepress/dist
 docs/.vitepress/cache
+
+# Agent skills (materialized from skills-lock.json; the lock file is the source of truth)
+.agents/

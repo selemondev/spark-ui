@@ -2,13 +2,13 @@
 
 A meteor shower effect.
 
-<demo src="../../src/example/meteors/Demo.vue" srcCode="../../src/spark-ui-demos/meteors/Meteors.vue" />
+<demo src="../../src/example/meteors/demo.vue" srcCode="../../src/spark-ui-demos/meteors/meteors.vue" />
 
 ## Installation
 
 Copy and paste the following code into your project:
 
-```vue [Meteors.vue]
+```vue [meteors.vue]
 <script setup lang='ts'>
 import { ref, watch } from 'vue'
 import { cn } from '@/lib/utils'

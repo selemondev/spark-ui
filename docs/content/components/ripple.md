@@ -2,13 +2,13 @@
 
 An animated ripple effect typically used behind elements to emphasize them.
 
-<demo src="../../src/example/ripple/Demo.vue" srcCode="../../src/spark-ui-demos/ripple/Ripple.vue" />
+<demo src="../../src/example/ripple/demo.vue" srcCode="../../src/spark-ui-demos/ripple/ripple.vue" />
 
 ## Installation
 
 Copy and paste the following code into your project:
 
-```vue [Ripple.vue]
+```vue [ripple.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 

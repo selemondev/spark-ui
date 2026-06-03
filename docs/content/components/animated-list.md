@@ -2,7 +2,7 @@
 
 A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.
 
-<demo src="../../src/example/animatedList/Demo.vue" srcCode="../../src/spark-ui-demos/animatedList/AnimatedList.vue" />
+<demo src="../../src/example/animated-list/demo.vue" srcCode="../../src/spark-ui-demos/animated-list/animated-list.vue" />
 
 ## Installation
 
@@ -10,7 +10,7 @@ Copy and paste the following code into your project:
 
 ::: code-group
 
-```vue [AnimatedList.vue]
+```vue [animated-list.vue]
 <script lang="ts" setup>
 import { computed, onMounted, ref, useSlots } from 'vue'
 import { cn } from '@/lib/utils'
@@ -102,7 +102,7 @@ onMounted(() => loadComponents())
 </style>
 ```
 
-```vue [Notification.vue]
+```vue [notification.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 

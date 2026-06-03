@@ -1,0 +1,1984 @@
+{
+  "$schema": "./magic-ui.schema.json",
+  "generatedAt": "2026-06-03T01:37:15.887Z",
+  "source": {
+    "repository": "https://github.com/magicuidesign/magicui",
+    "ref": "default"
+  },
+  "components": [
+    {
+      "name": "Android",
+      "slug": "android",
+      "title": "Android",
+      "description": "A mockup of an Android device.",
+      "sourcePath": "apps/www/registry/magicui/android.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/android.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/android-demo-2.tsx",
+        "apps/www/registry/example/android-demo-3.tsx",
+        "apps/www/registry/example/android-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/android.mdx"
+      ]
+    },
+    {
+      "name": "AnimatedBeam",
+      "slug": "animated-beam",
+      "title": "Animated Beam",
+      "description": "An animated beam of light which travels along a path. Useful for showcasing the integration features of a website.",
+      "sourcePath": "apps/www/registry/magicui/animated-beam.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/animated-beam.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/animated-beam-bidirectional.tsx",
+        "apps/www/registry/example/animated-beam-demo.tsx",
+        "apps/www/registry/example/animated-beam-multiple-inputs.tsx",
+        "apps/www/registry/example/animated-beam-multiple-outputs.tsx",
+        "apps/www/registry/example/animated-beam-unidirectional.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/animated-beam.mdx"
+      ]
+    },
+    {
+      "name": "AnimatedCircularProgressBar",
+      "slug": "animated-circular-progress-bar",
+      "title": "Animated Circular Progress Bar",
+      "description": "Animated Circular Progress Bar is a component that displays a circular gauge with a percentage value.",
+      "sourcePath": "apps/www/registry/magicui/animated-circular-progress-bar.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/animated-circular-progress-bar.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/animated-circular-progress-bar-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/animated-circular-progress-bar.mdx"
+      ]
+    },
+    {
+      "name": "AnimatedGradientText",
+      "slug": "animated-gradient-text",
+      "title": "Animated Gradient Text",
+      "description": "An animated gradient background which transitions between colors for text.",
+      "sourcePath": "apps/www/registry/magicui/animated-gradient-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/animated-gradient-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        ": colorFrom,\n          ",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/animated-gradient-text-demo-2.tsx",
+        "apps/www/registry/example/animated-gradient-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/animated-gradient-text.mdx"
+      ]
+    },
+    {
+      "name": "AnimatedGridPattern",
+      "slug": "animated-grid-pattern",
+      "title": "Animated Grid Pattern",
+      "description": "A animated background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/animated-grid-pattern.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/animated-grid-pattern.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/animated-grid-pattern-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/animated-grid-pattern.mdx"
+      ]
+    },
+    {
+      "name": "AnimatedList",
+      "slug": "animated-list",
+      "title": "Animated List",
+      "description": "A list that animates each item in sequence with a delay. Used to showcase notifications or events on your landing page.",
+      "sourcePath": "apps/www/registry/magicui/animated-list.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/animated-list.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/animated-list-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/animated-list.mdx"
+      ]
+    },
+    {
+      "name": "AnimatedShinyText",
+      "slug": "animated-shiny-text",
+      "title": "Animated Shiny Text",
+      "description": "A light glare effect which pans across text making it appear as if it is shimmering.",
+      "sourcePath": "apps/www/registry/magicui/animated-shiny-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/animated-shiny-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/animated-shiny-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/animated-shiny-text.mdx"
+      ]
+    },
+    {
+      "name": "ThemeToggler",
+      "slug": "animated-theme-toggler",
+      "title": "Theme Toggler",
+      "description": "Theme toggle with View Transitions and animated clip-path masks (circle, polygons, star), optional viewport-centered origin.",
+      "sourcePath": "apps/www/registry/magicui/animated-theme-toggler.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/animated-theme-toggler.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        ")\n    }\n\n    const transition = document.startViewTransition(() => {\n      flushSync(applyTheme)\n    })\n    if (typeof transition?.finished?.finally === ",
+        ", clipPath[0])\n    const cleanup = () => {\n      delete root.dataset.magicuiThemeVt\n      root.style.removeProperty(",
+        "lucide-react",
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/animated-theme-toggler-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-diamond-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-hexagon-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-next-themes-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-rectangle-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-square-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-star-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-triangle-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/animated-theme-toggler.mdx"
+      ]
+    },
+    {
+      "name": "AuroraText",
+      "slug": "aurora-text",
+      "title": "Aurora Text",
+      "description": "A beautiful aurora text effect",
+      "sourcePath": "apps/www/registry/magicui/aurora-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/aurora-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/aurora-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/aurora-text.mdx"
+      ]
+    },
+    {
+      "name": "AvatarCircles",
+      "slug": "avatar-circles",
+      "title": "Avatar Circles",
+      "description": "Overlapping circles of avatars.",
+      "sourcePath": "apps/www/registry/magicui/avatar-circles.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/avatar-circles.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/avatar-circles-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/avatar-circles.mdx"
+      ]
+    },
+    {
+      "name": "Backlight",
+      "slug": "backlight",
+      "title": "Backlight",
+      "description": "A backlight glow effect for videos, images, and SVGs.",
+      "sourcePath": "apps/www/registry/magicui/backlight.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/backlight.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/backlight-image-demo.tsx",
+        "apps/www/registry/example/backlight-svg-demo.tsx",
+        "apps/www/registry/example/backlight-video-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/backlight.mdx"
+      ]
+    },
+    {
+      "name": "BentoGrid",
+      "slug": "bento-grid",
+      "title": "Bento Grid",
+      "description": "Bento grid is a layout used to showcase the features of a product in a simple and elegant way.",
+      "sourcePath": "apps/www/registry/magicui/bento-grid.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/bento-grid.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "@radix-ui/react-icons",
+        "react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [],
+      "docsFiles": [
+        "apps/www/content/docs/components/bento-grid.mdx"
+      ]
+    },
+    {
+      "name": "BlurFade",
+      "slug": "blur-fade",
+      "title": "Blur Fade",
+      "description": "Blur fade in and out animation. Used to smoothly fade in and out content.",
+      "sourcePath": "apps/www/registry/magicui/blur-fade.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/blur-fade.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/blur-fade-demo.tsx",
+        "apps/www/registry/example/blur-fade-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/blur-fade.mdx"
+      ]
+    },
+    {
+      "name": "BorderBeam",
+      "slug": "border-beam",
+      "title": "Border Beam",
+      "description": "An animated beam of light which travels along the border of its container.",
+      "sourcePath": "apps/www/registry/magicui/border-beam.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/border-beam.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        ": colorFrom,\n            ",
+        "motion"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/border-beam-demo-2.tsx",
+        "apps/www/registry/example/border-beam-demo-3.tsx",
+        "apps/www/registry/example/border-beam-demo-4.tsx",
+        "apps/www/registry/example/border-beam-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/border-beam.mdx"
+      ]
+    },
+    {
+      "name": "ClientTweetCard",
+      "slug": "client-tweet-card",
+      "title": "Client Tweet Card",
+      "description": "A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.",
+      "sourcePath": "apps/www/registry/magicui/client-tweet-card.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/client-tweet-card.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react-tweet"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [],
+      "docsFiles": []
+    },
+    {
+      "name": "CodeComparison",
+      "slug": "code-comparison",
+      "title": "Code Comparison",
+      "description": "A component which compares two code snippets.",
+      "sourcePath": "apps/www/registry/magicui/code-comparison.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/code-comparison.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "@shikijs/transformers",
+        "lucide-react",
+        "next-themes",
+        "react",
+        "shiki"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/code-comparison-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/code-comparison.mdx"
+      ]
+    },
+    {
+      "name": "ComicText",
+      "slug": "comic-text",
+      "title": "Comic Text",
+      "description": "Comic text animation",
+      "sourcePath": "apps/www/registry/magicui/comic-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/comic-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/comic-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/comic-text.mdx"
+      ]
+    },
+    {
+      "name": "Confetti",
+      "slug": "confetti",
+      "title": "Confetti",
+      "description": "Confetti animations are best used to delight your users when something special happens",
+      "sourcePath": "apps/www/registry/magicui/confetti.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/confetti.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "@types/canvas-confetti",
+        "canvas-confetti",
+        "react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/confetti-basic-cannon.tsx",
+        "apps/www/registry/example/confetti-custom-shapes.tsx",
+        "apps/www/registry/example/confetti-demo.tsx",
+        "apps/www/registry/example/confetti-emoji.tsx",
+        "apps/www/registry/example/confetti-fireworks.tsx",
+        "apps/www/registry/example/confetti-random-direction.tsx",
+        "apps/www/registry/example/confetti-side-cannons.tsx",
+        "apps/www/registry/example/confetti-stars.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/confetti.mdx"
+      ]
+    },
+    {
+      "name": "CoolMode",
+      "slug": "cool-mode",
+      "title": "Cool Mode",
+      "description": "Cool mode effect for buttons, links, and other DOMs",
+      "sourcePath": "apps/www/registry/magicui/cool-mode.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/cool-mode.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/cool-mode-custom.tsx",
+        "apps/www/registry/example/cool-mode-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/cool-mode.mdx"
+      ]
+    },
+    {
+      "name": "DiaTextReveal",
+      "slug": "dia-text-reveal",
+      "title": "Dia Text Reveal",
+      "description": "A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.",
+      "sourcePath": "apps/www/registry/magicui/dia-text-reveal.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/dia-text-reveal.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/dia-text-reveal-demo-2.tsx",
+        "apps/www/registry/example/dia-text-reveal-demo-3.tsx",
+        "apps/www/registry/example/dia-text-reveal-demo-4.tsx",
+        "apps/www/registry/example/dia-text-reveal-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/dia-text-reveal.mdx"
+      ]
+    },
+    {
+      "name": "Dock",
+      "slug": "dock",
+      "title": "Dock",
+      "description": "An implementation of the MacOS dock using react + tailwindcss + motion",
+      "sourcePath": "apps/www/registry/magicui/dock.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/dock.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "class-variance-authority",
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/dock-demo-2.tsx",
+        "apps/www/registry/example/dock-demo-3.tsx",
+        "apps/www/registry/example/dock-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/dock.mdx"
+      ]
+    },
+    {
+      "name": "DotPattern",
+      "slug": "dot-pattern",
+      "title": "Dot Pattern",
+      "description": "A background dot pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/dot-pattern.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/dot-pattern.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/dot-pattern-demo.tsx",
+        "apps/www/registry/example/dot-pattern-linear-gradient.tsx",
+        "apps/www/registry/example/dot-pattern-with-glow-effect.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/dot-pattern.mdx"
+      ]
+    },
+    {
+      "name": "DottedMap",
+      "slug": "dotted-map",
+      "title": "Dotted Map",
+      "description": "A component with a dotted map.",
+      "sourcePath": "apps/www/registry/magicui/dotted-map.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/dotted-map.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react",
+        "svg-dotted-map"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/dotted-map-demo-2.tsx",
+        "apps/www/registry/example/dotted-map-demo-3.tsx",
+        "apps/www/registry/example/dotted-map-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/dotted-map.mdx"
+      ]
+    },
+    {
+      "name": "FileTree",
+      "slug": "file-tree",
+      "title": "File Tree",
+      "description": "A component used to showcase the folder and file structure of a directory.",
+      "sourcePath": "apps/www/registry/magicui/file-tree.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/file-tree.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "lucide-react",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/file-tree-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/file-tree.mdx"
+      ]
+    },
+    {
+      "name": "FlickeringGrid",
+      "slug": "flickering-grid",
+      "title": "Flickering Grid",
+      "description": "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/flickering-grid.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/flickering-grid.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/flickering-grid-demo.tsx",
+        "apps/www/registry/example/flickering-grid-rounded-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/flickering-grid.mdx"
+      ]
+    },
+    {
+      "name": "GlareHover",
+      "slug": "glare-hover",
+      "title": "Glare Hover",
+      "description": "A diagonal glare on hover using a ::before gradient and CSS variables (angle, size, duration, color).",
+      "sourcePath": "apps/www/registry/magicui/glare-hover.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/glare-hover.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/glare-hover-demo-alert.tsx",
+        "apps/www/registry/example/glare-hover-demo-cta.tsx",
+        "apps/www/registry/example/glare-hover-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/glare-hover.mdx"
+      ]
+    },
+    {
+      "name": "Globe",
+      "slug": "globe",
+      "title": "Globe",
+      "description": "An autorotating, interactive, and highly performant globe made using WebGL.",
+      "sourcePath": "apps/www/registry/magicui/globe.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/globe.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "cobe",
+        "cobe@^0.6.4",
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/globe-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/globe.mdx"
+      ]
+    },
+    {
+      "name": "GridPattern",
+      "slug": "grid-pattern",
+      "title": "Grid Pattern",
+      "description": "A background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/grid-pattern.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/grid-pattern.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/animated-grid-pattern-demo.tsx",
+        "apps/www/registry/example/grid-pattern-dashed.tsx",
+        "apps/www/registry/example/grid-pattern-demo.tsx",
+        "apps/www/registry/example/grid-pattern-linear-gradient.tsx",
+        "apps/www/registry/example/interactive-grid-pattern-demo-2.tsx",
+        "apps/www/registry/example/interactive-grid-pattern-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/grid-pattern.mdx"
+      ]
+    },
+    {
+      "name": "HeroVideoDialog",
+      "slug": "hero-video-dialog",
+      "title": "Hero Video Dialog",
+      "description": "A hero video dialog component.",
+      "sourcePath": "apps/www/registry/magicui/hero-video-dialog.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/hero-video-dialog.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "lucide-react",
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx",
+        "apps/www/registry/example/hero-video-dialog-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/hero-video-dialog.mdx"
+      ]
+    },
+    {
+      "name": "HexagonPattern",
+      "slug": "hexagon-pattern",
+      "title": "Hexagon Pattern",
+      "description": "A background hexagon pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/hexagon-pattern.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/hexagon-pattern.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/hexagon-pattern-dashed.tsx",
+        "apps/www/registry/example/hexagon-pattern-demo.tsx",
+        "apps/www/registry/example/hexagon-pattern-linear-gradient.tsx",
+        "apps/www/registry/example/hexagon-pattern-spacing.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/hexagon-pattern.mdx"
+      ]
+    },
+    {
+      "name": "Highlighter",
+      "slug": "highlighter",
+      "title": "Highlighter",
+      "description": "A text highlighter that mimics the effect of a human-drawn marker stroke.",
+      "sourcePath": "apps/www/registry/magicui/highlighter.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/highlighter.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react",
+        "rough-notation"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/highlighter-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/highlighter.mdx"
+      ]
+    },
+    {
+      "name": "HyperText",
+      "slug": "hyper-text",
+      "title": "Hyper Text",
+      "description": "A text animation that scrambles letters before revealing the final text.",
+      "sourcePath": "apps/www/registry/magicui/hyper-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/hyper-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/hyper-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/hyper-text.mdx"
+      ]
+    },
+    {
+      "name": "IconCloud",
+      "slug": "icon-cloud",
+      "title": "Icon Cloud",
+      "description": "An interactive 3D tag cloud component",
+      "sourcePath": "apps/www/registry/magicui/icon-cloud.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/icon-cloud.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/icon-cloud-demo-2.tsx",
+        "apps/www/registry/example/icon-cloud-demo-3.tsx",
+        "apps/www/registry/example/icon-cloud-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/icon-cloud.mdx"
+      ]
+    },
+    {
+      "name": "InteractiveGridPattern",
+      "slug": "interactive-grid-pattern",
+      "title": "Interactive Grid Pattern",
+      "description": "A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/interactive-grid-pattern.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/interactive-grid-pattern.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/interactive-grid-pattern-demo-2.tsx",
+        "apps/www/registry/example/interactive-grid-pattern-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/interactive-grid-pattern.mdx"
+      ]
+    },
+    {
+      "name": "InteractiveHoverButton",
+      "slug": "interactive-hover-button",
+      "title": "InteractiveHoverButton",
+      "description": "",
+      "sourcePath": "apps/www/registry/magicui/interactive-hover-button.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/interactive-hover-button.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/interactive-hover-button-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/interactive-hover-button.mdx"
+      ]
+    },
+    {
+      "name": "IPhone",
+      "slug": "iphone",
+      "title": "iPhone",
+      "description": "A mockup of the iPhone",
+      "sourcePath": "apps/www/registry/magicui/iphone.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/iphone.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/iphone-demo-2.tsx",
+        "apps/www/registry/example/iphone-demo-3.tsx",
+        "apps/www/registry/example/iphone-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/iphone.mdx"
+      ]
+    },
+    {
+      "name": "KineticText",
+      "slug": "kinetic-text",
+      "title": "Kinetic Text",
+      "description": "A text component that animates font weight of characters on hover.",
+      "sourcePath": "apps/www/registry/magicui/kinetic-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/kinetic-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/kinetic-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/kinetic-text.mdx"
+      ]
+    },
+    {
+      "name": "Lens",
+      "slug": "lens",
+      "title": "Lens",
+      "description": "A interactive component that enables zooming into images, videos and other elements.",
+      "sourcePath": "apps/www/registry/magicui/lens.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/lens.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/lens-demo-2.tsx",
+        "apps/www/registry/example/lens-demo-3.tsx",
+        "apps/www/registry/example/lens-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/lens.mdx"
+      ]
+    },
+    {
+      "name": "LightRays",
+      "slug": "light-rays",
+      "title": "Light Rays",
+      "description": "A component with animated light rays which shine down from above.",
+      "sourcePath": "apps/www/registry/magicui/light-rays.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/light-rays.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/light-rays-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/light-rays.mdx"
+      ]
+    },
+    {
+      "name": "LineShadowText",
+      "slug": "line-shadow-text",
+      "title": "Line Shadow Text",
+      "description": "A text component with a moving line shadow.",
+      "sourcePath": "apps/www/registry/magicui/line-shadow-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/line-shadow-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/line-shadow-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/line-shadow-text.mdx"
+      ]
+    },
+    {
+      "name": "MagicCard",
+      "slug": "magic-card",
+      "title": "Magic Card",
+      "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
+      "sourcePath": "apps/www/registry/magicui/magic-card.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/magic-card.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "next-themes",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/magic-card-demo.tsx",
+        "apps/www/registry/example/magic-card-demo2.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/magic-card.mdx"
+      ]
+    },
+    {
+      "name": "Marquee",
+      "slug": "marquee",
+      "title": "Marquee",
+      "description": "An infinite scrolling component that can be used to display text, images, or videos.",
+      "sourcePath": "apps/www/registry/magicui/marquee.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/marquee.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/marquee-3d.tsx",
+        "apps/www/registry/example/marquee-demo-vertical.tsx",
+        "apps/www/registry/example/marquee-demo.tsx",
+        "apps/www/registry/example/marquee-logos.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/marquee.mdx"
+      ]
+    },
+    {
+      "name": "Meteors",
+      "slug": "meteors",
+      "title": "Meteors",
+      "description": "A meteor shower effect.",
+      "sourcePath": "apps/www/registry/magicui/meteors.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/meteors.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/meteors-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/meteors.mdx"
+      ]
+    },
+    {
+      "name": "MorphingText",
+      "slug": "morphing-text",
+      "title": "Morphing Text",
+      "description": "A dynamic text morphing component for Magic UI.",
+      "sourcePath": "apps/www/registry/magicui/morphing-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/morphing-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/morphing-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/morphing-text.mdx"
+      ]
+    },
+    {
+      "name": "NeonGradientCard",
+      "slug": "neon-gradient-card",
+      "title": "Neon Gradient Card",
+      "description": "A beautiful neon card effect",
+      "sourcePath": "apps/www/registry/magicui/neon-gradient-card.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/neon-gradient-card.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/neon-gradient-card-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/neon-gradient-card.mdx"
+      ]
+    },
+    {
+      "name": "NoiseTexture",
+      "slug": "noise-texture",
+      "title": "Noise Texture",
+      "description": "An SVG fractal noise layer using feTurbulence, desaturation, and contrast controls for subtle texture overlays.",
+      "sourcePath": "apps/www/registry/magicui/noise-texture.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/noise-texture.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/noise-texture-demo-2.tsx",
+        "apps/www/registry/example/noise-texture-demo-3.tsx",
+        "apps/www/registry/example/noise-texture-demo-4.tsx",
+        "apps/www/registry/example/noise-texture-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/noise-texture.mdx"
+      ]
+    },
+    {
+      "name": "NumberTicker",
+      "slug": "number-ticker",
+      "title": "Number Ticker",
+      "description": "Animate numbers to count up or down to a target number",
+      "sourcePath": "apps/www/registry/magicui/number-ticker.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/number-ticker.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/number-ticker-decimal-demo.tsx",
+        "apps/www/registry/example/number-ticker-demo-2.tsx",
+        "apps/www/registry/example/number-ticker-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/number-ticker.mdx"
+      ]
+    },
+    {
+      "name": "OrbitingCircles",
+      "slug": "orbiting-circles",
+      "title": "Orbiting Circles",
+      "description": "A collection of circles which move in orbit along a circular path",
+      "sourcePath": "apps/www/registry/magicui/orbiting-circles.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/orbiting-circles.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/orbiting-circles-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/orbiting-circles.mdx"
+      ]
+    },
+    {
+      "name": "Particles",
+      "slug": "particles",
+      "title": "Particles",
+      "description": "Particles are a fun way to add some visual flair to your website. They can be used to create a sense of depth, movement, and interactivity.",
+      "sourcePath": "apps/www/registry/magicui/particles.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/particles.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/particles-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/particles.mdx"
+      ]
+    },
+    {
+      "name": "PixelImage",
+      "slug": "pixel-image",
+      "title": "Pixel Image",
+      "description": "A component that displays an image with a pixelated effect, creating a retro aesthetic.",
+      "sourcePath": "apps/www/registry/magicui/pixel-image.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/pixel-image.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/pixel-image-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/pixel-image.mdx"
+      ]
+    },
+    {
+      "name": "Pointer",
+      "slug": "pointer",
+      "title": "Pointer",
+      "description": "A component that displays a pointer when hovering over an element",
+      "sourcePath": "apps/www/registry/magicui/pointer.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/pointer.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/pointer-demo-1.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/pointer.mdx"
+      ]
+    },
+    {
+      "name": "ProgressiveBlur",
+      "slug": "progressive-blur",
+      "title": "Progressive Blur",
+      "description": "The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.",
+      "sourcePath": "apps/www/registry/magicui/progressive-blur.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/progressive-blur.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/progressive-blur-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/progressive-blur.mdx"
+      ]
+    },
+    {
+      "name": "PulsatingButton",
+      "slug": "pulsating-button",
+      "title": "Pulsating Button",
+      "description": "An animated pulsating button useful for capturing attention of users.",
+      "sourcePath": "apps/www/registry/magicui/pulsating-button.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/pulsating-button.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/pulsating-button-demo-2.tsx",
+        "apps/www/registry/example/pulsating-button-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/pulsating-button.mdx"
+      ]
+    },
+    {
+      "name": "RainbowButton",
+      "slug": "rainbow-button",
+      "title": "Rainbow Button",
+      "description": "An animated button with a rainbow effect.",
+      "sourcePath": "apps/www/registry/magicui/rainbow-button.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/rainbow-button.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/rainbow-button-demo-2.tsx",
+        "apps/www/registry/example/rainbow-button-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/rainbow-button.mdx"
+      ]
+    },
+    {
+      "name": "RetroGrid",
+      "slug": "retro-grid",
+      "title": "Retro Grid",
+      "description": "An animated scrolling retro grid effect",
+      "sourcePath": "apps/www/registry/magicui/retro-grid.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/retro-grid.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/retro-grid-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/retro-grid.mdx"
+      ]
+    },
+    {
+      "name": "Ripple",
+      "slug": "ripple",
+      "title": "Ripple",
+      "description": "An animated ripple effect typically used behind elements to emphasize them.",
+      "sourcePath": "apps/www/registry/magicui/ripple.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/ripple.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/ripple-button-demo.tsx",
+        "apps/www/registry/example/ripple-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/ripple.mdx"
+      ]
+    },
+    {
+      "name": "RippleButton",
+      "slug": "ripple-button",
+      "title": "Ripple Button",
+      "description": "An animated button with ripple useful for user engagement.",
+      "sourcePath": "apps/www/registry/magicui/ripple-button.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/ripple-button.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/ripple-button-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/ripple-button.mdx"
+      ]
+    },
+    {
+      "name": "Safari",
+      "slug": "safari",
+      "title": "Safari",
+      "description": "A safari browser mockup to showcase your website.",
+      "sourcePath": "apps/www/registry/magicui/safari.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/safari.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/safari-demo-2.tsx",
+        "apps/www/registry/example/safari-demo-3.tsx",
+        "apps/www/registry/example/safari-demo-4.tsx",
+        "apps/www/registry/example/safari-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/safari.mdx"
+      ]
+    },
+    {
+      "name": "ScrollBasedVelocity",
+      "slug": "scroll-based-velocity",
+      "title": "Scroll Based Velocity",
+      "description": "Scrolling text whose speed changes based on scroll speed",
+      "sourcePath": "apps/www/registry/magicui/scroll-based-velocity.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/scroll-based-velocity.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/scroll-based-velocity-demo.tsx",
+        "apps/www/registry/example/scroll-based-velocity-images-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/scroll-based-velocity.mdx"
+      ]
+    },
+    {
+      "name": "ScrollProgress",
+      "slug": "scroll-progress",
+      "title": "Scroll Progress",
+      "description": "Animated Scroll Progress for your pages",
+      "sourcePath": "apps/www/registry/magicui/scroll-progress.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/scroll-progress.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/scroll-progress-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/scroll-progress.mdx"
+      ]
+    },
+    {
+      "name": "ShimmerButton",
+      "slug": "shimmer-button",
+      "title": "Shimmer Button",
+      "description": "A button with a shimmering light which travels around the perimeter.",
+      "sourcePath": "apps/www/registry/magicui/shimmer-button.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/shimmer-button.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/shimmer-button-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/shimmer-button.mdx"
+      ]
+    },
+    {
+      "name": "ShineBorder",
+      "slug": "shine-border",
+      "title": "Shine Border",
+      "description": "Shine border is an animated background border effect.",
+      "sourcePath": "apps/www/registry/magicui/shine-border.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/shine-border.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/shine-border-demo-2.tsx",
+        "apps/www/registry/example/shine-border-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/shine-border.mdx"
+      ]
+    },
+    {
+      "name": "ShinyButton",
+      "slug": "shiny-button",
+      "title": "Shiny Button",
+      "description": "A shiny button component with dynamic styles in the dark mode or light mode.",
+      "sourcePath": "apps/www/registry/magicui/shiny-button.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/shiny-button.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/shiny-button-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/shiny-button.mdx"
+      ]
+    },
+    {
+      "name": "SmoothCursor",
+      "slug": "smooth-cursor",
+      "title": "SmoothCursor",
+      "description": "A customizable, physics-based smooth cursor animation component with spring animations and rotation effects",
+      "sourcePath": "apps/www/registry/magicui/smooth-cursor.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/smooth-cursor.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "framer-motion",
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/smooth-cursor-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/smooth-cursor.mdx"
+      ]
+    },
+    {
+      "name": "SparklesText",
+      "slug": "sparkles-text",
+      "title": "Sparkles Text",
+      "description": "A dynamic text that generates continuous sparkles with smooth transitions, perfect for highlighting text with animated stars.",
+      "sourcePath": "apps/www/registry/magicui/sparkles-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/sparkles-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/sparkles-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/sparkles-text.mdx"
+      ]
+    },
+    {
+      "name": "SpinningText",
+      "slug": "spinning-text",
+      "title": "Spinning Text",
+      "description": "The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.",
+      "sourcePath": "apps/www/registry/magicui/spinning-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/spinning-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/spinning-text-demo-2.tsx",
+        "apps/www/registry/example/spinning-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/spinning-text.mdx"
+      ]
+    },
+    {
+      "name": "StripedPattern",
+      "slug": "striped-pattern",
+      "title": "Striped Pattern",
+      "description": "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/striped-pattern.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/striped-pattern.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/striped-pattern-dashed.tsx",
+        "apps/www/registry/example/striped-pattern-demo.tsx",
+        "apps/www/registry/example/striped-pattern-right.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/striped-pattern.mdx"
+      ]
+    },
+    {
+      "name": "Terminal",
+      "slug": "terminal",
+      "title": "Terminal",
+      "description": "A terminal component",
+      "sourcePath": "apps/www/registry/magicui/terminal.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/terminal.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/terminal-demo-2.tsx",
+        "apps/www/registry/example/terminal-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/terminal.mdx"
+      ]
+    },
+    {
+      "name": "Text3DFlip",
+      "slug": "text-3d-flip",
+      "title": "Text 3D Flip",
+      "description": "A text effect that flips each letter in 3D with a staggered animation on hover.",
+      "sourcePath": "apps/www/registry/magicui/text-3d-flip.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/text-3d-flip.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/text-3d-flip-demo-2.tsx",
+        "apps/www/registry/example/text-3d-flip-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/text-3d-flip.mdx"
+      ]
+    },
+    {
+      "name": "TextAnimate",
+      "slug": "text-animate",
+      "title": "Text Animate",
+      "description": "A text animation component that animates text using a variety of different animations.",
+      "sourcePath": "apps/www/registry/magicui/text-animate.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/text-animate.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/text-animate-demo-2.tsx",
+        "apps/www/registry/example/text-animate-demo-3.tsx",
+        "apps/www/registry/example/text-animate-demo-4.tsx",
+        "apps/www/registry/example/text-animate-demo-5.tsx",
+        "apps/www/registry/example/text-animate-demo-6.tsx",
+        "apps/www/registry/example/text-animate-demo-7.tsx",
+        "apps/www/registry/example/text-animate-demo-8.tsx",
+        "apps/www/registry/example/text-animate-demo-9.tsx",
+        "apps/www/registry/example/text-animate-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/text-animate.mdx"
+      ]
+    },
+    {
+      "name": "TextReveal",
+      "slug": "text-reveal",
+      "title": "Text Reveal",
+      "description": "Fade in text as you scroll down the page.",
+      "sourcePath": "apps/www/registry/magicui/text-reveal.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/text-reveal.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/dia-text-reveal-demo-2.tsx",
+        "apps/www/registry/example/dia-text-reveal-demo-3.tsx",
+        "apps/www/registry/example/dia-text-reveal-demo-4.tsx",
+        "apps/www/registry/example/dia-text-reveal-demo.tsx",
+        "apps/www/registry/example/text-reveal-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/text-reveal.mdx"
+      ]
+    },
+    {
+      "name": "TweetCard",
+      "slug": "tweet-card",
+      "title": "Tweet Card",
+      "description": "A card that displays a tweet with the author's name, handle, and profile picture.",
+      "sourcePath": "apps/www/registry/magicui/tweet-card.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/tweet-card.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react",
+        "react-tweet"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/tweet-card-demo.tsx",
+        "apps/www/registry/example/tweet-card-images.tsx",
+        "apps/www/registry/example/tweet-card-meta-preview.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/tweet-card.mdx"
+      ]
+    },
+    {
+      "name": "TypingAnimation",
+      "slug": "typing-animation",
+      "title": "Typing Animation",
+      "description": "Characters appearing in typed animation",
+      "sourcePath": "apps/www/registry/magicui/typing-animation.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/typing-animation.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/typing-animation-demo-2.tsx",
+        "apps/www/registry/example/typing-animation-demo-3.tsx",
+        "apps/www/registry/example/typing-animation-demo-4.tsx",
+        "apps/www/registry/example/typing-animation-demo-5.tsx",
+        "apps/www/registry/example/typing-animation-demo-6.tsx",
+        "apps/www/registry/example/typing-animation-demo-7.tsx",
+        "apps/www/registry/example/typing-animation-demo-8.tsx",
+        "apps/www/registry/example/typing-animation-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/typing-animation.mdx"
+      ]
+    },
+    {
+      "name": "VideoText",
+      "slug": "video-text",
+      "title": "Video Text",
+      "description": "A component that displays text with a video playing in the background.",
+      "sourcePath": "apps/www/registry/magicui/video-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/video-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/video-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/video-text.mdx"
+      ]
+    },
+    {
+      "name": "WarpBackground",
+      "slug": "warp-background",
+      "title": "Warp Background",
+      "description": "A card with a time warping background effect.",
+      "sourcePath": "apps/www/registry/magicui/warp-background.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/warp-background.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/warp-background-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/warp-background.mdx"
+      ]
+    },
+    {
+      "name": "WordRotate",
+      "slug": "word-rotate",
+      "title": "Word Rotate",
+      "description": "A vertical rotation of words",
+      "sourcePath": "apps/www/registry/magicui/word-rotate.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/word-rotate.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/word-rotate-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/word-rotate.mdx"
+      ]
+    }
+  ]
+}

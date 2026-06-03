@@ -2,13 +2,13 @@
 
 Characters appearing in typed animation
 
-<demo src="../../src/example/typingAnimation/Demo.vue" srcCode="../../src/spark-ui-demos/typingAnimation/TypingAnimation.vue" />
+<demo src="../../src/example/typing-animation/demo.vue" srcCode="../../src/spark-ui-demos/typing-animation/typing-animation.vue" />
 
 ## Installation
 
 Copy and paste the following code into your project:
 
-```vue [TypingAnimation.vue]
+```vue [typing-animation.vue]
 <script setup lang='ts'>
 import { ref, watch } from 'vue'
 import { cn } from '@/lib/utils'

@@ -2,7 +2,7 @@
 
 An implementation of the MacOS terminal. Useful for showcasing a command line interface.
 
-<demo src="../../src/example/terminal/Demo.vue" srcCode="../../src/spark-ui-demos/terminal/Demo.vue" />
+<demo src="../../src/example/terminal/demo.vue" srcCode="../../src/spark-ui-demos/terminal/demo.vue" />
 
 ## Installation
 
@@ -16,7 +16,7 @@ Copy and paste the following code into your project:
 
 ::: code-group
 
-```vue [AnimatedSpan.vue]
+```vue [animated-span.vue]
 <script setup lang='ts'>
 import type { MotionProps } from 'motion-v'
 import { motion } from 'motion-v'
@@ -45,7 +45,7 @@ const props = withDefaults(defineProps<AnimatedSpanProps>(), {
 </template>
 ```
 
-```vue [Terminal.vue]
+```vue [terminal.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 interface TerminalProps {
@@ -77,7 +77,7 @@ const props = defineProps<TerminalProps>()
 </template>
 ```
 
-```vue [TypingAnimation.vue]
+```vue [typing-animation.vue]
 <script setup lang="ts">
 import type { MotionProps } from 'motion-v'
 import { motion } from 'motion-v'

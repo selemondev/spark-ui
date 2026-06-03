@@ -2,13 +2,13 @@
 
 A collection of circles which move in orbit along a circular path.
 
-<demo src="../../src/example/orbitingCircles/Demo.vue" srcCode="../../src/spark-ui-demos/orbitingCircles/OrbitingCircles.vue" />
+<demo src="../../src/example/orbiting-circles/demo.vue" srcCode="../../src/spark-ui-demos/orbiting-circles/orbiting-circles.vue" />
 
 ## Installation
 
 Copy and paste the following code into your project:
 
-```vue [OrbitingCircles.vue]
+```vue [orbiting-circles.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spark-ui.dev/schemas/spark-ui.schema.json",
+  "title": "SparkUI Registry",
+  "type": "object",
+  "required": ["generatedAt", "source", "components"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "source": { "type": "object" },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "slug", "path", "sourceFiles", "docsExists", "examplesExists", "testsExists"],
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "path": { "type": "string" },
+          "sourceFiles": { "type": "array", "items": { "type": "string" } },
+          "docsExists": { "type": "boolean" },
+          "docsFiles": { "type": "array", "items": { "type": "string" } },
+          "examplesExists": { "type": "boolean" },
+          "exampleFiles": { "type": "array", "items": { "type": "string" } },
+          "testsExists": { "type": "boolean" },
+          "testFiles": { "type": "array", "items": { "type": "string" } },
+          "lastCommitHash": { "type": "string" }
+        }
+      }
+    }
+  }
+}

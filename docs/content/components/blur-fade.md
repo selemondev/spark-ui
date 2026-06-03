@@ -2,13 +2,13 @@
 
 Blur fade in and out animation. Used to smoothly fade in and out content.
 
-<demo src="../../src/example/blurFade/Demo.vue" srcCode="../../src/spark-ui-demos/blurFade/BlurFade.vue" />
+<demo src="../../src/example/blur-fade/demo.vue" srcCode="../../src/spark-ui-demos/blur-fade/blur-fade.vue" />
 
 ## Installation
 
 Copy and paste the following code into your project:
 
-```vue [BlurFade.vue]
+```vue [blur-fade.vue]
 <script setup lang='ts'>
 interface BlurFadeProps {
   class?: string

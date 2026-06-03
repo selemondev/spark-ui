@@ -1,0 +1,57 @@
+name: MagicUI Component Port
+description: Request a SparkUI port of a MagicUI component.
+title: '[Agent] Port ComponentName from MagicUI'
+labels:
+  - magic-ui-sync
+  - agent-generated
+  - needs-review
+  - vue-port
+assignees:
+  - copilot
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for automated MagicUI to SparkUI component port issues. These issues route work to GitHub Copilot Coding Agent and still require human review before merge.
+  - type: input
+    id: source-path
+    attributes:
+      label: MagicUI source path
+      description: Relative path to the source component in the MagicUI repository.
+      placeholder: registry/default/magicui/animated-beam
+    validations:
+      required: true
+  - type: input
+    id: target-branch
+    attributes:
+      label: Target branch
+      placeholder: agent/animated-beam
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements
+      value: |
+        - Port to Vue 3 with <script setup lang="ts">.
+        - Use TailwindCSS and SparkUI conventions.
+        - Use Motion for Vue for any Framer Motion behavior.
+        - Add docs, examples, and focused tests.
+        - Run repository normalization before opening the pull request.
+        - Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - Component exists under docs/src/components/spark-ui.
+        - Demo/example exists under docs/src/example or docs/src/spark-ui-demos.
+        - Docs exist under docs/content/components.
+        - The pull request includes a Repository Cleanup report.
+        - pnpm normalize:repository passes.
+        - pnpm validate:agent-pr passes.
+        - pnpm lint, pnpm typecheck, pnpm test -- --run, and pnpm build pass.
+    validations:
+      required: true

@@ -2,13 +2,13 @@
 
 The Skewed Infinite Scroll Component adds a dynamic visual effect to your content as it scrolls continuously.
 
-<demo src="../../src/example/skewedInfiniteScroll/Demo.vue" srcCode="../../src/spark-ui-demos/skewedInfiniteScroll/SkewedInfiniteScroll.vue" />
+<demo src="../../src/example/skewed-infinite-scroll/demo.vue" srcCode="../../src/spark-ui-demos/skewed-infinite-scroll/skewed-infinite-scroll.vue" />
 
 ## Installation
 
 Copy and paste the following code into your project:
 
-```vue [SkewedInfiniteScroll.vue]
+```vue [skewed-infinite-scroll.vue]
 <script setup lang='ts'>
 const props = defineProps<{
   items: { id: string, text: string }[]

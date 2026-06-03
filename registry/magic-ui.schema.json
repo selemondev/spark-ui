@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spark-ui.dev/schemas/magic-ui.schema.json",
+  "title": "MagicUI Registry",
+  "type": "object",
+  "required": ["generatedAt", "source", "components"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "source": { "type": "object" },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "slug", "sourcePath", "sourceFiles", "dependencies", "usesAnimation", "usesFramerMotion", "usesMotion", "demoFiles", "docsFiles"],
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "sourcePath": { "type": "string" },
+          "sourceFiles": { "type": "array", "items": { "type": "string" } },
+          "lastCommitHash": { "type": "string" },
+          "dependencies": { "type": "array", "items": { "type": "string" } },
+          "usesAnimation": { "type": "boolean" },
+          "usesFramerMotion": { "type": "boolean" },
+          "usesMotion": { "type": "boolean" },
+          "demoFiles": { "type": "array", "items": { "type": "string" } },
+          "docsFiles": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,2174 @@
+{
+  "$schema": "./missing-components.schema.json",
+  "generatedAt": "2026-06-03T01:37:17.110Z",
+  "source": {
+    "magicuiGeneratedAt": "2026-06-03T01:37:15.887Z",
+    "sparkuiGeneratedAt": "2026-06-03T01:37:16.931Z"
+  },
+  "count": 60,
+  "components": [
+    {
+      "name": "Android",
+      "slug": "android",
+      "title": "Android",
+      "description": "A mockup of an Android device.",
+      "sourcePath": "apps/www/registry/magicui/android.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/android.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/android-demo-2.tsx",
+        "apps/www/registry/example/android-demo-3.tsx",
+        "apps/www/registry/example/android-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/android.mdx"
+      ],
+      "issueTitle": "[Agent] Port Android from MagicUI",
+      "targetBranch": "agent/android",
+      "pullRequestTitle": "feat(android): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "AnimatedCircularProgressBar",
+      "slug": "animated-circular-progress-bar",
+      "title": "Animated Circular Progress Bar",
+      "description": "Animated Circular Progress Bar is a component that displays a circular gauge with a percentage value.",
+      "sourcePath": "apps/www/registry/magicui/animated-circular-progress-bar.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/animated-circular-progress-bar.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/animated-circular-progress-bar-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/animated-circular-progress-bar.mdx"
+      ],
+      "issueTitle": "[Agent] Port AnimatedCircularProgressBar from MagicUI",
+      "targetBranch": "agent/animated-circular-progress-bar",
+      "pullRequestTitle": "feat(animated-circular-progress-bar): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "AnimatedGridPattern",
+      "slug": "animated-grid-pattern",
+      "title": "Animated Grid Pattern",
+      "description": "A animated background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/animated-grid-pattern.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/animated-grid-pattern.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/animated-grid-pattern-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/animated-grid-pattern.mdx"
+      ],
+      "issueTitle": "[Agent] Port AnimatedGridPattern from MagicUI",
+      "targetBranch": "agent/animated-grid-pattern",
+      "pullRequestTitle": "feat(animated-grid-pattern): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "ThemeToggler",
+      "slug": "animated-theme-toggler",
+      "title": "Theme Toggler",
+      "description": "Theme toggle with View Transitions and animated clip-path masks (circle, polygons, star), optional viewport-centered origin.",
+      "sourcePath": "apps/www/registry/magicui/animated-theme-toggler.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/animated-theme-toggler.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        ")\n    }\n\n    const transition = document.startViewTransition(() => {\n      flushSync(applyTheme)\n    })\n    if (typeof transition?.finished?.finally === ",
+        ", clipPath[0])\n    const cleanup = () => {\n      delete root.dataset.magicuiThemeVt\n      root.style.removeProperty(",
+        "lucide-react",
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/animated-theme-toggler-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-diamond-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-hexagon-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-next-themes-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-rectangle-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-square-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-star-demo.tsx",
+        "apps/www/registry/example/animated-theme-toggler-triangle-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/animated-theme-toggler.mdx"
+      ],
+      "issueTitle": "[Agent] Port ThemeToggler from MagicUI",
+      "targetBranch": "agent/animated-theme-toggler",
+      "pullRequestTitle": "feat(animated-theme-toggler): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "AuroraText",
+      "slug": "aurora-text",
+      "title": "Aurora Text",
+      "description": "A beautiful aurora text effect",
+      "sourcePath": "apps/www/registry/magicui/aurora-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/aurora-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/aurora-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/aurora-text.mdx"
+      ],
+      "issueTitle": "[Agent] Port AuroraText from MagicUI",
+      "targetBranch": "agent/aurora-text",
+      "pullRequestTitle": "feat(aurora-text): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "Backlight",
+      "slug": "backlight",
+      "title": "Backlight",
+      "description": "A backlight glow effect for videos, images, and SVGs.",
+      "sourcePath": "apps/www/registry/magicui/backlight.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/backlight.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/backlight-image-demo.tsx",
+        "apps/www/registry/example/backlight-svg-demo.tsx",
+        "apps/www/registry/example/backlight-video-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/backlight.mdx"
+      ],
+      "issueTitle": "[Agent] Port Backlight from MagicUI",
+      "targetBranch": "agent/backlight",
+      "pullRequestTitle": "feat(backlight): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "BorderBeam",
+      "slug": "border-beam",
+      "title": "Border Beam",
+      "description": "An animated beam of light which travels along the border of its container.",
+      "sourcePath": "apps/www/registry/magicui/border-beam.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/border-beam.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        ": colorFrom,\n            ",
+        "motion"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/border-beam-demo-2.tsx",
+        "apps/www/registry/example/border-beam-demo-3.tsx",
+        "apps/www/registry/example/border-beam-demo-4.tsx",
+        "apps/www/registry/example/border-beam-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/border-beam.mdx"
+      ],
+      "issueTitle": "[Agent] Port BorderBeam from MagicUI",
+      "targetBranch": "agent/border-beam",
+      "pullRequestTitle": "feat(border-beam): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "ClientTweetCard",
+      "slug": "client-tweet-card",
+      "title": "Client Tweet Card",
+      "description": "A client-side version of the tweet card that displays a tweet with the author's name, handle, and profile picture.",
+      "sourcePath": "apps/www/registry/magicui/client-tweet-card.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/client-tweet-card.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react-tweet"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [],
+      "docsFiles": [],
+      "issueTitle": "[Agent] Port ClientTweetCard from MagicUI",
+      "targetBranch": "agent/client-tweet-card",
+      "pullRequestTitle": "feat(client-tweet-card): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "CodeComparison",
+      "slug": "code-comparison",
+      "title": "Code Comparison",
+      "description": "A component which compares two code snippets.",
+      "sourcePath": "apps/www/registry/magicui/code-comparison.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/code-comparison.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "@shikijs/transformers",
+        "lucide-react",
+        "next-themes",
+        "react",
+        "shiki"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/code-comparison-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/code-comparison.mdx"
+      ],
+      "issueTitle": "[Agent] Port CodeComparison from MagicUI",
+      "targetBranch": "agent/code-comparison",
+      "pullRequestTitle": "feat(code-comparison): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "ComicText",
+      "slug": "comic-text",
+      "title": "Comic Text",
+      "description": "Comic text animation",
+      "sourcePath": "apps/www/registry/magicui/comic-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/comic-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/comic-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/comic-text.mdx"
+      ],
+      "issueTitle": "[Agent] Port ComicText from MagicUI",
+      "targetBranch": "agent/comic-text",
+      "pullRequestTitle": "feat(comic-text): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "Confetti",
+      "slug": "confetti",
+      "title": "Confetti",
+      "description": "Confetti animations are best used to delight your users when something special happens",
+      "sourcePath": "apps/www/registry/magicui/confetti.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/confetti.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "@types/canvas-confetti",
+        "canvas-confetti",
+        "react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/confetti-basic-cannon.tsx",
+        "apps/www/registry/example/confetti-custom-shapes.tsx",
+        "apps/www/registry/example/confetti-demo.tsx",
+        "apps/www/registry/example/confetti-emoji.tsx",
+        "apps/www/registry/example/confetti-fireworks.tsx",
+        "apps/www/registry/example/confetti-random-direction.tsx",
+        "apps/www/registry/example/confetti-side-cannons.tsx",
+        "apps/www/registry/example/confetti-stars.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/confetti.mdx"
+      ],
+      "issueTitle": "[Agent] Port Confetti from MagicUI",
+      "targetBranch": "agent/confetti",
+      "pullRequestTitle": "feat(confetti): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "CoolMode",
+      "slug": "cool-mode",
+      "title": "Cool Mode",
+      "description": "Cool mode effect for buttons, links, and other DOMs",
+      "sourcePath": "apps/www/registry/magicui/cool-mode.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/cool-mode.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/cool-mode-custom.tsx",
+        "apps/www/registry/example/cool-mode-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/cool-mode.mdx"
+      ],
+      "issueTitle": "[Agent] Port CoolMode from MagicUI",
+      "targetBranch": "agent/cool-mode",
+      "pullRequestTitle": "feat(cool-mode): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "DiaTextReveal",
+      "slug": "dia-text-reveal",
+      "title": "Dia Text Reveal",
+      "description": "A horizontal color band sweeps across text, revealing a gradient shine before settling on the base color.",
+      "sourcePath": "apps/www/registry/magicui/dia-text-reveal.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/dia-text-reveal.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/dia-text-reveal-demo-2.tsx",
+        "apps/www/registry/example/dia-text-reveal-demo-3.tsx",
+        "apps/www/registry/example/dia-text-reveal-demo-4.tsx",
+        "apps/www/registry/example/dia-text-reveal-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/dia-text-reveal.mdx"
+      ],
+      "issueTitle": "[Agent] Port DiaTextReveal from MagicUI",
+      "targetBranch": "agent/dia-text-reveal",
+      "pullRequestTitle": "feat(dia-text-reveal): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "Dock",
+      "slug": "dock",
+      "title": "Dock",
+      "description": "An implementation of the MacOS dock using react + tailwindcss + motion",
+      "sourcePath": "apps/www/registry/magicui/dock.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/dock.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "class-variance-authority",
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/dock-demo-2.tsx",
+        "apps/www/registry/example/dock-demo-3.tsx",
+        "apps/www/registry/example/dock-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/dock.mdx"
+      ],
+      "issueTitle": "[Agent] Port Dock from MagicUI",
+      "targetBranch": "agent/dock",
+      "pullRequestTitle": "feat(dock): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "DottedMap",
+      "slug": "dotted-map",
+      "title": "Dotted Map",
+      "description": "A component with a dotted map.",
+      "sourcePath": "apps/www/registry/magicui/dotted-map.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/dotted-map.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react",
+        "svg-dotted-map"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/dotted-map-demo-2.tsx",
+        "apps/www/registry/example/dotted-map-demo-3.tsx",
+        "apps/www/registry/example/dotted-map-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/dotted-map.mdx"
+      ],
+      "issueTitle": "[Agent] Port DottedMap from MagicUI",
+      "targetBranch": "agent/dotted-map",
+      "pullRequestTitle": "feat(dotted-map): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "FileTree",
+      "slug": "file-tree",
+      "title": "File Tree",
+      "description": "A component used to showcase the folder and file structure of a directory.",
+      "sourcePath": "apps/www/registry/magicui/file-tree.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/file-tree.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "lucide-react",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/file-tree-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/file-tree.mdx"
+      ],
+      "issueTitle": "[Agent] Port FileTree from MagicUI",
+      "targetBranch": "agent/file-tree",
+      "pullRequestTitle": "feat(file-tree): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "FlickeringGrid",
+      "slug": "flickering-grid",
+      "title": "Flickering Grid",
+      "description": "A flickering grid background made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/flickering-grid.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/flickering-grid.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/flickering-grid-demo.tsx",
+        "apps/www/registry/example/flickering-grid-rounded-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/flickering-grid.mdx"
+      ],
+      "issueTitle": "[Agent] Port FlickeringGrid from MagicUI",
+      "targetBranch": "agent/flickering-grid",
+      "pullRequestTitle": "feat(flickering-grid): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "GlareHover",
+      "slug": "glare-hover",
+      "title": "Glare Hover",
+      "description": "A diagonal glare on hover using a ::before gradient and CSS variables (angle, size, duration, color).",
+      "sourcePath": "apps/www/registry/magicui/glare-hover.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/glare-hover.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/glare-hover-demo-alert.tsx",
+        "apps/www/registry/example/glare-hover-demo-cta.tsx",
+        "apps/www/registry/example/glare-hover-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/glare-hover.mdx"
+      ],
+      "issueTitle": "[Agent] Port GlareHover from MagicUI",
+      "targetBranch": "agent/glare-hover",
+      "pullRequestTitle": "feat(glare-hover): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "GridPattern",
+      "slug": "grid-pattern",
+      "title": "Grid Pattern",
+      "description": "A background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/grid-pattern.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/grid-pattern.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/animated-grid-pattern-demo.tsx",
+        "apps/www/registry/example/grid-pattern-dashed.tsx",
+        "apps/www/registry/example/grid-pattern-demo.tsx",
+        "apps/www/registry/example/grid-pattern-linear-gradient.tsx",
+        "apps/www/registry/example/interactive-grid-pattern-demo-2.tsx",
+        "apps/www/registry/example/interactive-grid-pattern-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/grid-pattern.mdx"
+      ],
+      "issueTitle": "[Agent] Port GridPattern from MagicUI",
+      "targetBranch": "agent/grid-pattern",
+      "pullRequestTitle": "feat(grid-pattern): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "HeroVideoDialog",
+      "slug": "hero-video-dialog",
+      "title": "Hero Video Dialog",
+      "description": "A hero video dialog component.",
+      "sourcePath": "apps/www/registry/magicui/hero-video-dialog.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/hero-video-dialog.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "lucide-react",
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/hero-video-dialog-demo-top-in-bottom-out.tsx",
+        "apps/www/registry/example/hero-video-dialog-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/hero-video-dialog.mdx"
+      ],
+      "issueTitle": "[Agent] Port HeroVideoDialog from MagicUI",
+      "targetBranch": "agent/hero-video-dialog",
+      "pullRequestTitle": "feat(hero-video-dialog): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "HexagonPattern",
+      "slug": "hexagon-pattern",
+      "title": "Hexagon Pattern",
+      "description": "A background hexagon pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/hexagon-pattern.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/hexagon-pattern.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/hexagon-pattern-dashed.tsx",
+        "apps/www/registry/example/hexagon-pattern-demo.tsx",
+        "apps/www/registry/example/hexagon-pattern-linear-gradient.tsx",
+        "apps/www/registry/example/hexagon-pattern-spacing.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/hexagon-pattern.mdx"
+      ],
+      "issueTitle": "[Agent] Port HexagonPattern from MagicUI",
+      "targetBranch": "agent/hexagon-pattern",
+      "pullRequestTitle": "feat(hexagon-pattern): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "Highlighter",
+      "slug": "highlighter",
+      "title": "Highlighter",
+      "description": "A text highlighter that mimics the effect of a human-drawn marker stroke.",
+      "sourcePath": "apps/www/registry/magicui/highlighter.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/highlighter.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react",
+        "rough-notation"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/highlighter-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/highlighter.mdx"
+      ],
+      "issueTitle": "[Agent] Port Highlighter from MagicUI",
+      "targetBranch": "agent/highlighter",
+      "pullRequestTitle": "feat(highlighter): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "HyperText",
+      "slug": "hyper-text",
+      "title": "Hyper Text",
+      "description": "A text animation that scrambles letters before revealing the final text.",
+      "sourcePath": "apps/www/registry/magicui/hyper-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/hyper-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/hyper-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/hyper-text.mdx"
+      ],
+      "issueTitle": "[Agent] Port HyperText from MagicUI",
+      "targetBranch": "agent/hyper-text",
+      "pullRequestTitle": "feat(hyper-text): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "IconCloud",
+      "slug": "icon-cloud",
+      "title": "Icon Cloud",
+      "description": "An interactive 3D tag cloud component",
+      "sourcePath": "apps/www/registry/magicui/icon-cloud.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/icon-cloud.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react",
+        "react-dom"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/icon-cloud-demo-2.tsx",
+        "apps/www/registry/example/icon-cloud-demo-3.tsx",
+        "apps/www/registry/example/icon-cloud-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/icon-cloud.mdx"
+      ],
+      "issueTitle": "[Agent] Port IconCloud from MagicUI",
+      "targetBranch": "agent/icon-cloud",
+      "pullRequestTitle": "feat(icon-cloud): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "InteractiveGridPattern",
+      "slug": "interactive-grid-pattern",
+      "title": "Interactive Grid Pattern",
+      "description": "A interactive background grid pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/interactive-grid-pattern.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/interactive-grid-pattern.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/interactive-grid-pattern-demo-2.tsx",
+        "apps/www/registry/example/interactive-grid-pattern-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/interactive-grid-pattern.mdx"
+      ],
+      "issueTitle": "[Agent] Port InteractiveGridPattern from MagicUI",
+      "targetBranch": "agent/interactive-grid-pattern",
+      "pullRequestTitle": "feat(interactive-grid-pattern): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "InteractiveHoverButton",
+      "slug": "interactive-hover-button",
+      "title": "InteractiveHoverButton",
+      "description": "",
+      "sourcePath": "apps/www/registry/magicui/interactive-hover-button.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/interactive-hover-button.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/interactive-hover-button-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/interactive-hover-button.mdx"
+      ],
+      "issueTitle": "[Agent] Port InteractiveHoverButton from MagicUI",
+      "targetBranch": "agent/interactive-hover-button",
+      "pullRequestTitle": "feat(interactive-hover-button): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "IPhone",
+      "slug": "iphone",
+      "title": "iPhone",
+      "description": "A mockup of the iPhone",
+      "sourcePath": "apps/www/registry/magicui/iphone.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/iphone.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/iphone-demo-2.tsx",
+        "apps/www/registry/example/iphone-demo-3.tsx",
+        "apps/www/registry/example/iphone-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/iphone.mdx"
+      ],
+      "issueTitle": "[Agent] Port IPhone from MagicUI",
+      "targetBranch": "agent/iphone",
+      "pullRequestTitle": "feat(iphone): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "KineticText",
+      "slug": "kinetic-text",
+      "title": "Kinetic Text",
+      "description": "A text component that animates font weight of characters on hover.",
+      "sourcePath": "apps/www/registry/magicui/kinetic-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/kinetic-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/kinetic-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/kinetic-text.mdx"
+      ],
+      "issueTitle": "[Agent] Port KineticText from MagicUI",
+      "targetBranch": "agent/kinetic-text",
+      "pullRequestTitle": "feat(kinetic-text): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "Lens",
+      "slug": "lens",
+      "title": "Lens",
+      "description": "A interactive component that enables zooming into images, videos and other elements.",
+      "sourcePath": "apps/www/registry/magicui/lens.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/lens.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/lens-demo-2.tsx",
+        "apps/www/registry/example/lens-demo-3.tsx",
+        "apps/www/registry/example/lens-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/lens.mdx"
+      ],
+      "issueTitle": "[Agent] Port Lens from MagicUI",
+      "targetBranch": "agent/lens",
+      "pullRequestTitle": "feat(lens): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "LightRays",
+      "slug": "light-rays",
+      "title": "Light Rays",
+      "description": "A component with animated light rays which shine down from above.",
+      "sourcePath": "apps/www/registry/magicui/light-rays.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/light-rays.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/light-rays-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/light-rays.mdx"
+      ],
+      "issueTitle": "[Agent] Port LightRays from MagicUI",
+      "targetBranch": "agent/light-rays",
+      "pullRequestTitle": "feat(light-rays): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "LineShadowText",
+      "slug": "line-shadow-text",
+      "title": "Line Shadow Text",
+      "description": "A text component with a moving line shadow.",
+      "sourcePath": "apps/www/registry/magicui/line-shadow-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/line-shadow-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/line-shadow-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/line-shadow-text.mdx"
+      ],
+      "issueTitle": "[Agent] Port LineShadowText from MagicUI",
+      "targetBranch": "agent/line-shadow-text",
+      "pullRequestTitle": "feat(line-shadow-text): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "MagicCard",
+      "slug": "magic-card",
+      "title": "Magic Card",
+      "description": "A spotlight effect that follows your mouse cursor and highlights borders on hover.",
+      "sourcePath": "apps/www/registry/magicui/magic-card.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/magic-card.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "next-themes",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/magic-card-demo.tsx",
+        "apps/www/registry/example/magic-card-demo2.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/magic-card.mdx"
+      ],
+      "issueTitle": "[Agent] Port MagicCard from MagicUI",
+      "targetBranch": "agent/magic-card",
+      "pullRequestTitle": "feat(magic-card): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "MorphingText",
+      "slug": "morphing-text",
+      "title": "Morphing Text",
+      "description": "A dynamic text morphing component for Magic UI.",
+      "sourcePath": "apps/www/registry/magicui/morphing-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/morphing-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/morphing-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/morphing-text.mdx"
+      ],
+      "issueTitle": "[Agent] Port MorphingText from MagicUI",
+      "targetBranch": "agent/morphing-text",
+      "pullRequestTitle": "feat(morphing-text): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "NeonGradientCard",
+      "slug": "neon-gradient-card",
+      "title": "Neon Gradient Card",
+      "description": "A beautiful neon card effect",
+      "sourcePath": "apps/www/registry/magicui/neon-gradient-card.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/neon-gradient-card.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/neon-gradient-card-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/neon-gradient-card.mdx"
+      ],
+      "issueTitle": "[Agent] Port NeonGradientCard from MagicUI",
+      "targetBranch": "agent/neon-gradient-card",
+      "pullRequestTitle": "feat(neon-gradient-card): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "NoiseTexture",
+      "slug": "noise-texture",
+      "title": "Noise Texture",
+      "description": "An SVG fractal noise layer using feTurbulence, desaturation, and contrast controls for subtle texture overlays.",
+      "sourcePath": "apps/www/registry/magicui/noise-texture.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/noise-texture.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/noise-texture-demo-2.tsx",
+        "apps/www/registry/example/noise-texture-demo-3.tsx",
+        "apps/www/registry/example/noise-texture-demo-4.tsx",
+        "apps/www/registry/example/noise-texture-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/noise-texture.mdx"
+      ],
+      "issueTitle": "[Agent] Port NoiseTexture from MagicUI",
+      "targetBranch": "agent/noise-texture",
+      "pullRequestTitle": "feat(noise-texture): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "NumberTicker",
+      "slug": "number-ticker",
+      "title": "Number Ticker",
+      "description": "Animate numbers to count up or down to a target number",
+      "sourcePath": "apps/www/registry/magicui/number-ticker.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/number-ticker.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/number-ticker-decimal-demo.tsx",
+        "apps/www/registry/example/number-ticker-demo-2.tsx",
+        "apps/www/registry/example/number-ticker-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/number-ticker.mdx"
+      ],
+      "issueTitle": "[Agent] Port NumberTicker from MagicUI",
+      "targetBranch": "agent/number-ticker",
+      "pullRequestTitle": "feat(number-ticker): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "PixelImage",
+      "slug": "pixel-image",
+      "title": "Pixel Image",
+      "description": "A component that displays an image with a pixelated effect, creating a retro aesthetic.",
+      "sourcePath": "apps/www/registry/magicui/pixel-image.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/pixel-image.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/pixel-image-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/pixel-image.mdx"
+      ],
+      "issueTitle": "[Agent] Port PixelImage from MagicUI",
+      "targetBranch": "agent/pixel-image",
+      "pullRequestTitle": "feat(pixel-image): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "Pointer",
+      "slug": "pointer",
+      "title": "Pointer",
+      "description": "A component that displays a pointer when hovering over an element",
+      "sourcePath": "apps/www/registry/magicui/pointer.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/pointer.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/pointer-demo-1.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/pointer.mdx"
+      ],
+      "issueTitle": "[Agent] Port Pointer from MagicUI",
+      "targetBranch": "agent/pointer",
+      "pullRequestTitle": "feat(pointer): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "ProgressiveBlur",
+      "slug": "progressive-blur",
+      "title": "Progressive Blur",
+      "description": "The Progressive Blur component adds a smooth blur gradient effect to scrollable content, indicating more content below or above.",
+      "sourcePath": "apps/www/registry/magicui/progressive-blur.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/progressive-blur.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/progressive-blur-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/progressive-blur.mdx"
+      ],
+      "issueTitle": "[Agent] Port ProgressiveBlur from MagicUI",
+      "targetBranch": "agent/progressive-blur",
+      "pullRequestTitle": "feat(progressive-blur): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "PulsatingButton",
+      "slug": "pulsating-button",
+      "title": "Pulsating Button",
+      "description": "An animated pulsating button useful for capturing attention of users.",
+      "sourcePath": "apps/www/registry/magicui/pulsating-button.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/pulsating-button.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/pulsating-button-demo-2.tsx",
+        "apps/www/registry/example/pulsating-button-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/pulsating-button.mdx"
+      ],
+      "issueTitle": "[Agent] Port PulsatingButton from MagicUI",
+      "targetBranch": "agent/pulsating-button",
+      "pullRequestTitle": "feat(pulsating-button): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "RainbowButton",
+      "slug": "rainbow-button",
+      "title": "Rainbow Button",
+      "description": "An animated button with a rainbow effect.",
+      "sourcePath": "apps/www/registry/magicui/rainbow-button.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/rainbow-button.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/rainbow-button-demo-2.tsx",
+        "apps/www/registry/example/rainbow-button-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/rainbow-button.mdx"
+      ],
+      "issueTitle": "[Agent] Port RainbowButton from MagicUI",
+      "targetBranch": "agent/rainbow-button",
+      "pullRequestTitle": "feat(rainbow-button): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "RippleButton",
+      "slug": "ripple-button",
+      "title": "Ripple Button",
+      "description": "An animated button with ripple useful for user engagement.",
+      "sourcePath": "apps/www/registry/magicui/ripple-button.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/ripple-button.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/ripple-button-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/ripple-button.mdx"
+      ],
+      "issueTitle": "[Agent] Port RippleButton from MagicUI",
+      "targetBranch": "agent/ripple-button",
+      "pullRequestTitle": "feat(ripple-button): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "Safari",
+      "slug": "safari",
+      "title": "Safari",
+      "description": "A safari browser mockup to showcase your website.",
+      "sourcePath": "apps/www/registry/magicui/safari.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/safari.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/safari-demo-2.tsx",
+        "apps/www/registry/example/safari-demo-3.tsx",
+        "apps/www/registry/example/safari-demo-4.tsx",
+        "apps/www/registry/example/safari-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/safari.mdx"
+      ],
+      "issueTitle": "[Agent] Port Safari from MagicUI",
+      "targetBranch": "agent/safari",
+      "pullRequestTitle": "feat(safari): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "ScrollBasedVelocity",
+      "slug": "scroll-based-velocity",
+      "title": "Scroll Based Velocity",
+      "description": "Scrolling text whose speed changes based on scroll speed",
+      "sourcePath": "apps/www/registry/magicui/scroll-based-velocity.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/scroll-based-velocity.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/scroll-based-velocity-demo.tsx",
+        "apps/www/registry/example/scroll-based-velocity-images-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/scroll-based-velocity.mdx"
+      ],
+      "issueTitle": "[Agent] Port ScrollBasedVelocity from MagicUI",
+      "targetBranch": "agent/scroll-based-velocity",
+      "pullRequestTitle": "feat(scroll-based-velocity): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "ScrollProgress",
+      "slug": "scroll-progress",
+      "title": "Scroll Progress",
+      "description": "Animated Scroll Progress for your pages",
+      "sourcePath": "apps/www/registry/magicui/scroll-progress.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/scroll-progress.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/scroll-progress-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/scroll-progress.mdx"
+      ],
+      "issueTitle": "[Agent] Port ScrollProgress from MagicUI",
+      "targetBranch": "agent/scroll-progress",
+      "pullRequestTitle": "feat(scroll-progress): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "ShimmerButton",
+      "slug": "shimmer-button",
+      "title": "Shimmer Button",
+      "description": "A button with a shimmering light which travels around the perimeter.",
+      "sourcePath": "apps/www/registry/magicui/shimmer-button.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/shimmer-button.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/shimmer-button-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/shimmer-button.mdx"
+      ],
+      "issueTitle": "[Agent] Port ShimmerButton from MagicUI",
+      "targetBranch": "agent/shimmer-button",
+      "pullRequestTitle": "feat(shimmer-button): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "ShineBorder",
+      "slug": "shine-border",
+      "title": "Shine Border",
+      "description": "Shine border is an animated background border effect.",
+      "sourcePath": "apps/www/registry/magicui/shine-border.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/shine-border.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/shine-border-demo-2.tsx",
+        "apps/www/registry/example/shine-border-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/shine-border.mdx"
+      ],
+      "issueTitle": "[Agent] Port ShineBorder from MagicUI",
+      "targetBranch": "agent/shine-border",
+      "pullRequestTitle": "feat(shine-border): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "ShinyButton",
+      "slug": "shiny-button",
+      "title": "Shiny Button",
+      "description": "A shiny button component with dynamic styles in the dark mode or light mode.",
+      "sourcePath": "apps/www/registry/magicui/shiny-button.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/shiny-button.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/shiny-button-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/shiny-button.mdx"
+      ],
+      "issueTitle": "[Agent] Port ShinyButton from MagicUI",
+      "targetBranch": "agent/shiny-button",
+      "pullRequestTitle": "feat(shiny-button): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "SmoothCursor",
+      "slug": "smooth-cursor",
+      "title": "SmoothCursor",
+      "description": "A customizable, physics-based smooth cursor animation component with spring animations and rotation effects",
+      "sourcePath": "apps/www/registry/magicui/smooth-cursor.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/smooth-cursor.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "framer-motion",
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/smooth-cursor-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/smooth-cursor.mdx"
+      ],
+      "issueTitle": "[Agent] Port SmoothCursor from MagicUI",
+      "targetBranch": "agent/smooth-cursor",
+      "pullRequestTitle": "feat(smooth-cursor): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "SparklesText",
+      "slug": "sparkles-text",
+      "title": "Sparkles Text",
+      "description": "A dynamic text that generates continuous sparkles with smooth transitions, perfect for highlighting text with animated stars.",
+      "sourcePath": "apps/www/registry/magicui/sparkles-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/sparkles-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/sparkles-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/sparkles-text.mdx"
+      ],
+      "issueTitle": "[Agent] Port SparklesText from MagicUI",
+      "targetBranch": "agent/sparkles-text",
+      "pullRequestTitle": "feat(sparkles-text): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "SpinningText",
+      "slug": "spinning-text",
+      "title": "Spinning Text",
+      "description": "The Spinning Text component animates text in a circular motion with customizable speed, direction, color, and transitions for dynamic and engaging effects.",
+      "sourcePath": "apps/www/registry/magicui/spinning-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/spinning-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/spinning-text-demo-2.tsx",
+        "apps/www/registry/example/spinning-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/spinning-text.mdx"
+      ],
+      "issueTitle": "[Agent] Port SpinningText from MagicUI",
+      "targetBranch": "agent/spinning-text",
+      "pullRequestTitle": "feat(spinning-text): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "StripedPattern",
+      "slug": "striped-pattern",
+      "title": "Striped Pattern",
+      "description": "A background striped pattern made with SVGs, fully customizable using Tailwind CSS.",
+      "sourcePath": "apps/www/registry/magicui/striped-pattern.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/striped-pattern.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/striped-pattern-dashed.tsx",
+        "apps/www/registry/example/striped-pattern-demo.tsx",
+        "apps/www/registry/example/striped-pattern-right.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/striped-pattern.mdx"
+      ],
+      "issueTitle": "[Agent] Port StripedPattern from MagicUI",
+      "targetBranch": "agent/striped-pattern",
+      "pullRequestTitle": "feat(striped-pattern): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "Terminal",
+      "slug": "terminal",
+      "title": "Terminal",
+      "description": "A terminal component",
+      "sourcePath": "apps/www/registry/magicui/terminal.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/terminal.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/terminal-demo-2.tsx",
+        "apps/www/registry/example/terminal-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/terminal.mdx"
+      ],
+      "issueTitle": "[Agent] Port Terminal from MagicUI",
+      "targetBranch": "agent/terminal",
+      "pullRequestTitle": "feat(terminal): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "Text3DFlip",
+      "slug": "text-3d-flip",
+      "title": "Text 3D Flip",
+      "description": "A text effect that flips each letter in 3D with a staggered animation on hover.",
+      "sourcePath": "apps/www/registry/magicui/text-3d-flip.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/text-3d-flip.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/text-3d-flip-demo-2.tsx",
+        "apps/www/registry/example/text-3d-flip-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/text-3d-flip.mdx"
+      ],
+      "issueTitle": "[Agent] Port Text3DFlip from MagicUI",
+      "targetBranch": "agent/text-3d-flip",
+      "pullRequestTitle": "feat(text-3d-flip): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "TextAnimate",
+      "slug": "text-animate",
+      "title": "Text Animate",
+      "description": "A text animation component that animates text using a variety of different animations.",
+      "sourcePath": "apps/www/registry/magicui/text-animate.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/text-animate.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/text-animate-demo-2.tsx",
+        "apps/www/registry/example/text-animate-demo-3.tsx",
+        "apps/www/registry/example/text-animate-demo-4.tsx",
+        "apps/www/registry/example/text-animate-demo-5.tsx",
+        "apps/www/registry/example/text-animate-demo-6.tsx",
+        "apps/www/registry/example/text-animate-demo-7.tsx",
+        "apps/www/registry/example/text-animate-demo-8.tsx",
+        "apps/www/registry/example/text-animate-demo-9.tsx",
+        "apps/www/registry/example/text-animate-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/text-animate.mdx"
+      ],
+      "issueTitle": "[Agent] Port TextAnimate from MagicUI",
+      "targetBranch": "agent/text-animate",
+      "pullRequestTitle": "feat(text-animate): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "TextReveal",
+      "slug": "text-reveal",
+      "title": "Text Reveal",
+      "description": "Fade in text as you scroll down the page.",
+      "sourcePath": "apps/www/registry/magicui/text-reveal.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/text-reveal.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/dia-text-reveal-demo-2.tsx",
+        "apps/www/registry/example/dia-text-reveal-demo-3.tsx",
+        "apps/www/registry/example/dia-text-reveal-demo-4.tsx",
+        "apps/www/registry/example/dia-text-reveal-demo.tsx",
+        "apps/www/registry/example/text-reveal-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/text-reveal.mdx"
+      ],
+      "issueTitle": "[Agent] Port TextReveal from MagicUI",
+      "targetBranch": "agent/text-reveal",
+      "pullRequestTitle": "feat(text-reveal): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "TweetCard",
+      "slug": "tweet-card",
+      "title": "Tweet Card",
+      "description": "A card that displays a tweet with the author's name, handle, and profile picture.",
+      "sourcePath": "apps/www/registry/magicui/tweet-card.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/tweet-card.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react",
+        "react-tweet"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": false,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/tweet-card-demo.tsx",
+        "apps/www/registry/example/tweet-card-images.tsx",
+        "apps/www/registry/example/tweet-card-meta-preview.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/tweet-card.mdx"
+      ],
+      "issueTitle": "[Agent] Port TweetCard from MagicUI",
+      "targetBranch": "agent/tweet-card",
+      "pullRequestTitle": "feat(tweet-card): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "VideoText",
+      "slug": "video-text",
+      "title": "Video Text",
+      "description": "A component that displays text with a video playing in the background.",
+      "sourcePath": "apps/www/registry/magicui/video-text.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/video-text.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": false,
+      "usesFramerMotion": false,
+      "usesMotion": false,
+      "demoFiles": [
+        "apps/www/registry/example/video-text-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/video-text.mdx"
+      ],
+      "issueTitle": "[Agent] Port VideoText from MagicUI",
+      "targetBranch": "agent/video-text",
+      "pullRequestTitle": "feat(video-text): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "WarpBackground",
+      "slug": "warp-background",
+      "title": "Warp Background",
+      "description": "A card with a time warping background effect.",
+      "sourcePath": "apps/www/registry/magicui/warp-background.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/warp-background.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/warp-background-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/warp-background.mdx"
+      ],
+      "issueTitle": "[Agent] Port WarpBackground from MagicUI",
+      "targetBranch": "agent/warp-background",
+      "pullRequestTitle": "feat(warp-background): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    },
+    {
+      "name": "WordRotate",
+      "slug": "word-rotate",
+      "title": "Word Rotate",
+      "description": "A vertical rotation of words",
+      "sourcePath": "apps/www/registry/magicui/word-rotate.tsx",
+      "sourceFiles": [
+        "apps/www/registry/magicui/word-rotate.tsx"
+      ],
+      "lastCommitHash": "6f57181aebd0e94599f76a3677f0f7d84bf5511f",
+      "dependencies": [
+        "motion",
+        "react"
+      ],
+      "registryDependencies": [],
+      "usesAnimation": true,
+      "usesFramerMotion": true,
+      "usesMotion": true,
+      "demoFiles": [
+        "apps/www/registry/example/word-rotate-demo.tsx"
+      ],
+      "docsFiles": [
+        "apps/www/content/docs/components/word-rotate.mdx"
+      ],
+      "issueTitle": "[Agent] Port WordRotate from MagicUI",
+      "targetBranch": "agent/word-rotate",
+      "pullRequestTitle": "feat(word-rotate): add SparkUI port",
+      "requirements": [
+        "Port the MagicUI React component to Vue 3 using <script setup lang=\"ts\">.",
+        "Use TailwindCSS and SparkUI naming/layout conventions.",
+        "Use Motion for Vue when the MagicUI source uses Framer Motion or motion/react.",
+        "Add docs, examples, and focused tests for the new SparkUI component.",
+        "Do not use React, JSX, clsx, class-variance-authority, Radix, or shadcn/ui."
+      ]
+    }
+  ]
+}

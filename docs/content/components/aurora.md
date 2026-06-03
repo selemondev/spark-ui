@@ -2,7 +2,7 @@
 
 A beautiful aurora text effect
 
-<demo src="../../src/example/aurora/Demo.vue" srcCode="../../src/spark-ui-demos/aurora/Demo.vue" />
+<demo src="../../src/example/aurora/demo.vue" srcCode="../../src/spark-ui-demos/aurora/demo.vue" />
 
 ## Installation
 
@@ -10,7 +10,7 @@ Copy and paste the following code into your project:
 
 ::: code-group
 
-```vue [AuroraText.vue]
+```vue [aurora-text.vue]
 <script setup lang='ts'>
 interface AuroraTextProps {
   className?: string

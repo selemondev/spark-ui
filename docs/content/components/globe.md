@@ -2,7 +2,7 @@
 
 An autorotating, interactive, and highly performant globe made using WebGL.
 
-<demo src="../../src/example/globe/Demo.vue" srcCode="../../src/spark-ui-demos/globe/Globe.vue" />
+<demo src="../../src/example/globe/demo.vue" srcCode="../../src/spark-ui-demos/globe/globe.vue" />
 
 ## Installation
 
@@ -50,7 +50,7 @@ bun add vue-use-spring
 
 Then copy and paste the following code into your project:
 
-```vue [Globe.vue]
+```vue [globe.vue]
 <script setup lang="ts">
 import createGlobe from 'cobe'
 import { onMounted, ref } from 'vue'

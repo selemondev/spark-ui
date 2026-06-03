@@ -2,7 +2,7 @@
 
 A customizable scrolling component that loops its content horizontally or vertically, with configurable direction, hover pause, and repeat options.
 
-<demo src="../../src/example/marquee/Demo.vue" srcCode="../../src/spark-ui-demos/marquee/Marquee.vue" />
+<demo src="../../src/example/marquee/demo.vue" srcCode="../../src/spark-ui-demos/marquee/marquee.vue" />
 
 ## Installation
 
@@ -10,7 +10,7 @@ Copy and paste the following code into your project:
 
 ::: code-group
 
-```vue [Marquee.vue]
+```vue [marquee.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 
@@ -59,7 +59,7 @@ const className = cn(
 </template>
 ```
 
-```vue [ReviewCard.vue]
+```vue [review-card.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 
@@ -136,11 +136,11 @@ module.exports = {
 
 #### Vertical Marquee
 
-<demo src="../../src/example/marquee/VerticalDemo.vue" srcCode="../../src/spark-ui-demos/marquee/VerticalMarquee.vue" />
+<demo src="../../src/example/marquee/vertical-demo.vue" srcCode="../../src/spark-ui-demos/marquee/vertical-marquee.vue" />
 
 #### 3D Marquee
 
-<demo src="../../src/example/marquee/3DDemo.vue" srcCode="../../src/spark-ui-demos/marquee/3DMarquee.vue" />
+<demo src="../../src/example/marquee/3d-demo.vue" srcCode="../../src/spark-ui-demos/marquee/3d-marquee.vue" />
 
 ## Props
 

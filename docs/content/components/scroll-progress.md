@@ -2,7 +2,7 @@
 
 Animated Scroll Progress for your pages
 
-<demo src="../../src/example/scroll-progress/Demo.vue" srcCode="../../src/spark-ui-demos/scroll-progress/Demo.vue" />
+<demo src="../../src/example/scroll-progress/demo.vue" srcCode="../../src/spark-ui-demos/scroll-progress/demo.vue" />
 
 ## Installation
 
@@ -16,7 +16,7 @@ Copy and paste the following code into your project:
 
 ::: code-group
 
-```vue [ScrollProgress.vue]
+```vue [scroll-progress.vue]
 <script setup lang='ts'>
 import type { HTMLAttributes } from 'vue'
 import { motion, type MotionProps, useMotionValue, useScroll } from 'motion-v'

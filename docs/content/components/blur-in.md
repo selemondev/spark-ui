@@ -2,13 +2,13 @@
 
 An animated text component that blurs in the text.
 
-<demo src="../../src/example/blurIn/Demo.vue" srcCode="../../src/spark-ui-demos/blurIn/BlurIn.vue" />
+<demo src="../../src/example/blur-in/demo.vue" srcCode="../../src/spark-ui-demos/blur-in/blur-in.vue" />
 
 ## Installation
 
 Copy and paste the following code into your project:
 
-```vue [BlurIn.vue]
+```vue [blur-in.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 

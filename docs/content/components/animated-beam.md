@@ -2,7 +2,7 @@
 
 An animated beam of light which travels along a path. Useful for showcasing the "integration" features of a website.
 
-<demo src="../../src/example/animatedBeam/Demo.vue" srcCode="../../src/spark-ui-demos/animatedBeam/AnimatedBeam.vue" />
+<demo src="../../src/example/animated-beam/demo.vue" srcCode="../../src/spark-ui-demos/animated-beam/animated-beam.vue" />
 
 ## Installation
 
@@ -10,7 +10,7 @@ Copy and paste the following code into your project:
 
 ::: code-group
 
-```vue [AnimatedBeam.vue]
+```vue [animated-beam.vue]
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, useId, watch } from 'vue'
 
@@ -142,7 +142,7 @@ watch(props, (_) => {
 </template>
 ```
 
-```vue [Circle.vue]
+```vue [circle.vue]
 <script setup lang='ts'>
 import { ref } from 'vue'
 
@@ -169,19 +169,19 @@ defineExpose({
 
 ### Animated Beam Uni-Directional
 
-<demo src="../../src/example/animatedBeam/AnimatedBeamUniDirectional.vue" srcCode="../../src/spark-ui-demos/animatedBeam/AnimatedBeamUniDirectional.vue" />
+<demo src="../../src/example/animated-beam/animated-beam-uni-directional.vue" srcCode="../../src/spark-ui-demos/animated-beam/animated-beam-uni-directional.vue" />
 
 ### Animated Beam Bi-Directional
 
-<demo src="../../src/example/animatedBeam/AnimatedBeamBiDirectional.vue" srcCode="../../src/spark-ui-demos/animatedBeam/AnimatedBeamBiDirectional.vue" />
+<demo src="../../src/example/animated-beam/animated-beam-bi-directional.vue" srcCode="../../src/spark-ui-demos/animated-beam/animated-beam-bi-directional.vue" />
 
 ### Animated Beam Multiple Inputs
 
-<demo src="../../src/example/animatedBeam/AnimatedBeamMultipleInputs.vue" srcCode="../../src/spark-ui-demos/animatedBeam/AnimatedBeamMultipleInputs.vue" />
+<demo src="../../src/example/animated-beam/animated-beam-multiple-inputs.vue" srcCode="../../src/spark-ui-demos/animated-beam/animated-beam-multiple-inputs.vue" />
 
 ### Animated Beam Multiple Outputs
 
-<demo src="../../src/example/animatedBeam/Demo.vue" srcCode="../../src/spark-ui-demos/animatedBeam/AnimatedBeam.vue" />
+<demo src="../../src/example/animated-beam/demo.vue" srcCode="../../src/spark-ui-demos/animated-beam/animated-beam.vue" />
 
 ## Props
 

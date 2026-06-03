@@ -2,7 +2,7 @@
 
 A hero video dialog component.
 
-<demo src="../../src/example/hero-video-dialog/Demo.vue" srcCode="../../src/spark-ui-demos/hero-video-dialog/Demo.vue" />
+<demo src="../../src/example/hero-video-dialog/demo.vue" srcCode="../../src/spark-ui-demos/hero-video-dialog/demo.vue" />
 
 ## Installation
 
@@ -16,7 +16,7 @@ Copy and paste the following code into your project:
 
 ::: code-group
 
-```vue [HeroVideoDialog.vue]
+```vue [hero-video-dialog.vue]
 <script setup lang='ts'>
 import { Play, XIcon } from '@lucide/vue'
 import { AnimatePresence, motion } from 'motion-v'

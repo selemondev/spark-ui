@@ -1,0 +1,55 @@
+name: Stale Magic UI Issue Cleanup
+
+on:
+  schedule:
+    - cron: '42 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: magic-ui-stale-issue-cleanup
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    name: Close obsolete generated issues
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout SparkUI
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.9
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Rebuild registries
+        run: pnpm sync:magic-ui
+
+      - name: Close stale issues
+        run: node scripts/create-agent-issues.mjs --close-stale-only
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit registry updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add registry
+          git diff --cached --quiet || git commit -m "chore: refresh MagicUI registry"
+          git push

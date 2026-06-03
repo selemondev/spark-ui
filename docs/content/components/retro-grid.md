@@ -2,7 +2,7 @@
 
 An animated scrolling retro grid effect
 
-<demo src="../../src/example/retroGrid/Demo.vue" srcCode="../../src/spark-ui-demos/retroGrid/retroGrid.vue" />
+<demo src="../../src/example/retro-grid/demo.vue" srcCode="../../src/spark-ui-demos/retro-grid/retro-grid.vue" />
 
 ## Installation
 

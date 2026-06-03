@@ -2,7 +2,7 @@
 
 Bento grid is a layout used to showcase the features of a product in a simple and elegant way.
 
-<demo src="../../src/example/bento/Demo.vue" srcCode="../../src/spark-ui-demos/bento/BentoGrid.vue" />
+<demo src="../../src/example/bento-grid/demo.vue" srcCode="../../src/spark-ui-demos/bento-grid/bento-grid.vue" />
 
 ## Installation
 
@@ -10,7 +10,7 @@ Copy and paste the following code into your project:
 
 ::: code-group
 
-```vue [BentoCard.vue]
+```vue [bento-card.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 
@@ -37,7 +37,7 @@ const className = cn(
 </template>
 ```
 
-```vue [BentoGrid.vue]
+```vue [bento-grid.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 

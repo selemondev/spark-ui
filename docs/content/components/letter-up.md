@@ -2,7 +2,7 @@
 
 Staggered letter pull up text animation.
 
-<demo src="../../src/example/letterUp/Demo.vue" srcCode="../../src/spark-ui-demos/letterUp/LetterUp.vue" />
+<demo src="../../src/example/letter-up/demo.vue" srcCode="../../src/spark-ui-demos/letter-up/letter-up.vue" />
 
 ## Installation
 

@@ -79,6 +79,7 @@ export default defineConfig({
       { text: 'Guide', items: [
         { text: 'Introduction', link: '/content/guide/getting-started/index.md' },
         { text: 'Installation', link: '/content/guide/getting-started/installation.md' },
+        { text: 'Magic UI Sync', link: '/content/guide/magic-ui-sync.md' },
       ] },
       { text: 'Components', items: components },
       { text: 'Showcase', link: '' },
@@ -94,6 +95,7 @@ export default defineConfig({
           items: [
             { text: 'Introduction', link: '/content/guide/getting-started/index.md' },
             { text: 'Installation', link: '/content/guide/getting-started/installation.md' },
+            { text: 'Magic UI Sync', link: '/content/guide/magic-ui-sync.md' },
             { text: 'AI Agent Integration', link: '/content/guide/ai-agent-integration.md' },
           ],
         },

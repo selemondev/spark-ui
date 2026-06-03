@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spark-ui.dev/schemas/component-history.schema.json",
+  "title": "MagicUI Sync History",
+  "type": "object",
+  "required": ["generatedAt", "components"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "components": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "slug", "firstSeenAt", "latestSeenAt", "status"],
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "sourcePath": { "type": "string" },
+          "firstSeenAt": { "type": "string", "format": "date-time" },
+          "latestSeenAt": { "type": "string", "format": "date-time" },
+          "status": { "type": "string" },
+          "issueNumber": { "type": ["integer", "null"] },
+          "mergedPullRequest": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

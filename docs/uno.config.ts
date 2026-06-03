@@ -19,6 +19,10 @@ export default defineConfig({
     presetIcons(),
     presetTypography(),
     presetWebFonts({
+      // Emit `@import url(...)` so fonts load at runtime in the browser instead of
+      // being fetched and inlined during the build. This keeps the docs build
+      // deterministic and offline-safe (the build hard-fails on fetch errors in CI).
+      inlineImports: false,
       fonts: {
         sans: 'Inter:400,600,800',
         mono: 'DM Mono',

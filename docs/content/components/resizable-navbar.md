@@ -2,7 +2,7 @@
 
 A navbar that changes width on scroll, responsive and animated.
 
-<demo src="../../src/example/resizable-navbar/Demo.vue" srcCode="../../src/spark-ui-demos/resizable-navbar/Demo.vue" />
+<demo src="../../src/example/resizable-navbar/demo.vue" srcCode="../../src/spark-ui-demos/resizable-navbar/demo.vue" />
 
 ## Installation
 
@@ -18,7 +18,7 @@ Copy and paste the following code into your project:
 
 ::: code-group
 
-```vue [Navbar.vue]
+```vue [navbar.vue]
 <script setup lang="ts">
 import type { Slot } from 'vue'
 import { onMounted, onUnmounted, ref } from 'vue'
@@ -66,7 +66,7 @@ function provide(slot: Slot) {
 </template>
 ```
 
-```vue [NavbarButton.vue]
+```vue [navbar-button.vue]
 <script setup lang="ts">
 import { computed } from 'vue'
 const props = defineProps<{
@@ -102,7 +102,7 @@ const isRouterLink = computed(() => props.to !== undefined)
 </template>
 ```
 
-```vue [NavbarLogo.vue]
+```vue [navbar-logo.vue]
 <script setup lang="ts">
 </script>
 
@@ -117,7 +117,7 @@ const isRouterLink = computed(() => props.to !== undefined)
 </template>
 ```
 
-```vue [NavBody.vue]
+```vue [nav-body.vue]
 <script setup lang="ts">
 import { computed } from 'vue'
 
@@ -155,7 +155,7 @@ const navBodyClasses = computed(() => {
 </template>
 ```
 
-```vue [NavItems.vue]
+```vue [nav-items.vue]
 <script setup lang="ts">
 import { ref } from 'vue'
 
@@ -217,7 +217,7 @@ function handleClick() {
 </style>
 ```
 
-```vue [MobileNav.vue]
+```vue [mobile-nav.vue]
 <script setup lang="ts">
 import { computed } from 'vue'
 
@@ -257,7 +257,7 @@ const mobileNavClasses = computed(() => {
 </template>
 ```
 
-```vue [MobileNavHeader.vue]
+```vue [mobile-nav-header.vue]
 <script setup lang="ts">
 const props = defineProps<{
   className?: string
@@ -271,7 +271,7 @@ const props = defineProps<{
 </template>
 ```
 
-```vue [MobileNavMenu.vue]
+```vue [mobile-nav-menu.vue]
 <script setup lang="ts">
 defineProps<{
   isOpen: boolean
@@ -307,7 +307,7 @@ defineProps<{
 </style>
 ```
 
-```vue [MobileNavToggle.vue]
+```vue [mobile-nav-toggle.vue]
 <script setup lang="ts">
 import { Menu, X } from '@lucide/vue'
 

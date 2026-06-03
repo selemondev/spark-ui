@@ -2,13 +2,13 @@
 
 An animated gradient background which transitions between colors for text.
 
-<demo src="../../src/example/animatedGradientText/Demo.vue" srcCode="../../src/spark-ui-demos/animatedGradientText/AnimatedGradientText.vue" />
+<demo src="../../src/example/animated-gradient-text/demo.vue" srcCode="../../src/spark-ui-demos/animated-gradient-text/animated-gradient-text.vue" />
 
 ## Installation
 
 Copy and paste the following code into your project:
 
-```vue [AnimatedGradientText.vue]
+```vue [animated-gradient-text.vue]
 <script setup lang='ts'>
 import { cn } from '@/lib/utils'
 
