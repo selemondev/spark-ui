@@ -13,25 +13,31 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
       - name: Set node
         uses: actions/setup-node@v3
         with:
-          node-version: [18.x, 20.x]
-          cache: npm
+          node-version: lts/*
+          cache: pnpm
+
+      - name: Setup ni
+        run: npm i -g @antfu/ni
 
       - run: npx changelogithub
         continue-on-error: true
         env:
-          GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Install
-        run: npm install
+        run: nci
 
       - name: Build
-        run: npm run build
+        run: nr build
 
       - name: Test
-        run: npm run test
+        run: nr test
 
       - name: Config npm
         run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
