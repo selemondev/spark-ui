@@ -10,6 +10,8 @@ catalog:
 overrides:
   vite: "catalog:"
   vitest: "catalog:"
+  "@spark-ui/docs>vite": "npm:vite@5.4.21"
+  "@spark-ui/docs>@unocss/vite>vite": "npm:vite@5.4.21"
 peerDependencyRules:
   allowAny:
     - vite

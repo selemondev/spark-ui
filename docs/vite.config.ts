@@ -1,8 +1,7 @@
 /* eslint-disable node/prefer-global/process */
 import { fileURLToPath, URL } from "node:url";
 import UnoCSS from "unocss/vite";
-import { defineConfig, loadEnv } from "vite-plus";
-import { vitePostHog } from "vite-plugin-posthog";
+import { defineConfig, loadEnv } from "vite";
 
 export default ({ mode }: { mode: string }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
@@ -17,15 +16,8 @@ export default ({ mode }: { mode: string }) => {
     },
     plugins: [
       UnoCSS(),
-      vitePostHog({
-        apiKey: process.env.VITE_POSTHOG_API_KEY!,
-        hostUrl: process.env.VITE_POSTHOG_API_HOST!,
-        config: {
-          autocapture: true,
-          capture_pageview: true,
-        },
-      }),
-    ],
+      // UnoCSS is typed against root Vite+; VitePress uses Vite 5 here.
+    ] as never,
     resolve: {
       alias: {
         find: "@",
