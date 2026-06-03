@@ -2,12 +2,12 @@ import { existsSync, readFileSync, renameSync, rmSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
-import { listFiles, repoRoot, toKebabCase } from './registry-utils.mjs'
+import { listFiles, repoRoot, toKebabCase } from './registry-utils.ts'
 
 const selfPath = fileURLToPath(import.meta.url)
 
 const checkOnly = process.argv.includes('--check')
-const report = {
+const report: { renamed: string[], duplicatesRemoved: string[], canonicalFiles: string[] } = {
   renamed: [],
   duplicatesRemoved: [],
   canonicalFiles: [
@@ -22,14 +22,14 @@ const report = {
     '.ai/prompts/spark-ui-standards.md',
     'docs/content/guide/magic-ui-sync.md',
     '.github/workflows/watch-magic-ui.yml',
-    'scripts/clone-magic-ui.mjs',
-    'scripts/build-magic-ui-registry.mjs',
-    'scripts/build-spark-ui-registry.mjs',
-    'scripts/update-component-history.mjs',
+    'scripts/clone-magic-ui.ts',
+    'scripts/build-magic-ui-registry.ts',
+    'scripts/build-spark-ui-registry.ts',
+    'scripts/update-component-history.ts',
   ],
 }
 
-const legacyPaths = [
+const legacyPaths: [string, string][] = [
   ['registry/magicui.json', 'registry/magic-ui.json'],
   ['registry/sparkui.json', 'registry/spark-ui.json'],
   ['registry/missing.json', 'registry/missing-components.json'],
@@ -41,10 +41,19 @@ const legacyPaths = [
   ['.ai/prompts/sparkui-standards.md', '.ai/prompts/spark-ui-standards.md'],
   ['docs/content/guide/magicui-sync.md', 'docs/content/guide/magic-ui-sync.md'],
   ['.github/workflows/watch-magicui.yml', '.github/workflows/watch-magic-ui.yml'],
-  ['scripts/clone-magicui.mjs', 'scripts/clone-magic-ui.mjs'],
-  ['scripts/build-magicui-registry.mjs', 'scripts/build-magic-ui-registry.mjs'],
-  ['scripts/build-sparkui-registry.mjs', 'scripts/build-spark-ui-registry.mjs'],
-  ['scripts/update-registry-history.mjs', 'scripts/update-component-history.mjs'],
+  ['scripts/clone-magicui.mjs', 'scripts/clone-magic-ui.ts'],
+  ['scripts/build-magicui-registry.mjs', 'scripts/build-magic-ui-registry.ts'],
+  ['scripts/build-sparkui-registry.mjs', 'scripts/build-spark-ui-registry.ts'],
+  ['scripts/update-registry-history.mjs', 'scripts/update-component-history.ts'],
+  ['scripts/clone-magic-ui.mjs', 'scripts/clone-magic-ui.ts'],
+  ['scripts/build-magic-ui-registry.mjs', 'scripts/build-magic-ui-registry.ts'],
+  ['scripts/build-spark-ui-registry.mjs', 'scripts/build-spark-ui-registry.ts'],
+  ['scripts/compare-registries.mjs', 'scripts/compare-registries.ts'],
+  ['scripts/create-agent-issues.mjs', 'scripts/create-agent-issues.ts'],
+  ['scripts/normalize-repository.mjs', 'scripts/normalize-repository.ts'],
+  ['scripts/registry-utils.mjs', 'scripts/registry-utils.ts'],
+  ['scripts/update-component-history.mjs', 'scripts/update-component-history.ts'],
+  ['scripts/validate-component.mjs', 'scripts/validate-component.ts'],
 ]
 const stalePathFragments = [
   '/animatedBeam/',
@@ -117,22 +126,22 @@ const staleFileNames = [
   'Nitro.vue',
 ]
 
-function isKebabFileName(filePath) {
+function isKebabFileName(filePath: string): boolean {
   const baseName = path.basename(filePath)
   const extension = path.extname(baseName)
   const stem = baseName.slice(0, -extension.length)
   return `${toKebabCase(stem)}${extension}` === baseName
 }
 
-function isKebabDirectoryName(directoryPath) {
+function isKebabDirectoryName(directoryPath: string): boolean {
   return toKebabCase(path.basename(directoryPath)) === path.basename(directoryPath)
 }
 
-function absolute(relativeFilePath) {
+function absolute(relativeFilePath: string): string {
   return path.join(repoRoot, relativeFilePath)
 }
 
-function normalizedContent(filePath) {
+function normalizedContent(filePath: string): string {
   const content = readFileSync(filePath, 'utf8')
   if (!filePath.endsWith('.json'))
     return content
@@ -180,7 +189,7 @@ for (const canonicalFile of report.canonicalFiles) {
 
 // `.agents/` is the authoritative agent expertise/skills directory and must be
 // preserved. Only list directories here that are genuinely obsolete duplicates.
-for (const obsoleteDirectory of []) {
+for (const obsoleteDirectory of [] as string[]) {
   const obsoletePath = absolute(obsoleteDirectory)
   if (!existsSync(obsoletePath))
     continue

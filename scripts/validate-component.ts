@@ -2,7 +2,7 @@ import { execFileSync } from 'node:child_process'
 import { existsSync, readFileSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
-import { aliasCandidates, listDirs, listFiles, pathMatchesComponent, readAliases, repoRoot, toKebabCase } from './registry-utils.mjs'
+import { aliasCandidates, listDirs, listFiles, pathMatchesComponent, readAliases, repoRoot, toKebabCase } from './registry-utils.ts'
 
 const componentRoot = path.join(repoRoot, 'docs/src/components/spark-ui')
 const docsRoot = path.join(repoRoot, 'docs/content/components')
@@ -13,7 +13,7 @@ const exampleRoots = [
 const testsRoot = path.join(repoRoot, 'tests')
 const aliases = readAliases()
 
-const forbiddenPatterns = [
+const forbiddenPatterns: [RegExp, string][] = [
   [/from\s+['"]react(?:\/[^'"]*)?['"]/, 'React imports are forbidden'],
   [/from\s+['"]framer-motion['"]|from\s+['"]motion\/react['"]/, 'Framer Motion imports are forbidden; use Motion for Vue'],
   [/from\s+['"]clsx['"]/, 'clsx is forbidden; use SparkUI utilities'],
@@ -22,7 +22,7 @@ const forbiddenPatterns = [
   [/from\s+['"]@\/components\/ui\//, 'shadcn/ui imports are forbidden'],
 ]
 
-function changedFiles() {
+function changedFiles(): string[] {
   if (process.env.GITHUB_BASE_REF) {
     const base = `origin/${process.env.GITHUB_BASE_REF}`
 
@@ -49,7 +49,7 @@ function changedFiles() {
     .filter(Boolean)
 }
 
-function componentSlugs(files) {
+function componentSlugs(files: string[]): string[] {
   const componentSourceFiles = files.filter(file => file.startsWith('docs/src/components/spark-ui/'))
   if (componentSourceFiles.length === 0)
     return []
@@ -67,8 +67,8 @@ function componentSlugs(files) {
     .sort()
 }
 
-function validateForbiddenSyntax(files) {
-  const failures = []
+function validateForbiddenSyntax(files: string[]): string[] {
+  const failures: string[] = []
   const relevant = files.filter(file => /\.(?:vue|ts|tsx|jsx|js)$/.test(file))
 
   for (const file of relevant) {
@@ -89,8 +89,8 @@ function validateForbiddenSyntax(files) {
   return failures
 }
 
-function validateComponentArtifacts(slugs) {
-  const failures = []
+function validateComponentArtifacts(slugs: string[]): string[] {
+  const failures: string[] = []
 
   for (const slug of slugs) {
     const identifiers = aliasCandidates(slug, aliases)

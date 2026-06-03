@@ -9,14 +9,14 @@ SparkUI can monitor MagicUI, compare component registries, open missing-componen
 - `.github/workflows/validate-agent-pr.yml` validates component-port pull requests.
 - `.github/workflows/stale-issue-cleanup.yml` closes obsolete sync issues.
 - `.github/workflows/copilot-setup-steps.yml` preinstalls the workspace dependencies for GitHub Copilot Coding Agent sessions.
-- `scripts/clone-magic-ui.mjs` clones MagicUI with a shallow clone.
-- `scripts/build-magic-ui-registry.mjs` scans MagicUI component metadata.
-- `scripts/build-spark-ui-registry.mjs` scans local SparkUI components.
-- `scripts/compare-registries.mjs` writes the missing-component registry.
-- `scripts/create-agent-issues.mjs` opens or reuses component-port issues.
-- `scripts/update-component-history.mjs` tracks first-seen and latest-seen status.
-- `scripts/validate-component.mjs` enforces component-port validation rules.
-- `scripts/normalize-repository.mjs` removes duplicate generated artifacts and verifies canonical naming.
+- `scripts/clone-magic-ui.ts` clones MagicUI with a shallow clone.
+- `scripts/build-magic-ui-registry.ts` scans MagicUI component metadata.
+- `scripts/build-spark-ui-registry.ts` scans local SparkUI components.
+- `scripts/compare-registries.ts` writes the missing-component registry.
+- `scripts/create-agent-issues.ts` opens or reuses component-port issues.
+- `scripts/update-component-history.ts` tracks first-seen and latest-seen status.
+- `scripts/validate-component.ts` enforces component-port validation rules.
+- `scripts/normalize-repository.ts` removes duplicate generated artifacts and verifies canonical naming.
 - `.ai/prompts` stores conversion, review, animation, and SparkUI standards prompts.
 - `registry` stores current registries, schemas, missing components, and sync history.
 

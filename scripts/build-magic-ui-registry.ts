@@ -14,7 +14,44 @@ import {
   toPascalCase,
   unique,
   writeJson,
-} from './registry-utils.mjs'
+} from './registry-utils.ts'
+
+interface ManifestFile {
+  path: string
+}
+
+interface ManifestItem {
+  type?: string
+  name: string
+  title?: string
+  description?: string
+  files?: ManifestFile[]
+  dependencies?: string[]
+  devDependencies?: string[]
+  registryDependencies?: string[]
+  css?: unknown
+}
+
+interface Manifest {
+  items?: ManifestItem[]
+}
+
+interface MagicUiComponentMeta {
+  name: string
+  slug: string
+  title?: string
+  description?: string
+  sourcePath: string
+  sourceFiles: string[]
+  lastCommitHash: string
+  dependencies: string[]
+  registryDependencies?: string[]
+  usesAnimation: boolean
+  usesFramerMotion: boolean
+  usesMotion: boolean
+  demoFiles: string[]
+  docsFiles: string[]
+}
 
 const componentExtensions = new Set(['.tsx', '.ts', '.jsx', '.js'])
 const documentationExtensions = new Set(['.md', '.mdx'])
@@ -28,7 +65,7 @@ const ignoredNameFragments = [
   'use-',
 ]
 
-function isLikelyComponentFile(filePath) {
+function isLikelyComponentFile(filePath: string): boolean {
   const extension = path.extname(filePath)
   const basename = path.basename(filePath).toLowerCase()
 
@@ -36,7 +73,7 @@ function isLikelyComponentFile(filePath) {
     && !ignoredNameFragments.some(fragment => basename.includes(fragment))
 }
 
-function candidateRoots() {
+function candidateRoots(): string[] {
   const roots = [
     'registry/default/magicui',
     'registry/magicui',
@@ -49,15 +86,15 @@ function candidateRoots() {
   return roots.filter(existsSync)
 }
 
-function registryManifestCandidates() {
+function registryManifestCandidates(): string[] {
   return [
     path.join(magicuiCacheDir, 'apps/www/registry.json'),
     path.join(magicuiCacheDir, 'registry.json'),
   ].filter(existsSync)
 }
 
-function importsFromSource(source) {
-  const imports = []
+function importsFromSource(source: string): string[] {
+  const imports: string[] = []
   const patterns = [
     /\bfrom\s*['"]([^'".][^'"]*)['"]/g,
     /\bimport\s*['"]([^'".][^'"]*)['"]/g,
@@ -75,7 +112,7 @@ function importsFromSource(source) {
   return unique(imports)
 }
 
-function metadataForDirectory(dir) {
+function metadataForDirectory(dir: string): MagicUiComponentMeta | null {
   const files = listFiles(dir)
   const sourceFiles = files.filter(isLikelyComponentFile)
   if (sourceFiles.length === 0)
@@ -111,7 +148,7 @@ function metadataForDirectory(dir) {
   }
 }
 
-function relatedFiles(root, slug, extensions) {
+function relatedFiles(root: string, slug: string, extensions: Set<string>): string[] {
   if (!existsSync(root))
     return []
 
@@ -123,7 +160,7 @@ function relatedFiles(root, slug, extensions) {
   })
 }
 
-function absoluteManifestFile(manifestDir, filePath) {
+function absoluteManifestFile(manifestDir: string, filePath: string): string {
   const fromManifestDir = path.join(manifestDir, filePath)
   if (existsSync(fromManifestDir))
     return fromManifestDir
@@ -135,7 +172,7 @@ function absoluteManifestFile(manifestDir, filePath) {
   return fromManifestDir
 }
 
-function metadataForManifestItem(item, manifestDir) {
+function metadataForManifestItem(item: ManifestItem, manifestDir: string): MagicUiComponentMeta | null {
   if (item.type !== 'registry:ui' || !Array.isArray(item.files) || item.files.length === 0)
     return null
 
@@ -181,14 +218,14 @@ function metadataForManifestItem(item, manifestDir) {
 }
 
 if (!existsSync(magicuiCacheDir)) {
-  throw new Error('MagicUI cache is missing. Run node scripts/clone-magic-ui.mjs first.')
+  throw new Error('MagicUI cache is missing. Run node scripts/clone-magic-ui.ts first.')
 }
 
-const seen = new Map()
+const seen = new Map<string, MagicUiComponentMeta>()
 const manifestPath = registryManifestCandidates()[0]
 
 if (manifestPath) {
-  const manifest = readJson(manifestPath, { items: [] })
+  const manifest = readJson<Manifest>(manifestPath, { items: [] })
   const manifestDir = path.dirname(manifestPath)
 
   for (const item of manifest.items ?? []) {

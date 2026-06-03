@@ -13,7 +13,7 @@ import {
   toKebabCase,
   toPascalCase,
   writeJson,
-} from './registry-utils.mjs'
+} from './registry-utils.ts'
 
 const componentRoot = path.join(repoRoot, 'docs/src/components/spark-ui')
 const exampleRoots = [
@@ -24,7 +24,7 @@ const docsRoot = path.join(repoRoot, 'docs/content/components')
 const testsRoot = path.join(repoRoot, 'tests')
 const aliases = readAliases()
 
-function matchingFiles(root, slug) {
+function matchingFiles(root: string, slug: string): string[] {
   if (!existsSync(root))
     return []
 

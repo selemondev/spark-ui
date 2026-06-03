@@ -1,9 +1,10 @@
+import type { ComponentRegistry, RegistryComponent } from './types.ts'
 import path from 'node:path'
-import { aliasCandidates, normalizeName, readAliases, readJson, registryDir, toKebabCase, writeJson } from './registry-utils.mjs'
+import { aliasCandidates, normalizeName, readAliases, readJson, registryDir, toKebabCase, writeJson } from './registry-utils.ts'
 
 const aliases = readAliases()
 
-function keysFor(component) {
+function keysFor(component: RegistryComponent): string[] {
   return [
     ...aliasCandidates(component.slug, aliases),
     ...aliasCandidates(component.name, aliases),
@@ -12,8 +13,8 @@ function keysFor(component) {
   ].map(value => normalizeName(toKebabCase(value)))
 }
 
-const magicui = readJson(path.join(registryDir, 'magic-ui.json'), { components: [] })
-const sparkui = readJson(path.join(registryDir, 'spark-ui.json'), { components: [] })
+const magicui = readJson<ComponentRegistry>(path.join(registryDir, 'magic-ui.json'), { components: [] })
+const sparkui = readJson<ComponentRegistry>(path.join(registryDir, 'spark-ui.json'), { components: [] })
 const sparkKeys = new Set(sparkui.components.flatMap(component => keysFor(component)))
 
 const missing = magicui.components

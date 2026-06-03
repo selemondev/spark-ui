@@ -2,7 +2,7 @@ import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, renameSync, rmSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
-import { magicuiCacheDir, repoRoot } from './registry-utils.mjs'
+import { magicuiCacheDir, repoRoot } from './registry-utils.ts'
 
 const repository = process.env.MAGICUI_REPOSITORY ?? 'https://github.com/magicuidesign/magicui.git'
 const ref = process.env.MAGICUI_REF

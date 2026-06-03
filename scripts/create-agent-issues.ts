@@ -1,7 +1,30 @@
+import type { ComponentHistory, MissingComponent } from './types.ts'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
-import { readJson, registryDir, writeJson } from './registry-utils.mjs'
+import { readJson, registryDir, writeJson } from './registry-utils.ts'
+
+interface GithubError extends Error {
+  status?: number
+  body?: unknown
+}
+
+interface GithubRequestOptions {
+  method?: string
+  body?: string
+  headers?: Record<string, string>
+}
+
+interface GithubIssue {
+  number: number
+  title: string
+  state: string
+  pull_request?: unknown
+}
+
+interface GithubSearchResult {
+  items?: GithubIssue[]
+}
 
 const token = process.env.GITHUB_TOKEN
 const repository = process.env.GITHUB_REPOSITORY
@@ -20,13 +43,13 @@ if (!token && !dryRun)
 const [owner, repo] = (repository ?? 'local/spark-ui').split('/')
 const missingPath = path.join(registryDir, 'missing-components.json')
 const historyPath = path.join(registryDir, 'component-history.json')
-const missing = readJson(missingPath, { components: [] })
-const history = readJson(historyPath, { $schema: './component-history.schema.json', generatedAt: new Date().toISOString(), components: {} })
+const missing = readJson<{ components: MissingComponent[] }>(missingPath, { components: [] })
+const history = readJson<ComponentHistory>(historyPath, { $schema: './component-history.schema.json', generatedAt: new Date().toISOString(), components: {} })
 const prompt = readFileSync(path.join(process.cwd(), '.ai/prompts/convert-component.md'), 'utf8')
 const standards = readFileSync(path.join(process.cwd(), '.ai/prompts/spark-ui-standards.md'), 'utf8')
 const animationRules = readFileSync(path.join(process.cwd(), '.ai/prompts/animation-rules.md'), 'utf8')
 
-async function github(pathname, options = {}) {
+async function github<T = unknown>(pathname: string, options: GithubRequestOptions = {}): Promise<T> {
   const response = await fetch(`${apiBase}${pathname}`, {
     ...options,
     headers: {
@@ -38,24 +61,24 @@ async function github(pathname, options = {}) {
   })
 
   if (response.status === 204)
-    return null
+    return null as T
 
   const text = await response.text()
   const body = text ? JSON.parse(text) : null
 
   if (!response.ok) {
     const message = body?.message ?? response.statusText
-    const error = new Error(`${options.method ?? 'GET'} ${pathname} failed: ${message}`)
+    const error: GithubError = new Error(`${options.method ?? 'GET'} ${pathname} failed: ${message}`)
     error.status = response.status
     error.body = body
     throw error
   }
 
-  return body
+  return body as T
 }
 
-async function ensureLabels() {
-  const definitions = [
+async function ensureLabels(): Promise<void> {
+  const definitions: [string, string, string][] = [
     ['magic-ui-sync', '5319e7', 'Tracks MagicUI synchronization work'],
     ['agent-generated', '8b5cf6', 'Routes work to the configured coding agent'],
     ['needs-review', 'f97316', 'Requires human review before merge'],
@@ -68,8 +91,9 @@ async function ensureLabels() {
       await github(`/repos/${owner}/${repo}/labels/${encodeURIComponent(name)}`)
     }
     catch (error) {
-      if (error.status !== 404) {
-        console.warn(error.message)
+      const githubError = error as GithubError
+      if (githubError.status !== 404) {
+        console.warn(githubError.message)
         continue
       }
 
@@ -81,17 +105,17 @@ async function ensureLabels() {
   }
 }
 
-async function findIssue(title) {
+async function findIssue(title: string): Promise<GithubIssue | null> {
   const query = encodeURIComponent(`repo:${owner}/${repo} is:issue in:title "${title}"`)
-  const result = await github(`/search/issues?q=${query}`)
+  const result = await github<GithubSearchResult>(`/search/issues?q=${query}`)
   return result.items?.[0] ?? null
 }
 
-async function getIssue(issueNumber) {
-  return github(`/repos/${owner}/${repo}/issues/${issueNumber}`)
+async function getIssue(issueNumber: number): Promise<GithubIssue> {
+  return github<GithubIssue>(`/repos/${owner}/${repo}/issues/${issueNumber}`)
 }
 
-function issueBody(component) {
+function issueBody(component: MissingComponent): string {
   const componentLabels = component.usesFramerMotion ? [...labels, 'motion-migration'] : labels
 
   return [
@@ -137,7 +161,7 @@ function issueBody(component) {
   ].join('\n')
 }
 
-async function assignAgent(issueNumber) {
+async function assignAgent(issueNumber: number): Promise<void> {
   try {
     await github(`/repos/${owner}/${repo}/issues/${issueNumber}/assignees`, {
       method: 'POST',
@@ -145,19 +169,20 @@ async function assignAgent(issueNumber) {
     })
   }
   catch (error) {
+    const githubError = error as GithubError
     await github(`/repos/${owner}/${repo}/issues/${issueNumber}/comments`, {
       method: 'POST',
       body: JSON.stringify({
-        body: `Automatic assignment to \`${assignee}\` failed. Confirm Copilot Coding Agent is enabled for this repository and assign the issue to Copilot manually if required.\n\n${error.message}`,
+        body: `Automatic assignment to \`${assignee}\` failed. Confirm Copilot Coding Agent is enabled for this repository and assign the issue to Copilot manually if required.\n\n${githubError.message}`,
       }),
     })
   }
 }
 
-async function closeStaleIssues() {
+async function closeStaleIssues(): Promise<void> {
   const activeTitles = new Set(missing.components.map(component => component.issueTitle))
   const query = encodeURIComponent(`repo:${owner}/${repo} is:issue is:open label:agent-generated (label:magic-ui-sync OR label:magicui-sync)`)
-  const result = await github(`/search/issues?q=${query}&per_page=100`)
+  const result = await github<GithubSearchResult>(`/search/issues?q=${query}&per_page=100`)
 
   for (const issue of result.items ?? []) {
     if (activeTitles.has(issue.title))
@@ -177,7 +202,7 @@ async function closeStaleIssues() {
   }
 }
 
-async function existingIssueForComponent(component) {
+async function existingIssueForComponent(component: MissingComponent): Promise<GithubIssue | null> {
   const trackedIssueNumber = history.components[component.slug]?.issueNumber
 
   if (trackedIssueNumber) {
@@ -187,8 +212,9 @@ async function existingIssueForComponent(component) {
         return issue
     }
     catch (error) {
-      if (error.status !== 404)
-        console.warn(error.message)
+      const githubError = error as GithubError
+      if (githubError.status !== 404)
+        console.warn(githubError.message)
     }
   }
 
@@ -238,7 +264,7 @@ for (const component of missing.components) {
   }
 
   const componentLabels = component.usesFramerMotion ? [...labels, 'motion-migration'] : labels
-  const issue = await github(`/repos/${owner}/${repo}/issues`, {
+  const issue = await github<GithubIssue>(`/repos/${owner}/${repo}/issues`, {
     method: 'POST',
     body: JSON.stringify({
       title: component.issueTitle,

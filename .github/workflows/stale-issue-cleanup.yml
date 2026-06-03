@@ -42,7 +42,7 @@ jobs:
         run: pnpm sync:magic-ui
 
       - name: Close stale issues
-        run: node scripts/create-agent-issues.mjs --close-stale-only
+        run: node scripts/create-agent-issues.ts --close-stale-only
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

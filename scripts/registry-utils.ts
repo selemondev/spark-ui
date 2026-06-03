@@ -1,17 +1,18 @@
+import type { Aliases } from './types.ts'
 import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 
-export const repoRoot = path.resolve(new URL('..', import.meta.url).pathname)
-export const registryDir = path.join(repoRoot, 'registry')
-export const magicuiCacheDir = path.join(repoRoot, '.cache', 'magicui')
-export const defaultAliases = {}
+export const repoRoot: string = path.resolve(new URL('..', import.meta.url).pathname)
+export const registryDir: string = path.join(repoRoot, 'registry')
+export const magicuiCacheDir: string = path.join(repoRoot, '.cache', 'magicui')
+export const defaultAliases: Aliases = {}
 
-export function ensureDir(dir) {
+export function ensureDir(dir: string): void {
   mkdirSync(dir, { recursive: true })
 }
 
-export function readJson(filePath, fallback) {
+export function readJson<T = unknown>(filePath: string, fallback: T): T {
   if (!existsSync(filePath))
     return fallback
 
@@ -19,28 +20,31 @@ export function readJson(filePath, fallback) {
   if (!raw)
     return fallback
 
-  return JSON.parse(raw)
+  return JSON.parse(raw) as T
 }
 
-export function readAliases() {
-  return readJson(path.join(registryDir, 'aliases.json'), defaultAliases)
+export function readAliases(): Aliases {
+  return readJson<Aliases>(path.join(registryDir, 'aliases.json'), defaultAliases)
 }
 
-export function writeJson(filePath, value) {
+export function writeJson(filePath: string, value: unknown): void {
   ensureDir(path.dirname(filePath))
   writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`)
 }
 
-export function listFiles(root, predicate = () => true) {
+export function listFiles(root: string, predicate: (file: string) => boolean = () => true): string[] {
   if (!existsSync(root))
     return []
 
   const ignored = new Set(['.git', 'node_modules', '.next', 'dist', 'build', '.cache', 'coverage'])
-  const output = []
-  const stack = [root]
+  const output: string[] = []
+  const stack: string[] = [root]
 
   while (stack.length > 0) {
     const current = stack.pop()
+    if (!current)
+      continue
+
     const entries = readdirSync(current, { withFileTypes: true })
 
     for (const entry of entries) {
@@ -61,7 +65,7 @@ export function listFiles(root, predicate = () => true) {
   return output.sort()
 }
 
-export function listDirs(root) {
+export function listDirs(root: string): string[] {
   if (!existsSync(root))
     return []
 
@@ -71,11 +75,11 @@ export function listDirs(root) {
     .sort()
 }
 
-export function relativePath(filePath, base = repoRoot) {
+export function relativePath(filePath: string, base: string = repoRoot): string {
   return path.relative(base, filePath).replaceAll(path.sep, '/')
 }
 
-export function toKebabCase(value) {
+export function toKebabCase(value: string): string {
   return String(value)
     .replace(/\.[^.]+$/, '')
     .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
@@ -86,7 +90,7 @@ export function toKebabCase(value) {
     .toLowerCase()
 }
 
-export function toPascalCase(value) {
+export function toPascalCase(value: string): string {
   return toKebabCase(value)
     .split('-')
     .filter(Boolean)
@@ -94,14 +98,14 @@ export function toPascalCase(value) {
     .join('')
 }
 
-export function normalizeName(value) {
+export function normalizeName(value: string): string {
   return toKebabCase(value)
     .replace(/s$/u, '')
     .replace(/-vue$/u, '')
     .replace(/-react$/u, '')
 }
 
-export function aliasCandidates(value, aliases = {}) {
+export function aliasCandidates(value: string, aliases: Aliases = {}): string[] {
   const target = toKebabCase(value)
   const normalizedTarget = normalizeName(target)
   const candidates = new Set([target, normalizedTarget])
@@ -127,7 +131,7 @@ export function aliasCandidates(value, aliases = {}) {
   return [...candidates].filter(Boolean)
 }
 
-export function pathMatchesComponent(filePath, basePath, identifiers) {
+export function pathMatchesComponent(filePath: string, basePath: string, identifiers: string[]): boolean {
   const candidateKeys = new Set(
     identifiers.flatMap(identifier => [toKebabCase(identifier), normalizeName(identifier)]).filter(Boolean),
   )
@@ -144,11 +148,11 @@ export function pathMatchesComponent(filePath, basePath, identifiers) {
   })
 }
 
-export function unique(values) {
+export function unique(values: readonly string[]): string[] {
   return [...new Set(values.filter(Boolean))].sort()
 }
 
-export function git(args, cwd = repoRoot, fallback = '') {
+export function git(args: string[], cwd: string = repoRoot, fallback: string = ''): string {
   try {
     return execFileSync('git', args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()
   }
@@ -157,14 +161,14 @@ export function git(args, cwd = repoRoot, fallback = '') {
   }
 }
 
-export function latestCommitForPath(cwd, relativeFilePath) {
+export function latestCommitForPath(cwd: string, relativeFilePath: string): string {
   return git(['log', '-n', '1', '--format=%H', '--', relativeFilePath], cwd, '')
 }
 
-export function fileContains(filePath, pattern) {
+export function fileContains(filePath: string, pattern: RegExp): boolean {
   return pattern.test(readFileSync(filePath, 'utf8'))
 }
 
-export function fileSize(filePath) {
+export function fileSize(filePath: string): number {
   return statSync(filePath).size
 }
