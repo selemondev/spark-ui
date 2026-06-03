@@ -18,13 +18,6 @@
   <a href="https://github.com/selemondev/spark-ui/issues">Report a bug</a>
 </p>
 
-<p align="center">
-  <a href="https://spark-ui.vercel.app"><img src="https://img.shields.io/badge/docs-spark--ui.vercel.app-646cff?style=flat-square" alt="Docs" /></a>
-  <a href="https://github.com/selemondev/spark-ui/blob/main/LICENSE"><img src="https://img.shields.io/github/license/selemondev/spark-ui?style=flat-square" alt="License" /></a>
-  <a href="https://github.com/selemondev/spark-ui"><img src="https://img.shields.io/badge/vue-3-42b883?style=flat-square&logo=vue.js" alt="Vue 3" /></a>
-  <a href="https://github.com/selemondev/spark-ui"><img src="https://img.shields.io/badge/typescript-ready-3178c6?style=flat-square&logo=typescript" alt="TypeScript" /></a>
-</p>
-
 ## Live demos
 
 Every component in the docs is interactive — open a page, tweak the preview, and copy the source. Here are a few highlights:
