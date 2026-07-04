@@ -6,7 +6,7 @@ import { cn } from "../../lib/utils";
 <template>
   <div class="grid place-items-center w-full min-h-screen">
     <div
-      class="relative flex h-[450px] w-[300px] flex-col items-center justify-center overflow-hidden rounded-lg md:w-[600px] lg:w-[850px]"
+      class="relative flex h-[450px] w-[300px] flex-col items-center justify-center overflow-hidden rounded-lg md:w-[500px]"
     >
       <HexagonPattern
         :hexagons="[
