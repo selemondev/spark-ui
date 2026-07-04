@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from "vue";
+import { computed, nextTick, onMounted, onUnmounted, ref } from "vue";
 import { cn } from "../../lib/utils";
 
 export type TransitionVariant =
@@ -37,7 +37,7 @@ const emit = defineEmits<{
 }>();
 
 type ViewTransitionDocument = Document & {
-  startViewTransition?: (callback: () => void) => {
+  startViewTransition?: (callback: () => void | Promise<void>) => {
     ready: Promise<void>;
     finished: Promise<void>;
   };
@@ -161,15 +161,16 @@ function getThemeTransitionClipPaths(
 
 const applyTheme = () => {
   const newIsDark = !isDark.value;
-  // Always toggle the class synchronously so the View Transitions API
-  // snapshots the new theme inside the startViewTransition callback.
-  document.documentElement.classList.toggle("dark");
+
   if (isControlled.value) {
     emit("themeChange", newIsDark ? "dark" : "light");
-  } else {
-    internalIsDark.value = newIsDark;
-    localStorage.setItem("theme", newIsDark ? "dark" : "light");
+    return;
   }
+
+  // Keep DOM class in sync before view-transition snapshots in uncontrolled mode.
+  document.documentElement.classList.toggle("dark", newIsDark);
+  internalIsDark.value = newIsDark;
+  localStorage.setItem("theme", newIsDark ? "dark" : "light");
 };
 
 const toggleTheme = () => {
@@ -178,7 +179,11 @@ const toggleTheme = () => {
 
   const doc = document as ViewTransitionDocument;
 
-  if (typeof doc.startViewTransition !== "function") {
+  const prefersReducedMotion =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (prefersReducedMotion || typeof doc.startViewTransition !== "function") {
     applyTheme();
     return;
   }
@@ -220,7 +225,10 @@ const toggleTheme = () => {
     root.style.removeProperty("--spark-theme-vt-clip-from");
   };
 
-  const transition = doc.startViewTransition(applyTheme);
+  const transition = doc.startViewTransition(async () => {
+    applyTheme();
+    await nextTick();
+  });
   transition.finished.finally(cleanup);
 
   transition.ready.then(() => {

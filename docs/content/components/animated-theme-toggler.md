@@ -310,6 +310,10 @@ Add the following CSS to your global stylesheet. The component sets `--spark-the
 html[data-spark-theme-vt="active"]::view-transition-group(root) {
   animation-duration: var(--spark-theme-toggle-vt-duration);
 }
+
+html[data-spark-theme-vt="active"]::view-transition-new(root) {
+  clip-path: var(--spark-theme-vt-clip-from);
+}
 ```
 
 ## Usage
