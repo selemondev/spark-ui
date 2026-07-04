@@ -171,6 +171,16 @@ module.exports = withAnimations({
           },
         },
 
+        "comic-text": {
+          from: {
+            opacity: "0",
+            transform: "skewX(-10deg) scale(0.8) rotate(-2deg)",
+          },
+          to: {
+            opacity: "1",
+            transform: "skewX(-10deg) scale(1) rotate(0deg)",
+          },
+        },
         "shine-pulse": {
           "0%": {
             "background-position": "0% 0%",
@@ -198,6 +208,7 @@ module.exports = withAnimations({
         marquee: "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         shimmer: "shimmer 8s infinite",
+        "comic-text": "comic-text 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both",
       },
     },
   },
