@@ -40,8 +40,8 @@ const highlightedAfter = ref("");
 
 const selectedTheme = computed(() => (isDark.value ? props.darkTheme : props.lightTheme));
 
-const hasLeftFocus = computed(() => highlightedBefore.value.includes("focused"));
-const hasRightFocus = computed(() => highlightedAfter.value.includes("focused"));
+const hasLeftFocus = computed(() => highlightedBefore.value.includes("line focused"));
+const hasRightFocus = computed(() => highlightedAfter.value.includes("line focused"));
 
 async function highlightCode() {
   try {
@@ -88,18 +88,22 @@ watch(
 
 <template>
   <div :class="cn('mx-auto w-full max-w-5xl', props.class)">
-    <div class="group border-border relative w-full overflow-hidden rounded-md border">
+    <div
+      class="group relative w-full overflow-hidden rounded-xl border border-black/10 dark:border-white/10"
+    >
       <div class="relative grid md:grid-cols-2">
         <div
           :class="
-            cn('leftside group/left border-primary/20 md:border-r', { 'has-focus': hasLeftFocus })
+            cn('leftside group/left border-black/10 dark:border-white/10 md:border-r', {
+              'has-focus': hasLeftFocus,
+            })
           "
         >
           <div
-            class="border-primary/20 bg-accent text-foreground flex items-center border-b p-2 text-sm"
+            class="flex items-center border-b border-black/10 bg-neutral-100 p-2 text-sm text-neutral-700 dark:border-white/10 dark:bg-neutral-900 dark:text-neutral-200"
           >
             <svg
-              class="mr-2 h-4 w-4"
+              class="mr-2 h-4 w-4 shrink-0"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="none"
@@ -116,28 +120,28 @@ watch(
           </div>
           <div
             v-if="highlightedBefore"
-            class="shiki-code bg-background h-full w-full overflow-auto font-mono text-xs"
+            class="shiki-code w-full overflow-auto bg-white font-mono text-xs dark:bg-[#24292e]"
             :style="{ '--highlight-color': props.highlightColor }"
             v-html="highlightedBefore"
           />
           <pre
             v-else
-            class="bg-background text-foreground h-full overflow-auto p-4 font-mono text-xs break-all"
+            class="h-full overflow-auto bg-white p-4 font-mono text-xs break-all text-neutral-800 dark:bg-[#24292e] dark:text-neutral-200"
             >{{ props.beforeCode }}</pre
           >
         </div>
         <div
           :class="
-            cn('rightside group/right border-primary/20 border-t md:border-t-0', {
+            cn('rightside group/right border-t border-black/10 dark:border-white/10 md:border-t-0', {
               'has-focus': hasRightFocus,
             })
           "
         >
           <div
-            class="border-primary/20 bg-accent text-foreground flex items-center border-b p-2 text-sm"
+            class="flex items-center border-b border-black/10 bg-neutral-100 p-2 text-sm text-neutral-700 dark:border-white/10 dark:bg-neutral-900 dark:text-neutral-200"
           >
             <svg
-              class="mr-2 h-4 w-4"
+              class="mr-2 h-4 w-4 shrink-0"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="none"
@@ -154,19 +158,19 @@ watch(
           </div>
           <div
             v-if="highlightedAfter"
-            class="shiki-code bg-background h-full w-full overflow-auto font-mono text-xs"
+            class="shiki-code w-full overflow-auto bg-white font-mono text-xs dark:bg-[#24292e]"
             :style="{ '--highlight-color': props.highlightColor }"
             v-html="highlightedAfter"
           />
           <pre
             v-else
-            class="bg-background text-foreground h-full overflow-auto p-4 font-mono text-xs break-all"
+            class="h-full overflow-auto bg-white p-4 font-mono text-xs break-all text-neutral-800 dark:bg-[#24292e] dark:text-neutral-200"
             >{{ props.afterCode }}</pre
           >
         </div>
       </div>
       <div
-        class="border-primary/20 bg-accent text-foreground absolute top-1/2 left-1/2 hidden h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md border text-xs md:flex"
+        class="absolute top-1/2 left-1/2 hidden h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md border border-black/10 bg-neutral-100 text-xs text-neutral-700 dark:border-white/10 dark:bg-neutral-900 dark:text-neutral-200 md:flex"
       >
         VS
       </div>
@@ -175,9 +179,13 @@ watch(
 </template>
 
 <style scoped>
+.shiki-code {
+  max-height: 22rem;
+}
+
 .shiki-code :deep(pre) {
-  height: 100%;
-  width: 100vw;
+  width: max-content;
+  min-width: 100%;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   margin: 0;
@@ -185,12 +193,12 @@ watch(
 }
 
 .shiki-code :deep(pre > code) {
-  display: inline-block;
+  display: block;
   width: 100%;
 }
 
 .shiki-code :deep(pre > code > span) {
-  display: inline-block;
+  display: block;
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -199,8 +207,6 @@ watch(
 }
 
 .shiki-code :deep(pre > code > .highlighted) {
-  display: inline-block;
-  width: 100%;
   background-color: var(--highlight-color);
 }
 
