@@ -28,7 +28,7 @@ const id = "dotted-map-demo";
 </script>
 
 <template>
-  <div class="relative h-[500px] w-full overflow-hidden rounded-lg border">
+  <div class="relative h-[440px] w-full max-w-[500px] overflow-hidden rounded-lg border">
     <div
       class="absolute inset-0 bg-radial from-transparent to-background to-200%"
     />
