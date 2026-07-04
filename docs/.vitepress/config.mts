@@ -9,6 +9,13 @@ import { applyPlugins } from "./plugins/code";
 import { markdownForAgentsPlugin } from "./plugins/markdownForAgents";
 
 const newComponents = [
+  { text: "Animated Tooltip", link: "/content/components/animated-tooltip.md" },
+  { text: "Terminal", link: "/content/components/terminal.md" },
+  { text: "Hero Video Dialog", link: "/content/components/hero-video-dialog.md" },
+  { text: "Scroll Progress", link: "/content/components/scroll-progress.md" },
+  { text: "Aurora Text", link: "/content/components/aurora.md" },
+  { text: "Resizable Navbar", link: "/content/components/resizable-navbar.md" },
+  { text: "Border Beam", link: "/content/components/border-beam.md" },
 	{ text: "Animated Tooltip", link: "/content/components/animated-tooltip.md" },
 	{ text: "Terminal", link: "/content/components/terminal.md" },
 	{

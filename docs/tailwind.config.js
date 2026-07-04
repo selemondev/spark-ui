@@ -153,6 +153,9 @@ module.exports = withAnimations({
           from: { transform: "translateY(0)" },
           to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
+        "border-beam": {
+          to: { "offset-distance": "100%" },
+        },
         meteor: {
           "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
           "70%": { opacity: 1 },
@@ -208,6 +211,7 @@ module.exports = withAnimations({
         marquee: "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         shimmer: "shimmer 8s infinite",
+        "border-beam": "border-beam calc(var(--duration) * 1s) infinite linear",
         "comic-text": "comic-text 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both",
       },
     },
