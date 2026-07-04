@@ -88,7 +88,7 @@ function measureWidths(el: HTMLElement, values: string[]) {
 
 const props = withDefaults(defineProps<DiaTextRevealProps>(), {
   colors: () => ["#c679c4", "#fa3d1d", "#ffb005", "#e1e1fe", "#0358f7"],
-  textColor: "var(--foreground)",
+  textColor: "var(--foreground, var(--vp-c-text-1, currentColor))",
   duration: 1.5,
   delay: 0,
   repeat: false,
@@ -303,7 +303,7 @@ Slow the sweep with `duration`, or add a short `delay` before the band moves.
 | ------------- | -------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | `text`        | `string \| string[]` | —                                                         | Text to display. Use an array to rotate between strings when `repeat` is on.     |
 | `colors`      | `string[]`           | `["#c679c4", "#fa3d1d", "#ffb005", "#e1e1fe", "#0358f7"]` | Colors in the sweeping gradient band.                                            |
-| `textColor`   | `string`             | `var(--foreground)`                                       | Solid text color after the animation (matches your theme by default).            |
+| `textColor`   | `string`             | `var(--foreground, var(--vp-c-text-1, currentColor))`     | Solid text color after the animation (matches your theme by default).            |
 | `duration`    | `number`             | `1.5`                                                     | Sweep duration in seconds.                                                       |
 | `delay`       | `number`             | `0`                                                       | Delay before the sweep starts, in seconds.                                       |
 | `repeat`      | `boolean`            | `false`                                                   | When `text` is an array, advance to the next string after each cycle.            |

@@ -75,7 +75,7 @@ function measureWidths(el: HTMLElement, values: string[]) {
 
 const props = withDefaults(defineProps<DiaTextRevealProps>(), {
   colors: () => ["#c679c4", "#fa3d1d", "#ffb005", "#e1e1fe", "#0358f7"],
-  textColor: "var(--foreground)",
+  textColor: "var(--foreground, var(--vp-c-text-1, currentColor))",
   duration: 1.5,
   delay: 0,
   repeat: false,
