@@ -1,7 +1,27 @@
 // @vitest-environment jsdom
 import { expect, it, vi } from "vite-plus/test";
-import { mount } from "@vue/test-utils";
+import { flushPromises, mount } from "@vue/test-utils";
 import CodeComparison from "../../docs/src/components/spark-ui/code-comparison/code-comparison.vue";
+
+vi.mock("shiki", () => ({
+  codeToHtml: vi.fn(async (code: string) => {
+    if (code.includes("[focus-class]")) {
+      return '<pre><code><span class="focused">line</span></code></pre>';
+    }
+
+    if (code.includes("[focus-text]")) {
+      return "<pre><code><span>focused</span></code></pre>";
+    }
+
+    return "<pre><code><span>line</span></code></pre>";
+  }),
+}));
+
+vi.mock("@shikijs/transformers", () => ({
+  transformerNotationHighlight: vi.fn(() => ({})),
+  transformerNotationDiff: vi.fn(() => ({})),
+  transformerNotationFocus: vi.fn(() => ({})),
+}));
 
 vi.mock("vitepress", () => ({
   useData: () => ({ isDark: { value: false } }),
@@ -56,4 +76,16 @@ it("defaults lightTheme, darkTheme and highlightColor props", () => {
   expect(vm.lightTheme).toBe("github-light");
   expect(vm.darkTheme).toBe("github-dark");
   expect(vm.highlightColor).toBe("rgba(101, 117, 133, 0.16)");
+});
+
+it("only applies focus styling when highlighted HTML contains a focused class", async () => {
+  const wrapper = factory({
+    beforeCode: "const a = 1; // [focus-class]",
+    afterCode: 'const label = "focused"; // [focus-text]',
+  });
+
+  await flushPromises();
+
+  expect(wrapper.find(".leftside").classes()).toContain("has-focus");
+  expect(wrapper.find(".rightside").classes()).not.toContain("has-focus");
 });
