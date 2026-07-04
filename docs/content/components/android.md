@@ -107,7 +107,9 @@ import Android from "@/components/spark-ui/android/android.vue";
 </script>
 
 <template>
-  <Android class="size-full" />
+  <div class="relative mx-auto flex h-[500px] w-full items-center justify-center">
+    <Android class="h-full w-auto" />
+  </div>
 </template>
 ```
 
