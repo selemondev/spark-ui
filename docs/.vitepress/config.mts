@@ -16,6 +16,10 @@ const newComponents = [
 
 const components = [
   { text: "Animated Beam", link: "/content/components/animated-beam.md" },
+  {
+    text: "Animated Circular Progress Bar",
+    link: "/content/components/animated-circular-progress-bar.md",
+  },
   { text: "Animated Gradient Text", link: "/content/components/animated-gradient-text.md" },
   { text: "Animated List", link: "/content/components/animated-list.md" },
   { text: "Animated Shiny Text", link: "/content/components/animated-shiny-text.md" },
