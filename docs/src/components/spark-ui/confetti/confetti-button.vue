@@ -43,6 +43,7 @@ async function handleClick(event: MouseEvent) {
         props.class,
       )
     "
+    type="button"
     @click="handleClick"
   >
     <slot />

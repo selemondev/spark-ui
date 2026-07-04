@@ -21,7 +21,7 @@ import type { Options as ConfettiOptions } from "canvas-confetti";
 import type { InjectionKey } from "vue";
 
 export interface ConfettiApi {
-  fire: (options?: ConfettiOptions) => void;
+  fire: (options?: ConfettiOptions) => Promise<void>;
 }
 
 export const confettiApiKey: InjectionKey<ConfettiApi> = Symbol("confetti-api");
@@ -71,17 +71,14 @@ defineExpose(api);
 onMounted(async () => {
   if (!canvasRef.value) return;
   const confetti = (await import("canvas-confetti")).default;
+  if (!canvasRef.value) return;
   instance.value = confetti.create(canvasRef.value, {
     ...props.globalOptions,
     resize: true,
   });
 
   if (!props.manualstart) {
-    try {
-      await fire();
-    } catch (error) {
-      console.error("Confetti effect error:", error);
-    }
+    await fire();
   }
 });
 
@@ -145,6 +142,7 @@ async function handleClick(event: MouseEvent) {
         props.class,
       )
     "
+    type="button"
     @click="handleClick"
   >
     <slot />
@@ -237,9 +235,9 @@ The component also forwards any extra attributes (e.g. `style`, event listeners)
 
 ### Confetti Exposed Methods
 
-| Method | Signature                             | Description                                 |
-| ------ | ------------------------------------- | ------------------------------------------- |
-| `fire` | `(options?: ConfettiOptions) => void` | Fires the confetti with optional overrides. |
+| Method | Signature                                      | Description                                 |
+| ------ | ---------------------------------------------- | ------------------------------------------- |
+| `fire` | `(options?: ConfettiOptions) => Promise<void>` | Fires the confetti with optional overrides. |
 
 ### ConfettiButton
 

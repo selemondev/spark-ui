@@ -41,17 +41,14 @@ defineExpose(api);
 onMounted(async () => {
   if (!canvasRef.value) return;
   const confetti = (await import("canvas-confetti")).default;
+  if (!canvasRef.value) return;
   instance.value = confetti.create(canvasRef.value, {
     ...props.globalOptions,
     resize: true,
   });
 
   if (!props.manualstart) {
-    try {
-      await fire();
-    } catch (error) {
-      console.error("Confetti effect error:", error);
-    }
+    await fire();
   }
 });
 
