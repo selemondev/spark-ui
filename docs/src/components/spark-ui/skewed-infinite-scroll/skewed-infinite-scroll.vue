@@ -42,7 +42,7 @@ const props = defineProps<{
                 />
                 <path d="m9 12 2 2 4-4" />
               </svg>
-              <p class="text-gray-600">
+              <p class="text-gray-600 dark:text-gray-300">
                 {{ item.text }}
               </p>
             </div>

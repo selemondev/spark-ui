@@ -150,7 +150,7 @@ const className = cn(
       </div>
       <div class="flex flex-col overflow-hidden">
         <figcaption class="flex flex-row items-center whitespace-pre text-lg font-medium ">
-          <span class="text-sm text-black sm:text-lg">{{ props.name }}</span>
+          <span class="text-sm text-black dark:text-white sm:text-lg">{{ props.name }}</span>
           <span class="mx-1">·</span>
           <span class="text-xs text-gray-500">{{ props.time }}</span>
         </figcaption>
