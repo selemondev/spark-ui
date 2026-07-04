@@ -11,7 +11,7 @@ const color = computed(() => (isDark.value ? "#ffffff" : "#000000"));
 
 <template>
   <div
-    class="relative h-[400px] w-[300px] md:w-[600px] overflow-hidden rounded-lg border border-black/10 dark:border-white/10"
+    class="relative h-[400px] w-[300px] max-w-full md:w-[600px] overflow-hidden rounded-lg border border-black/10 dark:border-white/10"
   >
     <GlyphMatrix
       glyphs="01·•+*/\<>="
