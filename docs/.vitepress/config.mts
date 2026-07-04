@@ -49,6 +49,7 @@ const newComponents = [
 	{ text: "Interactive Grid Pattern", link: "/content/components/interactive-grid-pattern.md" },
 	{ text: "Icon Cloud", link: "/content/components/icon-cloud.md" },
 	{ text: "Interactive Hover Button", link: "/content/components/interactive-hover-button.md" },
+	{ text: "iPhone", link: "/content/components/iphone.md" },
 ];
 
 const components = [
