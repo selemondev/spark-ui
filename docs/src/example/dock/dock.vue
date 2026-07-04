@@ -44,7 +44,7 @@ function onMouseLeave() {
   <div
     :class="
       cn(
-        'supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md',
+        'supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border border-solid border-neutral-200 dark:border-neutral-800 p-2 backdrop-blur-md',
         {
           'items-start': props.direction === 'top',
           'items-center': props.direction === 'middle',
