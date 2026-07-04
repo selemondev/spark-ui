@@ -121,3 +121,5 @@ docs/.vitepress/cache
 
 # Agent skills (materialized from skills-lock.json; the lock file is the source of truth)
 .agents/
+# Claude Code worktrees
+.claude/worktrees/
