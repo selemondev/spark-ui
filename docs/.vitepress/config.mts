@@ -105,7 +105,6 @@ export default defineConfig({
 						text: "Installation",
 						link: "/content/guide/getting-started/installation.md",
 					},
-					{ text: "Magic UI Sync", link: "/content/guide/magic-ui-sync.md" },
 				],
 			},
 			{ text: "Components", items: components },
