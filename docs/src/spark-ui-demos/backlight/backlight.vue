@@ -18,7 +18,7 @@ import Backlight from "../../components/spark-ui/backlight/backlight.vue";
         web-share;
       "
       referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen
+      allowFullScreen
     ></iframe>
   </Backlight>
 </template>
