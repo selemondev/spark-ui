@@ -3,7 +3,7 @@ import BorderBeam from "./border-beam.vue";
 </script>
 
 <template>
-  <div class="flex items-center justify-center p-8">
+  <div class="flex items-center justify-center p-2">
     <div
       class="relative w-[350px] overflow-hidden rounded-xl border border-solid border-black/10 bg-white p-6 text-neutral-900 shadow-sm dark:border-white/15 dark:bg-neutral-950 dark:text-neutral-100"
     >
