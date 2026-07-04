@@ -27,8 +27,8 @@ const highlightedAfter = ref("");
 
 const selectedTheme = computed(() => (isDark.value ? props.darkTheme : props.lightTheme));
 
-const hasLeftFocus = computed(() => highlightedBefore.value.includes("focused"));
-const hasRightFocus = computed(() => highlightedAfter.value.includes("focused"));
+const hasLeftFocus = computed(() => /class="[^"]*\bfocused\b/.test(highlightedBefore.value));
+const hasRightFocus = computed(() => /class="[^"]*\bfocused\b/.test(highlightedAfter.value));
 
 async function highlightCode() {
   try {
@@ -40,8 +40,7 @@ async function highlightCode() {
       transformerNotationHighlight({ matchAlgorithm: "v3" }),
       transformerNotationDiff({ matchAlgorithm: "v3" }),
       transformerNotationFocus({ matchAlgorithm: "v3" }),
-const hasLeftFocus = computed(() => /class="[^"]*\bfocused\b/.test(highlightedBefore.value));
-const hasRightFocus = computed(() => /class="[^"]*\bfocused\b/.test(highlightedAfter.value));
+    ];
     const [before, after] = await Promise.all([
       codeToHtml(props.beforeCode, {
         lang: props.language,
@@ -164,7 +163,7 @@ watch(
 <style scoped>
 .shiki-code :deep(pre) {
   height: 100%;
-  width: 100vw;
+  width: 100%;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   margin: 0;

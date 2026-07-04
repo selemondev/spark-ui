@@ -40,8 +40,8 @@ const highlightedAfter = ref("");
 
 const selectedTheme = computed(() => (isDark.value ? props.darkTheme : props.lightTheme));
 
-const hasLeftFocus = computed(() => highlightedBefore.value.includes("focused"));
-const hasRightFocus = computed(() => highlightedAfter.value.includes("focused"));
+const hasLeftFocus = computed(() => /class="[^"]*\bfocused\b/.test(highlightedBefore.value));
+const hasRightFocus = computed(() => /class="[^"]*\bfocused\b/.test(highlightedAfter.value));
 
 async function highlightCode() {
   try {
@@ -177,7 +177,7 @@ watch(
 <style scoped>
 .shiki-code :deep(pre) {
   height: 100%;
-  width: 100vw;
+  width: 100%;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   margin: 0;

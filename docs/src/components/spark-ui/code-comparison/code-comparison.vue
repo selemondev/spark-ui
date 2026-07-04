@@ -164,7 +164,7 @@ watch(
 <style scoped>
 .shiki-code :deep(pre) {
   height: 100%;
-  width: 100vw;
+  width: 100%;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   margin: 0;
