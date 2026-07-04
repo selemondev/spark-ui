@@ -21,6 +21,7 @@ const newComponents = [
 	{ text: "Comic Text", link: "/content/components/comic-text.md" },
 	{ text: "Dotted Map", link: "/content/components/dotted-map.md" },
 	{ text: "Glyph Matrix", link: "/content/components/glyph-matrix.md" },
+	{ text: "Hexagon Pattern", link: "/content/components/hexagon-pattern.md" },
 ];
 
 const components = [
