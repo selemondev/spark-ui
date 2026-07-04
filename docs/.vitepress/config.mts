@@ -19,6 +19,7 @@ const newComponents = [
 	{ text: "Aurora Text", link: "/content/components/aurora.md" },
 	{ text: "Resizable Navbar", link: "/content/components/resizable-navbar.md" },
 	{ text: "Comic Text", link: "/content/components/comic-text.md" },
+	{ text: "Dotted Map", link: "/content/components/dotted-map.md" },
 ];
 
 const components = [
