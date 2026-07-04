@@ -33,6 +33,30 @@ const newComponents = [
 ];
 
 const components = [
+  { text: "Animated Beam", link: "/content/components/animated-beam.md" },
+  {
+    text: "Animated Circular Progress Bar",
+    link: "/content/components/animated-circular-progress-bar.md",
+  },
+  { text: "Animated Gradient Text", link: "/content/components/animated-gradient-text.md" },
+  { text: "Animated List", link: "/content/components/animated-list.md" },
+  { text: "Animated Shiny Text", link: "/content/components/animated-shiny-text.md" },
+  { text: "Avatar Circle", link: "/content/components/avatar-circles.md" },
+  { text: "Bento Grid", link: "/content/components/bento-grid.md" },
+  { text: "Blur Fade", link: "/content/components/blur-fade.md" },
+  { text: "Blur In", link: "/content/components/blur-in.md" },
+  { text: "Dot Pattern", link: "/content/components/dot-pattern.md" },
+  { text: "Globe", link: "/content/components/globe.md" },
+  { text: "Gradual Spacing", link: "/content/components/gradual-spacing.md" },
+  { text: "Letter Up", link: "/content/components/letter-up.md" },
+  { text: "Marquee", link: "/content/components/marquee.md" },
+  { text: "Meteors", link: "/content/components/meteors.md" },
+  { text: "Orbiting Circles", link: "/content/components/orbiting-circles.md" },
+  { text: "Particles", link: "/content/components/particles.md" },
+  { text: "Retro Grid", link: "/content/components/retro-grid.md" },
+  { text: "Ripple", link: "/content/components/ripple.md" },
+  { text: "Skewed Infinite Scroll", link: "/content/components/skewed-infinite-scroll.md" },
+  { text: "Typing Animation", link: "/content/components/typing-animation.md" },
 	{ text: "Animated Beam", link: "/content/components/animated-beam.md" },
 	{
 		text: "Animated Gradient Text",
