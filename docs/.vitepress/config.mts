@@ -18,6 +18,7 @@ const newComponents = [
   { text: "Border Beam", link: "/content/components/border-beam.md" },
   { text: "Android", link: "/content/components/android.md" },
   { text: "Animated Grid Pattern", link: "/content/components/animated-grid-pattern.md" },
+  { text: "Animated Theme Toggler", link: "/content/components/animated-theme-toggler.md" },
 	{ text: "Animated Tooltip", link: "/content/components/animated-tooltip.md" },
 	{ text: "Terminal", link: "/content/components/terminal.md" },
 	{
