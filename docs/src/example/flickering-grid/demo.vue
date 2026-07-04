@@ -4,7 +4,7 @@ import FlickeringGrid from "./flickering-grid.vue";
 
 <template>
   <div
-    class="relative h-[500px] w-[300px] overflow-hidden rounded-lg border bg-background md:w-[600px] lg:w-[850px]"
+    class="relative h-[500px] w-[300px] overflow-hidden rounded-lg border bg-background md:w-[500px]"
   >
     <FlickeringGrid
       class="absolute inset-0 z-0 size-full"
