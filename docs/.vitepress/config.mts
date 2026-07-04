@@ -37,6 +37,7 @@ const newComponents = [
 	{ text: "Dock", link: "/content/components/dock.md" },
 	{ text: "Dia Text Reveal", link: "/content/components/dia-text-reveal.md" },
 	{ text: "Flickering Grid", link: "/content/components/flickering-grid.md" },
+	{ text: "File Tree", link: "/content/components/file-tree.md" },
 	{ text: "Dotted Map", link: "/content/components/dotted-map.md" },
 	{ text: "Hexagon Pattern", link: "/content/components/hexagon-pattern.md" },
 	{ text: "Kinetic Text", link: "/content/components/kinetic-text.md" },
