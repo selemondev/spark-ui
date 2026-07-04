@@ -42,6 +42,7 @@ const newComponents = [
 	{ text: "iPhone", link: "/content/components/iphone.md" },
 	{ text: "Kinetic Text", link: "/content/components/kinetic-text.md" },
 	{ text: "Lens", link: "/content/components/lens.md" },
+	{ text: "Light Rays", link: "/content/components/light-rays.md" },
 ];
 
 const components = [
