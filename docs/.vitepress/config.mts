@@ -21,6 +21,7 @@ const newComponents = [
   { text: "Animated Theme Toggler", link: "/content/components/animated-theme-toggler.md" },
   { text: "Backlight", link: "/content/components/backlight.md" },
   { text: "Code Comparison", link: "/content/components/code-comparison.md" },
+  { text: "Cool Mode", link: "/content/components/cool-mode.md" },
   { text: "Comic Text", link: "/content/components/comic-text.md" },
 	{ text: "Animated Tooltip", link: "/content/components/animated-tooltip.md" },
 	{ text: "Terminal", link: "/content/components/terminal.md" },
