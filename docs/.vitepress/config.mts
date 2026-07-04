@@ -88,6 +88,7 @@ const components = [
 	{ text: "Globe", link: "/content/components/globe.md" },
 	{ text: "Gradual Spacing", link: "/content/components/gradual-spacing.md" },
 	{ text: "Letter Up", link: "/content/components/letter-up.md" },
+	{ text: "Line Shadow Text", link: "/content/components/line-shadow-text.md" },
 	{ text: "Marquee", link: "/content/components/marquee.md" },
 	{ text: "Meteors", link: "/content/components/meteors.md" },
 	{ text: "Orbiting Circles", link: "/content/components/orbiting-circles.md" },
