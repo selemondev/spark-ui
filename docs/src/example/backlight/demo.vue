@@ -18,7 +18,7 @@ import Backlight from "./backlight.vue";
         web-share;
       "
       referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen
+      allowFullScreen
     ></iframe>
   </Backlight>
 </template>
