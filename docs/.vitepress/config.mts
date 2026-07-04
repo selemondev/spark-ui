@@ -12,6 +12,7 @@ const newComponents = [
   { text: "Scroll Progress", link: "/content/components/scroll-progress.md" },
   { text: "Aurora Text", link: "/content/components/aurora.md" },
   { text: "Resizable Navbar", link: "/content/components/resizable-navbar.md" },
+  { text: "Animated Theme Toggler", link: "/content/components/animated-theme-toggler.md" },
 ];
 
 const components = [
