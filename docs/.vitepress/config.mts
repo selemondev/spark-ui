@@ -17,6 +17,7 @@ const newComponents = [
   { text: "Resizable Navbar", link: "/content/components/resizable-navbar.md" },
   { text: "Border Beam", link: "/content/components/border-beam.md" },
   { text: "Android", link: "/content/components/android.md" },
+  { text: "Animated Grid Pattern", link: "/content/components/animated-grid-pattern.md" },
 	{ text: "Animated Tooltip", link: "/content/components/animated-tooltip.md" },
 	{ text: "Terminal", link: "/content/components/terminal.md" },
 	{
