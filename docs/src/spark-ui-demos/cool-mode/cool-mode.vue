@@ -6,7 +6,7 @@ import CoolMode from "../../components/spark-ui/cool-mode/cool-mode.vue";
   <div class="relative flex items-center justify-center">
     <CoolMode>
       <button
-        class="inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
+        class="inline-flex h-10 items-center justify-center rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-neutral-700 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
       >
         Click Me!
       </button>
