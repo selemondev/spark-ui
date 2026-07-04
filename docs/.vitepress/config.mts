@@ -47,6 +47,7 @@ const newComponents = [
 	{ text: "Hexagon Pattern", link: "/content/components/hexagon-pattern.md" },
 	{ text: "Kinetic Text", link: "/content/components/kinetic-text.md" },
 	{ text: "Interactive Grid Pattern", link: "/content/components/interactive-grid-pattern.md" },
+	{ text: "Icon Cloud", link: "/content/components/icon-cloud.md" },
 ];
 
 const components = [
