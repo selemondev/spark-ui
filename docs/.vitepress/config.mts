@@ -20,6 +20,8 @@ const newComponents = [
 	{ text: "Resizable Navbar", link: "/content/components/resizable-navbar.md" },
 	{ text: "Comic Text", link: "/content/components/comic-text.md" },
 	{ text: "File Tree", link: "/content/components/file-tree.md" },
+	{ text: "Dotted Map", link: "/content/components/dotted-map.md" },
+	{ text: "Hexagon Pattern", link: "/content/components/hexagon-pattern.md" },
 ];
 
 const components = [
