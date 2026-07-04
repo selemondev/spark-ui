@@ -4,6 +4,6 @@ import TypingAnimation from "../../components/spark-ui/typing-animation/typing-a
 
 <template>
   <div class="grid place-items-center min-h-screen w-full">
-    <TypingAnimation class="text-4xl font-bold text-black" text="Typing Animation" />
+    <TypingAnimation class="text-4xl font-bold text-black dark:text-white" text="Typing Animation" />
   </div>
 </template>

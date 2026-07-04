@@ -49,7 +49,7 @@ const currentTheme = computed(() => (isDark.value ? "#1f2937" : "#f3f4f6"));
                 />
                 <path d="m9 12 2 2 4-4" />
               </svg>
-              <p class="text-gray-600">
+              <p class="text-gray-600 dark:text-gray-300">
                 {{ item.text }}
               </p>
             </div>

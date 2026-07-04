@@ -34,7 +34,7 @@ const pullupVariant = {
 };
 
 const className = cn(
-  "font-sans text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm md:text-4xl md:leading-[5rem]",
+  "font-sans text-center text-4xl font-bold tracking-[-0.02em] text-black dark:text-white drop-shadow-sm md:text-4xl md:leading-[5rem]",
   props.class,
 );
 </script>
