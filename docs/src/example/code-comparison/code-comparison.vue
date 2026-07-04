@@ -40,8 +40,8 @@ async function highlightCode() {
       transformerNotationHighlight({ matchAlgorithm: "v3" }),
       transformerNotationDiff({ matchAlgorithm: "v3" }),
       transformerNotationFocus({ matchAlgorithm: "v3" }),
-    ];
-
+const hasLeftFocus = computed(() => /class="[^"]*\bfocused\b/.test(highlightedBefore.value));
+const hasRightFocus = computed(() => /class="[^"]*\bfocused\b/.test(highlightedAfter.value));
     const [before, after] = await Promise.all([
       codeToHtml(props.beforeCode, {
         lang: props.language,
