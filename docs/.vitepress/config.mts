@@ -41,6 +41,7 @@ const newComponents = [
 	{ text: "Glare Hover", link: "/content/components/glare-hover.md" },
 	{ text: "Dotted Map", link: "/content/components/dotted-map.md" },
 	{ text: "Grid Pattern", link: "/content/components/grid-pattern.md" },
+	{ text: "Glyph Matrix", link: "/content/components/glyph-matrix.md" },
 	{ text: "Hexagon Pattern", link: "/content/components/hexagon-pattern.md" },
 	{ text: "Kinetic Text", link: "/content/components/kinetic-text.md" },
 ];
