@@ -9,6 +9,7 @@ import { applyPlugins } from "./plugins/code";
 import { markdownForAgentsPlugin } from "./plugins/markdownForAgents";
 
 const newComponents = [
+	{ text: "Hyper Text", link: "/content/components/hyper-text.md" },
 	{ text: "Animated Tooltip", link: "/content/components/animated-tooltip.md" },
 	{ text: "Terminal", link: "/content/components/terminal.md" },
 	{
