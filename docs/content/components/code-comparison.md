@@ -37,11 +37,12 @@ const { isDark } = useData();
 
 const highlightedBefore = ref("");
 const highlightedAfter = ref("");
+const focusedClassPattern = /class="[^"]*\bfocused\b/;
 
 const selectedTheme = computed(() => (isDark.value ? props.darkTheme : props.lightTheme));
 
-const hasLeftFocus = computed(() => /class="[^"]*\bfocused\b/.test(highlightedBefore.value));
-const hasRightFocus = computed(() => /class="[^"]*\bfocused\b/.test(highlightedAfter.value));
+const hasLeftFocus = computed(() => focusedClassPattern.test(highlightedBefore.value));
+const hasRightFocus = computed(() => focusedClassPattern.test(highlightedAfter.value));
 
 async function highlightCode() {
   try {
