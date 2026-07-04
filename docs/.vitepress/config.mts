@@ -95,6 +95,7 @@ const components = [
 	{ text: "Retro Grid", link: "/content/components/retro-grid.md" },
 	{ text: "Ripple", link: "/content/components/ripple.md" },
 	{ text: "Lens", link: "/content/components/lens.md" },
+	{ text: "Light Rays", link: "/content/components/light-rays.md" },
 	{
 		text: "Skewed Infinite Scroll",
 		link: "/content/components/skewed-infinite-scroll.md",
