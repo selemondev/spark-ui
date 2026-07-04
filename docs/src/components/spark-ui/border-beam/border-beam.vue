@@ -40,6 +40,7 @@ const props = withDefaults(defineProps<BorderBeamProps>(), {
 const containerStyle = computed<CSSProperties>(() => ({
   "--border-beam-width": `${props.borderWidth}px`,
   borderWidth: "var(--border-beam-width)",
+  borderStyle: "solid",
   maskImage: "linear-gradient(transparent, transparent), linear-gradient(#000, #000)",
   WebkitMaskImage: "linear-gradient(transparent, transparent), linear-gradient(#000, #000)",
   maskClip: "padding-box, border-box",
@@ -70,7 +71,7 @@ const beamStyle = computed<CSSProperties>(() => ({
     <div
       :class="
         cn(
-          'animate-border-beam absolute aspect-square bg-gradient-to-l from-[var(--color-from)] via-[var(--color-to)] to-transparent',
+          'animate-border-beam absolute aspect-square bg-gradient-to-l from-[color:var(--color-from)] via-[color:var(--color-to)] to-transparent',
           props.class,
         )
       "
@@ -78,3 +79,15 @@ const beamStyle = computed<CSSProperties>(() => ({
     />
   </div>
 </template>
+
+<style scoped>
+.animate-border-beam {
+  animation: BorderBeam calc(var(--duration) * 1s) infinite linear;
+}
+
+@keyframes BorderBeam {
+  to {
+    offset-distance: 100%;
+  }
+}
+</style>
