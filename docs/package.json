@@ -16,6 +16,7 @@
   "dependencies": {
     "@unocss/reset": "^0.63.3",
     "@vueuse/motion": "^2.2.5",
+    "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
     "fs-extra": "^11.2.0",
@@ -31,6 +32,7 @@
     "@iconify-json/logos": "^1.2.1",
     "@iconify/vue": "^4.1.2",
     "@tsconfig/node20": "^20.1.4",
+    "@types/canvas-confetti": "^1.9.0",
     "@types/fs-extra": "^11.0.4",
     "@types/markdown-it": "^13.0.9",
     "@types/node": "^22.7.4",
