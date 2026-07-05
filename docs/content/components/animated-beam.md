@@ -12,7 +12,7 @@ Copy and paste the following code into your project:
 
 ```vue [animated-beam.vue]
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, useId, watch } from "vue";
+import { nextTick, onMounted, onUnmounted, ref, useId, watch } from "vue";
 
 const props = withDefaults(
   defineProps<{
@@ -86,15 +86,29 @@ function updatePath() {
 }
 
 const controller = new AbortController();
+let resizeObserver: ResizeObserver | null = null;
 
 onMounted(() => {
   window.addEventListener("resize", updatePath, {
     signal: controller.signal,
   });
+
+  // Observe the container so the path is recalculated once its layout settles.
+  // On iOS Safari/Chrome the container's dimensions are often 0 on the first
+  // tick, so relying on the window "resize" event alone leaves the SVG sized
+  // at 0x0 and nothing renders.
+  if (typeof ResizeObserver !== "undefined" && props.containerRef) {
+    resizeObserver = new ResizeObserver(() => updatePath());
+    resizeObserver.observe(props.containerRef);
+  }
+
+  // Compute the initial path once the DOM has been laid out.
+  nextTick(updatePath);
 });
 
 onUnmounted(() => {
   controller.abort();
+  resizeObserver?.disconnect();
 });
 
 watch(
@@ -123,7 +137,7 @@ watch(
       :stroke-opacity="pathOpacity"
       stroke-linecap="round"
     />
-    <path :d="pathD" :stroke="`url(#${id}`" fill="none" stroke-linecap="round" />
+    <path :d="pathD" :stroke="`url(#${id})`" fill="none" stroke-linecap="round" />
     <defs>
       <linearGradient
         :id="id"
