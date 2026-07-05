@@ -120,7 +120,7 @@ const boxes = [
               v-for="(item, idx) in navItems"
               :key="`mobile-link-${idx}`"
               :href="item.link"
-              class="w-full px-4 py-2 text-neutral-600 hover:bg-gray-100 rounded-md"
+              class="w-full px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-md"
               @click="closeMenu"
             >
               {{ item.name }}
@@ -137,7 +137,7 @@ const boxes = [
       <h1 class="mb-4 text-center text-3xl font-bold">
         Check the navbar at the top of the container
       </h1>
-      <p class="mb-10 text-center text-sm text-zinc-500">
+      <p class="mb-10 text-center text-sm text-zinc-500 dark:text-zinc-400">
         For demo purpose we have kept the position as
         <span class="font-medium">Sticky</span>. Keep in mind that this component is
         <span class="font-medium">fixed</span> and will not move when scrolling.
