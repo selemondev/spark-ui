@@ -69,6 +69,10 @@ const components = [
 	{ text: "Typing Animation", link: "/content/components/typing-animation.md" },
 ];
 
+const allComponents = [...components, ...newComponents].sort((a, b) =>
+	a.text.localeCompare(b.text),
+);
+
 export default defineConfig({
 	vite: {
 		plugins: [
@@ -123,7 +127,7 @@ export default defineConfig({
 					},
 				],
 			},
-			{ text: "Components", items: components },
+			{ text: "Components", items: allComponents },
 			{ text: "Showcase", link: "" },
 			{ text: `v${version}`, link: "" },
 		],
