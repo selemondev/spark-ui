@@ -86,8 +86,6 @@ vp test             # unit tests
 pnpm build          # production docs build
 ```
 
-See [AGENTS.md](./AGENTS.md) for agent-oriented workflow notes after the Vite+ migration.
-
 ## All components
 
 |                                                                                                     |                                                                                                     |                                                                                                                 |
