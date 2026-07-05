@@ -6,6 +6,12 @@ export default defineConfig({
   plugins: [Vue()],
   test: {
     clearMocks: true,
+    exclude: [
+      "**/node_modules/**",
+      "**/dist/**",
+      // Stale agent git worktrees hold duplicated specs that hang the run
+      "**/.claude/worktrees/**",
+    ],
   },
   resolve: {
     alias: {

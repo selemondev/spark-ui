@@ -2,6 +2,18 @@
 
 ## v1.0.0
 
+[compare changes](https://github.com/selemondev/spark-ui/compare/v1.0.0...v1.0.0)
+
+### 🏡 Chore
+
+- Release latest version ([000bf9f](https://github.com/selemondev/spark-ui/commit/000bf9f))
+
+### ❤️ Contributors
+
+- Selemondev <selemondev19@gmail.com>
+
+## v1.0.0
+
 [compare changes](https://github.com/selemondev/spark-ui/compare/v0.0.2...v1.0.0)
 
 ### 🚀 Enhancements

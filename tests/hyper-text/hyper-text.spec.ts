@@ -29,9 +29,14 @@ afterEach(() => {
   vi.useRealTimers();
 });
 
+// Run only the frames queued at call time. Draining newly scheduled frames in
+// the same pass would loop forever, since the component reschedules a frame on
+// every tick until `now` advances past the animation duration.
 const drainRaf = () => {
-  while (rafCallbacks.length) {
-    rafCallbacks.shift()?.(now);
+  const pending = rafCallbacks;
+  rafCallbacks = [];
+  for (const cb of pending) {
+    cb(now);
   }
 };
 
