@@ -123,3 +123,6 @@ docs/.vitepress/cache
 .agents/
 # Claude Code worktrees
 .claude/worktrees/
+
+# Local skills lockfile — not tracked
+skills-lock.json
