@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onMounted, onUnmounted, ref, useId, watch } from "vue";
+import { computed, nextTick, onMounted, onUnmounted, ref, useId, watch } from "vue";
 
 const props = withDefaults(
   defineProps<{
@@ -42,12 +42,14 @@ const props = withDefaults(
 
 const id = `pattern-${useId()}`;
 
-const initial = {
-  x1: "10%",
-  x2: "0%",
-  y1: "0%",
-  y2: "0%",
-};
+// Keyframe values for the animated gradient. We animate the gradient's own
+// x1/x2 attributes via native SVG (SMIL) `<animate>` elements instead of a CSS
+// transform. WebKit (Safari and Chrome on iOS) does not move an SVG gradient
+// via CSS transforms, which is why the beam was invisible there.
+const gradientCoordinates = computed(() =>
+  props.reverse ? { x1: "90%;-10%", x2: "100%;0%" } : { x1: "10%;110%", x2: "0%;100%" },
+);
+
 const svgDimensions = ref({ width: 0, height: 0 });
 const pathD = ref("");
 function updatePath() {
@@ -126,29 +128,27 @@ watch(
     />
     <path :d="pathD" :stroke="`url(#${id})`" fill="none" stroke-linecap="round" />
     <defs>
-      <linearGradient
-        :id="id"
-        v-motion
-        :initial="{
-          opacity: 0,
-          x: props.reverse ? ['100%', '0%'] : ['0%', '100%'],
-        }"
-        :enter="{
-          opacity: 1,
-          x: props.reverse ? ['100%', '0%'] : ['0%', '100%'],
-          transition: {
-            duration: 1600,
-            type: 'keyframes',
-            easings: [0.16, 1, 0.3, 1],
-            repeat: Infinity,
-          },
-        }"
-        gradientUnits="userSpaceOnUse"
-        :x1="initial.x1"
-        :x2="initial.x2"
-        :y1="initial.y1"
-        :y2="initial.y2"
-      >
+      <linearGradient :id="id" gradientUnits="userSpaceOnUse" x1="0%" x2="0%" y1="0%" y2="0%">
+        <animate
+          attributeName="x1"
+          :values="gradientCoordinates.x1"
+          :dur="`${duration}s`"
+          :begin="`${delay}s`"
+          repeatCount="indefinite"
+          calcMode="spline"
+          keyTimes="0;1"
+          keySplines="0.16 1 0.3 1"
+        />
+        <animate
+          attributeName="x2"
+          :values="gradientCoordinates.x2"
+          :dur="`${duration}s`"
+          :begin="`${delay}s`"
+          repeatCount="indefinite"
+          calcMode="spline"
+          keyTimes="0;1"
+          keySplines="0.16 1 0.3 1"
+        />
         <stop :stop-color="props.gradientStartColor" stop-opacity="0" />
         <stop :stop-color="props.gradientStartColor" />
         <stop offset="32.5%" :stop-color="props.gradientStopColor" />
