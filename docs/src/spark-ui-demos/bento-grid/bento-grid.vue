@@ -47,7 +47,7 @@ const features = [
           >
             <Icon
               :icon="feat.icon"
-              class="h-12 w-12 origin-left transform-gpu text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-75"
+              class="h-12 w-12 origin-left transform-gpu text-neutral-700 dark:text-neutral-300 transition-all duration-300 ease-in-out group-hover:scale-75"
             />
             <h3 class="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
               {{ feat.name }}
