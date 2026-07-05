@@ -55,7 +55,7 @@ function handleRefreshComponent() {
 <template>
   <div class="mt-6 relative">
     <div
-      class="relative flex h-[600px] w-full bg-[#fffefe] flex-col items-center justify-center overflow-hidden rounded-lg border-parent dark:border-none bg-background c-#282f38 overflow-x-scroll dark:bg-[#000000] flex-wrap [&:o-button-base]:!c-context vp-raw bg"
+      class="relative flex h-[600px] w-full bg-[#fffefe] flex-col items-center justify-center overflow-hidden rounded-lg border-parent dark:border-none bg-background c-#282f38 dark:c-#e5e5e5 overflow-x-scroll dark:bg-[#000000] flex-wrap [&:o-button-base]:!c-context vp-raw bg"
     >
       <DotPattern
         class="absolute inset-0 size-full"
