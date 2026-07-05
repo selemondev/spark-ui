@@ -123,3 +123,5 @@ docs/.vitepress/cache
 .agents/
 # Claude Code worktrees
 .claude/worktrees/
+# AI prompts (local only)
+.ai/
