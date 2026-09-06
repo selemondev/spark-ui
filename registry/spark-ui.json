@@ -1,6 +1,6 @@
 {
   "$schema": "./spark-ui.schema.json",
-  "generatedAt": "2026-07-04T08:55:45.617Z",
+  "generatedAt": "2026-09-06T11:55:34.510Z",
   "source": {
     "componentRoot": "docs/src/components/spark-ui",
     "docsRoot": "docs/content/components",
@@ -11,6 +11,33 @@
     "testsRoot": "tests"
   },
   "components": [
+    {
+      "name": "Android",
+      "slug": "android",
+      "path": "docs/src/components/spark-ui/android",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/android/android.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/android.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/android/android.vue",
+        "docs/src/example/android/demo.vue",
+        "docs/src/example/android/image-demo.vue",
+        "docs/src/example/android/video-demo.vue",
+        "docs/src/spark-ui-demos/android/android.vue",
+        "docs/src/spark-ui-demos/android/image-android.vue",
+        "docs/src/spark-ui-demos/android/video-android.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/android/android.spec.ts"
+      ],
+      "lastCommitHash": "9ff80c5053a95699cf077b805f052600b5ba345d"
+    },
     {
       "name": "AnimatedBeam",
       "slug": "animated-beam",
@@ -38,7 +65,30 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "a73a1cc485cd859c9ef4b6ab26dae85500345901"
+    },
+    {
+      "name": "AnimatedCircularProgressBar",
+      "slug": "animated-circular-progress-bar",
+      "path": "docs/src/components/spark-ui/animated-circular-progress-bar",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/animated-circular-progress-bar/animated-circular-progress-bar.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/animated-circular-progress-bar.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/animated-circular-progress-bar/animated-circular-progress-bar.vue",
+        "docs/src/example/animated-circular-progress-bar/demo.vue",
+        "docs/src/spark-ui-demos/animated-circular-progress-bar/animated-circular-progress-bar.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/animated-circular-progress-bar/animated-circular-progress-bar.spec.ts"
+      ],
+      "lastCommitHash": "e613d56540811d2f4cbcb2fbe9373b4630a1b564"
     },
     {
       "name": "AnimatedGradientText",
@@ -59,7 +109,30 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "f1a9f362626fdf08cca9124ad9d94a9a08bb5123"
+    },
+    {
+      "name": "AnimatedGridPattern",
+      "slug": "animated-grid-pattern",
+      "path": "docs/src/components/spark-ui/animated-grid-pattern",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/animated-grid-pattern/animated-grid-pattern.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/animated-grid-pattern.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/animated-grid-pattern/animated-grid-pattern.vue",
+        "docs/src/example/animated-grid-pattern/demo.vue",
+        "docs/src/spark-ui-demos/animated-grid-pattern/animated-grid-pattern.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/animated-grid-pattern/animated-grid-pattern.spec.ts"
+      ],
+      "lastCommitHash": "63428040e3f66fc2a7a53d82b4c336195d11d434"
     },
     {
       "name": "AnimatedList",
@@ -82,7 +155,7 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "7135566f592cf420bfe7209220a24ddc9cc75e10"
     },
     {
       "name": "AnimatedShinyText",
@@ -103,7 +176,74 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "f1a9f362626fdf08cca9124ad9d94a9a08bb5123"
+    },
+    {
+      "name": "AnimatedThemeToggler",
+      "slug": "animated-theme-toggler",
+      "path": "docs/src/components/spark-ui/animated-theme-toggler",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/animated-theme-toggler/animated-theme-toggler.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/animated-theme-toggler.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/animated-theme-toggler/animated-theme-toggler.vue",
+        "docs/src/example/animated-theme-toggler/demo.vue",
+        "docs/src/example/animated-theme-toggler/star-demo.vue",
+        "docs/src/spark-ui-demos/animated-theme-toggler/animated-theme-toggler.vue",
+        "docs/src/spark-ui-demos/animated-theme-toggler/star-animated-theme-toggler.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/animated-theme-toggler/animated-theme-toggler.spec.ts"
+      ],
+      "lastCommitHash": "4d196ce568fa13d1c7470673c9601b57eeff3f89"
+    },
+    {
+      "name": "AnimatedTooltip",
+      "slug": "animated-tooltip",
+      "path": "docs/src/components/spark-ui/animated-tooltip",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/animated-tooltip/animated-tooltip.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/animated-tooltip.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/animated-tooltip/animated-tooltip.vue",
+        "docs/src/example/animated-tooltip/demo.vue",
+        "docs/src/spark-ui-demos/animated-tooltip/demo.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": "ed5421dfa984c6c35a01773fdedbd14da6f797ad"
+    },
+    {
+      "name": "Aurora",
+      "slug": "aurora",
+      "path": "docs/src/components/spark-ui/aurora",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/aurora/aurora-text.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/aurora.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/aurora/aurora-text.vue",
+        "docs/src/example/aurora/demo.vue",
+        "docs/src/spark-ui-demos/aurora/demo.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": "ed5421dfa984c6c35a01773fdedbd14da6f797ad"
     },
     {
       "name": "AvatarCircles",
@@ -124,7 +264,34 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "44fa57bed8d5d71617bd81a776a1822f735f1463"
+    },
+    {
+      "name": "Backlight",
+      "slug": "backlight",
+      "path": "docs/src/components/spark-ui/backlight",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/backlight/backlight.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/backlight.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/backlight/backlight.vue",
+        "docs/src/example/backlight/demo.vue",
+        "docs/src/example/backlight/image-demo.vue",
+        "docs/src/example/backlight/svg-demo.vue",
+        "docs/src/spark-ui-demos/backlight/backlight-image.vue",
+        "docs/src/spark-ui-demos/backlight/backlight-svg.vue",
+        "docs/src/spark-ui-demos/backlight/backlight.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/backlight/backlight.spec.ts"
+      ],
+      "lastCommitHash": "bc536f3c4930f770e09517d4b145fbb7d3cc31cf"
     },
     {
       "name": "BentoGrid",
@@ -147,7 +314,7 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "d89d317af357052e9aca792a163ba86f9fc8150b"
     },
     {
       "name": "BlurFade",
@@ -168,7 +335,7 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "d15a69690bcb50e0e573dd759f9e10244e96a897"
     },
     {
       "name": "BlurIn",
@@ -189,7 +356,208 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "d15a69690bcb50e0e573dd759f9e10244e96a897"
+    },
+    {
+      "name": "BorderBeam",
+      "slug": "border-beam",
+      "path": "docs/src/components/spark-ui/border-beam",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/border-beam/border-beam.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/border-beam.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/border-beam/border-beam.vue",
+        "docs/src/example/border-beam/demo-2.vue",
+        "docs/src/example/border-beam/demo-3.vue",
+        "docs/src/example/border-beam/demo-4.vue",
+        "docs/src/example/border-beam/demo.vue",
+        "docs/src/spark-ui-demos/border-beam/border-beam.vue",
+        "docs/src/spark-ui-demos/border-beam/button.vue",
+        "docs/src/spark-ui-demos/border-beam/music-player.vue",
+        "docs/src/spark-ui-demos/border-beam/reverse.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/border-beam/border-beam.spec.ts"
+      ],
+      "lastCommitHash": "fba9748ba3b7f6f9c9d867f4f01da453104f80ef"
+    },
+    {
+      "name": "CodeComparison",
+      "slug": "code-comparison",
+      "path": "docs/src/components/spark-ui/code-comparison",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/code-comparison/code-comparison.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/code-comparison.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/code-comparison/code-comparison.vue",
+        "docs/src/example/code-comparison/demo.vue",
+        "docs/src/spark-ui-demos/code-comparison/code-comparison.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/code-comparison/code-comparison.spec.ts"
+      ],
+      "lastCommitHash": "e3730ac569bddac1ecef57fc1e750e1650dafb6a"
+    },
+    {
+      "name": "ComicText",
+      "slug": "comic-text",
+      "path": "docs/src/components/spark-ui/comic-text",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/comic-text/comic-text.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/comic-text.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/comic-text/comic-text.vue",
+        "docs/src/example/comic-text/demo.vue",
+        "docs/src/spark-ui-demos/comic-text/comic-text.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/comic-text/comic-text.spec.ts"
+      ],
+      "lastCommitHash": "32625856fdbcc4d67ec478273904c77db2d08503"
+    },
+    {
+      "name": "Confetti",
+      "slug": "confetti",
+      "path": "docs/src/components/spark-ui/confetti",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/confetti/confetti-button.vue",
+        "docs/src/components/spark-ui/confetti/confetti.vue",
+        "docs/src/components/spark-ui/confetti/context.ts"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/confetti.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/confetti/basic-cannon-demo.vue",
+        "docs/src/example/confetti/confetti-button.vue",
+        "docs/src/example/confetti/confetti.vue",
+        "docs/src/example/confetti/context.ts",
+        "docs/src/example/confetti/custom-shapes-demo.vue",
+        "docs/src/example/confetti/demo.vue",
+        "docs/src/example/confetti/emoji-demo.vue",
+        "docs/src/example/confetti/fireworks-demo.vue",
+        "docs/src/example/confetti/random-direction-demo.vue",
+        "docs/src/example/confetti/side-cannons-demo.vue",
+        "docs/src/example/confetti/stars-demo.vue",
+        "docs/src/spark-ui-demos/confetti/basic-cannon.vue",
+        "docs/src/spark-ui-demos/confetti/confetti.vue",
+        "docs/src/spark-ui-demos/confetti/custom-shapes.vue",
+        "docs/src/spark-ui-demos/confetti/emoji.vue",
+        "docs/src/spark-ui-demos/confetti/fireworks.vue",
+        "docs/src/spark-ui-demos/confetti/random-direction.vue",
+        "docs/src/spark-ui-demos/confetti/side-cannons.vue",
+        "docs/src/spark-ui-demos/confetti/stars.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/confetti/confetti.spec.ts"
+      ],
+      "lastCommitHash": "d1872b52a94d9ba8f212798f790f4d2c0c0d2353"
+    },
+    {
+      "name": "CoolMode",
+      "slug": "cool-mode",
+      "path": "docs/src/components/spark-ui/cool-mode",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/cool-mode/cool-mode.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/cool-mode.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/cool-mode/cool-mode.vue",
+        "docs/src/example/cool-mode/custom-demo.vue",
+        "docs/src/example/cool-mode/demo.vue",
+        "docs/src/spark-ui-demos/cool-mode/cool-mode.vue",
+        "docs/src/spark-ui-demos/cool-mode/custom-cool-mode.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/cool-mode/cool-mode.spec.ts"
+      ],
+      "lastCommitHash": "03279a1589fb567e2e73f8686dd66b50b0c9daef"
+    },
+    {
+      "name": "DiaTextReveal",
+      "slug": "dia-text-reveal",
+      "path": "docs/src/components/spark-ui/dia-text-reveal",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/dia-text-reveal/dia-text-reveal.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/dia-text-reveal.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/dia-text-reveal/custom-gradient-demo.vue",
+        "docs/src/example/dia-text-reveal/demo.vue",
+        "docs/src/example/dia-text-reveal/dia-text-reveal.vue",
+        "docs/src/example/dia-text-reveal/duration-delay-demo.vue",
+        "docs/src/example/dia-text-reveal/rotating-demo.vue",
+        "docs/src/spark-ui-demos/dia-text-reveal/custom-gradient.vue",
+        "docs/src/spark-ui-demos/dia-text-reveal/dia-text-reveal.vue",
+        "docs/src/spark-ui-demos/dia-text-reveal/duration-delay.vue",
+        "docs/src/spark-ui-demos/dia-text-reveal/rotating.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/dia-text-reveal/dia-text-reveal.spec.ts"
+      ],
+      "lastCommitHash": "251aae52be7cf497e8affef3e1c56ccfec4dbbac"
+    },
+    {
+      "name": "Dock",
+      "slug": "dock",
+      "path": "docs/src/components/spark-ui/dock",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/dock/dock-icon.vue",
+        "docs/src/components/spark-ui/dock/dock.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/dock.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/dock/brand-icons.vue",
+        "docs/src/example/dock/demo.vue",
+        "docs/src/example/dock/direction-demo.vue",
+        "docs/src/example/dock/dock-icon.vue",
+        "docs/src/example/dock/dock.vue",
+        "docs/src/example/dock/magnification-demo.vue",
+        "docs/src/spark-ui-demos/dock/brand-icons.vue",
+        "docs/src/spark-ui-demos/dock/direction-dock.vue",
+        "docs/src/spark-ui-demos/dock/dock.vue",
+        "docs/src/spark-ui-demos/dock/magnification-dock.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/dock/dock.spec.ts"
+      ],
+      "lastCommitHash": "6ec229222d3d3c87e86f3d2f29e12650dfc4da32"
     },
     {
       "name": "DotPattern",
@@ -215,6 +583,114 @@
       "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
     },
     {
+      "name": "DottedMap",
+      "slug": "dotted-map",
+      "path": "docs/src/components/spark-ui/dotted-map",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/dotted-map/dotted-map.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/dotted-map.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/dotted-map/demo-2.vue",
+        "docs/src/example/dotted-map/demo-3.vue",
+        "docs/src/example/dotted-map/demo.vue",
+        "docs/src/example/dotted-map/dotted-map.vue",
+        "docs/src/spark-ui-demos/dotted-map/dotted-map.vue",
+        "docs/src/spark-ui-demos/dotted-map/pulse-marker.vue",
+        "docs/src/spark-ui-demos/dotted-map/smaller-dots.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/dotted-map/dotted-map.spec.ts"
+      ],
+      "lastCommitHash": "0ab434aad6cf439bd4d380f4e39e6ab6d7f15a8d"
+    },
+    {
+      "name": "FileTree",
+      "slug": "file-tree",
+      "path": "docs/src/components/spark-ui/file-tree",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/file-tree/collapse-button.vue",
+        "docs/src/components/spark-ui/file-tree/context.ts",
+        "docs/src/components/spark-ui/file-tree/file.vue",
+        "docs/src/components/spark-ui/file-tree/folder.vue",
+        "docs/src/components/spark-ui/file-tree/render-node.vue",
+        "docs/src/components/spark-ui/file-tree/tree.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/file-tree.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/file-tree/composition-demo.vue",
+        "docs/src/example/file-tree/demo.vue",
+        "docs/src/spark-ui-demos/file-tree/composition.vue",
+        "docs/src/spark-ui-demos/file-tree/file-tree.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/file-tree/file-tree.spec.ts"
+      ],
+      "lastCommitHash": "4c791a846ea9be2c94239048132873583ffc3423"
+    },
+    {
+      "name": "FlickeringGrid",
+      "slug": "flickering-grid",
+      "path": "docs/src/components/spark-ui/flickering-grid",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/flickering-grid/flickering-grid.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/flickering-grid.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/flickering-grid/demo.vue",
+        "docs/src/example/flickering-grid/flickering-grid.vue",
+        "docs/src/example/flickering-grid/rounded-demo.vue",
+        "docs/src/spark-ui-demos/flickering-grid/flickering-grid.vue",
+        "docs/src/spark-ui-demos/flickering-grid/rounded-demo.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/flickering-grid/flickering-grid.spec.ts"
+      ],
+      "lastCommitHash": "acd9c0fe4a5c516fe0203bd1b185d408b04caf11"
+    },
+    {
+      "name": "GlareHover",
+      "slug": "glare-hover",
+      "path": "docs/src/components/spark-ui/glare-hover",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/glare-hover/glare-hover.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/glare-hover.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/glare-hover/alert-demo.vue",
+        "docs/src/example/glare-hover/cta-demo.vue",
+        "docs/src/example/glare-hover/demo.vue",
+        "docs/src/example/glare-hover/glare-hover.vue",
+        "docs/src/spark-ui-demos/glare-hover/alert-demo.vue",
+        "docs/src/spark-ui-demos/glare-hover/cta-demo.vue",
+        "docs/src/spark-ui-demos/glare-hover/glare-hover.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/glare-hover/glare-hover.spec.ts"
+      ],
+      "lastCommitHash": "541b42440a6877a7f9ea138f8b76a61c6f5c0252"
+    },
+    {
       "name": "Globe",
       "slug": "globe",
       "path": "docs/src/components/spark-ui/globe",
@@ -233,7 +709,30 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "ec397280b64875e8739611b62c2943fd11180afc"
+    },
+    {
+      "name": "GlyphMatrix",
+      "slug": "glyph-matrix",
+      "path": "docs/src/components/spark-ui/glyph-matrix",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/glyph-matrix/glyph-matrix.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/glyph-matrix.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/glyph-matrix/demo.vue",
+        "docs/src/example/glyph-matrix/glyph-matrix.vue",
+        "docs/src/spark-ui-demos/glyph-matrix/glyph-matrix.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/glyph-matrix/glyph-matrix.spec.ts"
+      ],
+      "lastCommitHash": "005137c9297a3395f856d2a3e02b717936038818"
     },
     {
       "name": "GradualSpacing",
@@ -254,7 +753,283 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "8c905049b565cd220bff0a607e80c745afd4c43e"
+    },
+    {
+      "name": "GridPattern",
+      "slug": "grid-pattern",
+      "path": "docs/src/components/spark-ui/grid-pattern",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/grid-pattern/grid-pattern.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/grid-pattern.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/grid-pattern/demo.vue",
+        "docs/src/example/grid-pattern/grid-pattern-dashed.vue",
+        "docs/src/example/grid-pattern/grid-pattern-linear-gradient.vue",
+        "docs/src/example/grid-pattern/grid-pattern.vue",
+        "docs/src/spark-ui-demos/grid-pattern/grid-pattern-dashed.vue",
+        "docs/src/spark-ui-demos/grid-pattern/grid-pattern-linear-gradient.vue",
+        "docs/src/spark-ui-demos/grid-pattern/grid-pattern.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/grid-pattern/grid-pattern.spec.ts"
+      ],
+      "lastCommitHash": "53424a3c5bb11cc05b98208d298d53b2e7f0889d"
+    },
+    {
+      "name": "HeroVideoDialog",
+      "slug": "hero-video-dialog",
+      "path": "docs/src/components/spark-ui/hero-video-dialog",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/hero-video-dialog/hero-video-dialog.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/hero-video-dialog.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/hero-video-dialog/demo.vue",
+        "docs/src/example/hero-video-dialog/hero-video-dialog.vue",
+        "docs/src/spark-ui-demos/hero-video-dialog/demo.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": "ed5421dfa984c6c35a01773fdedbd14da6f797ad"
+    },
+    {
+      "name": "HexagonPattern",
+      "slug": "hexagon-pattern",
+      "path": "docs/src/components/spark-ui/hexagon-pattern",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/hexagon-pattern/hexagon-pattern.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/hexagon-pattern.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/hexagon-pattern/demo.vue",
+        "docs/src/example/hexagon-pattern/hexagon-pattern-dashed.vue",
+        "docs/src/example/hexagon-pattern/hexagon-pattern-linear-gradient.vue",
+        "docs/src/example/hexagon-pattern/hexagon-pattern-spacing.vue",
+        "docs/src/example/hexagon-pattern/hexagon-pattern.vue",
+        "docs/src/spark-ui-demos/hexagon-pattern/hexagon-pattern-dashed.vue",
+        "docs/src/spark-ui-demos/hexagon-pattern/hexagon-pattern-linear-gradient.vue",
+        "docs/src/spark-ui-demos/hexagon-pattern/hexagon-pattern-spacing.vue",
+        "docs/src/spark-ui-demos/hexagon-pattern/hexagon-pattern.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/hexagon-pattern/hexagon-pattern.spec.ts"
+      ],
+      "lastCommitHash": "3f823860b0116af430d087da8e7fc5fa8deab6a1"
+    },
+    {
+      "name": "Highlighter",
+      "slug": "highlighter",
+      "path": "docs/src/components/spark-ui/highlighter",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/highlighter/highlighter.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/highlighter.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/highlighter/demo.vue",
+        "docs/src/example/highlighter/highlighter.vue",
+        "docs/src/spark-ui-demos/highlighter/highlighter.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/highlighter/highlighter.spec.ts"
+      ],
+      "lastCommitHash": "35db095175865f3a0d5a76ff82cc4f6bab5ae800"
+    },
+    {
+      "name": "HyperText",
+      "slug": "hyper-text",
+      "path": "docs/src/components/spark-ui/hyper-text",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/hyper-text/hyper-text.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/hyper-text.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/hyper-text/demo.vue",
+        "docs/src/example/hyper-text/hyper-text.vue",
+        "docs/src/spark-ui-demos/hyper-text/hyper-text.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/hyper-text/hyper-text.spec.ts"
+      ],
+      "lastCommitHash": "c47e967ee13ee7ff1ba0ea0cb01a21a3b4708af8"
+    },
+    {
+      "name": "IconCloud",
+      "slug": "icon-cloud",
+      "path": "docs/src/components/spark-ui/icon-cloud",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/icon-cloud/icon-cloud.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/icon-cloud.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/icon-cloud/demo.vue",
+        "docs/src/example/icon-cloud/icon-cloud.vue",
+        "docs/src/example/icon-cloud/icons-demo.vue",
+        "docs/src/example/icon-cloud/icons.ts",
+        "docs/src/example/icon-cloud/images-demo.vue",
+        "docs/src/spark-ui-demos/icon-cloud/icon-cloud.vue",
+        "docs/src/spark-ui-demos/icon-cloud/icons-demo.vue",
+        "docs/src/spark-ui-demos/icon-cloud/images-demo.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/icon-cloud/icon-cloud.spec.ts"
+      ],
+      "lastCommitHash": "94c4ad06531d6e846e452a7e0b03425848582787"
+    },
+    {
+      "name": "InteractiveGridPattern",
+      "slug": "interactive-grid-pattern",
+      "path": "docs/src/components/spark-ui/interactive-grid-pattern",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/interactive-grid-pattern/interactive-grid-pattern.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/interactive-grid-pattern.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/interactive-grid-pattern/colorful-demo.vue",
+        "docs/src/example/interactive-grid-pattern/demo.vue",
+        "docs/src/example/interactive-grid-pattern/interactive-grid-pattern.vue",
+        "docs/src/spark-ui-demos/interactive-grid-pattern/colorful-interactive-grid-pattern.vue",
+        "docs/src/spark-ui-demos/interactive-grid-pattern/interactive-grid-pattern.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/interactive-grid-pattern/interactive-grid-pattern.spec.ts"
+      ],
+      "lastCommitHash": "7a904f3c50377dc1f11ce31da56475cfdf54f4a5"
+    },
+    {
+      "name": "InteractiveHoverButton",
+      "slug": "interactive-hover-button",
+      "path": "docs/src/components/spark-ui/interactive-hover-button",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/interactive-hover-button/interactive-hover-button.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/interactive-hover-button.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/interactive-hover-button/demo.vue",
+        "docs/src/example/interactive-hover-button/interactive-hover-button.vue",
+        "docs/src/spark-ui-demos/interactive-hover-button/interactive-hover-button.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/interactive-hover-button/interactive-hover-button.spec.ts"
+      ],
+      "lastCommitHash": "58c73cc9c25e88b466b18cc706860c933f0a8216"
+    },
+    {
+      "name": "Iphone",
+      "slug": "iphone",
+      "path": "docs/src/components/spark-ui/iphone",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/iphone/iphone.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/iphone.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/iphone/demo.vue",
+        "docs/src/example/iphone/image-demo.vue",
+        "docs/src/example/iphone/iphone.vue",
+        "docs/src/example/iphone/video-demo.vue",
+        "docs/src/spark-ui-demos/iphone/image-iphone.vue",
+        "docs/src/spark-ui-demos/iphone/iphone.vue",
+        "docs/src/spark-ui-demos/iphone/video-iphone.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/iphone/iphone.spec.ts"
+      ],
+      "lastCommitHash": "9ff80c5053a95699cf077b805f052600b5ba345d"
+    },
+    {
+      "name": "KineticText",
+      "slug": "kinetic-text",
+      "path": "docs/src/components/spark-ui/kinetic-text",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/kinetic-text/kinetic-text.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/kinetic-text.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/kinetic-text/demo.vue",
+        "docs/src/example/kinetic-text/kinetic-text.vue",
+        "docs/src/spark-ui-demos/kinetic-text/kinetic-text.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/kinetic-text/kinetic-text.spec.ts"
+      ],
+      "lastCommitHash": "14d3a8d5ddf0046f2cbe1ee4a57bd50676246c23"
+    },
+    {
+      "name": "Lens",
+      "slug": "lens",
+      "path": "docs/src/components/spark-ui/lens",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/lens/lens.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/lens.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/lens/default-position-demo.vue",
+        "docs/src/example/lens/demo.vue",
+        "docs/src/example/lens/lens.vue",
+        "docs/src/example/lens/static-demo.vue",
+        "docs/src/spark-ui-demos/lens/default-position-demo.vue",
+        "docs/src/spark-ui-demos/lens/demo.vue",
+        "docs/src/spark-ui-demos/lens/static-demo.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/lens/lens.spec.ts"
+      ],
+      "lastCommitHash": "cb9bad163530a44af1734c6435e0e92eaf604fa9"
     },
     {
       "name": "LetterUp",
@@ -275,7 +1050,53 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "8c905049b565cd220bff0a607e80c745afd4c43e"
+    },
+    {
+      "name": "LightRays",
+      "slug": "light-rays",
+      "path": "docs/src/components/spark-ui/light-rays",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/light-rays/light-rays.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/light-rays.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/light-rays/demo.vue",
+        "docs/src/example/light-rays/light-rays.vue",
+        "docs/src/spark-ui-demos/light-rays/light-rays.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/light-rays/light-rays.spec.ts"
+      ],
+      "lastCommitHash": "6e7d7f54652bc229e00313e4f1414ba55882c07f"
+    },
+    {
+      "name": "LineShadowText",
+      "slug": "line-shadow-text",
+      "path": "docs/src/components/spark-ui/line-shadow-text",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/line-shadow-text/line-shadow-text.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/line-shadow-text.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/line-shadow-text/demo.vue",
+        "docs/src/example/line-shadow-text/line-shadow-text.vue",
+        "docs/src/spark-ui-demos/line-shadow-text/line-shadow-text.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/line-shadow-text/line-shadow-text.spec.ts"
+      ],
+      "lastCommitHash": "6e7d7f54652bc229e00313e4f1414ba55882c07f"
     },
     {
       "name": "Marquee",
@@ -302,7 +1123,7 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "d59982b294308159fc6e5fb9ba92d36007b61a7c"
     },
     {
       "name": "Meteors",
@@ -344,7 +1165,7 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "952702a68a29f865aa7eda14aeb43ee82ab105c6"
     },
     {
       "name": "Particles",
@@ -367,7 +1188,44 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "75c301a55f49c39aa03c4a272e9f3180f1e815f4"
+    },
+    {
+      "name": "ResizableNavbar",
+      "slug": "resizable-navbar",
+      "path": "docs/src/components/spark-ui/resizable-navbar",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/resizable-navbar/mobile-nav-header.vue",
+        "docs/src/components/spark-ui/resizable-navbar/mobile-nav-menu.vue",
+        "docs/src/components/spark-ui/resizable-navbar/mobile-nav-toggle.vue",
+        "docs/src/components/spark-ui/resizable-navbar/mobile-nav.vue",
+        "docs/src/components/spark-ui/resizable-navbar/nav-body.vue",
+        "docs/src/components/spark-ui/resizable-navbar/nav-items.vue",
+        "docs/src/components/spark-ui/resizable-navbar/navbar-button.vue",
+        "docs/src/components/spark-ui/resizable-navbar/navbar-logo.vue",
+        "docs/src/components/spark-ui/resizable-navbar/navbar.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/resizable-navbar.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/resizable-navbar/demo.vue",
+        "docs/src/example/resizable-navbar/mobile-nav-header.vue",
+        "docs/src/example/resizable-navbar/mobile-nav-menu.vue",
+        "docs/src/example/resizable-navbar/mobile-nav-toggle.vue",
+        "docs/src/example/resizable-navbar/mobile-nav.vue",
+        "docs/src/example/resizable-navbar/nav-body.vue",
+        "docs/src/example/resizable-navbar/nav-items.vue",
+        "docs/src/example/resizable-navbar/navbar-button.vue",
+        "docs/src/example/resizable-navbar/navbar-logo.vue",
+        "docs/src/example/resizable-navbar/navbar.vue",
+        "docs/src/spark-ui-demos/resizable-navbar/demo.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": "ed5421dfa984c6c35a01773fdedbd14da6f797ad"
     },
     {
       "name": "RetroGrid",
@@ -388,7 +1246,7 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "eb05f0af2a895336cc7a672fbdc6c0cf10e1e5cf"
     },
     {
       "name": "Ripple",
@@ -409,7 +1267,28 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "b111c49a59ab86cac744c86c8e2154d55e9aed2f"
+    },
+    {
+      "name": "ScrollProgress",
+      "slug": "scroll-progress",
+      "path": "docs/src/components/spark-ui/scroll-progress",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/scroll-progress/scroll-progress.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/scroll-progress.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/scroll-progress/demo.vue",
+        "docs/src/example/scroll-progress/scroll-progress.vue",
+        "docs/src/spark-ui-demos/scroll-progress/demo.vue"
+      ],
+      "testsExists": false,
+      "testFiles": [],
+      "lastCommitHash": "ed5421dfa984c6c35a01773fdedbd14da6f797ad"
     },
     {
       "name": "SkewedInfiniteScroll",
@@ -430,7 +1309,34 @@
       ],
       "testsExists": false,
       "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "lastCommitHash": "53defa02cc26f0675d13f27e59b41e6091ea72fa"
+    },
+    {
+      "name": "Terminal",
+      "slug": "terminal",
+      "path": "docs/src/components/spark-ui/terminal",
+      "sourceFiles": [
+        "docs/src/components/spark-ui/terminal/animated-span.vue",
+        "docs/src/components/spark-ui/terminal/terminal.vue",
+        "docs/src/components/spark-ui/terminal/typing-animation.vue"
+      ],
+      "docsExists": true,
+      "docsFiles": [
+        "docs/content/components/terminal.md"
+      ],
+      "examplesExists": true,
+      "exampleFiles": [
+        "docs/src/example/terminal/animated-span.vue",
+        "docs/src/example/terminal/demo.vue",
+        "docs/src/example/terminal/terminal.vue",
+        "docs/src/example/terminal/typing-animation.vue",
+        "docs/src/spark-ui-demos/terminal/demo.vue"
+      ],
+      "testsExists": true,
+      "testFiles": [
+        "tests/terminal/typing-animation.spec.ts"
+      ],
+      "lastCommitHash": "ed5421dfa984c6c35a01773fdedbd14da6f797ad"
     },
     {
       "name": "TypingAnimation",
@@ -448,12 +1354,14 @@
         "docs/src/example/terminal/typing-animation.vue",
         "docs/src/example/typing-animation/demo.vue",
         "docs/src/example/typing-animation/typing-animation.vue",
-        "docs/src/spark-ui-demos/terminal/typing-animation.vue",
         "docs/src/spark-ui-demos/typing-animation/typing-animation.vue"
       ],
-      "testsExists": false,
-      "testFiles": [],
-      "lastCommitHash": "f64989381498bc96deb7bab925fbb903dd307250"
+      "testsExists": true,
+      "testFiles": [
+        "tests/terminal/typing-animation.spec.ts",
+        "tests/typing-animation/typing-animation.spec.ts"
+      ],
+      "lastCommitHash": "89e69563fc9d3efd0221022120c85c29d87d1c91"
     }
   ]
 }
