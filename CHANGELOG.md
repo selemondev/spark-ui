@@ -1,5 +1,59 @@
 # Changelog
 
+## Unreleased
+
+### Fixes
+
+- Restore maintenance-script type checking and explicit Node ESM imports.
+- Correct demo source utility imports to match the installation guide's `@/lib/utils` path.
+- Stop requiring the intentionally removed sync guide and watcher workflow during normalization.
+- Update PostCSS to 8.5.28 and pin the existing Vite+ catalog versions to prevent unrelated toolchain upgrades.
+- Confine Markdown content negotiation to real files inside the documentation root, including symlink targets.
+- Pin installation examples to Tailwind CSS 3 and tailwind-merge 2 so the documented CLI and configuration work.
+- Remove stray Markdown from the copied Animated Gradient Text Vue example.
+- Resolve registry paths correctly in checkouts whose names contain spaces or URL-escaped characters.
+- Align workspace commands and aliases with the existing docs package; remove the unused declaration-build dependency.
+- Remove the stale npm lockfile; the pnpm lockfile is the authoritative dependency graph.
+- Apply compatible security updates to form-data, Immutable, brace-expansion, JS-YAML, Browserslist and the PostCSS selector parser.
+- Validate releases before creating them on GitHub; align CI with Node 22, current action runtimes and the existing typecheck/normalization gates.
+- Fail closed on missing or malformed issue registries, and let dry-run/stale-closure modes run without issue-generation prompts.
+- Compute repeatable major releases from the current version and reject invalid arguments, unchanged versions and existing tags before release writes.
+- Restart typing animation from current text and timing, without setup-time timers or a full-text flash; cancel pending work on unmount.
+- Give Cool Mode instances independent overlays and cancel held-pointer work on teardown; honor particle limits and zero launch speeds.
+- Keep one animation per grid square and cancel superseded generations on resize, option changes and unmount.
+- Reveal normalized reactive list slots with cancellable timing, preserving keyed additions/removals and notification class updates.
+- Make Code Comparison portable to ordinary Vue apps and keep asynchronous highlighting aligned with the latest code and theme.
+- Respect reduced-motion preferences locally in copied Line Shadow Text and Light Rays components while retaining readable static decoration.
+- Process the existing Tailwind animation utilities in documentation builds without replacing VitePress resets; disambiguate Glare Hover transition timing.
+- Honor reactive blur variants, duration and viewport margins without replacing the motion directive's captured binding.
+- Scale Android artwork in its original coordinate system and keep device screen masks unique across simultaneous instances.
+- Give Hero Video Dialog native modal semantics, named controls, keyboard dismissal, focus restoration and exit-aware teardown.
+- Make mobile navigation keyboard-operable with associated menu state, Escape dismissal and initial scroll measurement; align copied links with the router-free component.
+- Implement roving keyboard navigation and direction-aware expansion for File Tree while keeping collapsed descendants inert and initial-state APIs unchanged.
+- Replace the old Motion for Vue beta with stable `motion-v` 2.4.2; retain VueUse Motion for existing directives and verify modal, tooltip, terminal and scroll consumers.
+- Serialize shared theme transitions, handle skipped promises, clean up owned animations on unmount and fully cover the viewport with star reveals.
+- Keep rotating reveal text valid after replacements, cancel stale repeat timers and interpret foreground tokens as HSL colors.
+- Destroy Globe renderers on unmount, preserve host-document styles and distinguish a zero-coordinate drag from no interaction.
+- Track terminal slot text during rendering and restart owned typing timers on content or timing changes, including delayed unmounts.
+- Keep Hyper Text synchronized with reactive prop and slot replacements before, during and after scrambling; tolerate empty character sets.
+- Honor zero Glyph Matrix mutation rates and rebuild changed cell geometry; keep copied usage independent of VitePress.
+- Rebuild Flickering Grid dimensions when geometry props change and keep intersection transitions from scheduling duplicate frame loops.
+- Resolve Icon Cloud source precedence and scaled pointer coordinates consistently, reject stale image completions and supply valid self-contained demo artwork.
+- Preserve pending confetti requests and explicit canvas options; default both confetti components to independent non-worker renderers.
+- Expose finite, bounded progressbar values and geometry, including invalid ranges and non-finite input.
+- Keep gradient and shiny text styling reactive and provide self-contained copied examples with the correct shimmer prerequisite.
+- Update avatar styling reactively and render optional remaining-person counts without empty navigation links.
+- Keep Bento Grid and card class props reactive and document the copied example's icon dependency.
+- Give avatar tooltips focus and keyboard activation, associated descriptions and Escape dismissal.
+- Update letter-based text reactively with stable positional keys and one accessible heading per phrase.
+- Keep marquee tracks nonshrinking and react to direction, orientation and repeat changes; hide inert visual copies from accessibility.
+- Apply valid reactive orbit reversal and make the copied orbit example independent of unpublished icon helpers.
+- Recompute Aurora Text gradient colors and speed when props change.
+- Fill the entire skewed scroll cycle with an equal following track, keeping repeated content inert and hidden from accessibility.
+- Provide the documented semantic color tokens to live previews without changing VitePress's document reset or layout.
+- Register the intended `@` source alias instead of accidental `find` and `replacement` aliases in the documentation Vite configuration.
+- Place the six newer component families under canonical source ownership, preserving implementations while making registry discovery and copied usage imports consistent.
+
 ## v1.0.0
 
 [compare changes](https://github.com/selemondev/spark-ui/compare/v1.0.0...v1.0.0)

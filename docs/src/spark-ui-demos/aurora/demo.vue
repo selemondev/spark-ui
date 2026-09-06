@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AuroraText from "./aurora-text.vue";
+import AuroraText from "../../components/spark-ui/aurora/aurora-text.vue";
 </script>
 
 <template>

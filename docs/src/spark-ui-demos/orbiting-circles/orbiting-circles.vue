@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import Nitro from "../../components/icons/nitro.vue";
-import Nuxt from "../../components/icons/nuxt.vue";
-import ViteIcon from "../../components/icons/vite-icon.vue";
-import Vitest from "../../components/icons/vitest.vue";
-import Vue from "../../components/icons/vue.vue";
 import OrbitingCircles from "../../components/spark-ui/orbiting-circles/orbiting-circles.vue";
 </script>
 
@@ -23,7 +18,15 @@ import OrbitingCircles from "../../components/spark-ui/orbiting-circles/orbiting
       :delay="10"
       :radius="70"
     >
-      <Nuxt />
+      <svg
+        viewBox="0 0 24 24"
+        class="size-full"
+        aria-hidden="true"
+        fill="currentColor"
+        style="color: #00dc82"
+      >
+        <path d="m12 4 10 16H2Z" />
+      </svg>
     </OrbitingCircles>
 
     <OrbitingCircles
@@ -33,15 +36,39 @@ import OrbitingCircles from "../../components/spark-ui/orbiting-circles/orbiting
       :radius="100"
       reverse
     >
-      <Nitro />
+      <svg
+        viewBox="0 0 24 24"
+        class="size-full"
+        aria-hidden="true"
+        fill="currentColor"
+        style="color: #fb7185"
+      >
+        <path d="m13 2-9 12h7l-1 8 10-13h-7Z" />
+      </svg>
     </OrbitingCircles>
 
     <OrbitingCircles class="size-[50px]" :radius="190" :duration="20" reverse>
-      <ViteIcon />
+      <svg
+        viewBox="0 0 24 24"
+        class="size-full"
+        aria-hidden="true"
+        fill="currentColor"
+        style="color: #a855f7"
+      >
+        <path d="m3 3 9 18L21 3l-9 4Z" />
+      </svg>
     </OrbitingCircles>
 
     <OrbitingCircles class="size-[50px]" :radius="145" :duration="20">
-      <Vitest />
+      <svg
+        viewBox="0 0 24 24"
+        class="size-full"
+        aria-hidden="true"
+        fill="currentColor"
+        style="color: #84cc16"
+      >
+        <path d="m4 12 5 5L20 6" fill="none" stroke="currentColor" stroke-width="3" />
+      </svg>
     </OrbitingCircles>
 
     <OrbitingCircles
@@ -51,7 +78,15 @@ import OrbitingCircles from "../../components/spark-ui/orbiting-circles/orbiting
       :radius="45"
       reverse
     >
-      <Vue />
+      <svg
+        viewBox="0 0 24 24"
+        class="size-full"
+        aria-hidden="true"
+        fill="currentColor"
+        style="color: #41b883"
+      >
+        <path d="m2 3 10 18L22 3h-6l-4 7-4-7Z" />
+      </svg>
     </OrbitingCircles>
   </div>
 </template>

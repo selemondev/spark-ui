@@ -16,13 +16,7 @@ import { computed, nextTick, onMounted, onUnmounted, ref } from "vue";
 import { cn } from "@/lib/utils";
 
 export type TransitionVariant =
-  | "circle"
-  | "square"
-  | "triangle"
-  | "diamond"
-  | "hexagon"
-  | "rectangle"
-  | "star";
+  "circle" | "square" | "triangle" | "diamond" | "hexagon" | "rectangle" | "star";
 
 interface AnimatedThemeTogglerProps {
   class?: string;
@@ -53,6 +47,7 @@ type ViewTransitionDocument = Document & {
   startViewTransition?: (callback: () => void | Promise<void>) => {
     ready: Promise<void>;
     finished: Promise<void>;
+    skipTransition: () => void;
   };
 };
 
@@ -61,6 +56,7 @@ const internalIsDark = ref(false);
 const isControlled = computed(() => props.theme !== undefined);
 const isDark = computed(() => (isControlled.value ? props.theme === "dark" : internalIsDark.value));
 let observer: MutationObserver | null = null;
+let cancelTransition: (() => void) | undefined;
 
 onMounted(() => {
   const updateTheme = () => {
@@ -79,6 +75,7 @@ onMounted(() => {
 onUnmounted(() => {
   observer?.disconnect();
   observer = null;
+  cancelTransition?.();
 });
 
 function polygonCollapsed(cx: number, cy: number, vertexCount: number): string {
@@ -149,9 +146,10 @@ function getThemeTransitionClipPaths(
       return [polygonCollapsed(cx, cy, 4), `polygon(${end})`];
     }
     case "star": {
-      // Small overscan so the last frames never leave a 1px seam before the transition group ends.
-      const R = maxRadius * Math.SQRT2 * 1.03;
       const innerRatio = 0.42;
+      // The inner pentagon lies inside the star. Its inradius must contain
+      // the farthest viewport corner, including between the inner vertices.
+      const R = (maxRadius / (innerRatio * Math.cos(Math.PI / 5))) * 1.03;
       const starPolygon = (radius: number) => {
         const verts: string[] = [];
         for (let i = 0; i < 5; i++) {
@@ -189,6 +187,8 @@ const applyTheme = () => {
 const toggleTheme = () => {
   const button = buttonRef.value;
   if (!button) return;
+  // View transitions are document-wide; serialize even across component instances.
+  if (document.documentElement.dataset.sparkThemeVt) return;
 
   const doc = document as ViewTransitionDocument;
 
@@ -232,30 +232,54 @@ const toggleTheme = () => {
   // Pin the collapsed clip-path via CSS so Firefox does not paint the new
   // theme unclipped between snapshot and the ready.then() JS animation.
   root.style.setProperty("--spark-theme-vt-clip-from", clipPath[0]);
+  let animation: Animation | undefined;
+  let cancelled = false;
+  let transition: ReturnType<NonNullable<ViewTransitionDocument["startViewTransition"]>>;
+  const cancel = () => {
+    cancelled = true;
+    transition?.skipTransition();
+    // Keep ownership until finished; a skipped transition may still be updating.
+    animation?.cancel();
+  };
   const cleanup = () => {
+    animation?.cancel();
+    animation = undefined;
     delete root.dataset.sparkThemeVt;
     root.style.removeProperty("--spark-theme-toggle-vt-duration");
     root.style.removeProperty("--spark-theme-vt-clip-from");
+    if (cancelTransition === cancel) cancelTransition = undefined;
   };
-
-  const transition = doc.startViewTransition(async () => {
+  cancelTransition = cancel;
+  try {
+    transition = doc.startViewTransition(async () => {
+      if (cancelled) return;
+      applyTheme();
+      await nextTick();
+    });
+  } catch {
+    cleanup();
     applyTheme();
-    await nextTick();
-  });
-  transition.finished.finally(cleanup);
+    return;
+  }
+  void transition.finished.then(cleanup, cleanup);
 
-  transition.ready.then(() => {
-    document.documentElement.animate(
-      { clipPath },
-      {
-        duration: props.duration,
-        // Star: linear avoids easing overshoot that fights polygon interpolation at t→1.
-        easing: props.variant === "star" ? "linear" : "ease-in-out",
-        fill: "forwards",
-        pseudoElement: "::view-transition-new(root)",
-      },
-    );
-  });
+  void transition.ready
+    .then(() => {
+      if (cancelled) return;
+      animation = root.animate(
+        { clipPath },
+        {
+          duration: props.duration,
+          // Star: linear avoids easing overshoot that fights polygon interpolation at t→1.
+          easing: props.variant === "star" ? "linear" : "ease-in-out",
+          fill: "forwards",
+          pseudoElement: "::view-transition-new(root)",
+        },
+      );
+    })
+    .catch(() => {
+      cancel();
+    });
 };
 
 defineExpose({ toggleTheme });
@@ -309,8 +333,8 @@ defineExpose({ toggleTheme });
 Add the following CSS to your global stylesheet. The component sets `--spark-theme-toggle-vt-duration` and a `data-spark-theme-vt="active"` flag on `<html>` only while a toggle is in flight, so the clip-path animation stays in sync with the view-transition group without affecting any other view transitions in your app:
 
 ```css [globals.css]
-::view-transition-old(root),
-::view-transition-new(root) {
+html[data-spark-theme-vt="active"]::view-transition-old(root),
+html[data-spark-theme-vt="active"]::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
 }
@@ -319,7 +343,12 @@ html[data-spark-theme-vt="active"]::view-transition-group(root) {
   animation-duration: var(--spark-theme-toggle-vt-duration);
 }
 
+html[data-spark-theme-vt="active"]::view-transition-old(root) {
+  z-index: 1;
+}
+
 html[data-spark-theme-vt="active"]::view-transition-new(root) {
+  z-index: 9999;
   clip-path: var(--spark-theme-vt-clip-from);
 }
 ```
@@ -365,6 +394,8 @@ For controlled usage, pass `theme` and listen to `theme-change` so your app owns
 #### Star
 
 <demo src="../../src/example/animated-theme-toggler/star-demo.vue" srcCode="../../src/spark-ui-demos/animated-theme-toggler/star-animated-theme-toggler.vue" />
+
+Theme transitions are document-wide: additional clicks (including another toggler instance) are ignored until the active transition finishes. Unmounting skips the owned transition and cancels its animation. Unsupported browsers and reduced-motion users switch themes immediately.
 
 ## Props
 

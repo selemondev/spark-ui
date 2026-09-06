@@ -116,7 +116,7 @@ onMounted(() => {
       last = t;
 
       const total = cols * rows;
-      const mutations = Math.max(1, Math.floor(total * props.mutationRate));
+      const mutations = Math.max(0, Math.floor(total * props.mutationRate));
 
       for (let n = 0; n < mutations; n++) {
         const i = Math.floor(Math.random() * total);
@@ -139,6 +139,13 @@ onMounted(() => {
     draw();
   });
   ro.observe(canvas);
+  watch(
+    () => [props.cellSize, props.glyphs],
+    () => {
+      resize();
+      draw();
+    },
+  );
 });
 
 // Recolor the next frame when the color prop changes (e.g. theme toggle)

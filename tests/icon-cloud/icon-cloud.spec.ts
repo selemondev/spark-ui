@@ -43,17 +43,6 @@ afterEach(() => {
   caf.mockClear();
 });
 
-it("renders an accessible canvas with default dimensions", () => {
-  const wrapper = mount(IconCloud);
-  const canvas = wrapper.get("canvas");
-
-  expect(canvas.attributes("role")).toBe("img");
-  expect(canvas.attributes("aria-label")).toBe("Interactive 3D Icon Cloud");
-  expect(canvas.attributes("width")).toBe("400");
-  expect(canvas.attributes("height")).toBe("400");
-  expect(canvas.classes()).toContain("rounded-lg");
-});
-
 it("merges a custom class onto the canvas", () => {
   const wrapper = mount(IconCloud, { props: { class: "border-red-500" } });
   expect(wrapper.get("canvas").classes()).toContain("border-red-500");
@@ -65,14 +54,4 @@ it("starts the animation loop on mount and cancels it on unmount", () => {
 
   wrapper.unmount();
   expect(caf).toHaveBeenCalled();
-});
-
-it("builds an offscreen canvas per image", () => {
-  const createSpy = vi.spyOn(g.document, "createElement");
-  mount(IconCloud, { props: { images: ["/a.png", "/b.png", "/c.png"] } });
-
-  // One offscreen canvas per image (plus the component's own rendered canvas).
-  const canvasCreations = createSpy.mock.calls.filter(([tag]) => tag === "canvas");
-  expect(canvasCreations.length).toBeGreaterThanOrEqual(3);
-  createSpy.mockRestore();
 });

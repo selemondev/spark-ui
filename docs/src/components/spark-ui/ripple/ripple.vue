@@ -27,15 +27,16 @@ const props = withDefaults(defineProps<RippleProps>(), {
     <div v-for="(_, i) in Array.from({ length: props.numCircles })" :key="i">
       <div
         :key="i"
-        :class="`absolute animate-ripple rounded-full bg-foreground/25 shadow-xl border [--i:${i}]`"
+        class="absolute animate-ripple rounded-full bg-foreground/25 shadow-xl border"
         :style="{
           width: `${props.mainCircleSize + i * 70}px`,
           height: `${props.mainCircleSize + i * 70}px`,
           opacity: props.mainCircleOpacity - i * 0.03,
-          animationDelay: `${i * 0.06}s`,
+          '--i': i,
+          animationDelay: 'calc(var(--i) * 0.06s)',
           borderStyle: i === props.numCircles - 1 ? 'dashed' : 'solid',
           borderWidth: '1px',
-          borderColor: `hsl(var(--foreground), ${5 + (i * 5) / 100})`,
+          borderColor: `hsl(var(--foreground) / ${(5 + i * 5) / 100})`,
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%) scale(1)',

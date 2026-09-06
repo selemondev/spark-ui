@@ -2,8 +2,9 @@ import type { Aliases } from "./types.ts";
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-export const repoRoot: string = path.resolve(new URL("..", import.meta.url).pathname);
+export const repoRoot: string = path.resolve(fileURLToPath(new URL("..", import.meta.url)));
 export const registryDir: string = path.join(repoRoot, "registry");
 export const magicuiCacheDir: string = path.join(repoRoot, ".cache", "magicui");
 export const defaultAliases: Aliases = {};

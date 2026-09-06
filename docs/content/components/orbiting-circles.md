@@ -6,10 +6,11 @@ A collection of circles which move in orbit along a circular path.
 
 ## Installation
 
-Copy and paste the following code into your project:
+Copy the component files below into `src/components/spark-ui/orbiting-circles/`. Utility imports use `@/lib/utils`.
 
 ```vue [orbiting-circles.vue]
 <script setup lang="ts">
+import { computed } from "vue";
 import { cn } from "@/lib/utils";
 
 interface OrbitingCirclesProps {
@@ -28,10 +29,12 @@ const props = withDefaults(defineProps<OrbitingCirclesProps>(), {
   path: true,
 });
 
-const className = cn(
-  "absolute flex size-full animate-reverse transform-gpu animate-orbit items-center justify-center rounded-full border bg-none [animation-delay:calc(var(--delay)*1000ms)]",
-  props.class,
-  { "[animate-direction:reverse]": props.reverse },
+const className = computed(() =>
+  cn(
+    "absolute flex size-full transform-gpu animate-orbit items-center justify-center rounded-full border bg-none [animation-delay:calc(var(--delay)*1000ms)]",
+    props.class,
+    { "[animation-direction:reverse]": props.reverse },
+  ),
 );
 </script>
 
@@ -90,6 +93,28 @@ module.exports = {
   },
 };
 ```
+
+## Usage
+
+```vue
+<script setup lang="ts">
+import OrbitingCircles from "@/components/spark-ui/orbiting-circles/orbiting-circles.vue";
+</script>
+
+<template>
+  <div class="relative flex h-80 items-center justify-center overflow-hidden">
+    <OrbitingCircles class="size-8" :radius="80" reverse>
+      <svg viewBox="0 0 24 24" class="size-6" aria-hidden="true" fill="currentColor">
+        <path d="m12 3 9 18H3Z" />
+      </svg>
+    </OrbitingCircles>
+  </div>
+</template>
+```
+
+## Behavior
+
+`reverse` and `class` update while mounted. Reverse uses the CSS `animation-direction` property; no separate reverse keyframes are required.
 
 ## Props
 

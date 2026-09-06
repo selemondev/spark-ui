@@ -51,6 +51,18 @@ const id = `pattern-${useId()}`;
 const containerRef = ref<SVGSVGElement | null>(null);
 const dimensions = ref({ width: 0, height: 0 });
 const squares = ref<Square[]>([]);
+const animations = new Map<
+  number,
+  { node: SVGRectElement; square: Square; animation: Animation }
+>();
+
+function cancelAnimations() {
+  for (const { animation } of animations.values()) {
+    animation.onfinish = null;
+    animation.cancel();
+  }
+  animations.clear();
+}
 
 function getPos(): [number, number] {
   return [
@@ -80,23 +92,43 @@ function updateSquarePosition(squareId: number) {
 }
 
 watch(
-  () => [dimensions.value.width, dimensions.value.height, props.numSquares] as const,
+  () =>
+    [
+      dimensions.value.width,
+      dimensions.value.height,
+      props.numSquares,
+      props.width,
+      props.height,
+      props.duration,
+      props.repeatDelay,
+      props.maxOpacity,
+    ] as const,
   ([width, height]) => {
+    cancelAnimations();
     if (width && height) {
       squares.value = generateSquares(props.numSquares);
     }
   },
 );
 
-function animateRect(el: Element | null, square: Square, index: number) {
+function animateRect(el: unknown, square: Square, index: number) {
   const node = el as (SVGRectElement & { animate?: SVGRectElement["animate"] }) | null;
-  if (!node || typeof node.animate !== "function") {
-    return;
+  const existing = animations.get(square.id);
+  if (existing?.node === node && existing.square === square) return;
+  // A removed generation's ref must not cancel its replacement.
+  if (existing && (node || existing.square === square)) {
+    existing.animation.onfinish = null;
+    existing.animation.cancel();
+    animations.delete(square.id);
   }
+  if (!node || typeof node.animate !== "function" || squares.value[square.id] !== square) return;
 
-  const total = props.duration * 2 + props.repeatDelay;
-  const forward = props.duration / total;
-  const hold = (props.duration + props.repeatDelay) / total;
+  const duration = Math.max(0, props.duration);
+  const repeatDelay = Math.max(0, props.repeatDelay);
+  const total = duration * 2 + repeatDelay;
+  if (total === 0) return;
+  const forward = duration / total;
+  const hold = (duration + repeatDelay) / total;
 
   const animation = node.animate(
     [
@@ -113,7 +145,15 @@ function animateRect(el: Element | null, square: Square, index: number) {
     },
   );
 
-  animation.onfinish = () => updateSquarePosition(square.id);
+  animations.set(square.id, { node, square, animation });
+  animation.onfinish = () => {
+    if (animations.get(square.id)?.animation !== animation || squares.value[square.id] !== square)
+      return;
+    animation.onfinish = null;
+    animation.cancel();
+    animations.delete(square.id);
+    updateSquarePosition(square.id);
+  };
 }
 
 let resizeObserver: ResizeObserver | null = null;
@@ -138,6 +178,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+  cancelAnimations();
   if (resizeObserver) {
     resizeObserver.disconnect();
     resizeObserver = null;
@@ -177,7 +218,7 @@ onUnmounted(() => {
       <rect
         v-for="(square, index) in squares"
         :key="`${square.id}-${square.iteration}`"
-        :ref="(el) => animateRect(el as Element | null, square, index)"
+        :ref="(el) => animateRect(el, square, index)"
         :width="props.width - 1"
         :height="props.height - 1"
         :x="square.pos[0] * props.width + 1"
@@ -192,6 +233,8 @@ onUnmounted(() => {
 ```
 
 :::
+
+Each square owns at most one animation. Resizing or changing grid/animation options replaces the current generation; removed squares cannot restart it. With both `duration` and `repeatDelay` set to `0`, square animation is disabled.
 
 ## Props
 

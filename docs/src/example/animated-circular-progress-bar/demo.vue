@@ -21,6 +21,7 @@ onUnmounted(() => {
 
 <template>
   <AnimatedCircularProgressBar
+    aria-label="Example progress"
     :value="value"
     gauge-primary-color="rgb(79 70 229)"
     gauge-secondary-color="rgba(0, 0, 0, 0.1)"

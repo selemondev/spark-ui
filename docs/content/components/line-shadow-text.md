@@ -2,6 +2,8 @@
 
 A text component with a moving diagonal line shadow.
 
+With reduced motion enabled, the text retains a static diagonal line shadow.
+
 <demo src="../../src/example/line-shadow-text/demo.vue" srcCode="../../src/spark-ui-demos/line-shadow-text/line-shadow-text.vue" />
 
 ## Installation
@@ -72,12 +74,19 @@ const style = computed(() => ({
     background-position: 100% -100%;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .line-shadow-text::after {
+    animation: none;
+    background-position: 0 0;
+  }
+}
 </style>
 ```
 
 :::
 
-If you prefer to keep the keyframes in your Tailwind config instead of a scoped `<style>` block, add the following animation to your `tailwind.config.js`:
+If you prefer to keep the keyframes in your Tailwind config instead of a scoped `<style>` block, add the following animation to your `tailwind.config.js`. Keep the component's reduced-motion media query so the shadow remains static when requested:
 
 ```js [tailwind.config.js]
 /** @type {import('tailwindcss').Config} */
@@ -112,9 +121,9 @@ import LineShadowText from "@/components/spark-ui/line-shadow-text/line-shadow-t
 
 ## Props
 
-| Prop          | Type                             | Default   | Description                              |
-| ------------- | -------------------------------- | --------- | ---------------------------------------- |
-| `text`        | `string`                         | `-`       | The text to display with shadow effect   |
-| `shadowColor` | `string`                         | `"black"` | The color of the moving line shadow      |
-| `as`          | `keyof HTMLElementTagNameMap`    | `"span"`  | The HTML element to render the text as   |
-| `class`       | `string`                         | `-`       | Additional classes to merge onto the tag |
+| Prop          | Type                          | Default   | Description                              |
+| ------------- | ----------------------------- | --------- | ---------------------------------------- |
+| `text`        | `string`                      | `-`       | The text to display with shadow effect   |
+| `shadowColor` | `string`                      | `"black"` | The color of the moving line shadow      |
+| `as`          | `keyof HTMLElementTagNameMap` | `"span"`  | The HTML element to render the text as   |
+| `class`       | `string`                      | `-`       | Additional classes to merge onto the tag |

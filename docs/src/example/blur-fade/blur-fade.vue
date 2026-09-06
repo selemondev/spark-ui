@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, reactive, ref, watch } from "vue";
+
 interface BlurFadeProps {
   class?: string;
   variant?: {
@@ -22,41 +24,58 @@ const props = withDefaults(defineProps<BlurFadeProps>(), {
   inViewMargin: "-50px",
   blur: "6px",
 });
-const defaultVariants = {
-  hidden: { y: props.yOffset, opacity: 0, filter: `blur(${props.blur})` },
-  visible: {
-    y: -props.yOffset,
-    opacity: 1,
-    filter: "blur(0px)",
-    transition: {
-      delay: 0.04 + props.delay,
-      duration: 500,
-      ease: "easeIn",
-    },
-  },
-  enter: {
-    y: -props.yOffset,
-    opacity: 1,
-    transition: {
-      delay: 0.04 + props.delay,
-      duration: 500,
-      ease: "easeIn",
-    },
-    filter: "blur(0px)",
-  },
-};
 
-const combinedVariants = props.variant || defaultVariants;
+const elementRef = ref<HTMLElement | null>(null);
+const isVisible = ref(false);
+const combinedVariants = computed(() => {
+  const shown = {
+    y: -props.yOffset,
+    opacity: 1,
+    filter: "blur(0px)",
+    transition: {
+      delay: props.delay,
+      duration: props.duration * 1000,
+      ease: "easeIn",
+    },
+  };
+  return (
+    props.variant ?? {
+      hidden: { y: props.yOffset, opacity: 0, filter: `blur(${props.blur})` },
+      visible: shown,
+      enter: shown,
+    }
+  );
+});
+
+// The directive captures its binding once, so keep this reactive object stable.
+const motionVariants = reactive({
+  initial: computed(() => combinedVariants.value.hidden),
+  enter: computed(() => {
+    if (!props.inView) return combinedVariants.value.enter;
+    return isVisible.value ? combinedVariants.value.visible : combinedVariants.value.hidden;
+  }),
+});
+
+watch(
+  [elementRef, () => props.inView, () => props.inViewMargin],
+  ([element, inView, rootMargin], _, onCleanup) => {
+    isVisible.value = false;
+    if (!element || !inView) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry) isVisible.value = entry.isIntersecting;
+      },
+      { rootMargin },
+    );
+    observer.observe(element);
+    onCleanup(() => observer.disconnect());
+  },
+  { flush: "post" },
+);
 </script>
 
 <template>
-  <div
-    v-motion
-    :initial="combinedVariants.hidden"
-    :visible="props.inView ? combinedVariants.visible : undefined"
-    :enter="!props.inView ? combinedVariants.enter : undefined"
-    :class="props.class"
-  >
+  <div ref="elementRef" v-motion="motionVariants" :class="props.class">
     <slot />
   </div>
 </template>

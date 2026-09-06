@@ -6,7 +6,7 @@ An interactive component that enables zooming into images, videos and other elem
 
 ## Installation
 
-Copy and paste the following code into your project:
+Copy the component files below into `src/components/spark-ui/lens/`. Utility imports use `@/lib/utils`.
 
 ::: code-group
 
@@ -106,7 +106,9 @@ const showStatic = computed(() => props.isStatic || Boolean(props.defaultPositio
 
     <div
       v-if="showStatic"
-      class="absolute inset-0 overflow-hidden"
+      aria-hidden="true"
+      inert
+      class="pointer-events-none absolute inset-0 overflow-hidden"
       :style="lensContentStyle"
     >
       <div class="absolute inset-0" :style="zoomStyle">
@@ -117,7 +119,9 @@ const showStatic = computed(() => props.isStatic || Boolean(props.defaultPositio
     <Transition v-else name="lens">
       <div
         v-if="isHovering"
-        class="absolute inset-0 overflow-hidden"
+        aria-hidden="true"
+        inert
+        class="pointer-events-none absolute inset-0 overflow-hidden"
         :style="lensContentStyle"
       >
         <div class="absolute inset-0" :style="zoomStyle">
@@ -176,22 +180,26 @@ Provide a `default-position` so the lens starts in a given spot and follows the 
 
 <demo src="../../src/example/lens/default-position-demo.vue" srcCode="../../src/spark-ui-demos/lens/default-position-demo.vue" />
 
+## Behavior
+
+The optical copy is inert, hidden from assistive technology, and pointer-transparent; interact with the original content. The slot is still rendered twice when the lens is visible. This does not remove child mount effects, duplicate IDs, or duplicated media playback: use static, side-effect-free content without document-global IDs for magnification.
+
 ## Props
 
-| Prop              | Type       | Default          | Description                                                    |
-| ----------------- | ---------- | ---------------- | -------------------------------------------------------------- |
-| `zoomFactor`      | `number`   | `1.3`            | The magnification factor of the lens (must be greater than 1). |
-| `lensSize`        | `number`   | `170`            | The size of the lens in pixels (works as a diameter).          |
-| `position`        | `Position` | `{ x: 0, y: 0 }` | The current position of the lens (used with `isStatic`).       |
-| `defaultPosition` | `Position` | `undefined`      | The initial position of the lens before hovering.              |
-| `isStatic`        | `boolean`  | `false`          | Determines if the lens remains in a fixed position.            |
-| `duration`        | `number`   | `0.1`            | Duration of the fade animation when the lens appears (seconds).|
-| `lensColor`       | `string`   | `"black"`        | The color of the lens mask (CSS color value).                  |
-| `ariaLabel`       | `string`   | `"Zoom Area"`    | Accessibility label for the lens region.                       |
-| `class`           | `string`   | `undefined`      | Additional classes merged onto the container.                  |
+| Prop              | Type       | Default          | Description                                                     |
+| ----------------- | ---------- | ---------------- | --------------------------------------------------------------- |
+| `zoomFactor`      | `number`   | `1.3`            | The magnification factor of the lens (must be greater than 1).  |
+| `lensSize`        | `number`   | `170`            | The size of the lens in pixels (works as a diameter).           |
+| `position`        | `Position` | `{ x: 0, y: 0 }` | The current position of the lens (used with `isStatic`).        |
+| `defaultPosition` | `Position` | `undefined`      | The initial position of the lens before hovering.               |
+| `isStatic`        | `boolean`  | `false`          | Determines if the lens remains in a fixed position.             |
+| `duration`        | `number`   | `0.1`            | Duration of the fade animation when the lens appears (seconds). |
+| `lensColor`       | `string`   | `"black"`        | The color of the lens mask (CSS color value).                   |
+| `ariaLabel`       | `string`   | `"Zoom Area"`    | Accessibility label for the lens region.                        |
+| `class`           | `string`   | `undefined`      | Additional classes merged onto the container.                   |
 
 ## Slots
 
-| Slot      | Description                                        |
-| --------- | -------------------------------------------------- |
-| `default` | The content that will be magnified by the lens.    |
+| Slot      | Description                                     |
+| --------- | ----------------------------------------------- |
+| `default` | The content that will be magnified by the lens. |

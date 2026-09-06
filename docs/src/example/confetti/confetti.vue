@@ -4,7 +4,7 @@ import type {
   CreateTypes as ConfettiInstance,
   Options as ConfettiOptions,
 } from "canvas-confetti";
-import { onBeforeUnmount, onMounted, provide, ref } from "vue";
+import { nextTick, onBeforeUnmount, onMounted, provide, ref } from "vue";
 import { cn } from "../../lib/utils";
 import { confettiApiKey } from "./context";
 
@@ -16,18 +16,38 @@ interface ConfettiProps {
 }
 
 const props = withDefaults(defineProps<ConfettiProps>(), {
-  globalOptions: () => ({ resize: true, useWorker: true }),
+  globalOptions: () => ({ resize: true, useWorker: false }),
   manualstart: false,
 });
 
 defineOptions({ inheritAttrs: false });
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
-const instance = ref<ConfettiInstance | null>(null);
+let instance: ConfettiInstance | null = null;
+let initialization: Promise<ConfettiInstance | null> | null = null;
+let disposed = false;
+
+function initialize() {
+  initialization ??= (async () => {
+    await nextTick();
+    if (disposed || !canvasRef.value) return null;
+    const confetti = (await import("canvas-confetti")).default;
+    if (disposed || !canvasRef.value) return null;
+    instance = confetti.create(canvasRef.value, {
+      resize: true,
+      useWorker: false,
+      ...props.globalOptions,
+    });
+    return instance;
+  })();
+  return initialization;
+}
 
 async function fire(opts: ConfettiOptions = {}) {
   try {
-    await instance.value?.({ ...props.options, ...opts });
+    const options = { ...props.options, ...opts };
+    const confetti = await initialize();
+    if (!disposed) await confetti?.(options);
   } catch (error) {
     console.error("Confetti error:", error);
   }
@@ -38,25 +58,18 @@ const api = { fire };
 provide(confettiApiKey, api);
 defineExpose(api);
 
-onMounted(async () => {
-  if (!canvasRef.value) return;
-  const confetti = (await import("canvas-confetti")).default;
-  if (!canvasRef.value) return;
-  instance.value = confetti.create(canvasRef.value, {
-    ...props.globalOptions,
-    resize: true,
-  });
-
+onMounted(() => {
   if (!props.manualstart) {
-    await fire();
+    void fire();
+  } else {
+    void initialize().catch((error) => console.error("Confetti error:", error));
   }
 });
 
 onBeforeUnmount(() => {
-  if (instance.value) {
-    instance.value.reset();
-    instance.value = null;
-  }
+  disposed = true;
+  instance?.reset();
+  instance = null;
 });
 </script>
 

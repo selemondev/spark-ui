@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ArrowRight from "../../components/icons/arrow-right.vue";
 import AnimatedGradientText from "../../components/spark-ui/animated-gradient-text/animated-gradient-text.vue";
 import { cn } from "../../lib/utils";
 </script>
@@ -18,13 +17,14 @@ import { cn } from "../../lib/utils";
       >
         Introducing Spark UI
       </span>
-      <ArrowRight
+      <svg
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
         class="ml-1 size-3 transition-transform w-5 h-5 text-white duration-300 ease-in-out group-hover:translate-x-0.5"
-      />
+      >
+        <path fill="currentColor" d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z" />
+      </svg>
     </AnimatedGradientText>
   </div>
 </template>
-
-## Props | Prop | Type | Description | Default | | --------- | ------ |
--------------------------------------- | ------- | | children | | The children passed into the
-component | | | className | string | The class name to be applied. | |

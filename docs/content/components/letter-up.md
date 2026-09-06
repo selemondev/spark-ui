@@ -6,11 +6,14 @@ Staggered letter pull up text animation.
 
 ## Installation
 
-Copy and paste the following code into your project:
+Install `@vueuse/motion` and register its `MotionPlugin` on your Vue app as shown in the [installation guide](/content/guide/getting-started/installation). These components use the `v-motion` directive.
 
-```vue [LetterPullUp.vue]
+Copy the component files below into `src/components/spark-ui/letter-up/`. Utility imports use `@/lib/utils`.
+
+```vue [letter-up.vue]
 <script setup lang="ts">
-import { cn } from "../../../lib/utils";
+import { computed } from "vue";
+import { cn } from "@/lib/utils";
 
 interface LetterPullupProps {
   class?: string;
@@ -20,7 +23,7 @@ interface LetterPullupProps {
 
 const props = defineProps<LetterPullupProps>();
 
-const letters = props.words.split("");
+const letters = computed(() => props.words.split(""));
 
 const pullupVariant = {
   initial: { y: 100, opacity: 0 },
@@ -33,16 +36,20 @@ const pullupVariant = {
   }),
 };
 
-const className = cn(
-  "font-sans text-center text-4xl font-bold tracking-[-0.02em] text-black dark:text-white drop-shadow-sm md:text-4xl md:leading-[5rem]",
-  props.class,
+const className = computed(() =>
+  cn(
+    "font-display text-center text-4xl font-bold tracking-[-0.02em] text-black dark:text-white drop-shadow-sm md:text-4xl md:leading-[5rem]",
+    props.class,
+  ),
 );
 </script>
 
 <template>
-  <div class="flex justify-center">
-    <div v-for="(letter, index) in letters" :key="letter">
-      <h1
+  <h1 class="flex justify-center">
+    <span class="sr-only">{{ props.words }}</span>
+    <span aria-hidden="true" v-for="(letter, index) in letters" :key="index">
+      <span
+        class="inline-block"
         v-motion
         :initial="pullupVariant.initial"
         :enter="pullupVariant.enter(index)"
@@ -50,16 +57,32 @@ const className = cn(
       >
         <span v-if="letter === ' '">&nbsp;</span>
         <span v-else>{{ letter }}</span>
-      </h1>
-    </div>
-  </div>
+      </span>
+    </span>
+  </h1>
 </template>
 ```
 
+## Usage
+
+```vue
+<script setup lang="ts">
+import LetterUp from "@/components/spark-ui/letter-up/letter-up.vue";
+</script>
+
+<template>
+  <LetterUp words="Staggered Letter Pull Up" :delay="50" />
+</template>
+```
+
+## Behavior
+
+`words` and `class` update while mounted. The component renders one heading with the complete accessible text and positional letter keys, so repeated characters remain distinct. `delay` is the per-letter delay in milliseconds.
+
 ## Props
 
-| Prop  | Type   | Description                                             | Default                    |
-| ----- | ------ | ------------------------------------------------------- | -------------------------- |
-| class | string | The class to be applied to the component                |                            |
-| words | string | Text to animate                                         | "Staggered Letter Pull Up" |
-| delay | number | Delay each letter's animation by this many milliseconds | 50                         |
+| Prop  | Type   | Description                                             | Default  |
+| ----- | ------ | ------------------------------------------------------- | -------- |
+| class | string | The class to be applied to the component                |          |
+| words | string | Text to animate                                         | Required |
+| delay | number | Delay each letter's animation by this many milliseconds | 0.05     |

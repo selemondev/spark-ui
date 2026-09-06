@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { cn } from "../../lib/utils";
 
 interface Variants {
@@ -22,15 +23,17 @@ const props = withDefaults(defineProps<GradualSpacingProps>(), {
   }),
 });
 
-const letters = props.text.split("");
+const letters = computed(() => props.text.split(""));
 
-const className = cn("drop-shadow-sm", props.class);
+const className = computed(() => cn("drop-shadow-sm", props.class));
 </script>
 
 <template>
-  <div class="flex justify-center space-x-1">
-    <div v-for="(char, index) in letters" :key="index">
-      <h1
+  <h1 class="flex justify-center space-x-1">
+    <span class="sr-only">{{ props.text }}</span>
+    <span aria-hidden="true" v-for="(char, index) in letters" :key="index">
+      <span
+        class="inline-block"
         v-motion
         :initial="props.motionProps.hidden"
         :visible="{
@@ -44,7 +47,7 @@ const className = cn("drop-shadow-sm", props.class);
       >
         <span v-if="char === ' '">&nbsp;</span>
         <span v-else>{{ char }}</span>
-      </h1>
-    </div>
-  </div>
+      </span>
+    </span>
+  </h1>
 </template>

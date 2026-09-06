@@ -33,18 +33,9 @@ let cleanup: (() => void) | null = null;
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
-let instanceCounter = 0;
-
 function getContainer(): HTMLElement {
-  const id = "_coolMode_effect";
-  const existingContainer = document.getElementById(id);
-
-  if (existingContainer) {
-    return existingContainer;
-  }
-
   const container = document.createElement("div");
-  container.setAttribute("id", id);
+  container.setAttribute("data-cool-mode-effect", "");
   container.setAttribute(
     "style",
     "overflow:hidden; position:fixed; height:100%; top:0; left:0; right:0; bottom:0; pointer-events:none; z-index:2147483647",
@@ -55,13 +46,8 @@ function getContainer(): HTMLElement {
   return container;
 }
 
-function applyParticleEffect(element: HTMLElement, options?: CoolParticleOptions): () => void {
-  instanceCounter++;
-
-  const defaultParticle = "circle";
-  const particleType = options?.particle || defaultParticle;
+function applyParticleEffect(element: HTMLElement): () => void {
   const sizes = [15, 20, 25, 35, 45];
-  const limit = 45;
 
   let particles: CoolParticle[] = [];
   let autoAddParticle = false;
@@ -118,9 +104,11 @@ function applyParticleEffect(element: HTMLElement, options?: CoolParticleOptions
   };
 
   function generateParticle() {
-    const size = options?.size || sizes[Math.floor(Math.random() * sizes.length)];
-    const speedHorz = options?.speedHorz || Math.random() * 10;
-    const speedUp = options?.speedUp || Math.random() * 25;
+    const options = props.options;
+    const particleType = options?.particle ?? "circle";
+    const size = options?.size ?? sizes[Math.floor(Math.random() * sizes.length)];
+    const speedHorz = options?.speedHorz ?? Math.random() * 10;
+    const speedUp = options?.speedUp ?? Math.random() * 25;
     const spinVal = Math.random() * 360;
     const spinSpeed = Math.random() * 35 * (Math.random() <= 0.5 ? -1 : 1);
     const top = mouseY - size / 2;
@@ -189,7 +177,7 @@ function applyParticleEffect(element: HTMLElement, options?: CoolParticleOptions
     const currentTime = performance.now();
     if (
       autoAddParticle &&
-      particles.length < limit &&
+      particles.length < (props.options?.particleCount ?? 45) &&
       currentTime - lastParticleTimestamp > particleGenerationDelay
     ) {
       generateParticle();
@@ -202,23 +190,12 @@ function applyParticleEffect(element: HTMLElement, options?: CoolParticleOptions
 
   loop();
 
-  const isTouchInteraction = "ontouchstart" in window;
-
-  const tap = isTouchInteraction ? "touchstart" : "mousedown";
-  const tapEnd = isTouchInteraction ? "touchend" : "mouseup";
-  const move = isTouchInteraction ? "touchmove" : "mousemove";
-
-  const updateMousePosition = (e: MouseEvent | TouchEvent) => {
-    if ("touches" in e) {
-      mouseX = e.touches?.[0].clientX;
-      mouseY = e.touches?.[0].clientY;
-    } else {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    }
+  const updateMousePosition = (e: PointerEvent) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
   };
 
-  const tapHandler = (e: MouseEvent | TouchEvent) => {
+  const tapHandler = (e: PointerEvent) => {
     updateMousePosition(e);
     autoAddParticle = true;
   };
@@ -227,35 +204,30 @@ function applyParticleEffect(element: HTMLElement, options?: CoolParticleOptions
     autoAddParticle = false;
   };
 
-  element.addEventListener(move, updateMousePosition as EventListener, { passive: true });
-  element.addEventListener(tap, tapHandler as EventListener, { passive: true });
-  element.addEventListener(tapEnd, disableAutoAddParticle, { passive: true });
-  element.addEventListener("mouseleave", disableAutoAddParticle, {
-    passive: true,
-  });
+  element.addEventListener("pointermove", updateMousePosition, { passive: true });
+  element.addEventListener("pointerdown", tapHandler, { passive: true });
+  element.addEventListener("pointerleave", disableAutoAddParticle);
+  window.addEventListener("pointerup", disableAutoAddParticle);
+  window.addEventListener("pointercancel", disableAutoAddParticle);
+  window.addEventListener("blur", disableAutoAddParticle);
 
   return () => {
-    element.removeEventListener(move, updateMousePosition as EventListener);
-    element.removeEventListener(tap, tapHandler as EventListener);
-    element.removeEventListener(tapEnd, disableAutoAddParticle);
-    element.removeEventListener("mouseleave", disableAutoAddParticle);
-
-    const interval = setInterval(() => {
-      if (animationFrame && particles.length === 0) {
-        cancelAnimationFrame(animationFrame);
-        clearInterval(interval);
-
-        if (--instanceCounter === 0) {
-          container.remove();
-        }
-      }
-    }, 500);
+    autoAddParticle = false;
+    element.removeEventListener("pointermove", updateMousePosition);
+    element.removeEventListener("pointerdown", tapHandler);
+    element.removeEventListener("pointerleave", disableAutoAddParticle);
+    window.removeEventListener("pointerup", disableAutoAddParticle);
+    window.removeEventListener("pointercancel", disableAutoAddParticle);
+    window.removeEventListener("blur", disableAutoAddParticle);
+    if (animationFrame !== undefined) cancelAnimationFrame(animationFrame);
+    particles = [];
+    container.remove();
   };
 }
 
 onMounted(() => {
   if (containerRef.value) {
-    cleanup = applyParticleEffect(containerRef.value, props.options);
+    cleanup = applyParticleEffect(containerRef.value);
   }
 });
 

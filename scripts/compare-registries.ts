@@ -8,7 +8,7 @@ import {
   registryDir,
   toKebabCase,
   writeJson,
-} from "./registry-utils";
+} from "./registry-utils.ts";
 
 const aliases = readAliases();
 

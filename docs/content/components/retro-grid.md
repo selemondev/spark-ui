@@ -6,9 +6,9 @@ An animated scrolling retro grid effect
 
 ## Installation
 
-Copy and paste the following code into your project
+Copy the component files below into `src/components/spark-ui/retro-grid/`. Utility imports use `@/lib/utils`.
 
-```vue [RetroGrid.vue]
+```vue [retro-grid.vue]
 <script setup lang="ts">
 import { cn } from "@/lib/utils";
 
@@ -27,7 +27,7 @@ const props = withDefaults(
   <div
     :class="
       cn(
-        'selection:pointer-events-none absolute size-full overflow-hidden opacity-50 [perspective:200px]',
+        'pointer-events-none absolute size-full overflow-hidden opacity-50 [perspective:200px]',
         props.class,
       )
     "
@@ -56,6 +56,43 @@ const props = withDefaults(
   </div>
 </template>
 ```
+
+Add the existing grid animation to `theme.extend` in `tailwind.config.js`:
+
+```js [tailwind.config.js]
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        grid: {
+          "0%": { transform: "translateY(-50%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+      },
+      animation: { grid: "grid 15s linear infinite" },
+    },
+  },
+};
+```
+
+## Usage
+
+```vue
+<script setup lang="ts">
+import RetroGrid from "@/components/spark-ui/retro-grid/retro-grid.vue";
+</script>
+
+<template>
+  <div class="relative h-80 overflow-hidden">
+    <RetroGrid />
+    <button type="button" class="relative">Explore</button>
+  </div>
+</template>
+```
+
+## Behavior
+
+The decorative grid is pointer-transparent and does not block controls placed beneath it.
 
 ## Props
 

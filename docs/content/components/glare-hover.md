@@ -74,9 +74,9 @@ const rootClass = computed(() =>
     "before:[background-position:-100%_-100%,0_0]",
     // TRANSITION
     !props.playOnce &&
-      "before:transition-[background-position] before:duration-[var(--gh-duration)] before:ease-in-out",
+      "before:[transition-property:background-position] before:[transition-duration:var(--gh-duration)] before:ease-in-out",
     props.playOnce &&
-      "before:transition-none hover:before:transition-[background-position] hover:before:duration-[var(--gh-duration)]",
+      "before:[transition-property:none] hover:before:[transition-property:background-position] hover:before:[transition-duration:var(--gh-duration)] hover:before:ease-in-out",
     // HOVER EFFECT
     "hover:before:[background-position:100%_100%,0_0]",
     props.class,
@@ -121,21 +121,21 @@ import GlareHover from "@/components/spark-ui/glare-hover/glare-hover.vue";
 
 ## Props
 
-| Prop       | Type    | Default     | Description                                                          |
-| ---------- | ------- | ----------- | ------------------------------------------------------------------- |
+| Prop       | Type    | Default     | Description                                                           |
+| ---------- | ------- | ----------- | --------------------------------------------------------------------- |
 | class      | string  |             | Classes on the root `div` (use `rounded-*`, `overflow-hidden`, etc.). |
-| background | string  | `"#000"`    | Root background color.                                              |
-| color      | string  | `"#ffffff"` | Glare highlight (hex `#rgb` / `#rrggbb`).                           |
-| opacity    | number  | `0.5`       | Alpha for the parsed glare color.                                   |
-| angle      | number  | `-45`       | Gradient angle in degrees (`--gh-angle`).                           |
-| size       | number  | `250`       | Glare tile size in `%` (`--gh-size`).                               |
-| duration   | number  | `650`       | Transition duration in ms (`--gh-duration`).                        |
-| playOnce   | boolean | `false`     | If `true`, animation runs on hover only (no transition until hover). |
-| width      | string  |             | Optional `width` on the root `style`.                              |
-| height     | string  |             | Optional `height` on the root `style`.                             |
+| background | string  | `"#000"`    | Root background color.                                                |
+| color      | string  | `"#ffffff"` | Glare highlight (hex `#rgb` / `#rrggbb`).                             |
+| opacity    | number  | `0.5`       | Alpha for the parsed glare color.                                     |
+| angle      | number  | `-45`       | Gradient angle in degrees (`--gh-angle`).                             |
+| size       | number  | `250`       | Glare tile size in `%` (`--gh-size`).                                 |
+| duration   | number  | `650`       | Transition duration in ms (`--gh-duration`).                          |
+| playOnce   | boolean | `false`     | If `true`, animation runs on hover only (no transition until hover).  |
+| width      | string  |             | Optional `width` on the root `style`.                                 |
+| height     | string  |             | Optional `height` on the root `style`.                                |
 
 ## Slots
 
-| Slot    | Description                    |
-| ------- | ----------------------------- |
-| default | Content inside the wrapper.   |
+| Slot    | Description                 |
+| ------- | --------------------------- |
+| default | Content inside the wrapper. |

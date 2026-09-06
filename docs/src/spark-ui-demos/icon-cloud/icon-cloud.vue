@@ -5,17 +5,17 @@ const slugs = [
   "typescript",
   "javascript",
   "dart",
-  "java",
+  "python",
   "react",
   "flutter",
   "android",
   "html5",
-  "css3",
+  "css",
   "nodedotjs",
   "express",
   "nextdotjs",
   "prisma",
-  "amazonaws",
+  "go",
   "postgresql",
   "firebase",
   "nginx",
@@ -28,13 +28,13 @@ const slugs = [
   "jira",
   "github",
   "gitlab",
-  "visualstudiocode",
+  "vuedotjs",
   "androidstudio",
-  "sonarqube",
+  "sonarqubeserver",
   "figma",
 ];
 
-const images = slugs.map((slug) => `https://cdn.simpleicons.org/${slug}/${slug}`);
+const images = slugs.map((slug) => `https://cdn.simpleicons.org/${slug}`);
 </script>
 
 <template>

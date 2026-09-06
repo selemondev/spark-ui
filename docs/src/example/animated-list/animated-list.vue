@@ -1,39 +1,52 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref, useSlots } from "vue";
+import { Comment, Fragment, Text, nextTick, onBeforeUnmount, ref, useSlots, type VNode } from "vue";
 import { cn } from "../../lib/utils";
 
-const props = defineProps({
-  class: {
-    type: String,
-    default: "",
+const props = withDefaults(
+  defineProps<{
+    class?: string;
+    delay?: number;
+  }>(),
+  {
+    delay: 1000,
   },
-  delay: {
-    type: Number,
-    default: 1000,
-  },
-});
+);
 
 const slots = useSlots();
-const index = ref(0);
-const slotsArray = ref<any>([]);
+const index = ref(1);
+let itemCount = 0;
+let timer: ReturnType<typeof setTimeout> | undefined;
+let disposed = false;
 
-onMounted(loadComponents);
-
-const itemsToShow = computed(() => {
-  return slotsArray.value.slice(0, index.value);
-});
-
-async function loadComponents() {
-  slotsArray.value = slots.default ? slots.default()[0]?.children : [];
-
-  while (index.value < slotsArray.value.length) {
-    index.value++;
-    await delay(props.delay);
-  }
+function flattenItems(nodes: VNode[]): VNode[] {
+  return nodes.flatMap((node) => {
+    if (node.type === Fragment) return flattenItems((node.children ?? []) as VNode[]);
+    if (node.type === Comment || (node.type === Text && !String(node.children ?? "").trim()))
+      return [];
+    return [node];
+  });
 }
 
-async function delay(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+// Invoke the slot during render so parent slot changes remain reactive.
+function itemsToShow() {
+  const items = flattenItems(slots.default?.() ?? []);
+  itemCount = items.length;
+  void nextTick(scheduleReveal);
+  return items.slice(0, index.value);
+}
+
+function scheduleReveal() {
+  if (disposed) return;
+  if (index.value > itemCount) index.value = itemCount;
+  if (index.value >= itemCount) {
+    clearTimeout(timer);
+    timer = undefined;
+  } else if (timer === undefined) {
+    timer = setTimeout(() => {
+      timer = undefined;
+      if (index.value < itemCount) index.value++;
+    }, props.delay);
+  }
 }
 
 function getInitial(idx: number) {
@@ -71,6 +84,11 @@ function getLeave() {
     },
   };
 }
+
+onBeforeUnmount(() => {
+  disposed = true;
+  clearTimeout(timer);
+});
 </script>
 
 <template>
@@ -82,8 +100,8 @@ function getLeave() {
       move-class="move"
     >
       <div
-        v-for="(item, idx) in itemsToShow"
-        :key="idx"
+        v-for="(item, idx) in itemsToShow()"
+        :key="item.key ?? idx"
         v-motion
         :initial="getInitial(idx)"
         :enter="getEnter(idx)"

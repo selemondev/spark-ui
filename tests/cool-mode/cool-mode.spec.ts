@@ -1,97 +1,76 @@
 /// <reference lib="dom" />
 // @vitest-environment jsdom
-import { mount } from "@vue/test-utils";
+import { enableAutoUnmount, mount } from "@vue/test-utils";
 import { afterEach, beforeEach, expect, it, vi } from "vite-plus/test";
+import { h, nextTick, reactive } from "vue";
 import CoolMode from "../../docs/src/components/spark-ui/cool-mode/cool-mode.vue";
 
-type LoopCallback = (time: number) => void;
-
-const tapEvent = "ontouchstart" in window ? "touchstart" : "mousedown";
-
-const press = (el: ReturnType<ReturnType<typeof mount>["find"]>, x: number, y: number) =>
-  el.trigger(tapEvent, { clientX: x, clientY: y, touches: [{ clientX: x, clientY: y }] });
-
-let rafSpy: ReturnType<typeof vi.spyOn>;
-
+enableAutoUnmount(afterEach);
+const frames = new Map<number, FrameRequestCallback>();
+let frameId = 0;
+let now = 0;
 beforeEach(() => {
-  // Keep the animation loop from running indefinitely under jsdom.
-  rafSpy = vi.spyOn(globalThis, "requestAnimationFrame").mockReturnValue(1 as unknown as number);
-  vi.spyOn(globalThis, "cancelAnimationFrame").mockImplementation(() => 0 as unknown as void);
+  frames.clear();
+  now = 0;
+  vi.spyOn(performance, "now").mockImplementation(() => now);
+  vi.spyOn(globalThis, "requestAnimationFrame").mockImplementation((callback) => {
+    frames.set(++frameId, callback);
+    return frameId;
+  });
+  vi.spyOn(globalThis, "cancelAnimationFrame").mockImplementation((id) => {
+    frames.delete(id);
+  });
 });
-
 afterEach(() => {
   vi.restoreAllMocks();
-  document.getElementById("_coolMode_effect")?.remove();
+});
+function advanceFrame() {
+  now += 40;
+  const callbacks = [...frames.values()];
+  frames.clear();
+  for (const callback of callbacks) callback(now);
+}
+
+it("keeps another instance's particles usable after an idle owner unmounts", async () => {
+  const idle = mount(CoolMode);
+  const active = mount(CoolMode, { props: { options: { particle: "/active.png" } } });
+  idle.unmount();
+  await active.get("span").trigger("pointerdown", { clientX: 40, clientY: 40 });
+  advanceFrame();
+  expect(document.querySelector('img[src="/active.png"]')).not.toBeNull();
+  active.unmount();
+  advanceFrame();
+  expect(document.querySelector('img[src="/active.png"]')).toBeNull();
+  expect(frames.size).toBe(0);
 });
 
-it("renders its slot inside a span wrapper", () => {
+it("honors the particle cap and zero launch speeds while held", async () => {
   const wrapper = mount(CoolMode, {
-    slots: { default: "<button>Click Me!</button>" },
+    props: {
+      options: { particle: "/limited.png", particleCount: 1, size: 20, speedHorz: 0, speedUp: 0 },
+    },
   });
-
-  const span = wrapper.find("span");
-  expect(span.exists()).toBe(true);
-  expect(span.find("button").text()).toBe("Click Me!");
+  await wrapper.get("span").trigger("pointerdown", { clientX: 50, clientY: 50 });
+  advanceFrame();
+  const particle = document.querySelector('img[src="/limited.png"]')?.parentElement;
+  expect(particle?.style.left).toBe("40px");
+  expect(particle?.style.top).toBe("40px");
+  advanceFrame();
+  advanceFrame();
+  expect(document.querySelectorAll('img[src="/limited.png"]')).toHaveLength(1);
 });
 
-it("creates the fixed effect container on mount", () => {
-  mount(CoolMode, { slots: { default: "<button>Go</button>" } });
-
-  const container = document.getElementById("_coolMode_effect");
-  expect(container).not.toBeNull();
-  expect(container?.getAttribute("style")).toContain("pointer-events:none");
-});
-
-it("starts the animation loop on mount", () => {
-  mount(CoolMode, { slots: { default: "<button>Go</button>" } });
-  expect(rafSpy).toHaveBeenCalled();
-});
-
-it("spawns a circle particle while pressed", async () => {
-  const wrapper = mount(CoolMode, {
-    attachTo: document.body,
-    slots: { default: "<button>Go</button>" },
-  });
-
-  const nowSpy = vi.spyOn(performance, "now");
-  nowSpy.mockReturnValue(1000);
-
-  // Press to enable auto-adding particles.
-  await press(wrapper.find("span"), 10, 10);
-
-  // Drive one loop iteration manually.
-  const loop = rafSpy.mock.calls[0][0] as LoopCallback;
-  loop(0);
-
-  const container = document.getElementById("_coolMode_effect");
-  expect(container?.querySelector("svg circle")).not.toBeNull();
-
-  nowSpy.mockRestore();
-  wrapper.unmount();
-});
-
-it("renders an image particle when given a URL option", async () => {
-  const wrapper = mount(CoolMode, {
-    attachTo: document.body,
-    props: { options: { particle: "https://example.com/avatar.png" } },
-    slots: { default: "<button>Go</button>" },
-  });
-
-  vi.spyOn(performance, "now").mockReturnValue(1000);
-  await press(wrapper.find("span"), 5, 5);
-
-  const loop = rafSpy.mock.calls[0][0] as LoopCallback;
-  loop(0);
-
-  const container = document.getElementById("_coolMode_effect");
-  const img = container?.querySelector("img");
-  expect(img).not.toBeNull();
-  expect(img?.getAttribute("src")).toBe("https://example.com/avatar.png");
-
-  wrapper.unmount();
-});
-
-it("removes listeners on unmount without error", () => {
-  const wrapper = mount(CoolMode, { slots: { default: "<button>Go</button>" } });
-  expect(() => wrapper.unmount()).not.toThrow();
+it("reads replacement particle options and stops generating after pointer cancellation", async () => {
+  const props = reactive({ options: { particle: "/before.png" } });
+  const wrapper = mount(() => h(CoolMode, props));
+  await wrapper.get("span").trigger("pointerdown", { clientX: 50, clientY: 50 });
+  advanceFrame();
+  props.options = { particle: "/after.png" };
+  await nextTick();
+  advanceFrame();
+  expect(document.querySelector('img[src="/before.png"]')).not.toBeNull();
+  expect(document.querySelector('img[src="/after.png"]')).not.toBeNull();
+  window.dispatchEvent(new Event("pointercancel"));
+  advanceFrame();
+  expect(document.querySelectorAll('img[src="/after.png"]')).toHaveLength(1);
 });

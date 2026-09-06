@@ -12,9 +12,7 @@ Install the following dependencies
 pnpm add @lucide/vue
 ```
 
-## Installation
-
-Copy and paste the following code into your project:
+Copy the component files below into `src/components/spark-ui/resizable-navbar/`. Utility imports use `@/lib/utils`.
 
 ::: code-group
 
@@ -22,6 +20,7 @@ Copy and paste the following code into your project:
 <script setup lang="ts">
 import type { Slot } from "vue";
 import { onMounted, onUnmounted, ref } from "vue";
+
 const props = defineProps<{
   className?: string;
 }>();
@@ -38,6 +37,7 @@ function handleScroll() {
 }
 
 onMounted(() => {
+  handleScroll();
   window.addEventListener("scroll", handleScroll);
 });
 
@@ -45,7 +45,7 @@ onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
 
-function provide(slot: Slot) {
+function provide(slot?: Slot) {
   if (!slot) return;
   return {
     visible: visible.value,
@@ -54,16 +54,8 @@ function provide(slot: Slot) {
 </script>
 
 <template>
-  <div
-    ref="navbarRef"
-    class="sticky inset-x-0 top-0 md:top-10 z-50 w-full"
-    :class="props.className"
-  >
-    <div class="w-full grid place-items-center pt-10">
-      <div class="max-w-4xl w-full">
-        <slot v-bind="provide($slots?.default)" />
-      </div>
-    </div>
+  <div ref="navbarRef" class="sticky inset-x-0 top-10 z-40 w-full" :class="props.className">
+    <slot v-bind="provide($slots?.default)" />
   </div>
 </template>
 ```
@@ -71,6 +63,7 @@ function provide(slot: Slot) {
 ```vue [navbar-button.vue]
 <script setup lang="ts">
 import { computed } from "vue";
+
 const props = defineProps<{
   href?: string;
   to?: string;
@@ -95,15 +88,10 @@ const classes = computed(() => {
     .filter(Boolean)
     .join(" ");
 });
-
-const isRouterLink = computed(() => props.to !== undefined);
 </script>
 
 <template>
-  <a v-if="isRouterLink" :href="to ?? ''" :class="classes">
-    <slot />
-  </a>
-  <a v-else :href="href || '#'" :class="classes">
+  <a :href="to ?? (href || '#')" :class="classes">
     <slot />
   </a>
 </template>
@@ -227,12 +215,14 @@ function handleClick() {
 
 ```vue [mobile-nav.vue]
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, provide, useId } from "vue";
 
-const props = defineProps<{
-  visible: boolean;
-  className?: string;
-}>();
+provide("spark-mobile-nav-id", useId());
+
+const props = defineProps({
+  className: String,
+  visible: Boolean,
+});
 
 const mobileNavStyles = computed(() => {
   return {
@@ -283,16 +273,28 @@ const props = defineProps<{
 
 ```vue [mobile-nav-menu.vue]
 <script setup lang="ts">
-defineProps<{
-  isOpen: boolean;
-  className?: string;
-}>();
+import { inject } from "vue";
+
+const menuId = inject<string | undefined>("spark-mobile-nav-id", undefined);
+const emit = defineEmits<{ close: [] }>();
+
+function closeMenu() {
+  emit("close");
+  if (menuId) document.getElementById(`${menuId}-toggle`)?.focus();
+}
+
+defineProps({
+  className: String,
+  isOpen: Boolean,
+});
 </script>
 
 <template>
   <Transition name="menu">
     <div
       v-if="isOpen"
+      :id="menuId"
+      @keydown.escape.stop.prevent="closeMenu"
       class="absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950"
       :class="className"
     >
@@ -320,10 +322,13 @@ defineProps<{
 ```vue [mobile-nav-toggle.vue]
 <script setup lang="ts">
 import { Menu, X } from "@lucide/vue";
+import { inject } from "vue";
 
-defineProps<{
-  isOpen: boolean;
-}>();
+const menuId = inject<string | undefined>("spark-mobile-nav-id", undefined);
+
+defineProps({
+  isOpen: Boolean,
+});
 
 const emit = defineEmits(["click"]);
 
@@ -333,14 +338,27 @@ function handleClick() {
 </script>
 
 <template>
-  <div class="cursor-pointer" @click="handleClick">
+  <button
+    type="button"
+    class="cursor-pointer"
+    :id="menuId ? `${menuId}-toggle` : undefined"
+    :aria-controls="isOpen ? menuId : undefined"
+    :aria-expanded="isOpen"
+    :aria-label="isOpen ? 'Close navigation menu' : 'Open navigation menu'"
+    @click="handleClick"
+    @keydown.escape.stop.prevent="isOpen && handleClick()"
+  >
     <X v-if="isOpen" class="text-black dark:text-white" />
     <Menu v-else class="text-black dark:text-white" />
-  </div>
+  </button>
 </template>
 ```
 
 :::
+
+## Behavior
+
+Keep `MobileNavToggle` and `MobileNavMenu` inside the same `MobileNav` so their generated accessible IDs are associated. Bind both `isOpen` props to the same state; handle the toggle’s `click` event and the menu’s `close` event to update it. Escape closes the open menu and returns focus to its toggle. The navbar measures the initial scroll position on mount. `NavbarButton` uses native anchors for both `href` and `to`; `to` takes precedence and does not require Vue Router.
 
 ## Props
 
@@ -384,12 +402,14 @@ function handleClick() {
 | `className` | string  | -       | Additional CSS classes to apply to the mobile nav menu |
 | `isOpen`    | boolean | -       | Controls whether the mobile menu is open               |
 
+`MobileNavMenu` emits `close` on Escape. Handle it with `@close="isOpen = false"`.
+
 ## MobileNavToggle
 
-| Prop      | Type       | Default | Description                                  |
-| --------- | ---------- | ------- | -------------------------------------------- |
-| `isOpen`  | boolean    | -       | Controls whether the mobile menu is open     |
-| `onClick` | () => void | -       | Callback function when the toggle is clicked |
+| Prop     | Type    | Default | Description                              |
+| -------- | ------- | ------- | ---------------------------------------- |
+| `isOpen` | boolean | -       | Controls whether the mobile menu is open |
+| `click`  | event   | -       | Emitted when the toggle is activated     |
 
 ## NavbarButton
 

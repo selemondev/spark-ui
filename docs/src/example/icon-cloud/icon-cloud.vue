@@ -32,27 +32,28 @@ const isDragging = ref(false);
 const lastMousePos = { x: 0, y: 0 };
 const mousePos = { x: 0, y: 0 };
 
-let targetRotation:
-  | {
-      x: number;
-      y: number;
-      startX: number;
-      startY: number;
-      distance: number;
-      startTime: number;
-      duration: number;
-    }
-  | null = null;
+let targetRotation: {
+  x: number;
+  y: number;
+  startX: number;
+  startY: number;
+  distance: number;
+  startTime: number;
+  duration: number;
+} | null = null;
 
 let animationFrame = 0;
 const rotation = { x: 0, y: 0 };
 let iconCanvases: HTMLCanvasElement[] = [];
 let imagesLoaded: boolean[] = [];
+let imageGeneration = 0;
 
 function buildIconCanvases() {
   if (typeof document === "undefined") return;
 
   const items = props.icons ?? props.images ?? [];
+  const usesImages = props.icons == null && props.images != null;
+  const generation = ++imageGeneration;
   imagesLoaded = Array.from({ length: items.length }, () => false);
 
   iconCanvases = items.map((item, index) => {
@@ -62,11 +63,11 @@ function buildIconCanvases() {
     const offCtx = offscreen.getContext("2d");
 
     if (offCtx) {
-      if (props.images) {
+      if (usesImages) {
         const img = new Image();
         img.crossOrigin = "anonymous";
-        img.src = item;
         img.onload = () => {
+          if (generation !== imageGeneration) return;
           offCtx.clearRect(0, 0, offscreen.width, offscreen.height);
           offCtx.beginPath();
           offCtx.arc(20, 20, 20, 0, Math.PI * 2);
@@ -75,15 +76,17 @@ function buildIconCanvases() {
           offCtx.drawImage(img, 0, 0, 40, 40);
           imagesLoaded[index] = true;
         };
+        img.src = item;
       } else {
         offCtx.scale(0.4, 0.4);
         const img = new Image();
-        img.src = `data:image/svg+xml;base64,${  btoa(unescape(encodeURIComponent(item)))}`;
         img.onload = () => {
+          if (generation !== imageGeneration) return;
           offCtx.clearRect(0, 0, offscreen.width, offscreen.height);
           offCtx.drawImage(img, 0, 0);
           imagesLoaded[index] = true;
         };
+        img.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(item)}`;
       }
     }
     return offscreen;
@@ -118,13 +121,14 @@ function buildPositions() {
   iconPositions.value = newIcons;
 }
 
-function handleMouseDown(e: MouseEvent) {
+function handlePointerDown(e: PointerEvent) {
   const canvas = canvasRef.value;
   const rect = canvas?.getBoundingClientRect();
-  if (!rect || !canvas) return;
+  if (!rect || !canvas || !rect.width || !rect.height) return;
+  canvas.setPointerCapture(e.pointerId);
 
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+  const x = ((e.clientX - rect.left) * canvas.width) / rect.width;
+  const y = ((e.clientY - rect.top) * canvas.height) / rect.height;
 
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
@@ -153,9 +157,7 @@ function handleMouseDown(e: MouseEvent) {
 
       const currentX = rotation.x;
       const currentY = rotation.y;
-      const distance = Math.sqrt(
-        (targetX - currentX) ** 2 + (targetY - currentY) ** 2,
-      );
+      const distance = Math.sqrt((targetX - currentX) ** 2 + (targetY - currentY) ** 2);
 
       const duration = Math.min(2000, Math.max(800, distance * 1000));
 
@@ -177,12 +179,12 @@ function handleMouseDown(e: MouseEvent) {
   lastMousePos.y = e.clientY;
 }
 
-function handleMouseMove(e: MouseEvent) {
+function handlePointerMove(e: PointerEvent) {
   const canvas = canvasRef.value;
   const rect = canvas?.getBoundingClientRect();
-  if (rect) {
-    mousePos.x = e.clientX - rect.left;
-    mousePos.y = e.clientY - rect.top;
+  if (rect && canvas && rect.width && rect.height) {
+    mousePos.x = ((e.clientX - rect.left) * canvas.width) / rect.width;
+    mousePos.y = ((e.clientY - rect.top) * canvas.height) / rect.height;
   }
 
   if (isDragging.value) {
@@ -197,8 +199,29 @@ function handleMouseMove(e: MouseEvent) {
   }
 }
 
-function handleMouseUp() {
+function handlePointerUp() {
   isDragging.value = false;
+}
+
+function handleKeydown(e: KeyboardEvent) {
+  switch (e.key) {
+    case "ArrowUp":
+      rotation.x -= 0.15;
+      break;
+    case "ArrowDown":
+      rotation.x += 0.15;
+      break;
+    case "ArrowLeft":
+      rotation.y -= 0.15;
+      break;
+    case "ArrowRight":
+      rotation.y += 0.15;
+      break;
+    default:
+      return;
+  }
+  e.preventDefault();
+  targetRotation = null;
 }
 
 function animate() {
@@ -289,6 +312,7 @@ watch(
 );
 
 onBeforeUnmount(() => {
+  imageGeneration++;
   if (animationFrame) cancelAnimationFrame(animationFrame);
 });
 </script>
@@ -298,12 +322,15 @@ onBeforeUnmount(() => {
     ref="canvasRef"
     :width="400"
     :height="400"
-    :class="cn('rounded-lg', props.class)"
-    aria-label="Interactive 3D Icon Cloud"
+    :class="cn('touch-none rounded-lg', props.class)"
+    aria-label="3D icon cloud. Drag or use arrow keys to rotate."
     role="img"
-    @mousedown="handleMouseDown"
-    @mousemove="handleMouseMove"
-    @mouseup="handleMouseUp"
-    @mouseleave="handleMouseUp"
+    tabindex="0"
+    @pointerdown="handlePointerDown"
+    @pointermove="handlePointerMove"
+    @pointerup="handlePointerUp"
+    @pointercancel="handlePointerUp"
+    @lostpointercapture="handlePointerUp"
+    @keydown="handleKeydown"
   />
 </template>

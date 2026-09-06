@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { cn } from "../../lib/utils";
 
 interface LetterPullupProps {
@@ -9,7 +10,7 @@ interface LetterPullupProps {
 
 const props = defineProps<LetterPullupProps>();
 
-const letters = props.words.split("");
+const letters = computed(() => props.words.split(""));
 
 const pullupVariant = {
   initial: { y: 100, opacity: 0 },
@@ -22,16 +23,20 @@ const pullupVariant = {
   }),
 };
 
-const className = cn(
-  "font-display text-center text-4xl font-bold tracking-[-0.02em] text-black dark:text-white drop-shadow-sm md:text-4xl md:leading-[5rem]",
-  props.class,
+const className = computed(() =>
+  cn(
+    "font-display text-center text-4xl font-bold tracking-[-0.02em] text-black dark:text-white drop-shadow-sm md:text-4xl md:leading-[5rem]",
+    props.class,
+  ),
 );
 </script>
 
 <template>
-  <div class="flex justify-center">
-    <div v-for="(letter, index) in letters" :key="letter">
-      <h1
+  <h1 class="flex justify-center">
+    <span class="sr-only">{{ props.words }}</span>
+    <span aria-hidden="true" v-for="(letter, index) in letters" :key="index">
+      <span
+        class="inline-block"
         v-motion
         :initial="pullupVariant.initial"
         :enter="pullupVariant.enter(index)"
@@ -39,7 +44,7 @@ const className = cn(
       >
         <span v-if="letter === ' '">&nbsp;</span>
         <span v-else>{{ letter }}</span>
-      </h1>
-    </div>
-  </div>
+      </span>
+    </span>
+  </h1>
 </template>

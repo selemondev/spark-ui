@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { cn } from "../../lib/utils";
 
 interface OrbitingCirclesProps {
@@ -17,10 +18,12 @@ const props = withDefaults(defineProps<OrbitingCirclesProps>(), {
   path: true,
 });
 
-const className = cn(
-  "absolute flex size-full animate-reverse transform-gpu animate-orbit items-center justify-center rounded-full border bg-none [animation-delay:calc(var(--delay)*1000ms)]",
-  props.class,
-  { "animate-orbit-reverse": props.reverse },
+const className = computed(() =>
+  cn(
+    "absolute flex size-full transform-gpu animate-orbit items-center justify-center rounded-full border bg-none [animation-delay:calc(var(--delay)*1000ms)]",
+    props.class,
+    { "[animation-direction:reverse]": props.reverse },
+  ),
 );
 </script>
 
@@ -64,19 +67,9 @@ const className = cn(
 }
 
 .animate-orbit {
-  animation: Orbit calc(var(--duration) * 1s) linear infinite;
-}
-
-@keyframes OrbitReverse {
-  0% {
-    transform: rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg) translateY(calc(var(--radius) * 1px)) rotate(360deg);
-  }
-}
-
-.animate-orbit-reverse {
-  animation: OrbitReverse calc(var(--duration) * 1s) linear infinite;
+  animation-name: Orbit;
+  animation-duration: calc(var(--duration) * 1s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 </style>

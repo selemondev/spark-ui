@@ -32,7 +32,7 @@ provide("dockMouseX", mouseX);
 provide("dockConfig", dockConfig);
 
 function onMouseMove(e: MouseEvent) {
-  mouseX.value = e.pageX;
+  mouseX.value = e.clientX;
 }
 
 function onMouseLeave() {

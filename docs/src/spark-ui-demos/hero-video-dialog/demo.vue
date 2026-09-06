@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeroVideoDialog from "./hero-video-dialog.vue";
+import HeroVideoDialog from "../../components/spark-ui/hero-video-dialog/hero-video-dialog.vue";
 </script>
 
 <template>

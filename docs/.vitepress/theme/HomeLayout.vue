@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { useData } from "vitepress";
 import DefaultTheme from "vitepress/theme";
-import { nextTick, provide, ref } from "vue";
+import { nextTick, onBeforeUnmount, provide, ref } from "vue";
 import MobileNavHeader from "../../src/example/resizable-navbar/mobile-nav-header.vue";
 import MobileNavMenu from "../../src/example/resizable-navbar/mobile-nav-menu.vue";
 import MobileNavToggle from "../../src/example/resizable-navbar/mobile-nav-toggle.vue";
@@ -30,6 +30,9 @@ const navItems = [
   { name: "Twitter", link: "https://twitter.com/selemondev" },
 ];
 const { isDark } = useData();
+let cancelThemeTransition: (() => void) | undefined;
+
+onBeforeUnmount(() => cancelThemeTransition?.());
 
 function enableTransitions() {
   return (
@@ -38,7 +41,9 @@ function enableTransitions() {
   );
 }
 
-provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
+provide("toggle-appearance", ({ clientX: x, clientY: y }: MouseEvent) => {
+  const root = document.documentElement;
+  if (root.dataset.sparkThemeVt) return;
   if (!enableTransitions()) {
     isDark.value = !isDark.value;
     return;
@@ -52,19 +57,47 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
     )}px at ${x}px ${y}px)`,
   ];
 
-  await document.startViewTransition(async () => {
+  root.dataset.sparkThemeVt = "stock";
+  let animation: Animation | undefined;
+  let cancelled = false;
+  let transition: ReturnType<typeof document.startViewTransition>;
+  const cancel = () => {
+    cancelled = true;
+    transition?.skipTransition();
+    animation?.cancel();
+  };
+  const cleanup = () => {
+    animation?.cancel();
+    animation = undefined;
+    delete root.dataset.sparkThemeVt;
+    if (cancelThemeTransition === cancel) cancelThemeTransition = undefined;
+  };
+  cancelThemeTransition = cancel;
+  try {
+    transition = document.startViewTransition(async () => {
+      if (cancelled) return;
+      isDark.value = !isDark.value;
+      await nextTick();
+    });
+  } catch {
+    cleanup();
     isDark.value = !isDark.value;
-    await nextTick();
-  }).ready;
-
-  document.documentElement.animate(
-    { clipPath: isDark.value ? clipPath.reverse() : clipPath },
-    {
-      duration: 300,
-      easing: "ease-in",
-      pseudoElement: `::view-transition-${isDark.value ? "old" : "new"}(root)`,
-    },
-  );
+    return;
+  }
+  void transition.finished.then(cleanup, cleanup);
+  void transition.ready
+    .then(() => {
+      if (cancelled) return;
+      animation = root.animate(
+        { clipPath: isDark.value ? [...clipPath].reverse() : clipPath },
+        {
+          duration: 300,
+          easing: "ease-in",
+          pseudoElement: `::view-transition-${isDark.value ? "old" : "new"}(root)`,
+        },
+      );
+    })
+    .catch(cancel);
 });
 </script>
 

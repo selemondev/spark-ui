@@ -16,7 +16,7 @@ const props = withDefaults(
   <div
     :class="
       cn(
-        'selection:pointer-events-none absolute size-full overflow-hidden opacity-50 [perspective:200px]',
+        'pointer-events-none absolute size-full overflow-hidden opacity-50 [perspective:200px]',
         props.class,
       )
     "

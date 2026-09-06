@@ -6,13 +6,13 @@ A component used to showcase the folder and file structure of a directory.
 
 ## Installation
 
-Copy and paste the following code into your project:
+Copy the component files below into `src/components/spark-ui/file-tree/`. Utility imports use `@/lib/utils`.
 
 ::: code-group
 
 ```vue [tree.vue]
 <script setup lang="ts">
-import { computed, onMounted, provide, ref, toRef, useSlots } from "vue";
+import { computed, onMounted, onUpdated, provide, ref, toRef, useSlots, watch } from "vue";
 import { cn } from "@/lib/utils";
 import {
   isFolderElement,
@@ -44,9 +44,7 @@ const slots = useSlots();
 const selectedId = ref<string | undefined>(props.initialSelectedId);
 const expandedItems = ref<string[] | undefined>(props.initialExpandedItems);
 
-const direction = computed<"rtl" | "ltr">(() =>
-  props.dir === "rtl" ? "rtl" : "ltr",
-);
+const direction = computed<"rtl" | "ltr">(() => (props.dir === "rtl" ? "rtl" : "ltr"));
 
 const selectItem = (id: string) => {
   selectedId.value = id;
@@ -65,16 +63,10 @@ const setExpandedItems = (items: string[] | undefined) => {
   expandedItems.value = items;
 };
 
-const expandSpecificTargetedElements = (
-  elements?: TreeViewElement[],
-  selectId?: string,
-) => {
+const expandSpecificTargetedElements = (elements?: TreeViewElement[], selectId?: string) => {
   if (!elements || !selectId) return;
 
-  const findParent = (
-    currentElement: TreeViewElement,
-    currentPath: string[] = [],
-  ) => {
+  const findParent = (currentElement: TreeViewElement, currentPath: string[] = []) => {
     const isSelectable = currentElement.isSelectable ?? true;
     const newPath = [...currentPath, currentElement.id];
     if (currentElement.id === selectId) {
@@ -83,18 +75,12 @@ const expandSpecificTargetedElements = (
       } else {
         if (newPath.includes(currentElement.id)) {
           newPath.pop();
-          expandedItems.value = mergeExpandedItems(
-            expandedItems.value,
-            newPath,
-          );
+          expandedItems.value = mergeExpandedItems(expandedItems.value, newPath);
         }
       }
       return;
     }
-    if (
-      Array.isArray(currentElement.children) &&
-      currentElement.children.length > 0
-    ) {
+    if (Array.isArray(currentElement.children) && currentElement.children.length > 0) {
       currentElement.children.forEach((child) => {
         findParent(child, newPath);
       });
@@ -129,12 +115,89 @@ const sortedElements = computed<TreeViewElement[]>(() =>
 );
 
 const useElements = computed(() => !slots.default && props.elements != null);
+
+const treeRoot = ref<HTMLElement | null>(null);
+let focusedId: string | undefined = props.initialSelectedId;
+
+function treeItems() {
+  return Array.from(treeRoot.value?.querySelectorAll<HTMLElement>("[data-tree-node]") ?? []).filter(
+    (node) => node.closest('[role="tree"]') === treeRoot.value,
+  );
+}
+
+function visibleItems() {
+  return treeItems().filter(
+    (node) =>
+      node.getAttribute("aria-disabled") !== "true" &&
+      !node.parentElement?.closest('[role="treeitem"][aria-expanded="false"]'),
+  );
+}
+
+function syncTabStops() {
+  const nodes = treeItems();
+  const visible = visibleItems();
+  const previous = nodes.find((node) => node.dataset.treeNode === focusedId);
+  let target = visible.find((node) => node.dataset.treeNode === focusedId);
+  let parent = previous?.parentElement?.closest<HTMLElement>("[data-tree-node]");
+  while (!target && parent) {
+    if (visible.includes(parent)) target = parent;
+    parent = parent.parentElement?.closest<HTMLElement>("[data-tree-node]");
+  }
+  target ??= visible.find((node) => node.dataset.treeNode === selectedId.value) ?? visible[0];
+  focusedId = target?.dataset.treeNode;
+  for (const node of nodes) node.tabIndex = node === target ? 0 : -1;
+  if (previous && !visible.includes(previous) && previous.contains(document.activeElement)) {
+    target?.focus();
+  }
+}
+
+function onTreeFocus(event: FocusEvent) {
+  const node = (event.target as HTMLElement).closest<HTMLElement>("[data-tree-node]");
+  if (!node || !visibleItems().includes(node)) return;
+  focusedId = node.dataset.treeNode;
+  syncTabStops();
+  if (event.target !== node) node.focus();
+}
+
+function onTreeKeydown(event: KeyboardEvent) {
+  const nodes = visibleItems();
+  const current = (event.target as HTMLElement).closest<HTMLElement>("[data-tree-node]");
+  const index = current ? nodes.indexOf(current) : -1;
+  if (!current || index < 0) return;
+  const expandKey = direction.value === "rtl" ? "ArrowLeft" : "ArrowRight";
+  const collapseKey = direction.value === "rtl" ? "ArrowRight" : "ArrowLeft";
+  let target: HTMLElement | undefined;
+  if (event.key === "ArrowDown") target = nodes[Math.min(index + 1, nodes.length - 1)];
+  else if (event.key === "ArrowUp") target = nodes[Math.max(index - 1, 0)];
+  else if (event.key === "Home") target = nodes[0];
+  else if (event.key === "End") target = nodes[nodes.length - 1];
+  else if (event.key === expandKey) {
+    if (current.getAttribute("aria-expanded") === "false") handleExpand(current.dataset.treeNode!);
+    else if (nodes[index + 1] && current.contains(nodes[index + 1])) target = nodes[index + 1];
+  } else if (event.key === collapseKey) {
+    if (current.getAttribute("aria-expanded") === "true") handleExpand(current.dataset.treeNode!);
+    else target = current.parentElement?.closest<HTMLElement>("[data-tree-node]") ?? undefined;
+  } else if (event.key === "Enter" || event.key === " ") {
+    if (current instanceof HTMLButtonElement) current.click();
+    else current.querySelector<HTMLButtonElement>("button")?.click();
+  } else return;
+  event.preventDefault();
+  event.stopPropagation();
+  if (target && nodes.includes(target)) target.focus();
+}
+
+onMounted(syncTabStops);
+onUpdated(syncTabStops);
+watch([expandedItems, selectedId], syncTabStops, { flush: "post" });
 </script>
 
 <template>
   <div :class="cn('size-full', props.class)">
     <div
+      ref="treeRoot"
       role="tree"
+      @focusin="onTreeFocus"
+      @keydown="onTreeKeydown"
       :dir="props.dir"
       class="relative h-full overflow-auto px-2"
     >
@@ -171,6 +234,7 @@ interface FolderProps {
 
 const props = withDefaults(defineProps<FolderProps>(), {
   isSelectable: true,
+  isSelect: undefined,
 });
 
 const tree = inject(TreeContextKey);
@@ -178,10 +242,10 @@ if (!tree) {
   throw new Error("Folder must be used within a Tree");
 }
 
-const isExpanded = computed(
-  () => tree.expandedItems.value?.includes(props.value) ?? false,
+const isExpanded = computed(() => tree.expandedItems.value?.includes(props.value) ?? false);
+const isSelected = computed(() =>
+  props.isSelect !== undefined ? props.isSelect : tree.selectedId.value === props.value,
 );
-const isSelected = computed(() => props.isSelect ?? tree.selectedId.value === props.value);
 
 const onTrigger = () => {
   if (!props.isSelectable) return;
@@ -217,24 +281,25 @@ const onLeave = (el: Element) => {
 <template>
   <div
     role="treeitem"
+    :data-tree-node="props.value"
+    :aria-label="props.element"
+    :aria-disabled="!props.isSelectable"
+    tabindex="-1"
     :aria-expanded="isExpanded"
     :aria-selected="isSelected"
-    class="relative h-full overflow-hidden"
+    class="relative h-full overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
   >
     <button
       type="button"
+      tabindex="-1"
       :disabled="!props.isSelectable"
       :aria-expanded="isExpanded"
       :class="
-        cn(
-          'flex items-center gap-1 rounded-md text-sm',
-          props.class,
-          {
-            'bg-muted rounded-md': isSelected && props.isSelectable,
-            'cursor-pointer': props.isSelectable,
-            'cursor-not-allowed opacity-50': !props.isSelectable,
-          },
-        )
+        cn('flex items-center gap-1 rounded-md text-sm', props.class, {
+          'bg-muted rounded-md': isSelected && props.isSelectable,
+          'cursor-pointer': props.isSelectable,
+          'cursor-not-allowed opacity-50': !props.isSelectable,
+        })
       "
       @click="onTrigger"
     >
@@ -286,10 +351,7 @@ const onLeave = (el: Element) => {
       @after-enter="onAfterEnter"
       @leave="onLeave"
     >
-      <div
-        v-show="isExpanded"
-        class="relative h-full overflow-hidden text-sm"
-      >
+      <div v-show="isExpanded" :inert="!isExpanded" class="relative h-full overflow-hidden text-sm">
         <div
           v-if="props.element && tree.indicator.value"
           aria-hidden="true"
@@ -331,6 +393,7 @@ interface FileProps {
 
 const props = withDefaults(defineProps<FileProps>(), {
   isSelectable: true,
+  isSelect: undefined,
 });
 
 const emit = defineEmits<{
@@ -342,7 +405,9 @@ if (!tree) {
   throw new Error("File must be used within a Tree");
 }
 
-const isSelected = computed(() => props.isSelect ?? tree.selectedId.value === props.value);
+const isSelected = computed(() =>
+  props.isSelect !== undefined ? props.isSelect : tree.selectedId.value === props.value,
+);
 
 const onClick = () => {
   if (!props.isSelectable) return;
@@ -355,6 +420,9 @@ const onClick = () => {
   <button
     type="button"
     role="treeitem"
+    :data-tree-node="props.value"
+    :aria-disabled="!props.isSelectable"
+    tabindex="-1"
     :aria-selected="isSelected"
     :disabled="!props.isSelectable"
     :dir="tree.direction.value"
@@ -364,9 +432,7 @@ const onClick = () => {
         {
           'bg-muted': isSelected && props.isSelectable,
         },
-        props.isSelectable
-          ? 'cursor-pointer'
-          : 'cursor-not-allowed opacity-50',
+        props.isSelectable ? 'cursor-pointer' : 'cursor-not-allowed opacity-50',
         tree.direction.value === 'rtl' ? 'rtl' : 'ltr',
         props.class,
       )
@@ -386,9 +452,7 @@ const onClick = () => {
         stroke-linejoin="round"
         class="size-4"
       >
-        <path
-          d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
-        />
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
         <path d="M14 2v4a2 2 0 0 0 2 2h4" />
       </svg>
     </slot>
@@ -400,11 +464,7 @@ const onClick = () => {
 ```vue [render-node.vue]
 <script setup lang="ts">
 import { computed } from "vue";
-import {
-  isFolderElement,
-  type TreeSortMode,
-  type TreeViewElement,
-} from "./context";
+import { isFolderElement, type TreeSortMode, type TreeViewElement } from "./context";
 import File from "./file.vue";
 import Folder from "./folder.vue";
 
@@ -479,9 +539,7 @@ const expandAllTree = (elements: TreeViewElement[]): string[] => {
   return [...new Set(expandedElementIds)];
 };
 
-const isOpen = computed(
-  () => (tree.expandedItems.value?.length ?? 0) > 0,
-);
+const isOpen = computed(() => (tree.expandedItems.value?.length ?? 0) > 0);
 
 const onClick = () => {
   if (isOpen.value) {
@@ -527,9 +585,7 @@ export interface TreeViewElement {
 }
 
 export type TreeSortMode =
-  | "default"
-  | "none"
-  | ((a: TreeViewElement, b: TreeViewElement) => number);
+  "default" | "none" | ((a: TreeViewElement, b: TreeViewElement) => number);
 
 export interface TreeContext {
   selectedId: Ref<string | undefined>;
@@ -688,27 +744,31 @@ You can also compose the tree manually with the `Folder`, `File` and `CollapseBu
 
 <demo src="../../src/example/file-tree/composition-demo.vue" srcCode="../../src/spark-ui-demos/file-tree/composition.vue" />
 
+## Behavior
+
+Tab enters one visible enabled tree item. Up/Down move among visible items; Home/End move to the first/last item. Right expands a folder or enters it, and Left collapses it or moves to its parent; Left/Right are reversed in RTL. Enter/Space select a file or toggle a folder. Moving focus alone does not change selection. `initialSelectedId` and `initialExpandedItems` seed uncontrolled state once; they are not controlled props.
+
 ## Props
 
 ### Tree
 
-| Prop                 | Type                                        | Default     | Description                                                           |
-| -------------------- | ------------------------------------------- | ----------- | --------------------------------------------------------------------- |
-| class                | string                                      | `-`         | The class to apply to the component.                                  |
-| initialSelectedId    | string                                      | `-`         | The ID of the initially selected item.                               |
-| indicator            | boolean                                     | `true`      | Whether to show the tree indicator line.                             |
+| Prop                 | Type                                        | Default     | Description                                                                |
+| -------------------- | ------------------------------------------- | ----------- | -------------------------------------------------------------------------- |
+| class                | string                                      | `-`         | The class to apply to the component.                                       |
+| initialSelectedId    | string                                      | `-`         | The ID of the initially selected item.                                     |
+| indicator            | boolean                                     | `true`      | Whether to show the tree indicator line.                                   |
 | elements             | TreeViewElement[]                           | `-`         | An array of tree view elements to render when the default slot is omitted. |
-| initialExpandedItems | string[]                                    | `-`         | An array of IDs for items that should be initially expanded.         |
-| sort                 | `"default" \| "none" \| ((a, b) => number)` | `"default"` | Sorting mode used for data-driven trees rendered from `elements`.    |
-| dir                  | `"rtl" \| "ltr"`                            | `"ltr"`     | The text direction of the tree.                                      |
+| initialExpandedItems | string[]                                    | `-`         | An array of IDs for items that should be initially expanded.               |
+| sort                 | `"default" \| "none" \| ((a, b) => number)` | `"default"` | Sorting mode used for data-driven trees rendered from `elements`.          |
+| dir                  | `"rtl" \| "ltr"`                            | `"ltr"`     | The text direction of the tree.                                            |
 
 ### Tree Slots
 
-| Slot      | Description                                                     |
-| --------- | --------------------------------------------------------------- |
+| Slot      | Description                                                       |
+| --------- | ----------------------------------------------------------------- |
 | default   | Manually composed `Folder` / `File` nodes (overrides `elements`). |
-| openIcon  | Custom icon rendered for open folders.                          |
-| closeIcon | Custom icon rendered for closed folders.                        |
+| openIcon  | Custom icon rendered for open folders.                            |
+| closeIcon | Custom icon rendered for closed folders.                          |
 
 ### TreeViewElement
 

@@ -47,11 +47,11 @@ Every component in the docs is interactive — open a page, tweak the preview, a
 | [Animated Tooltip](./docs/content/components/animated-tooltip.md)   | Shared-layout tooltips     | [Open →](https://ui.selemon.dev/content/components/animated-tooltip.html)  |
 | [Resizable Navbar](./docs/content/components/resizable-navbar.md)   | Scroll-aware navigation    | [Open →](https://ui.selemon.dev/content/components/resizable-navbar.html)  |
 
-Browse all **54 components** on the [components index](https://ui.selemon.dev/content/components/animated-beam.html) (use the sidebar on the docs site).
+Browse the [component collection](https://ui.selemon.dev/content/components/animated-beam.html) using the sidebar on the docs site.
 
 ## Features
 
-- **Copy & paste** — Drop components into any Vue 3 + Tailwind project; no opaque runtime package required.
+- **Copy & paste** — Drop components into any project using Vue 3.5+ and Tailwind CSS 3; no opaque runtime package required.
 - **TypeScript-first** — Typed props and patterns that work with `vue-tsc`.
 - **Motion-ready** — Animations powered by [@vueuse/motion](https://motion.vueuse.org/) (and compatible with related motion libraries where noted per component).
 - **Magic UI lineage** — Officially inspired by [Magic UI](https://magicui.design/), plus pieces from [NuxtHub](https://hub.nuxt.com/), [Syntax UI](https://syntaxui.com/), and community ports.
@@ -59,9 +59,9 @@ Browse all **54 components** on the [components index](https://ui.selemon.dev/co
 
 ## Quick start
 
-1. Read the [installation guide](https://ui.selemon.dev/content/guide/getting-started/installation.html) (Vue 3, Tailwind, `@vueuse/motion`).
-2. Open the component you want in the docs.
-3. Copy the Vue source from the preview into your app and adjust paths or tokens as needed.
+1. Follow the [installation guide](https://ui.selemon.dev/content/guide/getting-started/installation.html) for Vue 3.5+, Tailwind CSS 3, theme tokens, and `@vueuse/motion`.
+2. Open a component page and copy all component files from its **Installation** section into `src/components/spark-ui/<component>/` (or `components/spark-ui/<component>/` in Nuxt 3), including any listed dependencies and CSS or Tailwind configuration.
+3. Copy the preview's source as a **usage example**, not as the component implementation. Component imports use `@/components/spark-ui/<component>/<file>.vue`; utility imports use `@/lib/utils`. Adjust paths if you choose a different destination.
 
 Minimal motion setup:
 

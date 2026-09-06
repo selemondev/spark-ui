@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, provide, useId } from "vue";
+
+provide("spark-mobile-nav-id", useId());
 
 const props = defineProps({
   className: String,

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "motion-v";
-import { ref } from "vue";
+import { computed, ref, useId } from "vue";
 
 export interface Items {
   id: number;
@@ -12,7 +12,23 @@ const props = defineProps<{
   items: Items[];
 }>();
 
+const tooltipId = useId();
 const hoveredIndex = ref<number | null>(null);
+const focusedIndex = ref<number | null>(null);
+const pinnedIndex = ref<number | null>(null);
+const dismissedIndex = ref<number | null>(null);
+const activeIndex = computed(() => {
+  const id = pinnedIndex.value ?? hoveredIndex.value ?? focusedIndex.value;
+  return id === dismissedIndex.value ? null : id;
+});
+function activate(id: number) {
+  dismissedIndex.value = pinnedIndex.value === id ? id : null;
+  pinnedIndex.value = pinnedIndex.value === id ? null : id;
+}
+function blurItem(id: number) {
+  focusedIndex.value = null;
+  if (pinnedIndex.value === id) pinnedIndex.value = null;
+}
 const springConfig = { stiffness: 100, damping: 5 };
 const x = useMotionValue(0);
 const rotate = useSpring(useTransform(x, [-100, 100], [-45, 45]), springConfig);
@@ -25,16 +41,24 @@ function handleMouseMove(event: any) {
 </script>
 
 <template>
-  <div v-for="(item, idx) in props.items" :key="idx">
+  <div v-for="item in props.items" :key="item.id">
     <div
-      :key="item.name"
       class="group relative -mr-4"
-      @mouseenter="() => (hoveredIndex = item.id)"
-      @mouseleave="() => (hoveredIndex = null)"
+      @mouseenter="
+        hoveredIndex = item.id;
+        dismissedIndex = null;
+      "
+      @mouseleave="hoveredIndex = null"
+      @keydown.escape.stop.prevent="
+        dismissedIndex = item.id;
+        pinnedIndex = null;
+      "
     >
       <AnimatePresence mode="popLayout">
-        <div v-if="hoveredIndex === item.id">
+        <div v-if="activeIndex === item.id">
           <motion.div
+            :id="`${tooltipId}-${item.id}`"
+            role="tooltip"
             :initial="{
               opacity: 0,
               y: 20,
@@ -77,14 +101,27 @@ function handleMouseMove(event: any) {
           </motion.div>
         </div>
       </AnimatePresence>
-      <img
-        :src="item.image"
-        :alt="item.name"
-        height="100"
-        width="100"
-        class="relative !m-0 h-14 w-14 rounded-full border-2 border-white object-cover object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-105"
-        @mousemove="handleMouseMove"
-      />
+      <button
+        type="button"
+        class="block rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+        :aria-label="item.name"
+        :aria-describedby="activeIndex === item.id ? `${tooltipId}-${item.id}` : undefined"
+        @focus="
+          focusedIndex = item.id;
+          dismissedIndex = null;
+        "
+        @blur="blurItem(item.id)"
+        @click="activate(item.id)"
+      >
+        <img
+          :src="item.image"
+          alt=""
+          height="100"
+          width="100"
+          class="relative !m-0 h-14 w-14 rounded-full border-2 border-white object-cover object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-105"
+          @mousemove="handleMouseMove"
+        />
+      </button>
     </div>
   </div>
 </template>

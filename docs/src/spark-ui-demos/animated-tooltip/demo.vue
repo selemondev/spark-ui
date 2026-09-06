@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AnimatedToolTip from "./animated-tooltip.vue";
+import AnimatedToolTip from "../../components/spark-ui/animated-tooltip/animated-tooltip.vue";
 
 const people = [
   {

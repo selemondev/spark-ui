@@ -89,7 +89,7 @@ module.exports = {
 
 ```vue
 <script setup lang="ts">
-import ComicText from "@/components/ui/comic-text.vue";
+import ComicText from "@/components/spark-ui/comic-text/comic-text.vue";
 </script>
 
 <template>

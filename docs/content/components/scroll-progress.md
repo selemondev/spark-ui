@@ -9,7 +9,7 @@ Animated Scroll Progress for your pages
 Install the following dependencies
 
 ```bash
-pnpm add motion-v
+pnpm add motion-v@2
 ```
 
 Copy and paste the following code into your project:

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { cn } from "../../../lib/utils";
 
 interface OrbitingCirclesProps {
@@ -17,10 +18,12 @@ const props = withDefaults(defineProps<OrbitingCirclesProps>(), {
   path: true,
 });
 
-const className = cn(
-  "absolute flex size-full animate-reverse transform-gpu animate-orbit items-center justify-center rounded-full border bg-none [animation-delay:calc(var(--delay)*1000ms)]",
-  props.class,
-  { "[animate-direction:reverse]": props.reverse },
+const className = computed(() =>
+  cn(
+    "absolute flex size-full transform-gpu animate-orbit items-center justify-center rounded-full border bg-none [animation-delay:calc(var(--delay)*1000ms)]",
+    props.class,
+    { "[animation-direction:reverse]": props.reverse },
+  ),
 );
 </script>
 

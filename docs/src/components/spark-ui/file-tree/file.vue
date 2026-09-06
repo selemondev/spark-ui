@@ -25,9 +25,7 @@ if (!tree) {
 }
 
 const isSelected = computed(() =>
-  props.isSelect !== undefined
-    ? props.isSelect
-    : tree.selectedId.value === props.value,
+  props.isSelect !== undefined ? props.isSelect : tree.selectedId.value === props.value,
 );
 
 const onClick = () => {
@@ -41,6 +39,9 @@ const onClick = () => {
   <button
     type="button"
     role="treeitem"
+    :data-tree-node="props.value"
+    :aria-disabled="!props.isSelectable"
+    tabindex="-1"
     :aria-selected="isSelected"
     :disabled="!props.isSelectable"
     :dir="tree.direction.value"
@@ -50,9 +51,7 @@ const onClick = () => {
         {
           'bg-muted': isSelected && props.isSelectable,
         },
-        props.isSelectable
-          ? 'cursor-pointer'
-          : 'cursor-not-allowed opacity-50',
+        props.isSelectable ? 'cursor-pointer' : 'cursor-not-allowed opacity-50',
         tree.direction.value === 'rtl' ? 'rtl' : 'ltr',
         props.class,
       )
@@ -72,9 +71,7 @@ const onClick = () => {
         stroke-linejoin="round"
         class="size-4"
       >
-        <path
-          d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
-        />
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
         <path d="M14 2v4a2 2 0 0 0 2 2h4" />
       </svg>
     </slot>

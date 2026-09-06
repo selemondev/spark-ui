@@ -8,6 +8,8 @@ Build animated sites 10x faster with components that you can copy and paste into
 
 Spark UI is a collection of animated components built with [Vue3](https://vuejs.org/), [TailwindCss](https://tailwindcss.com/) and [@vueuse/motion](https://motion.vueuse.org/). It serves as the Vue port of [Magic UI](https://magicui.design/). We have received official permission from the creator of Magic UI to bring this port to life, ensuring an authentic and high-quality experience for all Vue developers.
 
+Use Vue 3.5 or newer (components use Vue's `useId`) and Tailwind CSS 3. Follow the [installation guide](./installation.md) for shared dependencies and semantic color tokens, then copy each page's Installation files into `src/components/spark-ui/<component>/` (or `components/spark-ui/<component>/` in Nuxt 3). Preview source tabs provide usage examples importing `@/components/spark-ui/<component>/<file>.vue`; copy those after installing the component.
+
 While Spark UI is a port of Magic UI, it has components from popular sites such as [NuxtHub](https://hub.nuxt.com/) and [Syntax UI](https://syntaxui.com/). This blend brings together the best of various animated components, offering a diverse and powerful toolkit for building sleek, animated and modern interfaces with ease. Whether you're looking for flexibility or speed, Spark UI has you covered with its ready-to-use components.
 
 ## Why Spark UI?

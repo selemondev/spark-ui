@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type {
   GlobalOptions as ConfettiGlobalOptions,
+  CreateTypes as ConfettiInstance,
   Options as ConfettiOptions,
 } from "canvas-confetti";
+import { onBeforeUnmount, watch } from "vue";
 import { cn } from "../../lib/utils";
 
 type ConfettiButtonOptions = ConfettiOptions &
@@ -14,6 +16,29 @@ interface ConfettiButtonProps {
 }
 
 const props = defineProps<ConfettiButtonProps>();
+let instance: ConfettiInstance | null = null;
+let disposed = false;
+
+function reset() {
+  instance?.reset();
+  instance = null;
+}
+
+watch(
+  [
+    () => props.options?.canvas,
+    () => props.options?.resize,
+    () => props.options?.useWorker,
+    () => props.options?.disableForReducedMotion,
+  ],
+  reset,
+  { flush: "sync" },
+);
+
+onBeforeUnmount(() => {
+  disposed = true;
+  reset();
+});
 
 async function handleClick(event: MouseEvent) {
   try {
@@ -22,11 +47,21 @@ async function handleClick(event: MouseEvent) {
     const x = rect.left + rect.width / 2;
     const y = rect.top + rect.height / 2;
     const confetti = (await import("canvas-confetti")).default;
-    await confetti({
-      ...props.options,
+    if (disposed) return;
+    const {
+      canvas,
+      resize = true,
+      useWorker = false,
+      disableForReducedMotion = false,
+      ...options
+    } = props.options ?? {};
+    instance ??= confetti.create(canvas, { resize, useWorker, disableForReducedMotion });
+    const canvasRect = canvas?.getBoundingClientRect();
+    await instance({
+      ...options,
       origin: {
-        x: x / window.innerWidth,
-        y: y / window.innerHeight,
+        x: canvasRect ? (x - canvasRect.left) / canvasRect.width : x / window.innerWidth,
+        y: canvasRect ? (y - canvasRect.top) / canvasRect.height : y / window.innerHeight,
       },
     });
   } catch (error) {
