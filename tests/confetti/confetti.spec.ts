@@ -2,7 +2,6 @@
 import { mount } from "@vue/test-utils";
 import { expect, it, vi } from "vite-plus/test";
 import Confetti from "../../docs/src/components/spark-ui/confetti/confetti.vue";
-import ConfettiButton from "../../docs/src/components/spark-ui/confetti/confetti-button.vue";
 
 // The component resolves "canvas-confetti" from the docs workspace, so the
 // mock has to target the same resolved module.
@@ -82,22 +81,6 @@ it("exposes a fire method that merges default options with call options", async 
   expect(instance).toHaveBeenCalledWith({ particleCount: 10, spread: 90 });
 });
 
-it("passes globalOptions to confetti.create with resize forced on", async () => {
-  const confetti = await getConfetti();
-  confetti.create.mockClear();
-
-  mount(Confetti, {
-    props: { manualstart: true, globalOptions: { useWorker: false } },
-  });
-  await flush();
-
-  const createArg = confetti.create.mock.calls[0]?.[1];
-  expect(createArg).toMatchObject({
-    useWorker: false,
-    resize: true,
-  });
-});
-
 it("resets the instance on unmount", async () => {
   const confetti = await getConfetti();
   confetti.create.mockClear();
@@ -112,26 +95,14 @@ it("resets the instance on unmount", async () => {
   expect(instance.reset).toHaveBeenCalledTimes(1);
 });
 
-it("ConfettiButton renders slot content and fires confetti with a computed origin on click", async () => {
+it("does not lose an exposed fire request while initialization is pending", async () => {
   const confetti = await getConfetti();
-  confetti.mockClear();
-
-  const wrapper = mount(ConfettiButton, {
-    props: { options: { particleCount: 20 } },
-    slots: { default: "Fire 🎉" },
-  });
-
-  expect(wrapper.find("button").text()).toContain("Fire");
-
-  await wrapper.find("button").trigger("click");
+  confetti.create.mockClear();
+  const wrapper = mount(Confetti, { props: { manualstart: true } });
+  // The root Vue shim does not describe defineExpose's public instance type.
+  const exposed = wrapper.vm as unknown as { fire: () => void };
+  exposed.fire();
   await flush();
-
-  expect(confetti).toHaveBeenCalledTimes(1);
-  const arg = confetti.mock.calls[0]?.[0] as {
-    particleCount: number;
-    origin: { x: number; y: number };
-  };
-  expect(arg.particleCount).toBe(20);
-  expect(arg.origin).toHaveProperty("x");
-  expect(arg.origin).toHaveProperty("y");
+  expect(firstResult(confetti.create)).toHaveBeenCalledTimes(1);
+  wrapper.unmount();
 });

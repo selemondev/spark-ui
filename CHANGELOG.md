@@ -39,6 +39,7 @@
 - Honor zero Glyph Matrix mutation rates and rebuild changed cell geometry; keep copied usage independent of VitePress.
 - Rebuild Flickering Grid dimensions when geometry props change and keep intersection transitions from scheduling duplicate frame loops.
 - Resolve Icon Cloud source precedence and scaled pointer coordinates consistently, reject stale image completions and supply valid self-contained demo artwork.
+- Preserve pending confetti requests and explicit canvas options; default both confetti components to independent non-worker renderers.
 
 ## v1.0.0
 
