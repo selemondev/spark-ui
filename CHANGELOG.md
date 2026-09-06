@@ -34,6 +34,7 @@
 - Serialize shared theme transitions, handle skipped promises, clean up owned animations on unmount and fully cover the viewport with star reveals.
 - Keep rotating reveal text valid after replacements, cancel stale repeat timers and interpret foreground tokens as HSL colors.
 - Destroy Globe renderers on unmount, preserve host-document styles and distinguish a zero-coordinate drag from no interaction.
+- Track terminal slot text during rendering and restart owned typing timers on content or timing changes, including delayed unmounts.
 
 ## v1.0.0
 

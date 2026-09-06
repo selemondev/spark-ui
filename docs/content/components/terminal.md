@@ -9,7 +9,7 @@ An implementation of the MacOS terminal. Useful for showcasing a command line in
 Install the following dependencies
 
 ```bash
-pnpm add motion-v
+pnpm add motion-v@2
 ```
 
 Copy and paste the following code into your project:
@@ -86,7 +86,7 @@ const props = defineProps<TerminalProps>();
 <script setup lang="ts">
 import type { MotionProps } from "motion-v";
 import { motion } from "motion-v";
-import { nextTick, ref, useSlots, watch } from "vue";
+import { Comment, defineComponent, onMounted, ref, useSlots, watch, type VNode } from "vue";
 import { cn } from "@/lib/utils";
 
 interface TypingAnimationProps extends MotionProps {
@@ -104,50 +104,55 @@ const MotionComponent = motion.create("span", {
   forwardMotionProps: true,
 });
 
-const displayedText = ref("");
-const started = ref(false);
 const slots = useSlots();
 
-watch(
-  () => props.delay,
-  (val) => {
-    const startTimeout = setTimeout(() => {
-      started.value = true;
-    }, val);
-    return () => clearTimeout(startTimeout);
+// Extract text during render so reactive reads inside slots are tracked.
+function textContent(nodes: VNode[]): string {
+  return nodes
+    .map((node) => {
+      if (node.type === Comment) return "";
+      if (typeof node.children === "string") return node.children;
+      return Array.isArray(node.children) ? textContent(node.children as VNode[]) : "";
+    })
+    .join("");
+}
+
+const TypedText = defineComponent({
+  props: {
+    text: { type: String, required: true },
   },
-  { immediate: true },
-);
-
-watch(
-  () => [props.duration, started.value],
-  async () => {
-    if (!started.value) return;
-
-    await nextTick();
-
-    const slotContent = slots.default?.()?.[0]?.children ?? "";
-    if (typeof slotContent !== "string") return;
-
-    let i = 0;
-    displayedText.value = "";
-    const typingEffect = setInterval(() => {
-      if (i < slotContent.length) {
-        displayedText.value = slotContent.substring(0, i + 1);
-        i++;
-      } else {
-        clearInterval(typingEffect);
-      }
-    }, props.duration);
-
-    return () => clearInterval(typingEffect);
+  setup(content) {
+    const displayedText = ref("");
+    onMounted(() => {
+      watch(
+        () => [content.text, props.duration, props.delay] as const,
+        ([text, duration, delay], _previous, onCleanup) => {
+          displayedText.value = "";
+          if (!text) return;
+          let interval: ReturnType<typeof setInterval> | undefined;
+          const timeout = setTimeout(() => {
+            let index = 0;
+            interval = setInterval(() => {
+              displayedText.value = text.slice(0, ++index);
+              if (index >= text.length) clearInterval(interval);
+            }, duration);
+          }, delay);
+          onCleanup(() => {
+            clearTimeout(timeout);
+            clearInterval(interval);
+          });
+        },
+        { immediate: true },
+      );
+    });
+    return () => displayedText.value;
   },
-);
+});
 </script>
 
 <template>
   <MotionComponent :class="cn('text-sm font-normal tracking-tight', props.className)">
-    {{ displayedText }}
+    <TypedText :text="textContent(slots.default?.() ?? [])" />
   </MotionComponent>
 </template>
 ```
@@ -175,4 +180,6 @@ watch(
 | ----------- | ------ | -------------------------------------------------- | ------- |
 | `delay`     | number | Delay in milliseconds before the animation starts. | 0       |
 | `className` | string | The class for the component.                       | -       |
-| `duration`  | number | Duration in milliseconds for each character typed. | 100     |
+| `duration`  | number | Duration in milliseconds for each character typed. | 60      |
+
+The default slot supplies text (including text across fragments). Typing starts empty after mount. Changing the slot text, `duration`, or `delay` cancels the previous sequence and restarts after the current delay. Timers are canceled when the component is removed.
