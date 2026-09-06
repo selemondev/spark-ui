@@ -41,7 +41,7 @@
     "coverage": "vp test run --coverage",
     "docs:dev": "nr --filter @spark-ui/docs dev",
     "generate:release": "npx changelogen@latest --release",
-    "release:major": "node scripts/release.ts 1.0.0",
+    "release:major": "node scripts/release.ts --major",
     "postinstall": "simple-git-hooks",
     "package-minor:updates": "npx taze@latest minor -r",
     "package-major:updates": "npx taze@latest major -r"

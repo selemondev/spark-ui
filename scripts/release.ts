@@ -7,9 +7,15 @@ import { fileURLToPath } from "node:url";
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const pkgPath = path.join(repoRoot, "package.json");
 
-const versionArg = process.argv.find((arg) => /^\d+\.\d+\.\d+(-[\w.]+)?$/.test(arg));
+const [versionArg, ...extraArgs] = process.argv.slice(2).filter((arg) => arg !== "--dry-run");
 const dryRun = process.argv.includes("--dry-run");
-const targetVersion = versionArg ?? "1.0.0";
+if (
+  !versionArg ||
+  extraArgs.length > 0 ||
+  (versionArg !== "--major" && !/^\d+\.\d+\.\d+(-[\w.]+)?$/.test(versionArg))
+) {
+  throw new Error("Usage: node scripts/release.ts <version|--major> [--dry-run]");
+}
 
 function run(cmd: string): string {
   console.log(`$ ${cmd}`);
@@ -32,6 +38,14 @@ if (branch !== "dev") {
 }
 
 const pkg = JSON.parse(readFileSync(pkgPath, "utf8"));
+const targetVersion =
+  versionArg === "--major" ? `${BigInt(pkg.version.split(".")[0]) + 1n}.0.0` : versionArg;
+if (targetVersion === pkg.version) {
+  throw new Error(`Version ${targetVersion} is already the current package version.`);
+}
+if (execSync(`git tag --list v${targetVersion}`, { cwd: repoRoot }).toString().trim()) {
+  throw new Error(`Tag v${targetVersion} already exists.`);
+}
 console.log(
   `Releasing ${pkg.name}: ${pkg.version} -> ${targetVersion}${dryRun ? " (dry run)" : ""}`,
 );
@@ -47,5 +61,10 @@ run(`git commit -m "chore(release): v${targetVersion}"`);
 run(`git tag -a v${targetVersion} -m "v${targetVersion}"`);
 run(`git push origin ${branch} --follow-tags`);
 
-console.log(`\nReleased v${targetVersion}. Create the GitHub release with:`);
-console.log(`  gh release create v${targetVersion} --title "v${targetVersion}" --generate-notes`);
+if (dryRun) {
+  console.log("\nDry run complete. No files, commits, tags or remote refs were changed.");
+} else {
+  console.log(
+    `\nPushed v${targetVersion}. The GitHub release workflow will validate and publish the release.`,
+  );
+}

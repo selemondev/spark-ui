@@ -67,6 +67,22 @@ The following is a list of commit types:
 
 - chore: Other commits not affecting source or test files directly.
 
+## Releases
+
+Use a clean `dev` checkout with Node 22 and pnpm. Preview the next major release before making any changes:
+
+```sh
+pnpm release:major --dry-run
+```
+
+`release:major` computes the next major from `package.json`. To select a specific version instead:
+
+```sh
+node scripts/release.ts 2.1.0 --dry-run
+```
+
+Remove `--dry-run` only when ready to update the manifest and changelog, create a commit and tag, and push them to `origin`. Current versions and existing tags are rejected before any writes. The tag-triggered workflow creates the GitHub release only after validation passes.
+
 ## License
 
 By contributing your code to the repository, you agree to license your contribution under the [MIT license](./LICENSE).
