@@ -28,8 +28,8 @@ function updateImportPaths(code: string): string {
 
   magicString.replaceAll("../../components/spark-ui/", "@/components/");
   magicString.replaceAll("../../components/icons/", "@/components/icons/");
-  magicString.replaceAll("../../../lib/utils", "@/libs/utils");
-  magicString.replaceAll("../../lib/utils", "@/libs/utils");
+  magicString.replaceAll("../../../lib/utils", "@/lib/utils");
+  magicString.replaceAll("../../lib/utils", "@/lib/utils");
 
   return magicString.toString();
 }
