@@ -26,7 +26,7 @@ const decodedHighlightedCode = computed(() => {
 function updateImportPaths(code: string): string {
   const magicString = new MagicString(code);
 
-  magicString.replaceAll("../../components/spark-ui/", "@/components/");
+  magicString.replaceAll("../../components/spark-ui/", "@/components/spark-ui/");
   magicString.replaceAll("../../components/icons/", "@/components/icons/");
   magicString.replaceAll("../../../lib/utils", "@/lib/utils");
   magicString.replaceAll("../../lib/utils", "@/lib/utils");
@@ -44,7 +44,7 @@ const normalizeImportPath = computed(() => {
     return props.code;
   }
 });
-const { copy, copied } = useClipboard({ source: normalizeImportPath.value });
+const { copy, copied } = useClipboard({ source: normalizeImportPath });
 const [value, toggle] = useToggle();
 const refreshKey = ref(0);
 function handleRefreshComponent() {
@@ -63,6 +63,7 @@ function handleRefreshComponent() {
       />
       <button
         type="button"
+        aria-label="Replay demo"
         class="absolute right-6 text-black top-2 hover:bg-[#F4F4F5] dark:hover:bg-[#27272A] p-2 rounded-md"
         @click="handleRefreshComponent"
       >
@@ -75,35 +76,55 @@ function handleRefreshComponent() {
         <div
           class="border-child bg-white shadow-lg dark:bg-black relative rounded-md w-full h-full flex items-center justify-center dark:border-none"
         >
-          <p class="z-10">
+          <div class="z-10">
             <slot :key="refreshKey" />
-          </p>
+          </div>
         </div>
 
         <div v-if="vitePressData.page.value.filePath !== 'index.md'" class="relative">
           <div class="flex justify-end pt-3 gap-2">
-            <a class="o-demo_action_item" group :href="github" target="_blank">
+            <a
+              class="o-demo_action_item"
+              group
+              :href="github"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View source on GitHub"
+            >
               <div class="o-demo_action_icon">
                 <Icon icon="carbon:logo-github" />
               </div>
-              <div class="o-demo_tooltip" group-hover:opacity-100>Edit on GitHub</div>
+              <div class="o-demo_tooltip" group-hover:opacity-100>View source on GitHub</div>
             </a>
-            <a class="o-demo_action_item" group @click="copy()">
-              <div class="o-demo_action_icon">
+            <button
+              type="button"
+              class="o-demo_action_item"
+              group
+              :aria-label="copied ? 'Copied' : 'Copy code'"
+              @click="copy()"
+            >
+              <span class="o-demo_action_icon">
                 <Icon icon="carbon:copy" />
-              </div>
-              <div class="o-demo_tooltip" group-hover:opacity-100>
+              </span>
+              <span class="o-demo_tooltip" group-hover:opacity-100>
                 {{ copied ? "Copied" : "Copy code" }}
-              </div>
-            </a>
-            <a class="o-demo_action_item" group @click="toggle()">
-              <div class="o-demo_action_icon">
+              </span>
+            </button>
+            <button
+              type="button"
+              class="o-demo_action_item"
+              group
+              :aria-label="value ? 'Hide code' : 'Show code'"
+              :aria-expanded="value"
+              @click="toggle()"
+            >
+              <span class="o-demo_action_icon">
                 <Icon icon="carbon:fit-to-width" />
-              </div>
-              <div class="o-demo_tooltip" group-hover:opacity-100>
+              </span>
+              <span class="o-demo_tooltip" group-hover:opacity-100>
                 {{ value ? "Hide code" : "Show code" }}
-              </div>
-            </a>
+              </span>
+            </button>
           </div>
         </div>
       </div>
