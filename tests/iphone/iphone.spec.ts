@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { mount } from "@vue/test-utils";
 import { expect, it } from "vite-plus/test";
+import { h } from "vue";
 import Iphone from "../../docs/src/components/spark-ui/iphone/iphone.vue";
 
 it("renders the frame svg with the iPhone aspect ratio and no media by default", () => {
@@ -8,9 +9,7 @@ it("renders the frame svg with the iPhone aspect ratio and no media by default",
   const svg = wrapper.find("svg");
   expect(svg.exists()).toBe(true);
   expect(svg.attributes("viewBox")).toBe("0 0 433 882");
-  expect(wrapper.element.getAttribute("style") ?? "").toContain(
-    "aspect-ratio: 433/882",
-  );
+  expect(wrapper.element.getAttribute("style") ?? "").toContain("aspect-ratio: 433/882");
   expect(wrapper.find("img").exists()).toBe(false);
   expect(wrapper.find("video").exists()).toBe(false);
   // Frame group has no mask when there is no media.
@@ -25,7 +24,6 @@ it("renders an image and masks the screen when src is provided", () => {
   expect(img.exists()).toBe(true);
   expect(img.attributes("src")).toBe("https://example.com/image.png");
   expect(wrapper.find("video").exists()).toBe(false);
-  expect(wrapper.find("g").attributes("mask")).toBe("url(#screenPunch)");
 });
 
 it("renders a muted autoplay video when videoSrc is provided", () => {
@@ -36,7 +34,6 @@ it("renders a muted autoplay video when videoSrc is provided", () => {
   expect(video.exists()).toBe(true);
   expect(video.attributes("src")).toBe("https://example.com/video.mp4");
   expect(wrapper.find("img").exists()).toBe(false);
-  expect(wrapper.find("g").attributes("mask")).toBe("url(#screenPunch)");
 });
 
 it("prefers video over image when both are provided", () => {
@@ -56,4 +53,18 @@ it("merges a custom class onto the wrapper", () => {
   expect(wrapper.classes()).toContain("w-auto");
   // twMerge drops the base w-full in favor of w-auto.
   expect(wrapper.classes()).not.toContain("w-full");
+});
+
+it("keeps media mask references local to each mounted device", () => {
+  const wrapper = mount({
+    render: () =>
+      h("div", [h(Iphone, { src: "/first.png" }), h(Iphone, { videoSrc: "/second.mp4" })]),
+  });
+  const devices = wrapper.findAllComponents(Iphone);
+  const ids = devices.map((device) => device.get("mask").attributes("id"));
+  expect(ids[0]).not.toBe(ids[1]);
+  for (const [index, device] of devices.entries()) {
+    expect(device.get("g").attributes("mask")).toBe(`url(#${ids[index]})`);
+  }
+  wrapper.unmount();
 });

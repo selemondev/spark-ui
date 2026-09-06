@@ -12,7 +12,7 @@ Copy and paste the following code into your project:
 
 ```vue [iphone.vue]
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, useId } from "vue";
 import { cn } from "@/lib/utils";
 
 interface IphoneProps {
@@ -22,6 +22,9 @@ interface IphoneProps {
 }
 
 const props = defineProps<IphoneProps>();
+const id = useId();
+const screenPunchId = `${id}-screen-punch`;
+const roundedCornersId = `${id}-rounded-corners`;
 
 const PHONE_WIDTH = 433;
 const PHONE_HEIGHT = 882;
@@ -49,9 +52,7 @@ const mediaStyle = {
   borderRadius: `${RADIUS_H}% / ${RADIUS_V}%`,
 };
 
-const screenMask = computed(() =>
-  hasMedia.value ? "url(#screenPunch)" : undefined,
-);
+const screenMask = computed(() => (hasMedia.value ? `url(#${screenPunchId})` : undefined));
 </script>
 
 <template>
@@ -80,11 +81,7 @@ const screenMask = computed(() =>
       class="pointer-events-none absolute z-0 overflow-hidden"
       :style="mediaStyle"
     >
-      <img
-        :src="props.src"
-        alt=""
-        class="block size-full object-cover object-top"
-      />
+      <img :src="props.src" alt="" class="block size-full object-cover object-top" />
     </div>
 
     <svg
@@ -147,14 +144,8 @@ const screenMask = computed(() =>
       />
 
       <defs>
-        <mask id="screenPunch" maskUnits="userSpaceOnUse">
-          <rect
-            x="0"
-            y="0"
-            :width="PHONE_WIDTH"
-            :height="PHONE_HEIGHT"
-            fill="white"
-          />
+        <mask :id="screenPunchId" maskUnits="userSpaceOnUse">
+          <rect x="0" y="0" :width="PHONE_WIDTH" :height="PHONE_HEIGHT" fill="white" />
           <rect
             :x="SCREEN_X"
             :y="SCREEN_Y"
@@ -165,7 +156,7 @@ const screenMask = computed(() =>
             fill="black"
           />
         </mask>
-        <clipPath id="roundedCorners">
+        <clipPath :id="roundedCornersId">
           <rect
             :x="SCREEN_X"
             :y="SCREEN_Y"

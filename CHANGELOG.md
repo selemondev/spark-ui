@@ -26,6 +26,7 @@
 - Respect reduced-motion preferences locally in copied Line Shadow Text and Light Rays components while retaining readable static decoration.
 - Process the existing Tailwind animation utilities in documentation builds without replacing VitePress resets; disambiguate Glare Hover transition timing.
 - Honor reactive blur variants, duration and viewport margins without replacing the motion directive's captured binding.
+- Scale Android artwork in its original coordinate system and keep device screen masks unique across simultaneous instances.
 
 ## v1.0.0
 

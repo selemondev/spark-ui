@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useId } from "vue";
 import { cn } from "../../lib/utils";
 
 interface AndroidProps {
@@ -14,13 +15,15 @@ const props = withDefaults(defineProps<AndroidProps>(), {
   width: 433,
   height: 882,
 });
+
+const clipId = `android-clip-${useId()}`;
 </script>
 
 <template>
   <svg
     :width="props.width"
     :height="props.height"
-    :viewBox="`0 0 ${props.width} ${props.height}`"
+    viewBox="0 0 433 882"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     :class="cn(props.class)"
@@ -42,7 +45,7 @@ const props = withDefaults(defineProps<AndroidProps>(), {
       class="fill-white dark:fill-[#262626]"
     />
 
-    <g clip-path="url(#clip0_514_20855)">
+    <g :clip-path="`url(#${clipId})`">
       <path
         d="M9.25 48C9.25 29.3604 24.3604 14.25 43 14.25H335C353.64 14.25 368.75 29.3604 368.75 48V780C368.75 798.64 353.64 813.75 335 813.75H43C24.3604 813.75 9.25 798.64 9.25 780V48Z"
         class="fill-[#E5E5E5] stroke-[#E5E5E5] stroke-[0.5] dark:fill-[#404040] dark:stroke-[#404040]"
@@ -57,19 +60,19 @@ const props = withDefaults(defineProps<AndroidProps>(), {
       height="800"
       class="size-full object-cover"
       preserveAspectRatio="xMidYMid slice"
-      clip-path="url(#clip0_514_20855)"
+      :clip-path="`url(#${clipId})`"
     />
     <foreignObject
       v-if="props.videoSrc"
       width="380"
       height="820"
-      clip-path="url(#clip0_514_20855)"
+      :clip-path="`url(#${clipId})`"
       preserveAspectRatio="xMidYMid slice"
     >
       <video class="size-full object-cover" :src="props.videoSrc" autoplay loop muted playsinline />
     </foreignObject>
     <defs>
-      <clipPath id="clip0_514_20855">
+      <clipPath :id="clipId">
         <rect
           width="360"
           height="800"
