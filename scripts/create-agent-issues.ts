@@ -2,7 +2,7 @@ import type { ComponentHistory, MissingComponent } from "./types.ts";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
-import { readJson, registryDir, writeJson } from "./registry-utils.ts";
+import { readJson, registryDir, repoRoot, writeJson } from "./registry-utils.ts";
 
 interface GithubError extends Error {
   status?: number;
@@ -41,21 +41,35 @@ if (!token && !dryRun) throw new Error("GITHUB_TOKEN is required");
 const [owner, repo] = (repository ?? "local/spark-ui").split("/");
 const missingPath = path.join(registryDir, "missing-components.json");
 const historyPath = path.join(registryDir, "component-history.json");
-const missing = readJson<{ components: MissingComponent[] }>(missingPath, { components: [] });
+const missing = JSON.parse(readFileSync(missingPath, "utf8")) as {
+  count: number;
+  components: MissingComponent[];
+};
+if (
+  !missing ||
+  !Array.isArray(missing.components) ||
+  missing.count !== missing.components.length ||
+  missing.components.some(
+    (component) =>
+      !component ||
+      [
+        component.name,
+        component.slug,
+        component.issueTitle,
+        component.targetBranch,
+        component.pullRequestTitle,
+      ].some((value) => typeof value !== "string" || value.trim() === "") ||
+      !Array.isArray(component.requirements) ||
+      component.requirements.some((requirement) => typeof requirement !== "string"),
+  )
+) {
+  throw new Error(`Invalid missing-component registry: ${missingPath}`);
+}
 const history = readJson<ComponentHistory>(historyPath, {
   $schema: "./component-history.schema.json",
   generatedAt: new Date().toISOString(),
   components: {},
 });
-const prompt = readFileSync(path.join(process.cwd(), ".ai/prompts/convert-component.md"), "utf8");
-const standards = readFileSync(
-  path.join(process.cwd(), ".ai/prompts/spark-ui-standards.md"),
-  "utf8",
-);
-const animationRules = readFileSync(
-  path.join(process.cwd(), ".ai/prompts/animation-rules.md"),
-  "utf8",
-);
 
 async function github<T = unknown>(
   pathname: string,
@@ -126,52 +140,6 @@ async function getIssue(issueNumber: number): Promise<GithubIssue> {
   return github<GithubIssue>(`/repos/${owner}/${repo}/issues/${issueNumber}`);
 }
 
-function issueBody(component: MissingComponent): string {
-  const componentLabels = component.usesFramerMotion ? [...labels, "motion-migration"] : labels;
-
-  return [
-    `## Source`,
-    ``,
-    `- MagicUI component: \`${component.name}\``,
-    `- Source path: \`${component.sourcePath}\``,
-    `- Last source commit: \`${component.lastCommitHash || "unknown"}\``,
-    `- Target branch: \`${component.targetBranch}\``,
-    `- Pull request title: \`${component.pullRequestTitle}\``,
-    `- Labels: ${componentLabels.map((label) => `\`${label}\``).join(", ")}`,
-    ``,
-    `## Requirements`,
-    ``,
-    ...component.requirements.map((requirement) => `- ${requirement}`),
-    ``,
-    `## Acceptance Criteria`,
-    ``,
-    `- Vue component is added under \`docs/src/components/spark-ui\`.`,
-    `- Demo/example files are added under \`docs/src/example\` or \`docs/src/spark-ui-demos\`.`,
-    `- Documentation is added under \`docs/content/components\`.`,
-    `- Focused tests are added or updated.`,
-    `- \`pnpm validate:agent-pr\`, \`pnpm lint\`, \`pnpm typecheck\`, \`pnpm test -- --run\`, and \`pnpm build\` pass.`,
-    `- \`pnpm normalize:repository\` runs before the pull request is opened.`,
-    `- Human review is required before merge.`,
-    ``,
-    `## Pull Request Requirements`,
-    ``,
-    `- The pull request body must include a \`Repository Cleanup\` section.`,
-    `- The cleanup report must list renamed files, updated imports/references, duplicates removed, and the canonical files kept.`,
-    ``,
-    `## Copilot Coding Agent Prompt`,
-    ``,
-    prompt.trim(),
-    ``,
-    `## SparkUI Standards`,
-    ``,
-    standards.trim(),
-    ``,
-    `## Animation Rules`,
-    ``,
-    animationRules.trim(),
-  ].join("\n");
-}
-
 async function assignAgent(issueNumber: number): Promise<void> {
   try {
     await github(`/repos/${owner}/${repo}/issues/${issueNumber}/assignees`, {
@@ -236,12 +204,61 @@ if (dryRun) {
   process.exit(0);
 }
 
-await ensureLabels();
-
 if (closeStaleOnly) {
   await closeStaleIssues();
   process.exit(0);
 }
+const prompt = readFileSync(path.join(repoRoot, ".ai/prompts/convert-component.md"), "utf8");
+const standards = readFileSync(path.join(repoRoot, ".ai/prompts/spark-ui-standards.md"), "utf8");
+const animationRules = readFileSync(path.join(repoRoot, ".ai/prompts/animation-rules.md"), "utf8");
+
+function issueBody(component: MissingComponent): string {
+  const componentLabels = component.usesFramerMotion ? [...labels, "motion-migration"] : labels;
+
+  return [
+    `## Source`,
+    ``,
+    `- MagicUI component: \`${component.name}\``,
+    `- Source path: \`${component.sourcePath}\``,
+    `- Last source commit: \`${component.lastCommitHash || "unknown"}\``,
+    `- Target branch: \`${component.targetBranch}\``,
+    `- Pull request title: \`${component.pullRequestTitle}\``,
+    `- Labels: ${componentLabels.map((label) => `\`${label}\``).join(", ")}`,
+    ``,
+    `## Requirements`,
+    ``,
+    ...component.requirements.map((requirement) => `- ${requirement}`),
+    ``,
+    `## Acceptance Criteria`,
+    ``,
+    `- Vue component is added under \`docs/src/components/spark-ui\`.`,
+    `- Demo/example files are added under \`docs/src/example\` or \`docs/src/spark-ui-demos\`.`,
+    `- Documentation is added under \`docs/content/components\`.`,
+    `- Focused tests are added or updated.`,
+    `- \`pnpm validate:agent-pr\`, \`pnpm lint\`, \`pnpm typecheck\`, \`pnpm test -- --run\`, and \`pnpm build\` pass.`,
+    `- \`pnpm normalize:repository\` runs before the pull request is opened.`,
+    `- Human review is required before merge.`,
+    ``,
+    `## Pull Request Requirements`,
+    ``,
+    `- The pull request body must include a \`Repository Cleanup\` section.`,
+    `- The cleanup report must list renamed files, updated imports/references, duplicates removed, and the canonical files kept.`,
+    ``,
+    `## Copilot Coding Agent Prompt`,
+    ``,
+    prompt.trim(),
+    ``,
+    `## SparkUI Standards`,
+    ``,
+    standards.trim(),
+    ``,
+    `## Animation Rules`,
+    ``,
+    animationRules.trim(),
+  ].join("\n");
+}
+
+await ensureLabels();
 
 for (const component of missing.components) {
   const existing = await existingIssueForComponent(component);

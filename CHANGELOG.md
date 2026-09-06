@@ -16,6 +16,7 @@
 - Remove the stale npm lockfile; the pnpm lockfile is the authoritative dependency graph.
 - Apply compatible security updates to form-data, Immutable, brace-expansion, JS-YAML, Browserslist and the PostCSS selector parser.
 - Validate releases before creating them on GitHub; align CI with Node 22, current action runtimes and the existing typecheck/normalization gates.
+- Fail closed on missing or malformed issue registries, and let dry-run/stale-closure modes run without issue-generation prompts.
 
 ## v1.0.0
 
