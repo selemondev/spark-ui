@@ -74,7 +74,7 @@
     "flexsearch": "^0.7.43",
     "jiti": "^2.7.0",
     "jsdom": "^25.0.1",
-    "postcss": "^8.5.16",
+    "postcss": "^8.5.28",
     "postcss-prefix-selector": "^1.16.1",
     "rimraf": "^5.0.10",
     "sass": "^1.101.0",
