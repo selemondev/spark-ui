@@ -31,6 +31,7 @@
 - Make mobile navigation keyboard-operable with associated menu state, Escape dismissal and initial scroll measurement; align copied links with the router-free component.
 - Implement roving keyboard navigation and direction-aware expansion for File Tree while keeping collapsed descendants inert and initial-state APIs unchanged.
 - Replace the old Motion for Vue beta with stable `motion-v` 2.4.2; retain VueUse Motion for existing directives and verify modal, tooltip, terminal and scroll consumers.
+- Serialize shared theme transitions, handle skipped promises, clean up owned animations on unmount and fully cover the viewport with star reveals.
 
 ## v1.0.0
 

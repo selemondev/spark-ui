@@ -75,19 +75,43 @@ table {
   margin-top: 4px;
 }
 
-/* dark/light radial transition */
-::view-transition-old(root),
-::view-transition-new(root) {
+/* Stock VitePress toggle: dark mode contracts the old snapshot. */
+html[data-spark-theme-vt="stock"]::view-transition-old(root),
+html[data-spark-theme-vt="stock"]::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
 }
 
-::view-transition-old(root),
-.dark::view-transition-new(root) {
+html[data-spark-theme-vt="stock"]::view-transition-group(root) {
+  animation-duration: 300ms;
+}
+
+html[data-spark-theme-vt="stock"]::view-transition-old(root),
+html.dark[data-spark-theme-vt="stock"]::view-transition-new(root) {
   z-index: 1;
 }
 
-::view-transition-new(root),
-.dark::view-transition-old(root) {
+html[data-spark-theme-vt="stock"]::view-transition-new(root),
+html.dark[data-spark-theme-vt="stock"]::view-transition-old(root) {
   z-index: 9999;
+}
+
+/* Spark togglers always expand the new snapshot, regardless of theme. */
+html[data-spark-theme-vt="active"]::view-transition-old(root),
+html[data-spark-theme-vt="active"]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html[data-spark-theme-vt="active"]::view-transition-group(root) {
+  animation-duration: var(--spark-theme-toggle-vt-duration);
+}
+
+html[data-spark-theme-vt="active"]::view-transition-old(root) {
+  z-index: 1;
+}
+
+html[data-spark-theme-vt="active"]::view-transition-new(root) {
+  z-index: 9999;
+  clip-path: var(--spark-theme-vt-clip-from);
 }
