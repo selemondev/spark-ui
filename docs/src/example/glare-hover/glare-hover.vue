@@ -57,9 +57,9 @@ const rootClass = computed(() =>
     "before:[background-size:var(--gh-size)_var(--gh-size),100%_100%]",
     "before:[background-position:-100%_-100%,0_0]",
     !props.playOnce &&
-      "before:transition-[background-position] before:duration-[var(--gh-duration)] before:ease-in-out",
+      "before:[transition-property:background-position] before:[transition-duration:var(--gh-duration)] before:ease-in-out",
     props.playOnce &&
-      "before:transition-none hover:before:transition-[background-position] hover:before:duration-[var(--gh-duration)]",
+      "before:[transition-property:none] hover:before:[transition-property:background-position] hover:before:[transition-duration:var(--gh-duration)] hover:before:ease-in-out",
     "hover:before:[background-position:100%_100%,0_0]",
     props.class,
   ),

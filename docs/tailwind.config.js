@@ -1,16 +1,27 @@
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
 const { withAnimations } = require("animated-tailwindcss");
 
 const { default: flattenColorPalette } = require("tailwindcss/lib/util/flattenColorPalette");
+const animate = require("tailwindcss-animate");
 
-module.exports = withAnimations({
-  content: [
-    "./docs/.vitepress/**/*.{js,ts,vue}",
-    "./src/**/*.{js,ts,vue,md}",
-    "./src/example/**/*.{vue}",
-    "./docs/.vitepress/**/*.{js,ts,vue}",
-    "./docs/**/*.md",
-  ],
+export default withAnimations({
+  content: {
+    relative: true,
+    files: [
+      "./.vitepress/{theme,components}/**/*.{js,ts,vue}",
+      "./src/**/*.{js,ts,vue,md}",
+      "./content/**/*.md",
+      "./*.md",
+    ],
+  },
   darkMode: "class",
+  // VitePress already owns the document reset and its `.container` layout.
+  corePlugins: {
+    preflight: false,
+    container: false,
+  },
   theme: {
     extend: {
       colors: {
@@ -216,13 +227,17 @@ module.exports = withAnimations({
       },
     },
   },
-  plugins: [addVariablesForColors, "tailwindcss-animate"],
+  plugins: [addVariablesForColors, animate],
 });
 
 function addVariablesForColors({ addBase, theme }) {
   const allColors = flattenColorPalette(theme("colors"));
   const newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
+    Object.entries(allColors)
+      // Semantic colors consume existing theme variables; redeclaring them here
+      // would create cycles such as `--primary: hsl(var(--primary))`.
+      .filter(([, value]) => typeof value === "string" && !value.includes("var("))
+      .map(([key, value]) => [`--${key}`, value]),
   );
 
   addBase({
