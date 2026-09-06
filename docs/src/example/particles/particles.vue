@@ -1,23 +1,14 @@
 <script setup lang="ts">
-import { useData } from "vitepress";
-import { computed } from "vue";
-
 const props = withDefaults(
   defineProps<{
     accelerate?: boolean;
     color?: string;
   }>(),
   {
-    accelarate: false,
+    accelerate: false,
     color: "#00DC82",
   },
 );
-
-const { isDark } = useData();
-
-const theme = computed(() => {
-  return isDark.value ? props.color : "red";
-});
 </script>
 
 <template>
@@ -54,7 +45,7 @@ const theme = computed(() => {
   mask-size: cover;
   transform: translate(-50%);
 
-  --color: v-bind(theme);
+  --color: v-bind(props.color);
 }
 
 .stars > div {

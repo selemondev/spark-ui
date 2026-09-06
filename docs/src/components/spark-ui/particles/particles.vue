@@ -5,7 +5,7 @@ const props = withDefaults(
     color?: string;
   }>(),
   {
-    accelarate: false,
+    accelerate: false,
     color: "#00DC82",
   },
 );
