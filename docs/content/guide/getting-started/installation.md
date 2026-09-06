@@ -36,24 +36,24 @@ This command will install and execute `create-vue`, the official Vue project sca
 
 ### Tailwind
 
-Install `Tailwindcss` and its peer dependencies:
+These components use Tailwind CSS 3 configuration and directives. Install the compatible major version rather than Tailwind CSS 4:
 
 ::: code-group
 
 ```sh [npm]
-npm install -D tailwindcss postcss autoprefixer
+npm install -D tailwindcss@3 postcss autoprefixer
 ```
 
 ```sh [yarn]
-yarn add -D tailwindcss postcss autoprefixer
+yarn add -D tailwindcss@3 postcss autoprefixer
 ```
 
 ```sh [pnpm]
-pnpm add -D tailwindcss postcss autoprefixer
+pnpm add -D tailwindcss@3 postcss autoprefixer
 ```
 
 ```sh [bun]
-bun add -D tailwindcss postcss autoprefixer
+bun add -D tailwindcss@3 postcss autoprefixer
 ```
 
 :::
@@ -134,24 +134,24 @@ app.mount("#app");
 
 ### Install Clsx and Tailwind Merge
 
-Install `clsx` and `tailwind-merge` by running the command below in your terminal:
+Install `clsx` and `tailwind-merge` 2, which supports Tailwind CSS 3:
 
 ::: code-group
 
 ```sh [npm]
-npm install clsx tailwind-merge
+npm install clsx tailwind-merge@2
 ```
 
 ```sh [yarn]
-yarn add clsx tailwind-merge
+yarn add clsx tailwind-merge@2
 ```
 
 ```sh [pnpm]
-pnpm add clsx tailwind-merge
+pnpm add clsx tailwind-merge@2
 ```
 
 ```sh [bun]
-bun add clsx tailwind-merge
+bun add clsx tailwind-merge@2
 ```
 
 :::
@@ -298,24 +298,24 @@ export default defineNuxtConfig({
 
 ### Install Clsx and Tailwind Merge
 
-Install `clsx` and `tailwind-merge` by running the command below in your terminal:
+Install `clsx` and `tailwind-merge` 2, which supports the Tailwind CSS 3 setup above:
 
 ::: code-group
 
 ```sh [npm]
-npm install clsx tailwind-merge
+npm install clsx tailwind-merge@2
 ```
 
 ```sh [yarn]
-yarn add clsx tailwind-merge
+yarn add clsx tailwind-merge@2
 ```
 
 ```sh [pnpm]
-pnpm add clsx tailwind-merge
+pnpm add clsx tailwind-merge@2
 ```
 
 ```sh [bun]
-bun add clsx tailwind-merge
+bun add clsx tailwind-merge@2
 ```
 
 :::
