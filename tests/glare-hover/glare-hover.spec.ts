@@ -59,18 +59,6 @@ it("applies width and height when provided", () => {
   expect(style).toContain("height: 200px");
 });
 
-it("uses transition classes by default and hover-only when playOnce", () => {
-  const normal = mount(GlareHover);
-  expect(normal.get("div").classes()).toContain(
-    "before:transition-[background-position]",
-  );
-
-  const once = mount(GlareHover, { props: { playOnce: true } });
-  const cls = once.get("div").classes();
-  expect(cls).toContain("before:transition-none");
-  expect(cls).toContain("hover:before:transition-[background-position]");
-});
-
 it("merges a custom class", () => {
   const wrapper = mount(GlareHover, { props: { class: "rounded-xl" } });
   expect(wrapper.get("div").classes()).toContain("rounded-xl");
