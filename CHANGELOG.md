@@ -37,6 +37,7 @@
 - Track terminal slot text during rendering and restart owned typing timers on content or timing changes, including delayed unmounts.
 - Keep Hyper Text synchronized with reactive prop and slot replacements before, during and after scrambling; tolerate empty character sets.
 - Honor zero Glyph Matrix mutation rates and rebuild changed cell geometry; keep copied usage independent of VitePress.
+- Rebuild Flickering Grid dimensions when geometry props change and keep intersection transitions from scheduling duplicate frame loops.
 
 ## v1.0.0
 

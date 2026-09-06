@@ -12,7 +12,7 @@ Copy and paste the following code into your project:
 
 ```vue [flickering-grid.vue]
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref, watch } from "vue";
 import { cn } from "@/lib/utils";
 
 interface FlickeringGridProps {
@@ -69,11 +69,7 @@ let intersectionObserver: IntersectionObserver | null = null;
 let gridParams: GridParams | null = null;
 let lastTime = 0;
 
-const setupCanvas = (
-  canvas: HTMLCanvasElement,
-  width: number,
-  height: number,
-): GridParams => {
+const setupCanvas = (canvas: HTMLCanvasElement, width: number, height: number): GridParams => {
   const dpr = window.devicePixelRatio || 1;
   canvas.width = width * dpr;
   canvas.height = height * dpr;
@@ -133,15 +129,26 @@ onMounted(() => {
   if (!canvas || !container || !ctx) return;
 
   const updateCanvasSize = () => {
-    const newWidth = props.width || container.clientWidth;
-    const newHeight = props.height || container.clientHeight;
+    const newWidth = props.width ?? container.clientWidth;
+    const newHeight = props.height ?? container.clientHeight;
     canvasSize.value = { width: newWidth, height: newHeight };
     gridParams = setupCanvas(canvas, newWidth, newHeight);
+    drawGrid(
+      ctx,
+      canvas.width,
+      canvas.height,
+      gridParams.cols,
+      gridParams.rows,
+      gridParams.squares,
+      gridParams.dpr,
+    );
   };
 
   updateCanvasSize();
+  watch(() => [props.squareSize, props.gridGap, props.width, props.height], updateCanvasSize);
 
   const animate = (time: number) => {
+    animationFrameId = null;
     if (!isInView || !gridParams) return;
 
     const deltaTime = (time - lastTime) / 1000;
@@ -167,11 +174,13 @@ onMounted(() => {
 
   intersectionObserver = new IntersectionObserver(
     ([entry]) => {
-      const wasInView = isInView;
       isInView = entry.isIntersecting;
-      if (isInView && !wasInView) {
+      if (isInView && animationFrameId === null) {
         lastTime = performance.now();
         animationFrameId = requestAnimationFrame(animate);
+      } else if (!isInView && animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
       }
     },
     { threshold: 0 },
@@ -180,8 +189,10 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+  isInView = false;
   if (animationFrameId !== null) {
     cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
   }
   if (resizeObserver) {
     resizeObserver.disconnect();
@@ -216,13 +227,15 @@ onUnmounted(() => {
 
 ## Props
 
-| Prop            | Type     | Default          | Description                           |
-| --------------- | -------- | ---------------- | ------------------------------------- |
+| Prop            | Type     | Default          | Description                              |
+| --------------- | -------- | ---------------- | ---------------------------------------- |
 | `class`         | `string` | `-`              | Additional CSS classes for the container |
-| `squareSize`    | `number` | `4`              | Size of each square in the grid       |
-| `gridGap`       | `number` | `6`              | Gap between squares in the grid       |
-| `flickerChance` | `number` | `0.3`            | Probability of a square flickering    |
-| `color`         | `string` | `"rgb(0, 0, 0)"` | Color of the squares                  |
-| `width`         | `number` | `-`              | Width of the canvas                   |
-| `height`        | `number` | `-`              | Height of the canvas                  |
-| `maxOpacity`    | `number` | `0.3`            | Maximum opacity of the squares        |
+| `squareSize`    | `number` | `4`              | Size of each square in the grid          |
+| `gridGap`       | `number` | `6`              | Gap between squares in the grid          |
+| `flickerChance` | `number` | `0.3`            | Probability of a square flickering       |
+| `color`         | `string` | `"rgb(0, 0, 0)"` | Color of the squares                     |
+| `width`         | `number` | `-`              | Width of the canvas                      |
+| `height`        | `number` | `-`              | Height of the canvas                     |
+| `maxOpacity`    | `number` | `0.3`            | Maximum opacity of the squares           |
+
+Changes to `squareSize`, `gridGap`, `width`, or `height` rebuild the canvas grid without remounting. Omitted dimensions follow the container; explicit `0` dimensions remain zero. Animation pauses outside the viewport and resumes with a single frame loop.
