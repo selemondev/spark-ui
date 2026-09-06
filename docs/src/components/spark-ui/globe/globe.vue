@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import createGlobe from "cobe";
-import { onMounted, ref } from "vue";
+import { onBeforeUnmount, onMounted, ref } from "vue";
 import { useSpring } from "vue-use-spring";
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 const pointerInteracting = ref<number | null>(null);
 const pointerInteractionMovement = ref(0);
 const phi = ref(0);
+let globe: ReturnType<typeof createGlobe> | null = null;
 
 const api = useSpring(
   { r: 0 },
@@ -19,7 +20,7 @@ const api = useSpring(
 );
 
 onMounted(() => {
-  createGlobe(canvasRef.value!, {
+  globe = createGlobe(canvasRef.value!, {
     devicePixelRatio: 2,
     width: 1000,
     height: 1000,
@@ -39,7 +40,7 @@ onMounted(() => {
     ],
     onRender: (state) => {
       // This prevents rotation while dragging
-      if (!pointerInteracting.value) {
+      if (pointerInteracting.value === null) {
         // Called on every animation frame.
         // `state` will be an empty object, return updated params.
         phi.value += 0.005;
@@ -48,6 +49,11 @@ onMounted(() => {
     },
   });
   canvasRef.value!.style.opacity = "1";
+});
+
+onBeforeUnmount(() => {
+  globe?.destroy();
+  globe = null;
 });
 
 function handlePointerDown(e: PointerEvent) {
@@ -97,32 +103,3 @@ function handleTouchMove(e: TouchEvent) {
     />
   </div>
 </template>
-
-<style>
-html,
-body {
-  margin: 0;
-  background: black;
-  color: white;
-  font-family: sans-serif;
-  text-align: center;
-}
-
-.app {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.globe {
-  width: 500px;
-  height: 500px;
-  cursor: grab;
-  contain: layout paint size;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-</style>
