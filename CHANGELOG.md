@@ -22,6 +22,7 @@
 - Give Cool Mode instances independent overlays and cancel held-pointer work on teardown; honor particle limits and zero launch speeds.
 - Keep one animation per grid square and cancel superseded generations on resize, option changes and unmount.
 - Reveal normalized reactive list slots with cancellable timing, preserving keyed additions/removals and notification class updates.
+- Make Code Comparison portable to ordinary Vue apps and keep asynchronous highlighting aligned with the latest code and theme.
 
 ## v1.0.0
 

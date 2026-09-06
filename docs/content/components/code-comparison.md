@@ -12,8 +12,7 @@ Copy and paste the following code into your project:
 
 ```vue [code-comparison.vue]
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue";
-import { useData } from "vitepress";
+import { computed, onMounted, onBeforeUnmount, ref, watch } from "vue";
 import { cn } from "@/lib/utils";
 
 interface CodeComparisonProps {
@@ -33,7 +32,10 @@ const props = withDefaults(defineProps<CodeComparisonProps>(), {
   highlightColor: "rgba(101, 117, 133, 0.16)",
 });
 
-const { isDark } = useData();
+const isDark = ref(false);
+let themeObserver: MutationObserver | undefined;
+let highlightRequest = 0;
+let mounted = false;
 
 const highlightedBefore = ref("");
 const highlightedAfter = ref("");
@@ -46,6 +48,9 @@ const hasLeftFocus = computed(() => focusedClassPattern.test(highlightedBefore.v
 const hasRightFocus = computed(() => focusedClassPattern.test(highlightedAfter.value));
 
 async function highlightCode() {
+  const request = ++highlightRequest;
+  const { beforeCode, afterCode, language } = props;
+  const theme = selectedTheme.value;
   try {
     const { codeToHtml } = await import("shiki");
     const { transformerNotationHighlight, transformerNotationDiff, transformerNotationFocus } =
@@ -58,33 +63,51 @@ async function highlightCode() {
     ];
 
     const [before, after] = await Promise.all([
-      codeToHtml(props.beforeCode, {
-        lang: props.language,
-        theme: selectedTheme.value,
+      codeToHtml(beforeCode, {
+        lang: language,
+        theme,
         transformers,
       }),
-      codeToHtml(props.afterCode, {
-        lang: props.language,
-        theme: selectedTheme.value,
+      codeToHtml(afterCode, {
+        lang: language,
+        theme,
         transformers,
       }),
     ]);
 
+    if (request !== highlightRequest || !mounted) return;
     highlightedBefore.value = before;
     highlightedAfter.value = after;
   } catch {
+    if (request !== highlightRequest || !mounted) return;
     highlightedBefore.value = "";
     highlightedAfter.value = "";
   }
 }
 
-onMounted(highlightCode);
+onMounted(() => {
+  const updateTheme = () => {
+    isDark.value = document.documentElement.classList.contains("dark");
+  };
+  updateTheme();
+  themeObserver = new MutationObserver(updateTheme);
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+  mounted = true;
+  highlightCode();
+});
+
+onBeforeUnmount(() => {
+  mounted = false;
+  highlightRequest++;
+  themeObserver?.disconnect();
+});
 
 watch(
   () => [props.beforeCode, props.afterCode, props.language, selectedTheme.value],
   () => {
-    highlightCode();
+    if (mounted) highlightCode();
   },
+  { flush: "sync" },
 );
 </script>
 
@@ -129,14 +152,16 @@ watch(
           <pre
             v-else
             class="h-full overflow-auto bg-white p-4 font-mono text-xs break-all text-neutral-800 dark:bg-[#24292e] dark:text-neutral-200"
-            >{{ props.beforeCode }}</pre
-          >
+            >{{ props.beforeCode }}</pre>
         </div>
         <div
           :class="
-            cn('rightside group/right border-t border-black/10 dark:border-white/10 md:border-t-0', {
-              'has-focus': hasRightFocus,
-            })
+            cn(
+              'rightside group/right border-t border-black/10 dark:border-white/10 md:border-t-0',
+              {
+                'has-focus': hasRightFocus,
+              },
+            )
           "
         >
           <div
@@ -167,8 +192,7 @@ watch(
           <pre
             v-else
             class="h-full overflow-auto bg-white p-4 font-mono text-xs break-all text-neutral-800 dark:bg-[#24292e] dark:text-neutral-200"
-            >{{ props.afterCode }}</pre
-          >
+            >{{ props.afterCode }}</pre>
         </div>
       </div>
       <div
@@ -243,13 +267,15 @@ This component uses [Shiki](https://shiki.style) for syntax highlighting. Make s
 npm install shiki @shikijs/transformers
 ```
 
+The component works in ordinary Vue applications without VitePress. It follows the `dark` class on `<html>`, matching Tailwind class-based dark mode. Only the newest code/language/theme highlighting request is displayed.
+
 ## Usage
 
 Use the `[!code highlight]`, `[!code ++]` / `[!code --]` and `[!code focus]` comment notations inside your code strings to highlight lines, mark diff additions/removals and focus specific lines respectively.
 
 ```vue
 <script setup lang="ts">
-import CodeComparison from "@/components/ui/code-comparison.vue";
+import CodeComparison from "@/components/spark-ui/code-comparison/code-comparison.vue";
 
 const beforeCode = `const value = 1; // [!code --]`;
 const afterCode = `const value = 2; // [!code ++]`;
