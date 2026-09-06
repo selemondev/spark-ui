@@ -11,6 +11,7 @@
 - Confine Markdown content negotiation to real files inside the documentation root, including symlink targets.
 - Pin installation examples to Tailwind CSS 3 and tailwind-merge 2 so the documented CLI and configuration work.
 - Remove stray Markdown from the copied Animated Gradient Text Vue example.
+- Resolve registry paths correctly in checkouts whose names contain spaces or URL-escaped characters.
 
 ## v1.0.0
 
