@@ -6,12 +6,13 @@ A customizable scrolling component that loops its content horizontally or vertic
 
 ## Installation
 
-Copy and paste the following code into your project:
+Copy the component files below into `src/components/spark-ui/marquee/`. Utility imports use `@/lib/utils`.
 
 ::: code-group
 
 ```vue [marquee.vue]
 <script setup lang="ts">
+import { computed } from "vue";
 import { cn } from "@/lib/utils";
 
 interface MarqueeProps {
@@ -29,12 +30,14 @@ const props = withDefaults(defineProps<MarqueeProps>(), {
   repeat: 4,
 });
 
-const className = cn("flex shrink-0 justify-around [gap:var(--gap)]", {
-  "animate-marquee-vertical flex-col": props.vertical,
-  "animate-marquee flex-row": !props.vertical,
-  "[animation-direction:reverse]": props.reverse,
-  "group-hover:[animation-play-state:paused]": props.pauseOnHover,
-});
+const className = computed(() =>
+  cn("flex shrink-0 justify-around [gap:var(--gap)]", {
+    "animate-marquee-vertical flex-col": props.vertical,
+    "animate-marquee flex-row": !props.vertical,
+    "[animation-direction:reverse]": props.reverse,
+    "group-hover:[animation-play-state:paused]": props.pauseOnHover,
+  }),
+);
 </script>
 
 <template>
@@ -51,10 +54,14 @@ const className = cn("flex shrink-0 justify-around [gap:var(--gap)]", {
       )
     "
   >
-    <div v-for="i in Array(props.repeat).fill(0)" :key="i">
-      <div :key="i" :class="className">
-        <slot />
-      </div>
+    <div
+      v-for="i in props.repeat"
+      :key="i"
+      :class="className"
+      :aria-hidden="i > 1 ? true : undefined"
+      :inert="i > 1"
+    >
+      <slot />
     </div>
   </div>
 </template>
@@ -145,6 +152,10 @@ module.exports = {
 
 <demo src="../../src/example/marquee/3d-demo.vue" srcCode="../../src/spark-ui-demos/marquee/3d-marquee.vue" />
 
+## Behavior
+
+Direction, orientation, and hover pause update while mounted. Tracks do not shrink, and only the first track is exposed to assistive technology or keyboard focus; later visual repetitions are inert. Repeated slots are still rendered, so prefer static content without document-global IDs or side effects.
+
 ## Props
 
 | Prop         | Type    | Default | Description                                                                  |
@@ -153,4 +164,4 @@ module.exports = {
 | reverse      | boolean | false   | Whether or not to reverse the direction of the marquee.                      |
 | pauseOnHover | boolean | false   | Whether or not to pause the marquee when the user hovers over the component. |
 | vertical     | boolean | false   | Whether or not to display the marquee vertically.                            |
-| repeat       | number  | 1       | The number of times to repeat the content.                                   |
+| repeat       | number  | 4       | The number of times to repeat the content.                                   |

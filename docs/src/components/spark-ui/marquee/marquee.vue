@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { cn } from "../../../lib/utils";
 
 interface MarqueeProps {
@@ -16,12 +17,14 @@ const props = withDefaults(defineProps<MarqueeProps>(), {
   repeat: 4,
 });
 
-const className = cn("flex shrink-0 justify-around [gap:var(--gap)]", {
-  "animate-marquee-vertical flex-col": props.vertical,
-  "animate-marquee flex-row": !props.vertical,
-  "[animation-direction:reverse]": props.reverse,
-  "group-hover:[animation-play-state:paused]": props.pauseOnHover,
-});
+const className = computed(() =>
+  cn("flex shrink-0 justify-around [gap:var(--gap)]", {
+    "animate-marquee-vertical flex-col": props.vertical,
+    "animate-marquee flex-row": !props.vertical,
+    "[animation-direction:reverse]": props.reverse,
+    "group-hover:[animation-play-state:paused]": props.pauseOnHover,
+  }),
+);
 </script>
 
 <template>
@@ -38,10 +41,14 @@ const className = cn("flex shrink-0 justify-around [gap:var(--gap)]", {
       )
     "
   >
-    <div v-for="i in Array(props.repeat).fill(0)" :key="i">
-      <div :key="i" :class="className">
-        <slot />
-      </div>
+    <div
+      v-for="i in props.repeat"
+      :key="i"
+      :class="className"
+      :aria-hidden="i > 1 ? true : undefined"
+      :inert="i > 1"
+    >
+      <slot />
     </div>
   </div>
 </template>

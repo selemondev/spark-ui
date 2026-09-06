@@ -46,6 +46,7 @@
 - Keep Bento Grid and card class props reactive and document the copied example's icon dependency.
 - Give avatar tooltips focus and keyboard activation, associated descriptions and Escape dismissal.
 - Update letter-based text reactively with stable positional keys and one accessible heading per phrase.
+- Keep marquee tracks nonshrinking and react to direction, orientation and repeat changes; hide inert visual copies from accessibility.
 
 ## v1.0.0
 
