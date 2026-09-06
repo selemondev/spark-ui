@@ -59,4 +59,11 @@ const style = computed(() => ({
     background-position: 100% -100%;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .line-shadow-text::after {
+    animation: none;
+    background-position: 0 0;
+  }
+}
 </style>

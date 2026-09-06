@@ -23,6 +23,7 @@
 - Keep one animation per grid square and cancel superseded generations on resize, option changes and unmount.
 - Reveal normalized reactive list slots with cancellable timing, preserving keyed additions/removals and notification class updates.
 - Make Code Comparison portable to ordinary Vue apps and keep asynchronous highlighting aligned with the latest code and theme.
+- Respect reduced-motion preferences locally in copied Line Shadow Text and Light Rays components while retaining readable static decoration.
 
 ## v1.0.0
 

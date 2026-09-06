@@ -2,6 +2,8 @@
 
 A component with animated light rays which shine down from above, filling any container with a soft ambient glow.
 
+With reduced motion enabled, the rays remain visible at their base angles without swinging or fading.
+
 <demo src="../../src/example/light-rays/demo.vue" srcCode="../../src/spark-ui-demos/light-rays/light-rays.vue" />
 
 ## Installation
@@ -175,6 +177,14 @@ const rayStyle = (ray: LightRay) => ({
   100% {
     opacity: 0;
     transform: translateX(-50%) rotate(calc(var(--ray-rotate) - var(--ray-swing)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .light-ray {
+    animation: none;
+    opacity: var(--ray-intensity);
+    transform: translateX(-50%) rotate(var(--ray-rotate));
   }
 }
 </style>

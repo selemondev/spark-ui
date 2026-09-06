@@ -164,4 +164,12 @@ const rayStyle = (ray: LightRay) => ({
     transform: translateX(-50%) rotate(calc(var(--ray-rotate) - var(--ray-swing)));
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .light-ray {
+    animation: none;
+    opacity: var(--ray-intensity);
+    transform: translateX(-50%) rotate(var(--ray-rotate));
+  }
+}
 </style>
