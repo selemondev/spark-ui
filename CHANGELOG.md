@@ -20,6 +20,7 @@
 - Compute repeatable major releases from the current version and reject invalid arguments, unchanged versions and existing tags before release writes.
 - Restart typing animation from current text and timing, without setup-time timers or a full-text flash; cancel pending work on unmount.
 - Give Cool Mode instances independent overlays and cancel held-pointer work on teardown; honor particle limits and zero launch speeds.
+- Keep one animation per grid square and cancel superseded generations on resize, option changes and unmount.
 
 ## v1.0.0
 
