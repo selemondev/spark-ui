@@ -75,7 +75,7 @@ function measureWidths(el: HTMLElement, values: string[]) {
 
 const props = withDefaults(defineProps<DiaTextRevealProps>(), {
   colors: () => ["#c679c4", "#fa3d1d", "#ffb005", "#e1e1fe", "#0358f7"],
-  textColor: "var(--foreground, var(--vp-c-text-1, currentColor))",
+  textColor: "hsl(var(--foreground, 222.2 84% 4.9%))",
   duration: 1.5,
   delay: 0,
   repeat: false,
@@ -97,14 +97,17 @@ const backgroundImage = computed(() =>
   buildGradient(sweepPos.value, props.colors, props.textColor),
 );
 
-let indexRef = 0;
 let hasPlayed = false;
 let timer: ReturnType<typeof setTimeout> | undefined;
 let rafId: number | undefined;
 let observer: IntersectionObserver | undefined;
 let prefersReducedMotion = false;
+let cycle = 0;
 
 function stopAnimation() {
+  cycle++;
+  clearTimeout(timer);
+  timer = undefined;
   if (rafId !== undefined) {
     cancelAnimationFrame(rafId);
     rafId = undefined;
@@ -112,16 +115,22 @@ function stopAnimation() {
 }
 
 function play() {
-  const { duration, delay, repeat, repeatDelay } = props;
+  const { duration, delay } = props;
 
   sweepPos.value = SWEEP_START;
   stopAnimation();
+  const currentCycle = cycle;
+  if (!texts.value.length) {
+    sweepPos.value = SWEEP_END;
+    return;
+  }
 
   const durationMs = duration * 1000;
   const delayMs = delay * 1000;
   let startTime: number | undefined;
 
   const step = (now: number) => {
+    if (currentCycle !== cycle) return;
     if (startTime === undefined) startTime = now;
     const elapsed = now - startTime - delayMs;
 
@@ -139,16 +148,13 @@ function play() {
     }
 
     rafId = undefined;
-    if (!repeat) return;
-    timer = setTimeout(
-      () => {
-        const next = (indexRef + 1) % texts.value.length;
-        indexRef = next;
-        activeIndex.value = next;
-        play();
-      },
-      repeatDelay * 1000,
-    );
+    if (!props.repeat) return;
+    timer = setTimeout(() => {
+      if (currentCycle !== cycle || !props.repeat || !texts.value.length) return;
+      timer = undefined;
+      activeIndex.value = (activeIndex.value + 1) % texts.value.length;
+      play();
+    }, props.repeatDelay * 1000);
   };
 
   rafId = requestAnimationFrame(step);
@@ -171,14 +177,27 @@ function remeasure() {
 }
 
 watch(
-  () => (Array.isArray(props.text) ? props.text.join("\0") : props.text),
-  () => remeasure(),
+  () => [...texts.value],
+  () => {
+    activeIndex.value = Math.min(activeIndex.value, Math.max(0, texts.value.length - 1));
+    remeasure();
+    if (hasPlayed && !prefersReducedMotion) play();
+  },
+  { flush: "post" },
+);
+
+watch(
+  () => props.repeat,
+  (repeat) => {
+    stopAnimation();
+    if (repeat && hasPlayed && !prefersReducedMotion) play();
+    else if (hasPlayed || prefersReducedMotion) sweepPos.value = SWEEP_END;
+  },
 );
 
 onMounted(() => {
   prefersReducedMotion =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   remeasure();
 
@@ -210,7 +229,6 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   stopAnimation();
-  clearTimeout(timer);
   observer?.disconnect();
 });
 
