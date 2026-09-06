@@ -52,6 +52,7 @@
 - Fill the entire skewed scroll cycle with an equal following track, keeping repeated content inert and hidden from accessibility.
 - Provide the documented semantic color tokens to live previews without changing VitePress's document reset or layout.
 - Register the intended `@` source alias instead of accidental `find` and `replacement` aliases in the documentation Vite configuration.
+- Place the six newer component families under canonical source ownership, preserving implementations while making registry discovery and copied usage imports consistent.
 
 ## v1.0.0
 

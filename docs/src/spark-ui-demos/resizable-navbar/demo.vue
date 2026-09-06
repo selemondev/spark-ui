@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import MobileNavHeader from "./mobile-nav-header.vue";
-import MobileNavMenu from "./mobile-nav-menu.vue";
-import MobileNavToggle from "./mobile-nav-toggle.vue";
-import MobileNav from "./mobile-nav.vue";
-import NavBody from "./nav-body.vue";
-import NavItems from "./nav-items.vue";
-import NavbarButton from "./navbar-button.vue";
-import NavbarLogo from "./navbar-logo.vue";
-import Navbar from "./navbar.vue";
+import MobileNavHeader from "../../components/spark-ui/resizable-navbar/mobile-nav-header.vue";
+import MobileNavMenu from "../../components/spark-ui/resizable-navbar/mobile-nav-menu.vue";
+import MobileNavToggle from "../../components/spark-ui/resizable-navbar/mobile-nav-toggle.vue";
+import MobileNav from "../../components/spark-ui/resizable-navbar/mobile-nav.vue";
+import NavBody from "../../components/spark-ui/resizable-navbar/nav-body.vue";
+import NavItems from "../../components/spark-ui/resizable-navbar/nav-items.vue";
+import NavbarButton from "../../components/spark-ui/resizable-navbar/navbar-button.vue";
+import NavbarLogo from "../../components/spark-ui/resizable-navbar/navbar-logo.vue";
+import Navbar from "../../components/spark-ui/resizable-navbar/navbar.vue";
 
 const isMenuOpen = ref(false);
 function toggleMenu() {

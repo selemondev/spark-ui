@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ScrollProgress from "./scroll-progress.vue";
+import ScrollProgress from "../../components/spark-ui/scroll-progress/scroll-progress.vue";
 </script>
 
 <template>

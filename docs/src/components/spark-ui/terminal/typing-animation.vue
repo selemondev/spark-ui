@@ -2,7 +2,7 @@
 import type { MotionProps } from "motion-v";
 import { motion } from "motion-v";
 import { Comment, defineComponent, onMounted, ref, useSlots, watch, type VNode } from "vue";
-import { cn } from "../../lib/utils";
+import { cn } from "../../../lib/utils";
 
 interface TypingAnimationProps extends MotionProps {
   className?: string;

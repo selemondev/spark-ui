@@ -2,7 +2,7 @@
 import { Play, XIcon } from "@lucide/vue";
 import { AnimatePresence, motion } from "motion-v";
 import { computed, nextTick, onBeforeUnmount, ref } from "vue";
-import { cn } from "../../lib/utils";
+import { cn } from "../../../lib/utils";
 
 type AnimationStyle =
   | "from-bottom"

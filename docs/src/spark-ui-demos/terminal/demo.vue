@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import AnimatedSpan from "./animated-span.vue";
-import Terminal from "./terminal.vue";
-import TypingAnimation from "./typing-animation.vue";
+import AnimatedSpan from "../../components/spark-ui/terminal/animated-span.vue";
+import Terminal from "../../components/spark-ui/terminal/terminal.vue";
+import TypingAnimation from "../../components/spark-ui/terminal/typing-animation.vue";
 </script>
 
 <template>

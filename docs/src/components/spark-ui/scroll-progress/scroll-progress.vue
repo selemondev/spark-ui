@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "vue";
 import { motion, type MotionProps, useMotionValue, useScroll } from "motion-v";
 import { onMounted, onUnmounted } from "vue";
-import { cn } from "../../lib/utils";
+import { cn } from "../../../lib/utils";
 
 interface ScrollProgressProps extends Omit<HTMLAttributes, keyof MotionProps> {}
 
