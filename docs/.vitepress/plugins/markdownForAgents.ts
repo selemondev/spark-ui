@@ -1,6 +1,6 @@
 import type { Plugin } from "vite-plus";
-import { readdirSync, readFileSync, statSync } from "node:fs";
-import { join, relative, resolve } from "node:path";
+import { readdirSync, readFileSync, realpathSync, statSync } from "node:fs";
+import { isAbsolute, join, relative, resolve, sep } from "node:path";
 
 /**
  * Vite plugin to support Markdown for Agents content negotiation.
@@ -12,7 +12,7 @@ import { join, relative, resolve } from "node:path";
  * directory so Vercel middleware can serve them.
  */
 export function markdownForAgentsPlugin(): Plugin {
-  const docsRoot = resolve(__dirname, "../..");
+  const docsRoot = realpathSync(resolve(__dirname, "../.."));
 
   function getMarkdownFiles(dir: string, base: string = dir): string[] {
     const files: string[] = [];
@@ -44,33 +44,31 @@ export function markdownForAgentsPlugin(): Plugin {
       cleanUrl = cleanUrl.slice(1);
     }
 
-    // Handle root/index
-    if (cleanUrl === "" || cleanUrl === "index") {
-      const filePath = resolve(docsRoot, "index.md");
-      try {
-        statSync(filePath);
-        return filePath;
-      } catch {
-        return null;
-      }
-    }
+    if (cleanUrl === "" || cleanUrl === "index") cleanUrl = "index";
 
-    // Try direct .md file
-    const directPath = resolve(docsRoot, `${cleanUrl}.md`);
-    try {
-      statSync(directPath);
-      return directPath;
-    } catch {
-      // Try as directory with index.md
-      const trimmed = cleanUrl.endsWith("/") ? cleanUrl.slice(0, -1) : cleanUrl;
-      const indexPath = resolve(docsRoot, trimmed, "index.md");
+    const trimmed = cleanUrl.endsWith("/") ? cleanUrl.slice(0, -1) : cleanUrl;
+    const candidates = [
+      resolve(docsRoot, `${cleanUrl}.md`),
+      resolve(docsRoot, trimmed, "index.md"),
+    ];
+
+    for (const candidate of candidates) {
       try {
-        statSync(indexPath);
-        return indexPath;
+        const filePath = realpathSync(candidate);
+        const relativePath = relative(docsRoot, filePath);
+        if (
+          relativePath === ".." ||
+          relativePath.startsWith(`..${sep}`) ||
+          isAbsolute(relativePath)
+        ) {
+          continue;
+        }
+        if (statSync(filePath).isFile()) return filePath;
       } catch {
-        return null;
+        // Missing paths are handled by the next middleware.
       }
     }
+    return null;
   }
 
   function countTokens(content: string): number {

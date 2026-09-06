@@ -8,6 +8,7 @@
 - Correct demo source utility imports to match the installation guide's `@/lib/utils` path.
 - Stop requiring the intentionally removed sync guide and watcher workflow during normalization.
 - Update PostCSS to 8.5.28 and pin the existing Vite+ catalog versions to prevent unrelated toolchain upgrades.
+- Confine Markdown content negotiation to real files inside the documentation root, including symlink targets.
 
 ## v1.0.0
 
