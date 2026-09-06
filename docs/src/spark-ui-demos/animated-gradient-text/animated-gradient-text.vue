@@ -24,7 +24,3 @@ import { cn } from "../../lib/utils";
     </AnimatedGradientText>
   </div>
 </template>
-
-## Props | Prop | Type | Description | Default | | --------- | ------ |
--------------------------------------- | ------- | | children | | The children passed into the
-component | | | className | string | The class name to be applied. | |

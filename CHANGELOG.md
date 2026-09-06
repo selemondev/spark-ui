@@ -10,6 +10,7 @@
 - Update PostCSS to 8.5.28 and pin the existing Vite+ catalog versions to prevent unrelated toolchain upgrades.
 - Confine Markdown content negotiation to real files inside the documentation root, including symlink targets.
 - Pin installation examples to Tailwind CSS 3 and tailwind-merge 2 so the documented CLI and configuration work.
+- Remove stray Markdown from the copied Animated Gradient Text Vue example.
 
 ## v1.0.0
 
