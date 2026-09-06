@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Play, XIcon } from "@lucide/vue";
 import { AnimatePresence, motion } from "motion-v";
-import { ref } from "vue";
+import { computed, nextTick, onBeforeUnmount, ref } from "vue";
 import { cn } from "../../lib/utils";
 
 type AnimationStyle =
@@ -68,12 +68,55 @@ const animationVariants = {
   },
 };
 const isVideoOpen = ref(false);
-const selectedAnimation = animationVariants[props.animationStyle];
+const selectedAnimation = computed(() => animationVariants[props.animationStyle]);
+const dialog = ref<HTMLDialogElement | null>(null);
+let previousFocus: HTMLElement | null = null;
+let restoreScroll: (() => void) | undefined;
+
+async function openVideo() {
+  if (dialog.value?.open) return;
+  previousFocus = document.activeElement as HTMLElement | null;
+  const style = document.documentElement.style;
+  const overflow = style.getPropertyValue("overflow");
+  const priority = style.getPropertyPriority("overflow");
+  restoreScroll = () => {
+    if (overflow) style.setProperty("overflow", overflow, priority);
+    else style.removeProperty("overflow");
+  };
+  style.setProperty("overflow", "hidden");
+  isVideoOpen.value = true;
+  await nextTick();
+  dialog.value?.showModal();
+}
+
+function closeVideo() {
+  isVideoOpen.value = false;
+}
+
+function finishClose() {
+  if (isVideoOpen.value) return;
+  dialog.value?.close();
+  restoreScroll?.();
+  restoreScroll = undefined;
+  if (previousFocus?.isConnected) previousFocus.focus();
+  previousFocus = null;
+}
+
+onBeforeUnmount(() => {
+  isVideoOpen.value = false;
+  finishClose();
+});
 </script>
 
 <template>
   <div :class="cn('relative', props.className)">
-    <div class="group relative cursor-pointer" @click="isVideoOpen = true">
+    <button
+      type="button"
+      class="group relative block w-full cursor-pointer"
+      :aria-label="`Play video: ${thumbnailAlt}`"
+      aria-haspopup="dialog"
+      @click="openVideo"
+    >
       <img
         :src="thumbnailSrc"
         :alt="thumbnailAlt"
@@ -100,10 +143,18 @@ const selectedAnimation = animationVariants[props.animationStyle];
           </div>
         </div>
       </div>
-    </div>
-    <AnimatePresence>
-      <div v-if="isVideoOpen">
+    </button>
+    <dialog
+      ref="dialog"
+      aria-modal="true"
+      :aria-label="thumbnailAlt"
+      class="m-0 h-dvh max-h-none w-screen max-w-none overflow-visible border-0 bg-transparent p-0 backdrop:bg-transparent"
+      @cancel.prevent="closeVideo"
+    >
+      <AnimatePresence :on-exit-complete="finishClose">
         <motion.div
+          v-if="isVideoOpen"
+          key="video"
           :initial="{
             opacity: 0,
           }"
@@ -114,7 +165,7 @@ const selectedAnimation = animationVariants[props.animationStyle];
             opacity: 0,
           }"
           class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-md"
-          @click="isVideoOpen = false"
+          @click.self="closeVideo"
         >
           <motion.div
             v-bind="selectedAnimation"
@@ -126,6 +177,10 @@ const selectedAnimation = animationVariants[props.animationStyle];
             class="relative mx-4 aspect-video w-full max-w-4xl md:mx-0"
           >
             <motion.button
+              type="button"
+              aria-label="Close video"
+              autofocus
+              @click="closeVideo"
               class="absolute -top-16 right-0 rounded-full bg-neutral-900/50 p-2 text-xl text-white ring-1 backdrop-blur-md dark:bg-neutral-100/50 dark:text-black"
             >
               <XIcon class="size-5" />
@@ -134,6 +189,7 @@ const selectedAnimation = animationVariants[props.animationStyle];
               class="relative isolate z-[1] size-full overflow-hidden rounded-2xl border-2 border-white"
             >
               <iframe
+                :title="thumbnailAlt"
                 :src="videoSrc"
                 class="size-full rounded-2xl"
                 allowFullScreen
@@ -150,7 +206,7 @@ const selectedAnimation = animationVariants[props.animationStyle];
             </div>
           </motion.div>
         </motion.div>
-      </div>
-    </AnimatePresence>
+      </AnimatePresence>
+    </dialog>
   </div>
 </template>

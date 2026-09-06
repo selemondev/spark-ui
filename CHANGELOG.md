@@ -27,6 +27,7 @@
 - Process the existing Tailwind animation utilities in documentation builds without replacing VitePress resets; disambiguate Glare Hover transition timing.
 - Honor reactive blur variants, duration and viewport margins without replacing the motion directive's captured binding.
 - Scale Android artwork in its original coordinate system and keep device screen masks unique across simultaneous instances.
+- Give Hero Video Dialog native modal semantics, named controls, keyboard dismissal, focus restoration and exit-aware teardown.
 
 ## v1.0.0
 
