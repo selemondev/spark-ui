@@ -9,7 +9,7 @@ A hero video dialog component.
 Install the following dependencies
 
 ```bash
-pnpm add motion-v @lucide/vue
+pnpm add motion-v@2 @lucide/vue
 ```
 
 Copy the component files below into `src/components/spark-ui/hero-video-dialog/`. Utility imports use `@/lib/utils`.
