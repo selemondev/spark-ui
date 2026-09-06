@@ -21,6 +21,7 @@
 - Restart typing animation from current text and timing, without setup-time timers or a full-text flash; cancel pending work on unmount.
 - Give Cool Mode instances independent overlays and cancel held-pointer work on teardown; honor particle limits and zero launch speeds.
 - Keep one animation per grid square and cancel superseded generations on resize, option changes and unmount.
+- Reveal normalized reactive list slots with cancellable timing, preserving keyed additions/removals and notification class updates.
 
 ## v1.0.0
 
