@@ -50,6 +50,7 @@
 - Apply valid reactive orbit reversal and make the copied orbit example independent of unpublished icon helpers.
 - Recompute Aurora Text gradient colors and speed when props change.
 - Fill the entire skewed scroll cycle with an equal following track, keeping repeated content inert and hidden from accessibility.
+- Provide the documented semantic color tokens to live previews without changing VitePress's document reset or layout.
 
 ## v1.0.0
 

@@ -3,3 +3,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Match the installation guide's neutral semantic fallbacks for previews.
+   VitePress continues to control the document's colors and layout. */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+  }
+
+  :root,
+  .dark {
+    --border: var(--foreground);
+    --input: var(--foreground);
+    --ring: var(--foreground);
+    --primary: var(--foreground);
+    --primary-foreground: var(--background);
+    --secondary: var(--background);
+    --secondary-foreground: var(--foreground);
+    --destructive: var(--foreground);
+    --destructive-foreground: var(--background);
+    --muted: var(--background);
+    --muted-foreground: var(--foreground);
+    --accent: var(--background);
+    --accent-foreground: var(--foreground);
+    --popover: var(--background);
+    --popover-foreground: var(--foreground);
+    --card: var(--background);
+    --card-foreground: var(--foreground);
+  }
+}
