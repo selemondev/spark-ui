@@ -42,6 +42,7 @@
 - Preserve pending confetti requests and explicit canvas options; default both confetti components to independent non-worker renderers.
 - Expose finite, bounded progressbar values and geometry, including invalid ranges and non-finite input.
 - Keep gradient and shiny text styling reactive and provide self-contained copied examples with the correct shimmer prerequisite.
+- Update avatar styling reactively and render optional remaining-person counts without empty navigation links.
 
 ## v1.0.0
 
