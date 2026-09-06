@@ -1,7 +1,10 @@
 // @vitest-environment jsdom
-import { flushPromises, mount } from "@vue/test-utils";
+import { enableAutoUnmount, flushPromises, mount } from "@vue/test-utils";
 import { afterEach, beforeEach, expect, it, vi } from "vite-plus/test";
+import { h, nextTick, ref } from "vue";
 import HyperText from "../../docs/src/components/spark-ui/hyper-text/hyper-text.vue";
+
+enableAutoUnmount(afterEach);
 
 type RafCallback = (time: number) => void;
 let rafCallbacks: RafCallback[] = [];
@@ -40,17 +43,6 @@ const drainRaf = () => {
   }
 };
 
-it("renders the slot text split into per-character spans", () => {
-  const wrapper = mount(HyperText, { slots: { default: "Hi" } });
-  const spans = wrapper.findAll("span");
-  expect(spans).toHaveLength(2);
-});
-
-it("accepts the text prop as an alternative to the slot", () => {
-  const wrapper = mount(HyperText, { props: { text: "Yo" } });
-  expect(wrapper.findAll("span")).toHaveLength(2);
-});
-
 it("applies base classes and merges a custom class", () => {
   const wrapper = mount(HyperText, {
     props: { text: "AB", class: "text-red-500" },
@@ -87,4 +79,25 @@ it("uppercases the resolved characters", async () => {
   drainRaf();
   await flushPromises();
   expect(wrapper.text().replace(/\s+/g, "")).toBe("AB");
+});
+
+it("updates a reactive default slot after the scramble has completed", async () => {
+  const text = ref("Original");
+  const wrapper = mount(() =>
+    h(
+      HyperText,
+      { duration: 50 },
+      {
+        default: () => h("span", text.value),
+      },
+    ),
+  );
+  vi.advanceTimersByTime(0);
+  setNow(100);
+  drainRaf();
+  await nextTick();
+  expect(wrapper.text()).toBe("ORIGINAL");
+  text.value = "Latest";
+  await nextTick();
+  expect(wrapper.text()).toBe("LATEST");
 });

@@ -1,12 +1,5 @@
 <script setup lang="ts">
-import {
-  computed,
-  onBeforeUnmount,
-  onMounted,
-  ref,
-  useSlots,
-  watch,
-} from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, useSlots } from "vue";
 import { cn } from "../../../lib/utils";
 
 type CharacterSet = string[] | readonly string[];
@@ -50,8 +43,7 @@ const props = withDefaults(defineProps<HyperTextProps>(), {
   as: "div",
   startOnView: false,
   animateOnHover: true,
-  characterSet: () =>
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("") as readonly string[],
+  characterSet: () => "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("") as readonly string[],
 });
 
 const slots = useSlots();
@@ -60,14 +52,12 @@ const getRandomInt = (max: number): number => Math.floor(Math.random() * max);
 
 const slotText = (): string => {
   const nodes = slots.default?.() ?? [];
-  return nodes
-    .map((node) => (typeof node.children === "string" ? node.children : ""))
-    .join("");
+  return nodes.map((node) => (typeof node.children === "string" ? node.children : "")).join("");
 };
 
-const sourceText = computed(() => props.text ?? slotText());
-
-const displayText = ref<string[]>(sourceText.value.split(""));
+let sourceText = props.text ?? "";
+let sourceCharacters = sourceText.split("");
+const displayText = ref<string[]>(sourceCharacters);
 const elementRef = ref<HTMLElement | null>(null);
 
 let animationFrameId: number | null = null;
@@ -83,14 +73,14 @@ const cancelAnimation = () => {
 };
 
 const startAnimation = () => {
-  const chars = sourceText.value.split("");
+  const chars = sourceCharacters;
   const maxIterations = chars.length;
   const startTime = performance.now();
   isAnimating = true;
 
   const animate = (currentTime: number) => {
     const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / props.duration, 1);
+    const progress = props.duration <= 0 ? 1 : Math.min(elapsed / props.duration, 1);
     const iteration = progress * maxIterations;
 
     displayText.value = chars.map((letter, index) =>
@@ -98,7 +88,7 @@ const startAnimation = () => {
         ? letter
         : index <= iteration
           ? chars[index]
-          : props.characterSet[getRandomInt(props.characterSet.length)],
+          : (props.characterSet[getRandomInt(props.characterSet.length)] ?? letter),
     );
 
     if (progress < 1) {
@@ -119,12 +109,17 @@ const handleHover = () => {
   }
 };
 
-// Keep displayText in sync when the source text changes and no animation runs.
-watch(sourceText, (next) => {
-  if (!isAnimating) {
-    displayText.value = next.split("");
+// Invoke slots during render so their reactive text reads trigger updates.
+function lettersToShow() {
+  const next = props.text ?? slotText();
+  if (next !== sourceText) {
+    sourceText = next;
+    sourceCharacters = next.split("");
+    if (isAnimating) startAnimation();
   }
-});
+  const animatedCharacters = displayText.value;
+  return isAnimating ? animatedCharacters : sourceCharacters;
+}
 
 onMounted(() => {
   if (!props.startOnView) {
@@ -153,20 +148,13 @@ onBeforeUnmount(() => {
   observer?.disconnect();
 });
 
-const rootClass = computed(() =>
-  cn("overflow-hidden py-2 text-4xl font-bold", props.class),
-);
+const rootClass = computed(() => cn("overflow-hidden py-2 text-4xl font-bold", props.class));
 </script>
 
 <template>
-  <component
-    :is="props.as"
-    ref="elementRef"
-    :class="rootClass"
-    @mouseenter="handleHover"
-  >
+  <component :is="props.as" ref="elementRef" :class="rootClass" @mouseenter="handleHover">
     <span
-      v-for="(letter, index) in displayText"
+      v-for="(letter, index) in lettersToShow()"
       :key="index"
       :class="cn('font-mono', letter === ' ' ? 'w-3' : '')"
     >

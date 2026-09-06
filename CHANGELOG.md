@@ -35,6 +35,7 @@
 - Keep rotating reveal text valid after replacements, cancel stale repeat timers and interpret foreground tokens as HSL colors.
 - Destroy Globe renderers on unmount, preserve host-document styles and distinguish a zero-coordinate drag from no interaction.
 - Track terminal slot text during rendering and restart owned typing timers on content or timing changes, including delayed unmounts.
+- Keep Hyper Text synchronized with reactive prop and slot replacements before, during and after scrambling; tolerate empty character sets.
 
 ## v1.0.0
 

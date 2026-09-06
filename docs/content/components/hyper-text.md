@@ -12,31 +12,13 @@ Copy and paste the following code into your project:
 
 ```vue [hyper-text.vue]
 <script setup lang="ts">
-import {
-  computed,
-  onBeforeUnmount,
-  onMounted,
-  ref,
-  useSlots,
-  watch,
-} from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, useSlots } from "vue";
 import { cn } from "@/lib/utils";
 
 type CharacterSet = string[] | readonly string[];
 
 type HyperTextTag =
-  | "article"
-  | "div"
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "li"
-  | "p"
-  | "section"
-  | "span";
+  "article" | "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "li" | "p" | "section" | "span";
 
 interface HyperTextProps {
   /** The text content to animate (alternative to the default slot) */
@@ -63,8 +45,7 @@ const props = withDefaults(defineProps<HyperTextProps>(), {
   as: "div",
   startOnView: false,
   animateOnHover: true,
-  characterSet: () =>
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("") as readonly string[],
+  characterSet: () => "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("") as readonly string[],
 });
 
 const slots = useSlots();
@@ -73,14 +54,12 @@ const getRandomInt = (max: number): number => Math.floor(Math.random() * max);
 
 const slotText = (): string => {
   const nodes = slots.default?.() ?? [];
-  return nodes
-    .map((node) => (typeof node.children === "string" ? node.children : ""))
-    .join("");
+  return nodes.map((node) => (typeof node.children === "string" ? node.children : "")).join("");
 };
 
-const sourceText = computed(() => props.text ?? slotText());
-
-const displayText = ref<string[]>(sourceText.value.split(""));
+let sourceText = props.text ?? "";
+let sourceCharacters = sourceText.split("");
+const displayText = ref<string[]>(sourceCharacters);
 const elementRef = ref<HTMLElement | null>(null);
 
 let animationFrameId: number | null = null;
@@ -96,14 +75,14 @@ const cancelAnimation = () => {
 };
 
 const startAnimation = () => {
-  const chars = sourceText.value.split("");
+  const chars = sourceCharacters;
   const maxIterations = chars.length;
   const startTime = performance.now();
   isAnimating = true;
 
   const animate = (currentTime: number) => {
     const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / props.duration, 1);
+    const progress = props.duration <= 0 ? 1 : Math.min(elapsed / props.duration, 1);
     const iteration = progress * maxIterations;
 
     displayText.value = chars.map((letter, index) =>
@@ -111,7 +90,7 @@ const startAnimation = () => {
         ? letter
         : index <= iteration
           ? chars[index]
-          : props.characterSet[getRandomInt(props.characterSet.length)],
+          : (props.characterSet[getRandomInt(props.characterSet.length)] ?? letter),
     );
 
     if (progress < 1) {
@@ -132,12 +111,17 @@ const handleHover = () => {
   }
 };
 
-// Keep displayText in sync when the source text changes and no animation runs.
-watch(sourceText, (next) => {
-  if (!isAnimating) {
-    displayText.value = next.split("");
+// Invoke slots during render so their reactive text reads trigger updates.
+function lettersToShow() {
+  const next = props.text ?? slotText();
+  if (next !== sourceText) {
+    sourceText = next;
+    sourceCharacters = next.split("");
+    if (isAnimating) startAnimation();
   }
-});
+  const animatedCharacters = displayText.value;
+  return isAnimating ? animatedCharacters : sourceCharacters;
+}
 
 onMounted(() => {
   if (!props.startOnView) {
@@ -166,20 +150,13 @@ onBeforeUnmount(() => {
   observer?.disconnect();
 });
 
-const rootClass = computed(() =>
-  cn("overflow-hidden py-2 text-4xl font-bold", props.class),
-);
+const rootClass = computed(() => cn("overflow-hidden py-2 text-4xl font-bold", props.class));
 </script>
 
 <template>
-  <component
-    :is="props.as"
-    ref="elementRef"
-    :class="rootClass"
-    @mouseenter="handleHover"
-  >
+  <component :is="props.as" ref="elementRef" :class="rootClass" @mouseenter="handleHover">
     <span
-      v-for="(letter, index) in displayText"
+      v-for="(letter, index) in lettersToShow()"
       :key="index"
       :class="cn('font-mono', letter === ' ' ? 'w-3' : '')"
     >
@@ -205,19 +182,21 @@ Pass the text as the default slot (matching the upstream `children` API), or use
 
 ## Props
 
-| Prop             | Type                                                                                                       | Default | Description                                             |
-| ---------------- | ---------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------- |
-| `text`           | `string`                                                                                                   | `-`     | Text content to animate (alternative to default slot).  |
-| `class`          | `string`                                                                                                   | `-`     | The class name to be applied to the component.          |
-| `duration`       | `number`                                                                                                   | `800`   | Duration of the animation in milliseconds.              |
-| `delay`          | `number`                                                                                                   | `0`     | Delay before animation starts (in ms).                  |
-| `as`             | `"article" \| "div" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "li" \| "p" \| "section" \| "span"` | `"div"` | Element to render as.                                   |
-| `startOnView`    | `boolean`                                                                                                  | `false` | Start animation when the component scrolls into view.   |
-| `animateOnHover` | `boolean`                                                                                                  | `true`  | Re-trigger the scramble animation on hover.             |
-| `characterSet`   | `string[]`                                                                                                 | `A-Z`   | Custom character set for the scramble effect.           |
+| Prop             | Type                                                                                                       | Default | Description                                            |
+| ---------------- | ---------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------------------ |
+| `text`           | `string`                                                                                                   | `-`     | Text content to animate (alternative to default slot). |
+| `class`          | `string`                                                                                                   | `-`     | The class name to be applied to the component.         |
+| `duration`       | `number`                                                                                                   | `800`   | Duration of the animation in milliseconds.             |
+| `delay`          | `number`                                                                                                   | `0`     | Delay before animation starts (in ms).                 |
+| `as`             | `"article" \| "div" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "li" \| "p" \| "section" \| "span"` | `"div"` | Element to render as.                                  |
+| `startOnView`    | `boolean`                                                                                                  | `false` | Start animation when the component scrolls into view.  |
+| `animateOnHover` | `boolean`                                                                                                  | `true`  | Re-trigger the scramble animation on hover.            |
+| `characterSet`   | `string[]`                                                                                                 | `A-Z`   | Custom character set for the scramble effect.          |
 
 ## Slots
 
-| Slot      | Description                                             |
-| --------- | ------------------------------------------------------ |
+| Slot      | Description                                               |
+| --------- | --------------------------------------------------------- |
 | `default` | The text to animate (used when the `text` prop is unset). |
+
+Updating the source during a scramble restarts it with the latest text. An empty `characterSet` displays the source characters instead of random replacements.
