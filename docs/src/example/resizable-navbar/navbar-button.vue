@@ -25,15 +25,10 @@ const classes = computed(() => {
     .filter(Boolean)
     .join(" ");
 });
-
-const isRouterLink = computed(() => props.to !== undefined);
 </script>
 
 <template>
-  <a v-if="isRouterLink" :href="to ?? ''" :class="classes">
-    <slot />
-  </a>
-  <a v-else :href="href || '#'" :class="classes">
+  <a :href="to ?? (href || '#')" :class="classes">
     <slot />
   </a>
 </template>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { RouterLink } from "vue-router";
 
 const props = defineProps<{
   href?: string;
@@ -26,16 +25,10 @@ const classes = computed(() => {
     .filter(Boolean)
     .join(" ");
 });
-
-// Determine whether to use router-link or regular anchor tag
-const isRouterLink = computed(() => props.to !== undefined);
 </script>
 
 <template>
-  <RouterLink v-if="isRouterLink" :to="to ?? ''" :class="classes">
-    <slot />
-  </RouterLink>
-  <a v-else :href="href || '#'" :class="classes">
+  <a :href="to ?? (href || '#')" :class="classes">
     <slot />
   </a>
 </template>
