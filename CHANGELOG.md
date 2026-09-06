@@ -48,6 +48,7 @@
 - Update letter-based text reactively with stable positional keys and one accessible heading per phrase.
 - Keep marquee tracks nonshrinking and react to direction, orientation and repeat changes; hide inert visual copies from accessibility.
 - Apply valid reactive orbit reversal and make the copied orbit example independent of unpublished icon helpers.
+- Recompute Aurora Text gradient colors and speed when props change.
 
 ## v1.0.0
 
