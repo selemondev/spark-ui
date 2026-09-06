@@ -6,10 +6,11 @@ A light glare effect which pans across text making it appear as if it is shimmer
 
 ## Installation
 
-Copy and paste the following code into your project:
+Copy the following files into `src/components/spark-ui/animated-shiny-text/`:
 
 ```vue [animated-shiny-text.vue]
 <script setup lang="ts">
+import { computed } from "vue";
 import { cn } from "@/lib/utils";
 
 interface AnimatedShinyTextProps {
@@ -21,16 +22,18 @@ const props = withDefaults(defineProps<AnimatedShinyTextProps>(), {
   shimmerWidth: 100,
 });
 
-const className = cn(
-  "mx-auto max-w-md text-neutral-600/70 dark:text-neutral-400/70",
+const className = computed(() =>
+  cn(
+    "mx-auto max-w-md text-neutral-600/70 dark:text-neutral-400/70",
 
-  // Shimmer effect
-  "animate-shimmer bg-clip-text bg-no-repeat [background-position:0_0] [background-size:var(--shimmer-width)_100%] [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]",
+    // Shimmer effect
+    "animate-shimmer bg-clip-text bg-no-repeat [background-position:0_0] [background-size:var(--shimmer-width)_100%] [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]",
 
-  // Shimmer gradient
-  "bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent  dark:via-white/80",
+    // Shimmer gradient
+    "bg-gradient-to-r from-transparent via-black/80 via-50% to-transparent  dark:via-white/80",
 
-  props.class,
+    props.class,
+  ),
 );
 </script>
 
@@ -48,10 +51,10 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        "shiny-text": "shiny-text 8s infinite",
+        shimmer: "shimmer 8s infinite",
       },
       keyframes: {
-        "shiny-text": {
+        shimmer: {
           "0%, 90%, 100%": {
             "background-position": "calc(-100% - var(--shimmer-width)) 0",
           },
