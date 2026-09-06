@@ -21,13 +21,9 @@ if (!tree) {
   throw new Error("Folder must be used within a Tree");
 }
 
-const isExpanded = computed(
-  () => tree.expandedItems.value?.includes(props.value) ?? false,
-);
+const isExpanded = computed(() => tree.expandedItems.value?.includes(props.value) ?? false);
 const isSelected = computed(() =>
-  props.isSelect !== undefined
-    ? props.isSelect
-    : tree.selectedId.value === props.value,
+  props.isSelect !== undefined ? props.isSelect : tree.selectedId.value === props.value,
 );
 
 const onTrigger = () => {
@@ -64,24 +60,25 @@ const onLeave = (el: Element) => {
 <template>
   <div
     role="treeitem"
+    :data-tree-node="props.value"
+    :aria-label="props.element"
+    :aria-disabled="!props.isSelectable"
+    tabindex="-1"
     :aria-expanded="isExpanded"
     :aria-selected="isSelected"
-    class="relative h-full overflow-hidden"
+    class="relative h-full overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
   >
     <button
       type="button"
+      tabindex="-1"
       :disabled="!props.isSelectable"
       :aria-expanded="isExpanded"
       :class="
-        cn(
-          'flex items-center gap-1 rounded-md text-sm',
-          props.class,
-          {
-            'bg-muted rounded-md': isSelected && props.isSelectable,
-            'cursor-pointer': props.isSelectable,
-            'cursor-not-allowed opacity-50': !props.isSelectable,
-          },
-        )
+        cn('flex items-center gap-1 rounded-md text-sm', props.class, {
+          'bg-muted rounded-md': isSelected && props.isSelectable,
+          'cursor-pointer': props.isSelectable,
+          'cursor-not-allowed opacity-50': !props.isSelectable,
+        })
       "
       @click="onTrigger"
     >
@@ -133,10 +130,7 @@ const onLeave = (el: Element) => {
       @after-enter="onAfterEnter"
       @leave="onLeave"
     >
-      <div
-        v-show="isExpanded"
-        class="relative h-full overflow-hidden text-sm"
-      >
+      <div v-show="isExpanded" :inert="!isExpanded" class="relative h-full overflow-hidden text-sm">
         <div
           v-if="props.element && tree.indicator.value"
           aria-hidden="true"

@@ -29,6 +29,7 @@
 - Scale Android artwork in its original coordinate system and keep device screen masks unique across simultaneous instances.
 - Give Hero Video Dialog native modal semantics, named controls, keyboard dismissal, focus restoration and exit-aware teardown.
 - Make mobile navigation keyboard-operable with associated menu state, Escape dismissal and initial scroll measurement; align copied links with the router-free component.
+- Implement roving keyboard navigation and direction-aware expansion for File Tree while keeping collapsed descendants inert and initial-state APIs unchanged.
 
 ## v1.0.0
 
