@@ -2,7 +2,7 @@ import type { ComponentHistory, MissingComponent } from "./types.ts";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
-import { readJson, registryDir, writeJson } from "./registry-utils";
+import { readJson, registryDir, writeJson } from "./registry-utils.ts";
 
 interface GithubError extends Error {
   status?: number;

@@ -14,7 +14,7 @@ import {
   toPascalCase,
   unique,
   writeJson,
-} from "./registry-utils";
+} from "./registry-utils.ts";
 
 interface ManifestFile {
   path: string;

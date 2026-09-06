@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Fixes
+
+- Restore maintenance-script type checking and explicit Node ESM imports.
+
 ## v1.0.0
 
 [compare changes](https://github.com/selemondev/spark-ui/compare/v1.0.0...v1.0.0)

@@ -13,7 +13,7 @@ import {
   toKebabCase,
   toPascalCase,
   writeJson,
-} from "./registry-utils";
+} from "./registry-utils.ts";
 
 const componentRoot = path.join(repoRoot, "docs/src/components/spark-ui");
 const exampleRoots = [

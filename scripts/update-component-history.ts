@@ -1,6 +1,6 @@
 import type { ComponentHistory, ComponentRegistry } from "./types.ts";
 import path from "node:path";
-import { readJson, registryDir, writeJson } from "./registry-utils";
+import { readJson, registryDir, writeJson } from "./registry-utils.ts";
 
 const now = new Date().toISOString();
 const historyPath = path.join(registryDir, "component-history.json");
