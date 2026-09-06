@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [Vue()],
   test: {
     clearMocks: true,
+    setupFiles: ["./tests/setup-dom.ts"],
     exclude: [
       "**/node_modules/**",
       "**/dist/**",
