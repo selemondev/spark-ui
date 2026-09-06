@@ -38,6 +38,7 @@
 - Keep Hyper Text synchronized with reactive prop and slot replacements before, during and after scrambling; tolerate empty character sets.
 - Honor zero Glyph Matrix mutation rates and rebuild changed cell geometry; keep copied usage independent of VitePress.
 - Rebuild Flickering Grid dimensions when geometry props change and keep intersection transitions from scheduling duplicate frame loops.
+- Resolve Icon Cloud source precedence and scaled pointer coordinates consistently, reject stale image completions and supply valid self-contained demo artwork.
 
 ## v1.0.0
 
