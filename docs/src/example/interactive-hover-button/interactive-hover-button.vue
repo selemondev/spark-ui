@@ -11,6 +11,7 @@ const props = defineProps<InteractiveHoverButtonProps>();
 
 <template>
   <button
+    type="button"
     v-bind="props"
     :class="
       cn(
@@ -30,6 +31,8 @@ const props = defineProps<InteractiveHoverButtonProps>();
       </span>
     </div>
     <div
+      aria-hidden="true"
+      inert
       class="absolute top-0 z-10 flex h-full w-full translate-x-12 items-center justify-center gap-2 text-white opacity-0 transition-all duration-300 group-hover:-translate-x-5 group-hover:opacity-100 dark:text-black"
     >
       <span><slot /></span>
