@@ -51,6 +51,7 @@
 - Recompute Aurora Text gradient colors and speed when props change.
 - Fill the entire skewed scroll cycle with an equal following track, keeping repeated content inert and hidden from accessibility.
 - Provide the documented semantic color tokens to live previews without changing VitePress's document reset or layout.
+- Register the intended `@` source alias instead of accidental `find` and `replacement` aliases in the documentation Vite configuration.
 
 ## v1.0.0
 

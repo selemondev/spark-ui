@@ -32,8 +32,7 @@ export default ({ mode }: { mode: string }) => {
     ] as never,
     resolve: {
       alias: {
-        find: "@",
-        replacement: fileURLToPath(new URL("./src", import.meta.url)),
+        "@": fileURLToPath(new URL("./src", import.meta.url)),
       },
     },
   });
