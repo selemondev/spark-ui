@@ -12,6 +12,7 @@
 - Pin installation examples to Tailwind CSS 3 and tailwind-merge 2 so the documented CLI and configuration work.
 - Remove stray Markdown from the copied Animated Gradient Text Vue example.
 - Resolve registry paths correctly in checkouts whose names contain spaces or URL-escaped characters.
+- Align workspace commands and aliases with the existing docs package; remove the unused declaration-build dependency.
 
 ## v1.0.0
 

@@ -1,6 +1,5 @@
 import Vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite-plus";
-import { resolvePath } from "./config/utils/resolvePath";
 
 export default defineConfig({
   plugins: [Vue()],
@@ -12,12 +11,6 @@ export default defineConfig({
       // Stale agent git worktrees hold duplicated specs that hang the run
       "**/.claude/worktrees/**",
     ],
-  },
-  resolve: {
-    alias: {
-      "@spark-ui/ui": resolvePath("./packages/ui"),
-      "@spark-ui/cli": resolvePath("./packages/cli"),
-    },
   },
   staged: {
     "*.{js,ts,tsx,vue,md}": "vp check --fix",
