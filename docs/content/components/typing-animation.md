@@ -10,7 +10,7 @@ Copy and paste the following code into your project:
 
 ```vue [typing-animation.vue]
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { cn } from "@/lib/utils";
 
 interface TypingAnimationProps {
@@ -24,43 +24,36 @@ const props = withDefaults(defineProps<TypingAnimationProps>(), {
 });
 
 const displayedText = ref("");
-const i = ref(0);
 
-function handleTypingEffect(d: number, n: number) {
-  const typingEffect = setInterval(() => {
-    if (n < props.text.length) {
-      displayedText.value = props.text.substring(0, n + 1);
-      n = n + 1;
-    } else {
-      clearInterval(typingEffect);
-    }
-  }, d);
+onMounted(() => {
+  watch(
+    () => [props.text, props.duration] as const,
+    ([text, duration], _previous, onCleanup) => {
+      displayedText.value = "";
+      if (!text) return;
 
-  return () => {
-    clearInterval(typingEffect);
-  };
-}
+      let index = 0;
+      const timer = setInterval(() => {
+        displayedText.value = text.slice(0, ++index);
+        if (index >= text.length) clearInterval(timer);
+      }, duration);
+      onCleanup(() => clearInterval(timer));
+    },
+    { immediate: true },
+  );
+});
 
-watch(
-  () => [props.duration, i.value],
-  ([d, n]) => {
-    handleTypingEffect(d, n);
-  },
-  {
-    deep: true,
-    immediate: true,
-  },
-);
-
-const className = cn(
-  "font-sans text-center text-4xl font-bold leading-[5rem] tracking-[-0.02em] drop-shadow-sm dark:text-white",
-  props.class,
+const className = computed(() =>
+  cn(
+    "font-display text-center text-4xl font-bold leading-[5rem] tracking-[-0.02em] drop-shadow-sm dark:text-white",
+    props.class,
+  ),
 );
 </script>
 
 <template>
   <h1 :class="className">
-    {{ displayedText ? displayedText : props.text }}
+    {{ displayedText }}
   </h1>
 </template>
 ```
@@ -72,3 +65,5 @@ const className = cn(
 | class    | string | The class for the component                     | ""      |
 | duration | number | The duration to wait in between each char type. | 300     |
 | text     | string | Text to animate.                                | ""      |
+
+Typing starts empty after mount. Changing `text` or `duration` cancels the current sequence and restarts from the first character; removing the component cancels its timer.
