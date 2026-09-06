@@ -93,7 +93,9 @@ const showStatic = computed(() => props.isStatic || Boolean(props.defaultPositio
 
     <div
       v-if="showStatic"
-      class="absolute inset-0 overflow-hidden"
+      aria-hidden="true"
+      inert
+      class="pointer-events-none absolute inset-0 overflow-hidden"
       :style="lensContentStyle"
     >
       <div class="absolute inset-0" :style="zoomStyle">
@@ -104,7 +106,9 @@ const showStatic = computed(() => props.isStatic || Boolean(props.defaultPositio
     <Transition v-else name="lens">
       <div
         v-if="isHovering"
-        class="absolute inset-0 overflow-hidden"
+        aria-hidden="true"
+        inert
+        class="pointer-events-none absolute inset-0 overflow-hidden"
         :style="lensContentStyle"
       >
         <div class="absolute inset-0" :style="zoomStyle">
