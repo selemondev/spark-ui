@@ -6,7 +6,7 @@ A circular gauge that animates smoothly between values, displaying the current p
 
 ## Installation
 
-Copy and paste the following code into your project:
+Copy the following files into `src/components/spark-ui/animated-circular-progress-bar/`:
 
 ::: code-group
 
@@ -33,9 +33,26 @@ const props = withDefaults(defineProps<AnimatedCircularProgressBarProps>(), {
 const circumference = 2 * Math.PI * 45;
 const percentPx = circumference / 100;
 
-const currentPercent = computed(() =>
-  Math.round(((props.value - props.min) / (props.max - props.min)) * 100),
-);
+const range = computed(() => {
+  const { min, max } = props;
+  if (!Number.isFinite(min) || !Number.isFinite(max) || max <= min) {
+    return { min: 0, max: 100 };
+  }
+  return { min, max };
+});
+
+const currentValue = computed(() => {
+  const { min, max } = range.value;
+  return Number.isFinite(props.value) ? Math.min(max, Math.max(min, props.value)) : min;
+});
+
+const currentPercent = computed(() => {
+  const { min, max } = range.value;
+  // Scaling first also keeps finite ranges spanning both numeric extremes safe.
+  const scale = Math.max(Math.abs(min), Math.abs(max), 1);
+  const percent = ((currentValue.value / scale - min / scale) / (max / scale - min / scale)) * 100;
+  return Math.min(100, Math.max(0, Math.round(percent)));
+});
 
 const rootStyle = computed(() => ({
   "--circle-size": "100px",
@@ -52,7 +69,7 @@ const rootStyle = computed(() => ({
 
 const secondaryStyle = computed(() => ({
   stroke: props.gaugeSecondaryColor,
-  "--stroke-percent": `${90 - currentPercent.value}`,
+  "--stroke-percent": `${Math.max(0, 90 - currentPercent.value)}`,
   "--offset-factor-secondary": "calc(1 - var(--offset-factor))",
   strokeDasharray: "calc(var(--stroke-percent) * var(--percent-to-px)) var(--circumference)",
   transform:
@@ -75,8 +92,15 @@ const primaryStyle = computed(() => ({
 </script>
 
 <template>
-  <div :class="cn('relative size-40 text-2xl font-semibold', props.class)" :style="rootStyle">
-    <svg fill="none" class="size-full" stroke-width="2" viewBox="0 0 100 100">
+  <div
+    :class="cn('relative size-40 text-2xl font-semibold', props.class)"
+    :style="rootStyle"
+    role="progressbar"
+    :aria-valuemin="range.min"
+    :aria-valuemax="range.max"
+    :aria-valuenow="currentValue"
+  >
+    <svg aria-hidden="true" fill="none" class="size-full" stroke-width="2" viewBox="0 0 100 100">
       <circle
         v-if="currentPercent <= 90 && currentPercent >= 0"
         cx="50"
@@ -116,11 +140,15 @@ const primaryStyle = computed(() => ({
 
 ## Props
 
-| Prop                  | Type     | Default | Description                                   |
-| --------------------- | -------- | ------- | --------------------------------------------- |
-| `max`                 | `number` | `100`   | The maximum value of the gauge.               |
-| `min`                 | `number` | `0`     | The minimum value of the gauge.               |
-| `value`               | `number` | `0`     | The current value of the gauge.               |
-| `gaugePrimaryColor`   | `string` | `-`     | The primary color of the gauge (the fill).    |
-| `gaugeSecondaryColor` | `string` | `-`     | The secondary color of the gauge (the track). |
-| `class`               | `string` | `-`     | The class name to apply to the component.     |
+| Prop                  | Type     | Default | Description                                    |
+| --------------------- | -------- | ------- | ---------------------------------------------- |
+| `max`                 | `number` | `100`   | The maximum value of the gauge.                |
+| `min`                 | `number` | `0`     | The minimum value of the gauge.                |
+| `value`               | `number` | `0`     | Current value, clamped to the effective range. |
+| `gaugePrimaryColor`   | `string` | `-`     | The primary color of the gauge (the fill).     |
+| `gaugeSecondaryColor` | `string` | `-`     | The secondary color of the gauge (the track).  |
+| `class`               | `string` | `-`     | The class name to apply to the component.      |
+
+The root exposes `role="progressbar"` and its effective `aria-valuemin`, `aria-valuemax`, and `aria-valuenow`. Provide an accessible name with ordinary attributes, for example `aria-label="Upload progress"` or `aria-labelledby="upload-heading"`; these fall through to the root.
+
+Non-finite bounds or `max <= min` use the fallback range `[0, 100]`. Non-finite values use the effective minimum. Geometry and displayed percentages stay within `0–100`, including out-of-range values.

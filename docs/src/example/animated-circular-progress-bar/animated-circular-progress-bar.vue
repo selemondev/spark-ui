@@ -20,9 +20,26 @@ const props = withDefaults(defineProps<AnimatedCircularProgressBarProps>(), {
 const circumference = 2 * Math.PI * 45;
 const percentPx = circumference / 100;
 
-const currentPercent = computed(() =>
-  Math.round(((props.value - props.min) / (props.max - props.min)) * 100),
-);
+const range = computed(() => {
+  const { min, max } = props;
+  if (!Number.isFinite(min) || !Number.isFinite(max) || max <= min) {
+    return { min: 0, max: 100 };
+  }
+  return { min, max };
+});
+
+const currentValue = computed(() => {
+  const { min, max } = range.value;
+  return Number.isFinite(props.value) ? Math.min(max, Math.max(min, props.value)) : min;
+});
+
+const currentPercent = computed(() => {
+  const { min, max } = range.value;
+  // Scaling first also keeps finite ranges spanning both numeric extremes safe.
+  const scale = Math.max(Math.abs(min), Math.abs(max), 1);
+  const percent = ((currentValue.value / scale - min / scale) / (max / scale - min / scale)) * 100;
+  return Math.min(100, Math.max(0, Math.round(percent)));
+});
 
 const rootStyle = computed(() => ({
   "--circle-size": "100px",
@@ -39,7 +56,7 @@ const rootStyle = computed(() => ({
 
 const secondaryStyle = computed(() => ({
   stroke: props.gaugeSecondaryColor,
-  "--stroke-percent": `${90 - currentPercent.value}`,
+  "--stroke-percent": `${Math.max(0, 90 - currentPercent.value)}`,
   "--offset-factor-secondary": "calc(1 - var(--offset-factor))",
   strokeDasharray: "calc(var(--stroke-percent) * var(--percent-to-px)) var(--circumference)",
   transform:
@@ -62,8 +79,15 @@ const primaryStyle = computed(() => ({
 </script>
 
 <template>
-  <div :class="cn('relative size-40 text-2xl font-semibold', props.class)" :style="rootStyle">
-    <svg fill="none" class="size-full" stroke-width="2" viewBox="0 0 100 100">
+  <div
+    :class="cn('relative size-40 text-2xl font-semibold', props.class)"
+    :style="rootStyle"
+    role="progressbar"
+    :aria-valuemin="range.min"
+    :aria-valuemax="range.max"
+    :aria-valuenow="currentValue"
+  >
+    <svg aria-hidden="true" fill="none" class="size-full" stroke-width="2" viewBox="0 0 100 100">
       <circle
         v-if="currentPercent <= 90 && currentPercent >= 0"
         cx="50"
