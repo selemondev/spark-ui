@@ -6,6 +6,7 @@
 
 - Restore maintenance-script type checking and explicit Node ESM imports.
 - Correct demo source utility imports to match the installation guide's `@/lib/utils` path.
+- Stop requiring the intentionally removed sync guide and watcher workflow during normalization.
 
 ## v1.0.0
 

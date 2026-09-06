@@ -19,8 +19,6 @@ const report: { renamed: string[]; duplicatesRemoved: string[]; canonicalFiles: 
     "registry/spark-ui.schema.json",
     "registry/missing-components.schema.json",
     "registry/component-history.schema.json",
-    "docs/content/guide/magic-ui-sync.md",
-    ".github/workflows/watch-magic-ui.yml",
     "scripts/clone-magic-ui.ts",
     "scripts/build-magic-ui-registry.ts",
     "scripts/build-spark-ui-registry.ts",
