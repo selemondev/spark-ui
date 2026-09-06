@@ -10,8 +10,9 @@ Copy and paste the following code into your project:
 
 ```vue [meteors.vue]
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { cn } from "@/lib/utils";
+
 interface MeteorsProps {
   number?: number;
 }
@@ -22,25 +23,31 @@ const props = withDefaults(defineProps<MeteorsProps>(), {
 
 const meteorStyles = ref();
 
+const getRandomPosition = (max: number) => `${Math.floor(Math.random() * max)}px`;
+const getRandomDelay = () => `${(Math.random() * 1 + 0.2).toFixed(2)}s`;
+const getRandomDuration = () => `${Math.floor(Math.random() * 8 + 2)}s`;
+
+function generateMeteorStyles(count: number) {
+  meteorStyles.value = Array.from({ length: count }, () => ({
+    top: -5,
+    left: getRandomPosition(window.innerWidth),
+    animationDelay: getRandomDelay(),
+    animationDuration: getRandomDuration(),
+  }));
+}
+
+onMounted(() => generateMeteorStyles(props.number));
+
 watch(
   () => props.number,
   (val) => {
-    const styles = Array.from({ length: val }).map(() => ({
-      top: -5,
-      left: `${Math.floor(Math.random() * window.innerWidth)}px`,
-      animationDelay: `${Math.random() * 1 + 0.2}s`,
-      animationDuration: `${Math.floor(Math.random() * 8 + 2)}s`,
-    }));
-    meteorStyles.value = styles;
-  },
-  {
-    immediate: true,
+    generateMeteorStyles(val);
   },
 );
 </script>
 
 <template>
-  <div v-for="(style, index) in meteorStyles" :key="index">
+  <div v-for="(style, index) in meteorStyles" :key="index" class="absolute">
     <span
       :key="index"
       :class="
@@ -56,6 +63,30 @@ watch(
     </span>
   </div>
 </template>
+```
+
+Merge the existing meteor animation into `theme.extend` in your Tailwind CSS 3 configuration. The component initializes positions after mounting, so it can also be rendered on the server.
+
+```js [tailwind.config.js]
+export default {
+  theme: {
+    extend: {
+      keyframes: {
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
+          "70%": { opacity: 1 },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: 0,
+          },
+        },
+      },
+      animation: {
+        meteor: "meteor 5s linear infinite",
+      },
+    },
+  },
+};
 ```
 
 ## Props

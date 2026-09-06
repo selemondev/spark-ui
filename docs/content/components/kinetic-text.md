@@ -39,13 +39,9 @@ const letters = computed(() =>
     :class="cn('kinetic-text flex flex-wrap font-[300]', props.class)"
     :style="props.style"
   >
-    <span
-      v-for="(letter, i) in letters"
-      :key="i"
-      aria-hidden="true"
-      class="kinetic-text__char"
-      >{{ letter }}</span
-    >
+    <span v-for="(letter, i) in letters" :key="i" aria-hidden="true" class="kinetic-text__char">{{
+      letter
+    }}</span>
     <span class="sr-only">{{ props.text }}</span>
   </component>
 </template>
@@ -57,7 +53,10 @@ const letters = computed(() =>
 }
 
 .kinetic-text__char {
-  will-change: font-weight, -webkit-text-stroke-width, padding;
+  will-change:
+    font-weight,
+    -webkit-text-stroke-width,
+    padding;
   -webkit-text-stroke-color: transparent;
   -webkit-text-stroke-width: var(--text-stroke-width);
   transition:
@@ -104,7 +103,7 @@ const letters = computed(() =>
 
 ```vue
 <script setup lang="ts">
-import KineticText from "@/components/ui/kinetic-text.vue";
+import KineticText from "@/components/spark-ui/kinetic-text/kinetic-text.vue";
 </script>
 
 <template>
@@ -115,7 +114,7 @@ import KineticText from "@/components/ui/kinetic-text.vue";
 ## Props
 
 | Prop    | Type                                                            | Default | Description                                         |
-| ------- | -------------------------------------------------------------- | ------- | --------------------------------------------------- |
+| ------- | --------------------------------------------------------------- | ------- | --------------------------------------------------- |
 | `text`  | `string`                                                        | `-`     | The text content to render with the kinetic effect. |
 | `as`    | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "p" \| "span"` | `"h1"`  | The HTML element to render as.                      |
 | `class` | `string`                                                        | `-`     | Additional class names for the wrapper element.     |
