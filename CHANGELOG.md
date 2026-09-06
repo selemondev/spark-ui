@@ -13,6 +13,7 @@
 - Remove stray Markdown from the copied Animated Gradient Text Vue example.
 - Resolve registry paths correctly in checkouts whose names contain spaces or URL-escaped characters.
 - Align workspace commands and aliases with the existing docs package; remove the unused declaration-build dependency.
+- Remove the stale npm lockfile; the pnpm lockfile is the authoritative dependency graph.
 
 ## v1.0.0
 
