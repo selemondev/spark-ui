@@ -4,68 +4,69 @@ on:
   push:
     branches:
       - main
+      - dev
 
   pull_request:
     branches:
       - main
+      - dev
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
 
       - name: Set node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v5
         with:
-          node-version: lts/*
-
-      - name: Setup
-        run: npm i -g @antfu/ni
+          node-version-file: .node-version
 
       - name: Install
-        run: nci
+        run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: nr lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Check repository normalization
+        run: pnpm normalize:repository:check
 
       - name: Build
-        run: nr build
+        run: pnpm build
 
   test:
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        node: [lts/*]
         os: [ubuntu-latest, windows-latest, macos-latest]
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
 
-      - name: Set node ${{ matrix.node }}
-        uses: actions/setup-node@v3
+      - name: Set node
+        uses: actions/setup-node@v5
         with:
-          node-version: ${{ matrix.node }}
-
-      - name: Setup
-        run: npm i -g @antfu/ni
+          node-version-file: .node-version
 
       - name: Install
-        run: nci
+        run: pnpm install --frozen-lockfile
 
       - name: Test
-        run: nr test
+        run: pnpm test
 
       - name: Lint
-        run: nr lint
+        run: pnpm lint
 
       - name: Build
-        run: nr build
+        run: pnpm build

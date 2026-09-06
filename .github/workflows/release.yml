@@ -11,32 +11,38 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
 
       - name: Set node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version-file: .node-version
           cache: pnpm
 
-      - name: Setup ni
-        run: npm i -g @antfu/ni
-
-      - run: npx changelogithub
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Install
-        run: nci
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Check repository normalization
+        run: pnpm normalize:repository:check
 
       - name: Build
-        run: nr build
+        run: pnpm build
 
       - name: Test
-        run: nr test
+        run: pnpm test
+
+      - name: Create GitHub release
+        run: npx changelogithub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -15,6 +15,7 @@
 - Align workspace commands and aliases with the existing docs package; remove the unused declaration-build dependency.
 - Remove the stale npm lockfile; the pnpm lockfile is the authoritative dependency graph.
 - Apply compatible security updates to form-data, Immutable, brace-expansion, JS-YAML, Browserslist and the PostCSS selector parser.
+- Validate releases before creating them on GitHub; align CI with Node 22, current action runtimes and the existing typecheck/normalization gates.
 
 ## v1.0.0
 
