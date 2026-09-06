@@ -36,6 +36,7 @@
 - Destroy Globe renderers on unmount, preserve host-document styles and distinguish a zero-coordinate drag from no interaction.
 - Track terminal slot text during rendering and restart owned typing timers on content or timing changes, including delayed unmounts.
 - Keep Hyper Text synchronized with reactive prop and slot replacements before, during and after scrambling; tolerate empty character sets.
+- Honor zero Glyph Matrix mutation rates and rebuild changed cell geometry; keep copied usage independent of VitePress.
 
 ## v1.0.0
 

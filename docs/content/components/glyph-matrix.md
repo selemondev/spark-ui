@@ -129,7 +129,7 @@ onMounted(() => {
       last = t;
 
       const total = cols * rows;
-      const mutations = Math.max(1, Math.floor(total * props.mutationRate));
+      const mutations = Math.max(0, Math.floor(total * props.mutationRate));
 
       for (let n = 0; n < mutations; n++) {
         const i = Math.floor(Math.random() * total);
@@ -152,6 +152,13 @@ onMounted(() => {
     draw();
   });
   ro.observe(canvas);
+  watch(
+    () => [props.cellSize, props.glyphs],
+    () => {
+      resize();
+      draw();
+    },
+  );
 });
 
 // Recolor the next frame when the color prop changes (e.g. theme toggle)
@@ -182,22 +189,16 @@ onBeforeUnmount(() => {
 
 ## Usage
 
-Wrap the component in a sized, overflow-hidden container and drive its `color`
-from your theme:
+Wrap the component in a sized, overflow-hidden container. Set `color` directly or bind it to your application's theme state:
 
 ```vue
 <script setup lang="ts">
-import { computed } from "vue";
-import { useData } from "vitepress";
 import GlyphMatrix from "@/components/spark-ui/glyph-matrix/glyph-matrix.vue";
-
-const { isDark } = useData();
-const color = computed(() => (isDark.value ? "#ffffff" : "#000000"));
 </script>
 
 <template>
   <div class="relative h-[400px] w-full overflow-hidden rounded-lg border">
-    <GlyphMatrix :color="color" />
+    <GlyphMatrix color="#6B7280" />
   </div>
 </template>
 ```
@@ -216,4 +217,4 @@ const color = computed(() => (isDark.value ? "#ffffff" : "#000000"));
 
 ## Notes
 
-The component draws with the `color` prop, which accepts any CSS color (hex, `rgb()`, `hsl()`, `oklch()`, ...) and is normalized through canvas before drawing. For light/dark support, drive `color` from the consumer — e.g. with `useData().isDark` from VitePress as shown in the demo above.
+The component draws with the `color` prop, which accepts any CSS color (hex, `rgb()`, `hsl()`, `oklch()`, ...) and is normalized through canvas before drawing. For light/dark support, drive `color` from the consumer's theme state; the component has no theme-provider dependency. Changes to `cellSize` or `glyphs` rebuild the grid. Set `mutationRate` to `0` to keep the generated cells unchanged between ticks.
