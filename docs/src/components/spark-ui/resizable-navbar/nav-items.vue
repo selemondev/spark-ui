@@ -38,7 +38,7 @@ function handleClick() {
       <transition name="fade">
         <div
           v-if="hovered === idx"
-          class="absolute inset-0 h-full w-full rounded-full bg-gray-100"
+          class="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
         />
       </transition>
       <span class="relative z-20">{{ item?.name }}</span>
