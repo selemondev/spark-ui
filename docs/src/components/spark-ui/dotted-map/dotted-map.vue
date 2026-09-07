@@ -63,12 +63,10 @@ const map = computed(() =>
 
 const points = computed(() => map.value.points);
 
-const processedMarkers = computed(
-  () => map.value.addMarkers(props.markers) as MapMarker[],
-);
+const processedMarkers = computed(() => map.value.addMarkers(props.markers) as MapMarker[]);
 
 // Compute stagger helpers in a single, simple pass.
-const stagger = computed(() => {
+const staggerLayout = computed(() => {
   const sorted = [...points.value].sort((a, b) => a.y - b.y || a.x - b.x);
   const rowMap = new Map<number, number>();
   let step = 0;
@@ -93,8 +91,8 @@ const stagger = computed(() => {
 });
 
 function rowOffset(y: number) {
-  const rowIndex = stagger.value.yToRowIndex.get(y) ?? 0;
-  return props.stagger && rowIndex % 2 === 1 ? stagger.value.xStep / 2 : 0;
+  const rowIndex = staggerLayout.value.yToRowIndex.get(y) ?? 0;
+  return props.stagger && rowIndex % 2 === 1 ? staggerLayout.value.xStep / 2 : 0;
 }
 
 const renderedMarkers = computed(() =>
@@ -103,9 +101,7 @@ const renderedMarkers = computed(() =>
     const x = marker.x + offsetX;
     const y = marker.y;
     const r = marker.size ?? props.dotRadius;
-    const shouldPulse = props.pulse
-      ? marker.pulse !== false
-      : marker.pulse === true;
+    const shouldPulse = props.pulse ? marker.pulse !== false : marker.pulse === true;
     const pulseTo = r * 2.8;
     return { marker: { ...marker, x, y }, index, x, y, r, shouldPulse, pulseTo };
   }),
@@ -127,10 +123,7 @@ const renderedMarkers = computed(() =>
       :fill="props.dotColor"
     />
 
-    <g
-      v-for="item in renderedMarkers"
-      :key="`${item.x}-${item.y}-${item.index}`"
-    >
+    <g v-for="item in renderedMarkers" :key="`${item.x}-${item.y}-${item.index}`">
       <circle :cx="item.x" :cy="item.y" :r="item.r" :fill="props.markerColor" />
 
       <g v-if="item.shouldPulse" pointer-events="none">
@@ -149,12 +142,7 @@ const renderedMarkers = computed(() =>
             dur="1.4s"
             repeatCount="indefinite"
           />
-          <animate
-            attributeName="opacity"
-            values="1;0"
-            dur="1.4s"
-            repeatCount="indefinite"
-          />
+          <animate attributeName="opacity" values="1;0" dur="1.4s" repeatCount="indefinite" />
         </circle>
         <circle
           :cx="item.x"
