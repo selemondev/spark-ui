@@ -142,11 +142,12 @@ function handlePointerDown(e: PointerEvent) {
     const rotatedX = icon.x * cosY - icon.z * sinY;
     const rotatedZ = icon.x * sinY + icon.z * cosY;
     const rotatedY = icon.y * cosX + rotatedZ * sinX;
+    const depth = rotatedZ * cosX - icon.y * sinX;
 
     const screenX = canvas.width / 2 + rotatedX;
     const screenY = canvas.height / 2 + rotatedY;
 
-    const scale = (rotatedZ + 200) / 300;
+    const scale = (depth + 200) / 300;
     const radius = 20 * scale;
     const dx = x - screenX;
     const dy = y - screenY;
@@ -266,9 +267,10 @@ function animate() {
     const rotatedX = icon.x * cosY - icon.z * sinY;
     const rotatedZ = icon.x * sinY + icon.z * cosY;
     const rotatedY = icon.y * cosX + rotatedZ * sinX;
+    const depth = rotatedZ * cosX - icon.y * sinX;
 
-    const scale = (rotatedZ + 200) / 300;
-    const opacity = Math.max(0.2, Math.min(1, (rotatedZ + 150) / 200));
+    const scale = (depth + 200) / 300;
+    const opacity = Math.max(0.2, Math.min(1, (depth + 150) / 200));
 
     ctx.save();
     ctx.translate(canvas.width / 2 + rotatedX, canvas.height / 2 + rotatedY);

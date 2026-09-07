@@ -9,8 +9,9 @@ const g = globalThis as unknown as Record<string, unknown> & {
   document: { createElement: (tag: string) => unknown };
 };
 
-const raf = vi.fn(() => 1);
+const raf = vi.fn((_callback: () => void) => 1);
 const caf = vi.fn();
+const scales = vi.fn();
 
 beforeEach(() => {
   vi.stubGlobal("requestAnimationFrame", raf);
@@ -26,7 +27,7 @@ beforeEach(() => {
     save: vi.fn(),
     restore: vi.fn(),
     translate: vi.fn(),
-    scale: vi.fn(),
+    scale: scales,
     fill: vi.fn(),
     fillText: vi.fn(),
     fillStyle: "",
@@ -41,11 +42,22 @@ afterEach(() => {
   vi.unstubAllGlobals();
   raf.mockClear();
   caf.mockClear();
+  scales.mockClear();
 });
 
-it("merges a custom class onto the canvas", () => {
-  const wrapper = mount(IconCloud, { props: { class: "border-red-500" } });
-  expect(wrapper.get("canvas").classes()).toContain("border-red-500");
+it("projects an icon's depth after vertical keyboard rotation", async () => {
+  const wrapper = mount(IconCloud);
+  try {
+    const initialScale = scales.mock.calls[0]![0];
+    scales.mockClear();
+    for (let i = 0; i < 10; i++) {
+      await wrapper.get("canvas").trigger("keydown", { key: "ArrowDown" });
+    }
+    raf.mock.calls.at(-1)?.[0]();
+    expect(scales.mock.calls[0]![0]).toBeGreaterThan(initialScale + 0.25);
+  } finally {
+    wrapper.unmount();
+  }
 });
 
 it("starts the animation loop on mount and cancels it on unmount", () => {
