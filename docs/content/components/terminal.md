@@ -41,7 +41,7 @@ const props = withDefaults(defineProps<AnimatedSpanProps>(), {
       duration: 0.3,
       delay: props.delay / 1000,
     }"
-    :class="cn('grid text-sm font-normal tracking-tight', props.className)"
+    :class="cn('grid text-sm font-normal tracking-tight text-foreground', props.className)"
   >
     <slot />
   </motion.div>
@@ -61,12 +61,14 @@ const props = defineProps<TerminalProps>();
   <div
     :class="
       cn(
-        'z-0 min-h-[300px] w-full max-w-lg rounded-xl border border-gray-300 bg-background',
+        'z-0 min-h-[300px] w-full max-w-lg rounded-xl border border-solid border-gray-400 bg-background text-foreground shadow-sm dark:border-neutral-800 dark:shadow-none',
         props.className,
       )
     "
   >
-    <div class="flex flex-col gap-y-2 border-b border-gray-300 p-4">
+    <div
+      class="flex flex-col gap-y-2 border-b border-solid border-gray-400 p-4 dark:border-neutral-800"
+    >
       <div class="flex flex-row gap-x-2">
         <div class="h-2 w-2 rounded-full bg-red-500" />
         <div class="h-2 w-2 rounded-full bg-yellow-500" />
@@ -151,7 +153,9 @@ const TypedText = defineComponent({
 </script>
 
 <template>
-  <MotionComponent :class="cn('text-sm font-normal tracking-tight', props.className)">
+  <MotionComponent
+    :class="cn('text-sm font-normal tracking-tight text-foreground', props.className)"
+  >
     <TypedText :text="textContent(slots.default?.() ?? [])" />
   </MotionComponent>
 </template>

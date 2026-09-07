@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<AnimatedSpanProps>(), {
       duration: 0.3,
       delay: props.delay / 1000,
     }"
-    :class="cn('grid text-sm font-normal tracking-tight', props.className)"
+    :class="cn('grid text-sm font-normal tracking-tight text-foreground', props.className)"
   >
     <slot />
   </motion.div>
