@@ -1,6 +1,6 @@
 {
   "$schema": "./component-history.schema.json",
-  "generatedAt": "2026-06-03T01:37:17.396Z",
+  "generatedAt": "2026-09-07T02:00:39.252Z",
   "components": {
     "android": {
       "name": "Android",
@@ -9,8 +9,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/android.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "animated-circular-progress-bar": {
       "name": "AnimatedCircularProgressBar",
@@ -19,8 +19,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/animated-circular-progress-bar.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "animated-grid-pattern": {
       "name": "AnimatedGridPattern",
@@ -29,8 +29,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/animated-grid-pattern.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "animated-theme-toggler": {
       "name": "ThemeToggler",
@@ -39,8 +39,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/animated-theme-toggler.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "aurora-text": {
       "name": "AuroraText",
@@ -49,8 +49,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/aurora-text.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "backlight": {
       "name": "Backlight",
@@ -59,8 +59,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/backlight.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "bento-grid": {
       "name": "BentoGrid",
@@ -69,7 +69,7 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/bento-grid.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
       "status": "ported"
     },
     "border-beam": {
@@ -79,8 +79,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/border-beam.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "client-tweet-card": {
       "name": "ClientTweetCard",
@@ -89,8 +89,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/client-tweet-card.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "code-comparison": {
       "name": "CodeComparison",
@@ -99,8 +99,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/code-comparison.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "comic-text": {
       "name": "ComicText",
@@ -109,8 +109,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/comic-text.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "confetti": {
       "name": "Confetti",
@@ -119,8 +119,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/confetti.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "cool-mode": {
       "name": "CoolMode",
@@ -129,8 +129,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/cool-mode.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "dia-text-reveal": {
       "name": "DiaTextReveal",
@@ -139,8 +139,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/dia-text-reveal.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "dock": {
       "name": "Dock",
@@ -149,8 +149,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/dock.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "dotted-map": {
       "name": "DottedMap",
@@ -159,8 +159,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/dotted-map.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "file-tree": {
       "name": "FileTree",
@@ -169,8 +169,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/file-tree.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "flickering-grid": {
       "name": "FlickeringGrid",
@@ -179,8 +179,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/flickering-grid.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "glare-hover": {
       "name": "GlareHover",
@@ -189,8 +189,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/glare-hover.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "grid-pattern": {
       "name": "GridPattern",
@@ -199,8 +199,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/grid-pattern.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "hero-video-dialog": {
       "name": "HeroVideoDialog",
@@ -209,8 +209,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/hero-video-dialog.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "hexagon-pattern": {
       "name": "HexagonPattern",
@@ -219,8 +219,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/hexagon-pattern.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "highlighter": {
       "name": "Highlighter",
@@ -229,8 +229,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/highlighter.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "hyper-text": {
       "name": "HyperText",
@@ -239,8 +239,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/hyper-text.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "icon-cloud": {
       "name": "IconCloud",
@@ -249,8 +249,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/icon-cloud.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "interactive-grid-pattern": {
       "name": "InteractiveGridPattern",
@@ -259,8 +259,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/interactive-grid-pattern.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "interactive-hover-button": {
       "name": "InteractiveHoverButton",
@@ -269,8 +269,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/interactive-hover-button.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "iphone": {
       "name": "IPhone",
@@ -279,8 +279,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/iphone.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "kinetic-text": {
       "name": "KineticText",
@@ -289,8 +289,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/kinetic-text.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "lens": {
       "name": "Lens",
@@ -299,8 +299,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/lens.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "light-rays": {
       "name": "LightRays",
@@ -309,8 +309,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/light-rays.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "line-shadow-text": {
       "name": "LineShadowText",
@@ -319,8 +319,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/line-shadow-text.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "magic-card": {
       "name": "MagicCard",
@@ -329,8 +329,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/magic-card.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "morphing-text": {
       "name": "MorphingText",
@@ -339,8 +339,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/morphing-text.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "neon-gradient-card": {
       "name": "NeonGradientCard",
@@ -349,8 +349,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/neon-gradient-card.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "noise-texture": {
       "name": "NoiseTexture",
@@ -359,8 +359,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/noise-texture.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "number-ticker": {
       "name": "NumberTicker",
@@ -369,8 +369,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/number-ticker.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "pixel-image": {
       "name": "PixelImage",
@@ -379,8 +379,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/pixel-image.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "pointer": {
       "name": "Pointer",
@@ -389,8 +389,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/pointer.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "progressive-blur": {
       "name": "ProgressiveBlur",
@@ -399,8 +399,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/progressive-blur.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "pulsating-button": {
       "name": "PulsatingButton",
@@ -409,8 +409,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/pulsating-button.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "rainbow-button": {
       "name": "RainbowButton",
@@ -419,8 +419,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/rainbow-button.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "ripple-button": {
       "name": "RippleButton",
@@ -429,8 +429,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/ripple-button.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "safari": {
       "name": "Safari",
@@ -439,8 +439,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/safari.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "scroll-based-velocity": {
       "name": "ScrollBasedVelocity",
@@ -449,8 +449,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/scroll-based-velocity.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "scroll-progress": {
       "name": "ScrollProgress",
@@ -459,8 +459,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/scroll-progress.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "shimmer-button": {
       "name": "ShimmerButton",
@@ -469,8 +469,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/shimmer-button.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "shine-border": {
       "name": "ShineBorder",
@@ -479,8 +479,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/shine-border.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "shiny-button": {
       "name": "ShinyButton",
@@ -489,8 +489,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/shiny-button.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "smooth-cursor": {
       "name": "SmoothCursor",
@@ -499,8 +499,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/smooth-cursor.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "sparkles-text": {
       "name": "SparklesText",
@@ -509,8 +509,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/sparkles-text.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "spinning-text": {
       "name": "SpinningText",
@@ -519,8 +519,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/spinning-text.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "striped-pattern": {
       "name": "StripedPattern",
@@ -529,8 +529,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/striped-pattern.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "terminal": {
       "name": "Terminal",
@@ -539,8 +539,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/terminal.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "text-3d-flip": {
       "name": "Text3DFlip",
@@ -549,8 +549,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/text-3d-flip.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "text-animate": {
       "name": "TextAnimate",
@@ -559,8 +559,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/text-animate.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "text-reveal": {
       "name": "TextReveal",
@@ -569,8 +569,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/text-reveal.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "tweet-card": {
       "name": "TweetCard",
@@ -579,8 +579,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/tweet-card.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "video-text": {
       "name": "VideoText",
@@ -589,8 +589,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/video-text.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "warp-background": {
       "name": "WarpBackground",
@@ -599,8 +599,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/warp-background.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     },
     "word-rotate": {
       "name": "WordRotate",
@@ -609,8 +609,8 @@
       "issueNumber": null,
       "mergedPullRequest": null,
       "sourcePath": "apps/www/registry/magicui/word-rotate.tsx",
-      "latestSeenAt": "2026-06-03T01:37:17.396Z",
-      "status": "missing"
+      "latestSeenAt": "2026-09-07T02:00:39.252Z",
+      "status": "ported"
     }
   }
 }
