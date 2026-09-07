@@ -95,13 +95,17 @@ onMounted(() => {
     signal: controller.signal,
   });
 
-  // Observe the container so the path is recalculated once its layout settles.
-  // On iOS Safari/Chrome the container's dimensions are often 0 on the first
-  // tick, so relying on the window "resize" event alone leaves the SVG sized
-  // at 0x0 and nothing renders.
-  if (typeof ResizeObserver !== "undefined" && props.containerRef) {
-    resizeObserver = new ResizeObserver(() => updatePath());
-    resizeObserver.observe(props.containerRef);
+  if (typeof ResizeObserver !== "undefined") {
+    resizeObserver = new ResizeObserver(updatePath);
+    watch(
+      () => props.containerRef,
+      (container) => {
+        resizeObserver?.disconnect();
+        if (container) resizeObserver?.observe(container);
+        updatePath();
+      },
+      { immediate: true, flush: "post" },
+    );
   }
 
   // Compute the initial path once the DOM has been laid out.
@@ -118,7 +122,7 @@ watch(
   (_) => {
     updatePath();
   },
-  { deep: true },
+  { deep: true, flush: "post" },
 );
 </script>
 
