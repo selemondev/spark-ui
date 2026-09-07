@@ -83,7 +83,7 @@ function decodeText(text: string): string {
     const value = entity.toLowerCase().startsWith("&#x")
       ? Number.parseInt(entity.slice(3, -1), 16)
       : Number.parseInt(entity.slice(2, -1), 10);
-    return Number.isFinite(value) && value >= 0 && value <= 0x10ffff
+    return Number.isFinite(value) && value >= 0 && value <= 1_114_111
       ? String.fromCodePoint(value)
       : entity;
   });
