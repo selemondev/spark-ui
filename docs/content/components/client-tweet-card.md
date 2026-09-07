@@ -749,4 +749,4 @@ Do not call that helper from the browser. X's syndication endpoint does not prov
 
 Ported from [Magic UI Client Tweet Card](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/client-tweet-card.tsx).
 The endpoint contract follows [React Tweet's browser hook](https://github.com/vercel/react-tweet/blob/main/packages/react-tweet/src/hooks.ts).
-Vue props and slots replace React nodes and the `components.TweetNotFound` override. The shared renderer comes from [Tweet Card](/components/tweet-card).
+Vue props and slots replace React nodes and the `components.TweetNotFound` override. The shared renderer comes from [Tweet Card](/content/components/tweet-card).
