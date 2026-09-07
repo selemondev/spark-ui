@@ -27,20 +27,20 @@ const className = computed(() =>
 
 <template>
   <figure :class="className">
-    <div class="flex flex-row bg-white border rounded-xl shadow-md py-2 items-center px-2 gap-4">
+    <div class="flex flex-row border rounded-xl items-center px-2 gap-4">
       <div
         class="flex size-10 items-center justify-center rounded-2xl"
         :style="{ backgroundColor: props.color }"
       >
         <span class="text-lg">{{ props.icon }}</span>
       </div>
-      <div class="flex flex-col overflow-hidden">
+      <div class="flex flex-col space-y-1 overflow-hidden">
         <figcaption class="flex flex-row items-center whitespace-pre text-lg font-medium">
           <span class="text-sm text-black dark:text-white sm:text-lg">{{ props.name }}</span>
           <span class="mx-1">·</span>
-          <span class="text-xs text-gray-500">{{ props.time }}</span>
+          <span class="text-xs text-gray-500 dark:text-gray-200">{{ props.time }}</span>
         </figcaption>
-        <p class="text-sm font-normal">
+        <p class="text-sm font-normal dark:text-white">
           {{ props.description }}
         </p>
       </div>
