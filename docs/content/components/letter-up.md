@@ -27,11 +27,11 @@ const letters = computed(() => props.words.split(""));
 
 const pullupVariant = {
   initial: { y: 100, opacity: 0 },
-  enter: (i: any) => ({
+  enter: (i: number) => ({
     y: 0,
     opacity: 1,
     transition: {
-      delay: i * (props.delay ? props.delay : 0.05),
+      delay: i * (props.delay ?? 50),
     },
   }),
 };
@@ -77,7 +77,7 @@ import LetterUp from "@/components/spark-ui/letter-up/letter-up.vue";
 
 ## Behavior
 
-`words` and `class` update while mounted. The component renders one heading with the complete accessible text and positional letter keys, so repeated characters remain distinct. `delay` is the per-letter delay in milliseconds.
+`words` and `class` update while mounted. The heading exposes the complete text to screen readers. Each letter starts 50 milliseconds after the previous letter. Set `delay` to `0` to start all letters together.
 
 ## Props
 
@@ -85,4 +85,4 @@ import LetterUp from "@/components/spark-ui/letter-up/letter-up.vue";
 | ----- | ------ | ------------------------------------------------------- | -------- |
 | class | string | The class to be applied to the component                |          |
 | words | string | Text to animate                                         | Required |
-| delay | number | Delay each letter's animation by this many milliseconds | 0.05     |
+| delay | number | Delay each letter's animation by this many milliseconds | 50       |

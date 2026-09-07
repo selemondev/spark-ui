@@ -14,11 +14,11 @@ const letters = computed(() => props.words.split(""));
 
 const pullupVariant = {
   initial: { y: 100, opacity: 0 },
-  enter: (i: any) => ({
+  enter: (i: number) => ({
     y: 0,
     opacity: 1,
     transition: {
-      delay: i * (props.delay ? props.delay : 0.05),
+      delay: i * (props.delay ?? 50),
     },
   }),
 };
