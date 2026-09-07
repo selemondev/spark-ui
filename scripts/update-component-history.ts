@@ -1,6 +1,12 @@
 import type { ComponentHistory, ComponentRegistry } from "./types.ts";
 import path from "node:path";
-import { readJson, registryDir, writeJson } from "./registry-utils.ts";
+import {
+  aliasCandidates,
+  readAliases,
+  readJson,
+  registryDir,
+  writeJson,
+} from "./registry-utils.ts";
 
 const now = new Date().toISOString();
 const historyPath = path.join(registryDir, "component-history.json");
@@ -15,7 +21,10 @@ const missing = readJson<ComponentRegistry>(path.join(registryDir, "missing-comp
 const sparkui = readJson<ComponentRegistry>(path.join(registryDir, "spark-ui.json"), {
   components: [],
 });
-const sparkSlugs = new Set(sparkui.components.map((component) => component.slug));
+const aliases = readAliases();
+const sparkSlugs = new Set(
+  sparkui.components.flatMap((component) => aliasCandidates(component.slug, aliases)),
+);
 const missingSlugs = new Set(missing.components.map((component) => component.slug));
 
 for (const component of missing.components) {
