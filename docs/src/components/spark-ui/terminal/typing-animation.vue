@@ -66,7 +66,9 @@ const TypedText = defineComponent({
 </script>
 
 <template>
-  <MotionComponent :class="cn('text-sm font-normal tracking-tight', props.className)">
+  <MotionComponent
+    :class="cn('text-sm font-normal tracking-tight text-foreground', props.className)"
+  >
     <TypedText :text="textContent(slots.default?.() ?? [])" />
   </MotionComponent>
 </template>
