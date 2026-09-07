@@ -11,12 +11,12 @@ const props = defineProps<TerminalProps>();
   <div
     :class="
       cn(
-        'z-0 min-h-[300px] w-full max-w-lg rounded-xl border border-gray-300 bg-white',
+        'z-0 min-h-[300px] w-full max-w-lg rounded-xl border border-gray-300 bg-background text-foreground dark:border-neutral-800',
         props.className,
       )
     "
   >
-    <div class="flex flex-col gap-y-2 border-b border-gray-300 p-4">
+    <div class="flex flex-col gap-y-2 border-b border-gray-300 p-4 dark:border-neutral-800">
       <div class="flex flex-row gap-x-2">
         <div class="h-2 w-2 rounded-full bg-red-500" />
         <div class="h-2 w-2 rounded-full bg-yellow-500" />
