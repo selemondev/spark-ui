@@ -27,10 +27,13 @@ const props = withDefaults(
   defineProps<{
     springConfig?: SpringConfig;
     scope?: "global" | "parent";
+    /** Render inside the positioned parent element instead of teleporting to body. */
+    contained?: boolean;
   }>(),
   {
     springConfig: () => ({ damping: 45, stiffness: 400, mass: 1, restDelta: 0.001 }),
     scope: "global",
+    contained: false,
   },
 );
 const anchor = ref<HTMLElement | null>(null);
@@ -92,12 +95,20 @@ function update() {
   const dx = event.clientX - lastX;
   const dy = event.clientY - lastY;
   const speed = lastTime && delta > 0 ? Math.hypot(dx, dy) / delta : 0;
+  let x = event.clientX;
+  let y = event.clientY;
+  const container = props.contained ? anchor.value?.parentElement : null;
+  if (container) {
+    const rect = container.getBoundingClientRect();
+    x += container.scrollLeft - rect.left - container.clientLeft;
+    y += container.scrollTop - rect.top - container.clientTop;
+  }
   if (!visible.value) {
-    cursorX.jump(event.clientX);
-    cursorY.jump(event.clientY);
+    cursorX.jump(x);
+    cursorY.jump(y);
   } else {
-    cursorX.set(event.clientX);
-    cursorY.set(event.clientY);
+    cursorX.set(x);
+    cursorY.set(y);
   }
   visible.value = true;
   if (cursorOwner && !cursorHidden && event.pointerType === "mouse") {
@@ -168,12 +179,12 @@ onBeforeUnmount(() => {
 
 <template>
   <span ref="anchor" hidden aria-hidden="true" />
-  <Teleport to="body">
+  <Teleport to="body" :disabled="contained">
     <motion.div
       v-if="visible"
       aria-hidden="true"
       :style="{
-        position: 'fixed',
+        position: contained ? 'absolute' : 'fixed',
         left: cursorX,
         top: cursorY,
         translateX: '-50%',
@@ -263,7 +274,7 @@ import SmoothCursor from "@/components/spark-ui/smooth-cursor/smooth-cursor.vue"
 
 A spring is a motion effect that eases toward a target. The cursor position, angle, and size use motion-v springs. Movement faster than 0.1 pixels per millisecond turns the cursor and reduces its size. It returns to full size after 150 milliseconds.
 
-The default `global` scope follows the mouse across the page, as upstream does. Set `scope="parent"` before mount to limit it to its direct parent. The demo uses this mode.
+The default `global` scope follows the mouse across the page, as upstream does. Set `scope="parent"` before mount to limit it to its direct parent. Add `contained` to also render the cursor inside that parent instead of the document body, so a positioned parent with `overflow-hidden` clips it at its edges. The demo uses both.
 
 The `cursor` slot replaces the upstream React `cursor` prop. The default slot also accepts a custom cursor. The default arrow uses a unique filter ID for each instance.
 
@@ -273,10 +284,11 @@ The component restores the previous cursor style on leave, scrolling, lost focus
 
 ## Props
 
-| Prop           | Type                   | Default    | Description                           |
-| -------------- | ---------------------- | ---------- | ------------------------------------- |
-| `springConfig` | `SpringConfig`         | See below  | The position spring configuration.    |
-| `scope`        | `"global" \| "parent"` | `"global"` | The tracking area, selected at mount. |
+| Prop           | Type                   | Default    | Description                                              |
+| -------------- | ---------------------- | ---------- | -------------------------------------------------------- |
+| `springConfig` | `SpringConfig`         | See below  | The position spring configuration.                       |
+| `scope`        | `"global" \| "parent"` | `"global"` | The tracking area, selected at mount.                    |
+| `contained`    | `boolean`              | `false`    | Render inside the positioned parent instead of the body. |
 
 ```ts
 interface SpringConfig {
