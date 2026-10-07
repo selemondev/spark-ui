@@ -14,11 +14,11 @@ Install `motion-v`. Copy the files below into `src/components/spark-ui/text-reve
 <script lang="ts">
 import {
   Comment,
+  computed,
   defineComponent,
   h,
   isVNode,
-  ref,
-  toRef,
+  shallowRef,
   type PropType,
   type VNodeChild,
 } from "vue";
@@ -33,7 +33,11 @@ const RevealWord = defineComponent({
     word: { type: String, required: true },
   },
   setup(props) {
-    const opacity = useTransform(props.progress, toRef(props, "range"), [0, 1]);
+    // Hardware-accelerated scroll animations turn this range into WAAPI keyframe
+    // offsets, and WAAPI fills missing 0/1 offsets with the element's base opacity.
+    // Spanning the whole timeline holds each word hidden before and shown after it.
+    const inputRange = computed(() => [0, props.range[0], props.range[1], 1]);
+    const opacity = useTransform(props.progress, inputRange, [0, 0, 1, 1]);
     return () =>
       h("span", { class: "relative mx-1 lg:mx-1.5", "aria-hidden": true }, [
         h("span", { class: "absolute opacity-30" }, props.word),
@@ -59,13 +63,31 @@ function extractText(child: VNodeChild): string {
   return "";
 }
 
+// Sticky positioning and native view timelines both use the nearest scroll
+// container, so the JS scroll tracking must measure against the same element.
+function getScrollContainer(el: HTMLElement): HTMLElement | undefined {
+  for (let node = el.parentElement; node && node !== document.body; node = node.parentElement) {
+    const { overflowY } = getComputedStyle(node);
+    if (overflowY !== "visible" && overflowY !== "clip") return node;
+  }
+  return undefined;
+}
+
 export default defineComponent({
   name: "TextReveal",
   inheritAttrs: false,
   props: { className: String },
   setup(props, { slots, attrs }) {
-    const sectionRef = ref<HTMLDivElement | null>(null);
-    const { scrollYProgress } = useScroll({ target: sectionRef });
+    const sectionRef = shallowRef<HTMLElement>();
+    const scrollContainer = shallowRef<HTMLElement>();
+    const { scrollYProgress } = useScroll({ target: sectionRef, container: scrollContainer });
+
+    // Template refs resolve before child mounted hooks, so the words' scroll
+    // animations see the real container when they attach.
+    const setSection = (el: unknown) => {
+      sectionRef.value = el instanceof HTMLElement ? el : undefined;
+      scrollContainer.value = sectionRef.value && getScrollContainer(sectionRef.value);
+    };
 
     return () => {
       const text = extractText(slots.default?.() ?? []);
@@ -74,7 +96,7 @@ export default defineComponent({
         "div",
         {
           ...attrs,
-          ref: sectionRef,
+          ref: setSection,
           class: cn("relative z-0 h-[200vh]", props.className, attrs.class as string),
         },
         [
@@ -139,7 +161,7 @@ Scroll progress controls each word opacity. The section starts at `200vh`, which
 
 Scrolling down reveals words from left to right. Scrolling up reverses the effect. Waiting without scrolling does not advance the reveal. The faint text stays visible below the revealed text.
 
-Keep the section in normal page flow. Do not put it inside an ancestor with `overflow: hidden`, `auto`, or `scroll` unless that ancestor is the intended scroll area. These values change how CSS sticky positioning works. The component tracks the page scroll, not a nested scroll container.
+The component tracks its nearest scroll container: the closest ancestor whose `overflow-y` is not `visible` or `clip`, or the page when there is none. This is the same element CSS sticky positioning uses. To reveal inside a scrollable box, give the box a fixed height, `overflow-y: auto`, and `position: relative`, then set the section to twice the box height, as the demo does (`h-[340px]` box, `h-[680px]` section). Do not put the section inside an `overflow: hidden` ancestor that never scrolls, or the reveal cannot advance.
 
 The component splits text on spaces, as upstream does. It exposes one full-text copy to screen readers. Motion creates scroll listeners after mounting and removes them when the component unmounts. No animation timer controls this effect.
 
