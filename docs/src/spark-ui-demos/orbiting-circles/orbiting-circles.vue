@@ -4,7 +4,7 @@ import OrbitingCircles from "../../components/spark-ui/orbiting-circles/orbiting
 
 <template>
   <div
-    class="relative flex h-[500px] w-[300px] md:w-[600px] flex-col items-center justify-center overflow-hidden"
+    class="relative flex size-[440px] shrink-0 scale-[0.62] flex-col items-center justify-center overflow-hidden sm:scale-90"
   >
     <span
       class="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-black"
