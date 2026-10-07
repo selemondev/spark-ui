@@ -1247,6 +1247,7 @@ export default defineConfig({
       "**/package-lock.json",
       "**/yarn.lock",
       "**/pnpm-lock.yaml",
+      "**/bun.lock",
       "**/bun.lockb",
       "**/output",
       "**/temp",
