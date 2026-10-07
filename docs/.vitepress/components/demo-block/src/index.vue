@@ -74,9 +74,9 @@ function handleRefreshComponent() {
         class="relative w-[90%] h-[500px] py-6"
       >
         <div
-          class="border-child bg-white shadow-lg dark:bg-black relative rounded-md w-full h-full flex items-center justify-center dark:border-none"
+          class="border-child bg-white shadow-lg dark:bg-black relative rounded-md w-full h-full overflow-hidden dark:border-none"
         >
-          <div class="z-10">
+          <div class="relative z-10 flex size-full items-center justify-center">
             <slot :key="refreshKey" />
           </div>
         </div>
