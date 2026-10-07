@@ -46,6 +46,11 @@ onMounted(() => {
         phi.value += 0.005;
       }
       state.phi = phi.value + api.r;
+      // Match the render resolution to the canvas' rendered size (devicePixelRatio 2) so the
+      // globe stays centered and fully drawn at any width.
+      const size = (canvasRef.value?.clientWidth ?? 500) * 2;
+      state.width = size;
+      state.height = size;
     },
   });
   canvasRef.value!.style.opacity = "1";
