@@ -90,5 +90,19 @@
   "simple-git-hooks": {
     "pre-commit": "vp staged"
   },
-  "packageManager": "pnpm@9.15.9"
+  "packageManager": "bun@1.4.2",
+  "workspaces": {
+    "packages": ["docs"],
+    "catalog": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@0.2.5",
+      "vitest": "npm:@voidzero-dev/vite-plus-test@0.1.24",
+      "vite-plus": "0.2.5"
+    }
+  },
+  "overrides": {
+    "vite": "catalog:",
+    "vitepress>vite": "npm:vite@5.4.21",
+    "@spark-ui/docs>vite": "npm:vite@5.4.21",
+    "@spark-ui/docs>@unocss/vite>vite": "npm:vite@5.4.21"
+  }
 }
