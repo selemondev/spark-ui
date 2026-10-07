@@ -55,7 +55,7 @@ if (!dryRun) {
   writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
 }
 
-run(`npx changelogen@latest --output CHANGELOG.md -r ${targetVersion}`);
+run(`bunx changelogen@latest --output CHANGELOG.md -r ${targetVersion}`);
 run(`git add package.json CHANGELOG.md`);
 run(`git commit -m "chore(release): v${targetVersion}"`);
 run(`git tag -a v${targetVersion} -m "v${targetVersion}"`);
