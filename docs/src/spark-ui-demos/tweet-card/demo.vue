@@ -86,10 +86,5 @@ const sampleTweet: TweetData = {
 </script>
 
 <template>
-  <div class="w-[min(440px,70vw)] space-y-3">
-    <p class="text-center text-xs text-muted-foreground">
-      Saved sample of a public tweet. Counts reflect the saved response.
-    </p>
-    <TweetCard :tweet="sampleTweet" />
-  </div>
+  <TweetCard :tweet="sampleTweet" />
 </template>
