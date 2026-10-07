@@ -50,8 +50,8 @@ body:
         - Demo/example exists under docs/src/example or docs/src/spark-ui-demos.
         - Docs exist under docs/content/components.
         - The pull request includes a Repository Cleanup report.
-        - pnpm normalize:repository passes.
-        - pnpm validate:agent-pr passes.
-        - pnpm lint, pnpm typecheck, pnpm test -- --run, and pnpm build pass.
+        - bun run normalize:repository passes.
+        - bun run validate:agent-pr passes.
+        - bun run lint, bun run typecheck, bun run test, and bun run build pass.
     validations:
       required: true
