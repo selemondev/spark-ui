@@ -4,7 +4,7 @@ import WarpBackground from "./warp-background.vue";
 
 <template>
   <WarpBackground
-    class-name="w-[min(640px,70vw)] px-6 py-20 sm:px-16"
+    class-name="w-[calc(100%-2.5rem)] max-w-[640px] px-6 py-20 sm:px-16"
     grid-color="hsl(var(--border) / 0.15)"
   >
     <div
