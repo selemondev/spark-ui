@@ -47,12 +47,12 @@ const logos = [
 
 <template>
   <div
-    class="relative flex h-[400px] w-[300px] lg:w-[550px] flex-col items-center justify-center gap-4 overflow-hidden rounded-lg border bg-background px-20 [perspective:300px]"
+    class="relative flex size-full flex-col items-center justify-center gap-4 overflow-hidden bg-background [perspective:300px]"
   >
     <div class="flex flex-row gap-4">
       <Marquee
         vertical
-        class="h-96 justify-center overflow-hidden [--duration:60s] [--gap:1rem]"
+        class="h-96 w-28 justify-center overflow-hidden [--duration:60s] [--gap:1rem] sm:w-36"
         :style="{
           transform:
             'translateX(0px) translateY(0px) translateZ(-50px) rotateX(0deg) rotateY(-20deg) rotateZ(10deg) scale(1.5)',

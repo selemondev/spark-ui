@@ -6,16 +6,16 @@ import ReviewCard from "./review-card.vue";
 
 const { isDark } = useData();
 
-const leftGradient = computed(() => {
+const topGradient = computed(() => {
   return isDark.value
-    ? "pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#000000] to-transparent"
-    : "pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white to-transparent";
+    ? "pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-[#000000] to-transparent"
+    : "pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-white to-transparent";
 });
 
-const rightGradient = computed(() => {
+const bottomGradient = computed(() => {
   return isDark.value
-    ? "pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#000000] to-transparent"
-    : "pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white to-transparent";
+    ? "pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#000000] to-transparent"
+    : "pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white to-transparent";
 });
 
 const reviews = [
@@ -45,19 +45,19 @@ const secondRow = reviews.slice(reviews.length / 2);
 
 <template>
   <div
-    class="relative flex h-[400px] w-[300px] lg:w-[550px] flex-row items-center justify-center overflow-hidden rounded-lg"
+    class="relative flex size-full flex-row flex-wrap content-start justify-center overflow-hidden"
   >
-    <Marquee pause-on-hover vertical class="[--duration:20s]">
+    <Marquee pause-on-hover vertical class="h-full [--duration:20s]">
       <div v-for="{ img, name, username, body } in firstRow" :key="username">
         <ReviewCard :key="username" :username="username" :img="img" :name="name" :body="body" />
       </div>
     </Marquee>
-    <Marquee reverse pause-on-hover vertical class="[--duration:20s]">
+    <Marquee reverse pause-on-hover vertical class="h-full [--duration:20s]">
       <div v-for="{ img, name, username, body } in secondRow" :key="username">
         <ReviewCard :key="username" :username="username" :img="img" :name="name" :body="body" />
       </div>
     </Marquee>
-    <div :class="rightGradient" />
-    <div :class="leftGradient" />
+    <div :class="topGradient" />
+    <div :class="bottomGradient" />
   </div>
 </template>

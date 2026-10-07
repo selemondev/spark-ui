@@ -29,7 +29,7 @@ const secondRow = reviews.slice(reviews.length / 2);
 
 <template>
   <div
-    class="relative flex h-[400px] w-[300px] lg:w-[800px] flex-col items-center justify-center overflow-hidden rounded-lg"
+    class="relative flex h-[400px] w-full max-w-[800px] flex-col items-center justify-center overflow-hidden rounded-lg"
   >
     <Marquee reverse class="[--duration:20s]">
       <div v-for="{ img, name, username, body } in firstRow" :key="username">
