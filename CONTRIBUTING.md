@@ -69,10 +69,10 @@ The following is a list of commit types:
 
 ## Releases
 
-Use a clean `dev` checkout with Node 22 and pnpm. Preview the next major release before making any changes:
+Use a clean `dev` checkout with Node 22 and bun. Preview the next major release before making any changes:
 
 ```sh
-pnpm release:major --dry-run
+bun run release:major --dry-run
 ```
 
 `release:major` computes the next major from `package.json`. To select a specific version instead:
