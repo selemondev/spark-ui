@@ -3,9 +3,7 @@ import FlickeringGrid from "../../components/spark-ui/flickering-grid/flickering
 </script>
 
 <template>
-  <div
-    class="relative h-[500px] w-[300px] md:w-[500px] overflow-hidden rounded-lg border bg-background"
-  >
+  <div class="relative h-[450px] w-full overflow-hidden rounded-lg border bg-background">
     <FlickeringGrid
       class="relative inset-0 z-0 [mask-image:radial-gradient(450px_circle_at_center,white,transparent)]"
       :square-size="4"
@@ -13,8 +11,6 @@ import FlickeringGrid from "../../components/spark-ui/flickering-grid/flickering
       color="#60A5FA"
       :max-opacity="0.5"
       :flicker-chance="0.1"
-      :height="800"
-      :width="800"
     />
   </div>
 </template>
