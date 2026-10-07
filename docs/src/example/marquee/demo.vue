@@ -44,9 +44,7 @@ const secondRow = reviews.slice(reviews.length / 2);
 </script>
 
 <template>
-  <div
-    class="relative flex h-[400px] w-[300px] lg:w-[500px] flex-col items-center justify-center overflow-hidden rounded-lg"
-  >
+  <div class="relative flex size-full flex-col items-center justify-center overflow-hidden">
     <Marquee reverse class="[--duration:20s]">
       <div v-for="{ img, name, username, body } in firstRow" :key="username">
         <ReviewCard :key="username" :username="username" :img="img" :name="name" :body="body" />

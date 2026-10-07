@@ -32,12 +32,12 @@ const logos = [
 <template>
   <div class="grid place-items-center min-h-screen w-full">
     <div
-      class="relative flex h-[400px] w-[300px] lg:w-[800px] flex-row items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl"
+      class="relative flex h-[400px] w-full max-w-[800px] flex-row items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl"
     >
       <div class="flex flex-row gap-4">
         <Marquee
           vertical
-          class="h-96 justify-center overflow-hidden [--duration:60s] [--gap:1rem]"
+          class="h-96 w-28 justify-center overflow-hidden [--duration:60s] [--gap:1rem] sm:w-36"
           :style="{
             transform:
               'translateX(0px) translateY(0px) translateZ(-50px) rotateX(0deg) rotateY(-20deg) rotateZ(10deg) scale(1.5)',
