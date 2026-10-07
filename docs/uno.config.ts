@@ -15,7 +15,33 @@ export default defineConfig({
     presetUno({
       attributifyPseudo: true,
     }),
-    presetAttributify(),
+    presetAttributify({
+      // SVG presentation attributes and component props share names with utilities
+      // (`font-size="12"` → 3rem text, `opacity="0.25"` → 0.25%), so never treat them
+      // as attributify utilities.
+      ignoreAttributes: [
+        "placeholder",
+        "fill",
+        "fill-opacity",
+        "opacity",
+        "stroke",
+        "stroke-opacity",
+        "stroke-width",
+        "font-size",
+        "color",
+        "size",
+        "filter",
+        "blur",
+        "border-width",
+        "container",
+        "delay",
+        "duration",
+        "resize",
+        "tab",
+        "transition",
+        "visible",
+      ],
+    }),
     presetIcons(),
     presetTypography(),
     presetWebFonts({
