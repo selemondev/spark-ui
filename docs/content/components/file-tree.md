@@ -268,13 +268,16 @@ const onAfterEnter = (el: Element) => {
   node.style.overflow = "";
 };
 
-const onLeave = (el: Element) => {
+// Pin the pixel height before Vue adds the leave-active class, so the collapse
+// transitions from it instead of from the `h-full` (100% of an auto parent) height.
+const onBeforeLeave = (el: Element) => {
   const node = el as HTMLElement;
   node.style.height = `${node.scrollHeight}px`;
   node.style.overflow = "hidden";
-  requestAnimationFrame(() => {
-    node.style.height = "0px";
-  });
+};
+
+const onLeave = (el: Element) => {
+  (el as HTMLElement).style.height = "0px";
 };
 </script>
 
@@ -349,6 +352,7 @@ const onLeave = (el: Element) => {
       name="spark-tree-collapse"
       @enter="onEnter"
       @after-enter="onAfterEnter"
+      @before-leave="onBeforeLeave"
       @leave="onLeave"
     >
       <div v-show="isExpanded" :inert="!isExpanded" class="relative h-full overflow-hidden text-sm">
