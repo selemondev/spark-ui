@@ -4,9 +4,11 @@ import TextReveal from "../../components/spark-ui/text-reveal/text-reveal.vue";
 
 <template>
   <div class="w-[min(600px,70vw)]">
-    <p class="py-6 text-center text-sm text-muted-foreground">
-      Scroll down to reveal the words. Scroll up to hide them.
+    <p class="py-4 text-center text-sm text-muted-foreground">
+      Scroll inside the box to reveal the words. Scroll up to hide them.
     </p>
-    <TextReveal>Spark UI will change the way you design.</TextReveal>
+    <div class="relative h-[340px] overflow-y-auto">
+      <TextReveal class="h-[680px]">Spark UI will change the way you design.</TextReveal>
+    </div>
   </div>
 </template>
