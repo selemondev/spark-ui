@@ -89,7 +89,7 @@ const transition = {
   mask-composite: exclude;
 }
 
-:global(.dark) .shiny-button {
+.dark .shiny-button {
   background-image: radial-gradient(
     circle at 50% 0%,
     hsl(var(--primary, 0 0% 100%) / 0.1) 0%,
@@ -97,7 +97,7 @@ const transition = {
   );
 }
 
-:global(.dark) .shiny-button:hover {
+.dark .shiny-button:hover {
   box-shadow: 0 0 20px hsl(var(--primary, 0 0% 100%) / 0.1);
 }
 </style>
