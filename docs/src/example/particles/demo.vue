@@ -9,7 +9,7 @@ const color = computed(() => (isDark.value ? "#00DC82" : "red"));
 </script>
 
 <template>
-  <div class="relative w-[300px] md:w-[500px] h-[400px]">
+  <div class="relative size-full overflow-hidden">
     <HeroParticles :accelerate="true" :color="color" class="absolute top-0" />
     <HeroBackground :color="color" />
   </div>
