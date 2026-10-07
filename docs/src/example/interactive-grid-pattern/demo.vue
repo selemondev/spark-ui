@@ -5,7 +5,7 @@ import InteractiveGridPattern from "./interactive-grid-pattern.vue";
 
 <template>
   <div
-    class="relative flex h-[450px] w-[300px] flex-col items-center justify-center overflow-hidden rounded-lg border md:w-[500px]"
+    class="relative flex h-[450px] max-h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border"
   >
     <InteractiveGridPattern
       :class="
