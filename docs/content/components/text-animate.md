@@ -340,7 +340,7 @@ export default defineComponent({
                 whileInView: props.startOnView ? "show" : undefined,
                 animate: props.startOnView ? undefined : "show",
                 exit: "exit",
-                viewport: { once: props.once },
+                inViewOptions: { once: props.once },
                 ...attrs,
                 class: cn("whitespace-pre-wrap", props.className, attrs.class as string),
               },
