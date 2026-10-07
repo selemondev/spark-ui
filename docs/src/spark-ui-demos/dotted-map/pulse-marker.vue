@@ -18,10 +18,10 @@ const markers: Marker[] = [
 </script>
 
 <template>
-  <div class="relative h-[440px] w-full max-w-[500px] overflow-hidden rounded-lg border">
-    <div
-      class="absolute inset-0 bg-radial from-transparent to-background to-200%"
-    />
+  <div
+    class="relative h-[420px] w-[calc(100%-2rem)] max-w-[500px] overflow-hidden rounded-lg border"
+  >
+    <div class="absolute inset-0 bg-radial from-transparent to-background to-200%" />
     <DottedMap :markers="markers" pulse />
   </div>
 </template>

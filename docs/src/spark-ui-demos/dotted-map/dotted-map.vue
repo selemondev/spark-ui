@@ -28,10 +28,10 @@ const id = "dotted-map-demo";
 </script>
 
 <template>
-  <div class="relative h-[440px] w-full max-w-[500px] overflow-hidden rounded-lg border">
-    <div
-      class="absolute inset-0 bg-radial from-transparent to-background to-200%"
-    />
+  <div
+    class="relative h-[420px] w-[calc(100%-2rem)] max-w-[500px] overflow-hidden rounded-lg border"
+  >
+    <div class="absolute inset-0 bg-radial from-transparent to-background to-200%" />
     <DottedMap :markers="markers">
       <template #marker="{ marker, x, y, r, index }">
         <g style="pointer-events: none">
@@ -52,10 +52,7 @@ const id = "dotted-map-demo";
           <rect
             :x="x + r + r * 0.6"
             :y="y - (r * 1.5) / 2"
-            :width="
-              marker.overlay.label.length * (r * 0.9 * 0.62) +
-              r * 1.4
-            "
+            :width="marker.overlay.label.length * (r * 0.9 * 0.62) + r * 1.4"
             :height="r * 1.5"
             :rx="(r * 1.5) / 2"
             fill="rgba(0,0,0,0.55)"
