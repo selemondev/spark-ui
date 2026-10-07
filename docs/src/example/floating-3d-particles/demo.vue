@@ -9,7 +9,7 @@ const color = computed(() => (isDark.value ? "#ffffff" : "#000000"));
 
 <template>
   <div
-    class="relative flex h-[500px] w-[min(680px,70vw)] items-center justify-center overflow-hidden rounded-lg border bg-white dark:bg-neutral-950"
+    class="relative flex size-full items-center justify-center overflow-hidden bg-white dark:bg-neutral-950"
   >
     <Floating3DParticles :color="color" />
     <div class="relative z-10 flex flex-col items-center gap-6 px-6 text-center">
