@@ -12,7 +12,7 @@ Copy and paste the following code into your project:
 
 ```vue [cool-mode.vue]
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, ref, watch } from "vue";
 
 export interface CoolParticleOptions {
   particle?: string;
@@ -36,6 +36,8 @@ interface CoolParticle {
 
 interface CoolModeProps {
   options?: CoolParticleOptions;
+  /** Positioned element that confines the particles. Defaults to a full-viewport overlay. */
+  container?: HTMLElement | null;
 }
 
 const props = defineProps<CoolModeProps>();
@@ -46,20 +48,22 @@ let cleanup: (() => void) | null = null;
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 
-function getContainer(): HTMLElement {
+function getContainer(bounds: HTMLElement | null): HTMLElement {
   const container = document.createElement("div");
   container.setAttribute("data-cool-mode-effect", "");
   container.setAttribute(
     "style",
-    "overflow:hidden; position:fixed; height:100%; top:0; left:0; right:0; bottom:0; pointer-events:none; z-index:2147483647",
+    bounds
+      ? "overflow:hidden; position:absolute; inset:0; pointer-events:none; z-index:2147483647"
+      : "overflow:hidden; position:fixed; height:100%; top:0; left:0; right:0; bottom:0; pointer-events:none; z-index:2147483647",
   );
 
-  document.body.appendChild(container);
+  (bounds ?? document.body).appendChild(container);
 
   return container;
 }
 
-function applyParticleEffect(element: HTMLElement): () => void {
+function applyParticleEffect(element: HTMLElement, bounds: HTMLElement | null): () => void {
   const sizes = [15, 20, 25, 35, 45];
 
   let particles: CoolParticle[] = [];
@@ -67,7 +71,7 @@ function applyParticleEffect(element: HTMLElement): () => void {
   let mouseX = 0;
   let mouseY = 0;
 
-  const container = getContainer();
+  const container = getContainer(bounds);
 
   const appendCircleParticle = (particle: HTMLDivElement, size: number) => {
     const circleSVG = document.createElementNS(SVG_NS, "svg");
@@ -163,7 +167,10 @@ function applyParticleEffect(element: HTMLElement): () => void {
       p.speedUp = Math.min(p.size, p.speedUp - 1);
       p.spinVal = p.spinVal + p.spinSpeed;
 
-      if (p.top >= Math.max(window.innerHeight, document.body.clientHeight) + p.size) {
+      const bottom = bounds
+        ? bounds.scrollHeight
+        : Math.max(window.innerHeight, document.body.clientHeight);
+      if (p.top >= bottom + p.size) {
         particles = particles.filter((o) => o !== p);
         p.element.remove();
       }
@@ -204,8 +211,14 @@ function applyParticleEffect(element: HTMLElement): () => void {
   loop();
 
   const updateMousePosition = (e: PointerEvent) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    if (bounds) {
+      const rect = bounds.getBoundingClientRect();
+      mouseX = e.clientX - rect.left - bounds.clientLeft + bounds.scrollLeft;
+      mouseY = e.clientY - rect.top - bounds.clientTop + bounds.scrollTop;
+    } else {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    }
   };
 
   const tapHandler = (e: PointerEvent) => {
@@ -238,11 +251,16 @@ function applyParticleEffect(element: HTMLElement): () => void {
   };
 }
 
-onMounted(() => {
-  if (containerRef.value) {
-    cleanup = applyParticleEffect(containerRef.value);
-  }
-});
+function start() {
+  cleanup?.();
+  cleanup = containerRef.value
+    ? applyParticleEffect(containerRef.value, props.container ?? null)
+    : null;
+}
+
+onMounted(start);
+
+watch(() => props.container, start);
 
 onUnmounted(() => {
   if (cleanup) {
@@ -285,11 +303,14 @@ Pass an image URL through the `particle` option to spray a custom particle inste
 
 Options are read when particles are generated, so updates apply without remounting. Each wrapper owns its overlay and removes it immediately on unmount.
 
+Pass a positioned element as `container` to keep the particles inside it instead of the whole viewport, as the demos above do.
+
 ## Props
 
-| Prop      | Type                  | Default | Description                                   |
-| --------- | --------------------- | ------- | --------------------------------------------- |
-| `options` | `CoolParticleOptions` | —       | Configuration object for the particle effect. |
+| Prop        | Type                  | Default | Description                                                                             |
+| ----------- | --------------------- | ------- | --------------------------------------------------------------------------------------- |
+| `options`   | `CoolParticleOptions` | —       | Configuration object for the particle effect.                                           |
+| `container` | `HTMLElement \| null` | —       | Positioned element that clips the particles. Defaults to a fixed full-viewport overlay. |
 
 ### `CoolParticleOptions`
 
