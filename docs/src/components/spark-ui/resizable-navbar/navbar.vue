@@ -1,30 +1,36 @@
 <script setup lang="ts">
 import type { Slot } from "vue";
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, ref, watch } from "vue";
 
 const props = defineProps<{
   className?: string;
+  /** Scrollable element to track instead of the window. */
+  container?: HTMLElement | null;
 }>();
 
 const navbarRef = ref(null);
 const visible = ref(false);
 
+let unbind: (() => void) | undefined;
+
 function handleScroll() {
-  if (window.scrollY > 100) {
-    visible.value = true;
-  } else {
-    visible.value = false;
-  }
+  const scrollY = props.container ? props.container.scrollTop : window.scrollY;
+  visible.value = scrollY > 100;
 }
 
-onMounted(() => {
+function bind(container?: HTMLElement | null) {
+  unbind?.();
+  const target = container ?? window;
+  target.addEventListener("scroll", handleScroll, { passive: true });
+  unbind = () => target.removeEventListener("scroll", handleScroll);
   handleScroll();
-  window.addEventListener("scroll", handleScroll);
-});
+}
 
-onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
+onMounted(() => bind(props.container));
+
+watch(() => props.container, bind);
+
+onUnmounted(() => unbind?.());
 
 function provide(slot?: Slot) {
   if (!slot) return;
