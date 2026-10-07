@@ -57,6 +57,7 @@ export const config = {
 
 <template>
   <CodeComparison
+    class="px-4 sm:px-6 max-md:[&_.shiki-code]:!max-h-40"
     :before-code="beforeCode"
     :after-code="afterCode"
     language="typescript"
