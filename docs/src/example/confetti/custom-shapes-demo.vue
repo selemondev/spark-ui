@@ -1,6 +1,14 @@
 <script setup lang="ts">
+import type { CreateTypes } from "canvas-confetti";
+import { onBeforeUnmount, ref } from "vue";
+
+const canvasRef = ref<HTMLCanvasElement | null>(null);
+let instance: CreateTypes | null = null;
+
 async function handleClick() {
   const confetti = (await import("canvas-confetti")).default;
+  if (!canvasRef.value) return;
+  const fire = (instance ??= confetti.create(canvasRef.value, { resize: true }));
   const scalar = 2;
   const triangle = confetti.shapeFromPath({ path: "M0 10 L5 0 L10 10z" });
   const square = confetti.shapeFromPath({ path: "M0 0 L10 0 L10 10 L0 10 Z" });
@@ -20,9 +28,9 @@ async function handleClick() {
   };
 
   const shoot = () => {
-    confetti({ ...defaults, particleCount: 30 });
-    confetti({ ...defaults, particleCount: 5 });
-    confetti({
+    fire({ ...defaults, particleCount: 30 });
+    fire({ ...defaults, particleCount: 5 });
+    fire({
       ...defaults,
       particleCount: 15,
       scalar: scalar / 2,
@@ -34,10 +42,13 @@ async function handleClick() {
   setTimeout(shoot, 100);
   setTimeout(shoot, 200);
 }
+
+onBeforeUnmount(() => instance?.reset());
 </script>
 
 <template>
-  <div class="relative flex items-center justify-center">
+  <div class="relative flex size-full min-h-[400px] items-center justify-center">
+    <canvas ref="canvasRef" class="pointer-events-none absolute inset-0 size-full" />
     <button
       class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-neutral-900/90 dark:bg-white dark:text-black dark:hover:bg-white/90"
       @click="handleClick"
