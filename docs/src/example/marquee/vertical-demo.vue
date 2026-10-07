@@ -52,7 +52,7 @@ const secondRow = reviews.slice(reviews.length / 2);
         <ReviewCard :key="username" :username="username" :img="img" :name="name" :body="body" />
       </div>
     </Marquee>
-    <Marquee reverse vertical class="[--duration:20s]">
+    <Marquee reverse pause-on-hover vertical class="[--duration:20s]">
       <div v-for="{ img, name, username, body } in secondRow" :key="username">
         <ReviewCard :key="username" :username="username" :img="img" :name="name" :body="body" />
       </div>
