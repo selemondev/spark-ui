@@ -19,7 +19,11 @@ import { onBeforeUnmount, onMounted, ref, useAttrs } from "vue";
 import { cn } from "@/lib/utils";
 
 defineOptions({ inheritAttrs: false });
-const props = defineProps<{ class?: string }>();
+const props = defineProps<{
+  class?: string;
+  /** Render inside the parent element (positioned) instead of teleporting to body. */
+  contained?: boolean;
+}>();
 const attrs = useAttrs();
 const anchor = ref<HTMLElement | null>(null);
 const active = ref(false);
@@ -44,8 +48,14 @@ function move(event: PointerEvent) {
     deactivate();
     return;
   }
-  x.set(event.clientX);
-  y.set(event.clientY);
+  if (props.contained && parent) {
+    const rect = parent.getBoundingClientRect();
+    x.set(event.clientX - rect.left - parent.clientLeft + parent.scrollLeft);
+    y.set(event.clientY - rect.top - parent.clientTop + parent.scrollTop);
+  } else {
+    x.set(event.clientX);
+    y.set(event.clientY);
+  }
   active.value = true;
   if (parent && !hidden) {
     cursor = parent.style.getPropertyValue("cursor");
@@ -84,17 +94,17 @@ onBeforeUnmount(() => {
 
 <template>
   <span ref="anchor" hidden aria-hidden="true" />
-  <Teleport to="body">
+  <Teleport to="body" :disabled="contained">
     <AnimatePresence>
       <motion.div
         v-if="active"
         aria-hidden="true"
-        class="pointer-events-none fixed z-50"
+        :class="['pointer-events-none z-50', contained ? 'absolute' : 'fixed']"
         :initial="{ scale: 0, opacity: 0 }"
         :animate="{ scale: 1, opacity: 1 }"
         :exit="{ scale: 0, opacity: 0 }"
         v-bind="attrs"
-        :style="[{ top: y, left: x, translateX: '-50%', translateY: '-50%' }, attrs.style]"
+        :style="[{ top: y, left: x, translateX: '-50%', translateY: '-50%' }, attrs.style] as any"
       >
         <slot>
           <svg
@@ -140,7 +150,7 @@ Place Pointer directly inside the element that owns the hover area. It does not 
 
 `class` replaces the upstream `className` prop and styles the default arrow. Other attributes and motion props pass to the floating container. `style` merges with its position.
 
-The pointer enters and leaves with scale and opacity animations. It renders in the document body so a transformed ancestor cannot offset its position.
+The pointer enters and leaves with scale and opacity animations. It renders in the document body so a transformed ancestor cannot offset its position. Set `contained` to render it inside the hover area instead, so the area's `overflow-hidden` clips it; the area must then be positioned (e.g. `relative`), as in the demo above.
 
 Only a mouse on a device with fine pointer support hides the native cursor. Touch and pen input keep the native cursor. The component restores the previous cursor style on leave and unmount.
 
@@ -148,14 +158,15 @@ Scrolling, lost focus, and a hidden page dismiss the pointer. Move the mouse aga
 
 ## Props
 
-| Prop         | Type                   | Default                    | Description                        |
-| ------------ | ---------------------- | -------------------------- | ---------------------------------- |
-| `class`      | `string`               | —                          | Classes for the default arrow.     |
-| `style`      | `object`               | —                          | Styles for the floating container. |
-| `initial`    | Motion animation value | `{ scale: 0, opacity: 0 }` | The entry state.                   |
-| `animate`    | Motion animation value | `{ scale: 1, opacity: 1 }` | The visible state.                 |
-| `exit`       | Motion animation value | `{ scale: 0, opacity: 0 }` | The exit state.                    |
-| `transition` | Motion transition      | Motion default             | The animation timing.              |
+| Prop         | Type                   | Default                    | Description                                                  |
+| ------------ | ---------------------- | -------------------------- | ------------------------------------------------------------ |
+| `class`      | `string`               | —                          | Classes for the default arrow.                               |
+| `contained`  | `boolean`              | `false`                    | Render inside the positioned hover area instead of the body. |
+| `style`      | `object`               | —                          | Styles for the floating container.                           |
+| `initial`    | Motion animation value | `{ scale: 0, opacity: 0 }` | The entry state.                                             |
+| `animate`    | Motion animation value | `{ scale: 1, opacity: 1 }` | The visible state.                                           |
+| `exit`       | Motion animation value | `{ scale: 0, opacity: 0 }` | The exit state.                                              |
+| `transition` | Motion transition      | Motion default             | The animation timing.                                        |
 
 The component also accepts motion-v attributes on the floating `motion.div`.
 

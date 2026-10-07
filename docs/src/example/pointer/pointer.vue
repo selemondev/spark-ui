@@ -4,7 +4,11 @@ import { onBeforeUnmount, onMounted, ref, useAttrs } from "vue";
 import { cn } from "../../lib/utils";
 
 defineOptions({ inheritAttrs: false });
-const props = defineProps<{ class?: string }>();
+const props = defineProps<{
+  class?: string;
+  /** Render inside the parent element (positioned) instead of teleporting to body. */
+  contained?: boolean;
+}>();
 const attrs = useAttrs();
 const anchor = ref<HTMLElement | null>(null);
 const active = ref(false);
@@ -29,8 +33,14 @@ function move(event: PointerEvent) {
     deactivate();
     return;
   }
-  x.set(event.clientX);
-  y.set(event.clientY);
+  if (props.contained && parent) {
+    const rect = parent.getBoundingClientRect();
+    x.set(event.clientX - rect.left - parent.clientLeft + parent.scrollLeft);
+    y.set(event.clientY - rect.top - parent.clientTop + parent.scrollTop);
+  } else {
+    x.set(event.clientX);
+    y.set(event.clientY);
+  }
   active.value = true;
   if (parent && !hidden) {
     cursor = parent.style.getPropertyValue("cursor");
@@ -69,12 +79,12 @@ onBeforeUnmount(() => {
 
 <template>
   <span ref="anchor" hidden aria-hidden="true" />
-  <Teleport to="body">
+  <Teleport to="body" :disabled="contained">
     <AnimatePresence>
       <motion.div
         v-if="active"
         aria-hidden="true"
-        class="pointer-events-none fixed z-50"
+        :class="['pointer-events-none z-50', contained ? 'absolute' : 'fixed']"
         :initial="{ scale: 0, opacity: 0 }"
         :animate="{ scale: 1, opacity: 1 }"
         :exit="{ scale: 0, opacity: 0 }"
