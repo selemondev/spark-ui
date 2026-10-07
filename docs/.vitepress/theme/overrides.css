@@ -28,10 +28,10 @@ table {
 /*
   Use lighter colors for links in dark mode for a11y.
   Also specify some classes twice to have higher specificity
-  over scoped class data attribute.
+  over scoped class data attribute. Demo previews (`.vp-raw`) keep their own colors.
 */
-.dark .vp-doc a,
-.dark .vp-doc a > code,
+.dark .vp-doc a:not(:where(.vp-raw, .vp-raw *)),
+.dark .vp-doc a:not(:where(.vp-raw, .vp-raw *)) > code,
 .dark .VPNavBarMenuLink.VPNavBarMenuLink:hover,
 .dark .VPNavBarMenuLink.VPNavBarMenuLink.active,
 .dark .link.link:hover,
@@ -41,8 +41,8 @@ table {
   color: var(--vp-c-brand-lighter);
 }
 
-.dark .vp-doc a:hover,
-.dark .vp-doc a > code:hover {
+.dark .vp-doc a:not(:where(.vp-raw, .vp-raw *)):hover,
+.dark .vp-doc a:not(:where(.vp-raw, .vp-raw *)) > code:hover {
   color: var(--vp-c-brand-lightest);
   opacity: 1;
 }
