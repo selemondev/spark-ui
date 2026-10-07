@@ -4,7 +4,7 @@ import LightRays from "../../components/spark-ui/light-rays/light-rays.vue";
 
 <template>
   <div
-    class="relative h-[400px] w-[300px] md:w-[500px] overflow-hidden rounded-lg border border-black/10 dark:border-white/10"
+    class="relative h-[400px] max-h-[calc(100%-2rem)] w-[calc(100%-2rem)] max-w-[500px] overflow-hidden rounded-lg border border-black/10 dark:border-white/10"
   >
     <div
       class="relative z-10 flex h-full flex-col items-center justify-center gap-4 px-6 text-center"
