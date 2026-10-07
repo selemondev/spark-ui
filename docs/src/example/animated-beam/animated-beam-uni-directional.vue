@@ -13,7 +13,7 @@ const div2Ref = ref();
 <template>
   <div
     ref="containerRef"
-    class="relative flex w-[300px] px-4 md:p-0 md:w-[500px] items-center justify-center overflow-hidden rounded-lg border"
+    class="relative flex w-[calc(100%-2rem)] max-w-[500px] items-center justify-center overflow-hidden rounded-lg border p-6 sm:p-10"
   >
     <div class="flex size-full flex-col items-stretch justify-between gap-10">
       <div class="flex flex-row justify-between">
