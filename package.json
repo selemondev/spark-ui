@@ -102,6 +102,9 @@
     "vite": "catalog:",
     "vitepress>vite": "npm:vite@5.4.21",
     "@spark-ui/docs>vite": "npm:vite@5.4.21",
-    "@spark-ui/docs>@unocss/vite>vite": "npm:vite@5.4.21"
+    "@spark-ui/docs>@unocss/vite>vite": "npm:vite@5.4.21",
+    "framer-motion": "13.2.0",
+    "motion-dom": "13.2.0",
+    "motion-utils": "13.0.0"
   }
 }
