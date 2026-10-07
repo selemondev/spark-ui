@@ -89,14 +89,7 @@ const liveId = ref<string>();
 </script>
 
 <template>
-  <div class="w-[min(440px,70vw)] space-y-3">
-    <p class="text-center text-xs text-muted-foreground">
-      {{
-        liveId === undefined
-          ? "Saved sample of a public tweet. Select Load live tweet to fetch from the public API."
-          : "Live tweet data from the public API."
-      }}
-    </p>
+  <div class="w-full max-w-lg space-y-3">
     <form class="flex flex-wrap gap-2" @submit.prevent="liveId = enteredId.trim()">
       <label for="client-tweet-id" class="sr-only">Public tweet ID</label>
       <input
@@ -109,6 +102,7 @@ const liveId = ref<string>();
         Load live tweet
       </button>
       <button
+        v-if="liveId !== undefined"
         type="button"
         class="rounded-md border px-3 py-2 text-sm hover:bg-muted"
         @click="liveId = undefined"
