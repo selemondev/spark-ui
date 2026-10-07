@@ -74,3 +74,27 @@ it("reads replacement particle options and stops generating after pointer cancel
   advanceFrame();
   expect(document.querySelectorAll('img[src="/after.png"]')).toHaveLength(1);
 });
+
+it("confines particles to the container element with container-relative coordinates", async () => {
+  const area = document.createElement("div");
+  document.body.appendChild(area);
+  Object.defineProperty(area, "scrollHeight", { value: 300 });
+  vi.spyOn(area, "getBoundingClientRect").mockReturnValue(new DOMRect(100, 200, 300, 300));
+  const wrapper = mount(CoolMode, {
+    props: {
+      container: area,
+      options: { particle: "/contained.png", particleCount: 1, size: 20, speedHorz: 0, speedUp: 0 },
+    },
+  });
+  const overlay = area.querySelector<HTMLElement>("[data-cool-mode-effect]");
+  expect(overlay?.style.position).toBe("absolute");
+  expect(document.body.querySelector(":scope > [data-cool-mode-effect]")).toBeNull();
+  await wrapper.get("span").trigger("pointerdown", { clientX: 150, clientY: 260 });
+  advanceFrame();
+  const particle = overlay?.querySelector('img[src="/contained.png"]')?.parentElement;
+  expect(particle?.style.left).toBe("40px");
+  expect(particle?.style.top).toBe("50px");
+  wrapper.unmount();
+  expect(area.querySelector("[data-cool-mode-effect]")).toBeNull();
+  area.remove();
+});

@@ -1,10 +1,17 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import CoolMode from "../../components/spark-ui/cool-mode/cool-mode.vue";
+
+const area = ref<HTMLElement | null>(null);
 </script>
 
 <template>
-  <div class="relative flex items-center justify-center">
+  <div
+    ref="area"
+    class="relative flex size-full min-h-[400px] items-center justify-center overflow-hidden"
+  >
     <CoolMode
+      :container="area"
       :options="{
         particle: 'https://avatars.githubusercontent.com/u/81306489',
       }"
