@@ -5,10 +5,10 @@ import AnimatedGridPattern from "./animated-grid-pattern.vue";
 
 <template>
   <div
-    class="relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border bg-background p-20"
+    class="relative flex size-full items-center justify-center overflow-hidden bg-background p-6 sm:p-10"
   >
     <p
-      class="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white"
+      class="z-10 whitespace-pre-wrap text-center text-4xl font-medium tracking-tighter text-black dark:text-white sm:text-5xl"
     >
       Animated Grid Pattern
     </p>
