@@ -4,7 +4,7 @@ import Backlight from "./backlight.vue";
 
 <template>
   <Backlight :blur="5">
-    <div class="flex max-w-lg gap-16">
+    <div class="flex max-w-lg gap-8 sm:gap-16">
       <svg class="h-16 w-16" viewBox="0 0 256 256" fill="none">
         <rect width="256" height="256" rx="128" fill="url(#magicui__paint0_linear_601_4643)" />
         <rect width="256" height="256" rx="128" fill="url(#magicui__paint1_linear_601_4643)" />
