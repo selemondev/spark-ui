@@ -8,13 +8,15 @@ interface ScrollProgressProps extends Omit<HTMLAttributes, keyof MotionProps> {}
 
 interface Props extends /* @vue-ignore */ ScrollProgressProps {
   className?: string;
+  /** Scrollable element to track instead of the page. */
+  container?: HTMLElement | null;
 }
 
 const props = defineProps<Props>();
 const scrollYProgress = useMotionValue(0);
 
 onMounted(() => {
-  const { scrollYProgress: progress } = useScroll();
+  const { scrollYProgress: progress } = useScroll(() => ({ container: props.container }));
   const unsubscribe = progress.on("change", (v: number) => scrollYProgress.set(v));
   onUnmounted(() => unsubscribe());
 });

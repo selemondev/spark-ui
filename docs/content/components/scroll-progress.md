@@ -22,17 +22,20 @@ import type { HTMLAttributes } from "vue";
 import { motion, type MotionProps, useMotionValue, useScroll } from "motion-v";
 import { onMounted, onUnmounted } from "vue";
 import { cn } from "@/lib/utils";
+
 interface ScrollProgressProps extends Omit<HTMLAttributes, keyof MotionProps> {}
 
 interface Props extends /* @vue-ignore */ ScrollProgressProps {
   className?: string;
+  /** Scrollable element to track instead of the page. */
+  container?: HTMLElement | null;
 }
 
 const props = defineProps<Props>();
 const scrollYProgress = useMotionValue(0);
 
 onMounted(() => {
-  const { scrollYProgress: progress } = useScroll();
+  const { scrollYProgress: progress } = useScroll(() => ({ container: props.container }));
   const unsubscribe = progress.on("change", (v: number) => scrollYProgress.set(v));
   onUnmounted(() => unsubscribe());
 });
@@ -57,6 +60,7 @@ onMounted(() => {
 
 ## Props
 
-| Prop        | Type   | Default | Description                                   |
-| ----------- | ------ | ------- | --------------------------------------------- |
-| `className` | string | -       | The class name to be applied to the component |
+| Prop        | Type                  | Default | Description                                                                                                            |
+| ----------- | --------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `className` | string                | -       | The class name to be applied to the component                                                                          |
+| `container` | `HTMLElement \| null` | -       | Scrollable element to track instead of the page. Pair it with an `absolute` class to show the bar inside that element. |
