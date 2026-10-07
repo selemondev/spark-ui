@@ -20,7 +20,7 @@ const items = [
 </script>
 
 <template>
-  <div class="grid place-items-center w-full min-h-screen">
+  <div class="grid size-full place-items-center">
     <SkewedInfiniteScroll :items="items" />
   </div>
 </template>
