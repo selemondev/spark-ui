@@ -5,10 +5,8 @@ const features = ["Unlimited projects", "Team collaboration", "Advanced analytic
 </script>
 
 <template>
-  <GlareHover class="rounded-xl" :duration="600">
-    <div
-      class="w-[340px] rounded-xl border border-border bg-card text-card-foreground shadow-sm"
-    >
+  <GlareHover class="w-[340px] max-w-[calc(100%-2rem)] rounded-xl" :duration="600">
+    <div class="w-full rounded-xl border border-border bg-card text-card-foreground shadow-sm">
       <div class="flex flex-col gap-1.5 p-6">
         <div class="flex items-center justify-between">
           <h3 class="text-lg font-semibold leading-none tracking-tight">Pro</h3>

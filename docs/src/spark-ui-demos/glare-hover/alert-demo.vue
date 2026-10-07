@@ -3,8 +3,8 @@ import GlareHover from "../../components/spark-ui/glare-hover/glare-hover.vue";
 </script>
 
 <template>
-  <div class="flex flex-col gap-3">
-    <GlareHover class="rounded-lg" :duration="550" :opacity="0.25">
+  <div class="flex w-[calc(100%-2rem)] max-w-md flex-col gap-3">
+    <GlareHover class="w-full rounded-lg" :duration="550" :opacity="0.25">
       <div class="relative w-full rounded-lg border border-border bg-card p-4 text-card-foreground">
         <svg
           class="absolute left-4 top-4"
@@ -73,9 +73,7 @@ import GlareHover from "../../components/spark-ui/glare-hover/glare-hover.vue";
           <h5 class="mb-1 font-medium leading-none tracking-tight text-emerald-500">
             Subscription confirmed
           </h5>
-          <div class="text-sm text-emerald-500">
-            You have full Pro access until April 5, 2027.
-          </div>
+          <div class="text-sm text-emerald-500">You have full Pro access until April 5, 2027.</div>
         </div>
       </div>
     </GlareHover>
