@@ -75,15 +75,15 @@ createApp(App).use(MotionPlugin).mount("#app");
 
 ## Development
 
-This repo is a pnpm monorepo. Tooling is managed with [Vite+](https://viteplus.dev/) (`vp` CLI).
+This repo is a bun workspace monorepo. Tooling is managed with [Vite+](https://viteplus.dev/) (`vp` CLI).
 
 ```bash
-pnpm install
+bun install
 vp install          # sync Vite+ toolchain after pull
-pnpm docs:dev       # docs at http://localhost:5555
+bun run docs:dev    # docs at http://localhost:5555
 vp check            # format, lint, and typecheck
 vp test             # unit tests
-pnpm build          # production docs build
+bun run build       # production docs build
 ```
 
 ## All components
