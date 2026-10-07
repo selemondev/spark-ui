@@ -24,12 +24,9 @@ const ELEMENTS: TreeViewElement[] = [
 
 <template>
   <div
-    class="bg-background relative flex h-[300px] w-full max-w-sm flex-col items-center justify-center overflow-hidden rounded-lg border"
+    class="bg-background relative flex h-[300px] w-[calc(100%-2rem)] max-w-sm flex-col items-center justify-center overflow-hidden rounded-lg border"
   >
-    <Tree
-      class="bg-background overflow-hidden rounded-md p-2"
-      :initial-expanded-items="['1']"
-    >
+    <Tree class="bg-background overflow-hidden rounded-md p-2" :initial-expanded-items="['1']">
       <Folder value="1" element="app">
         <File value="2"><span>layout.tsx</span></File>
         <File value="3"><span>page.tsx</span></File>
