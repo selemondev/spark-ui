@@ -7,7 +7,7 @@ const stagger = ref<"first" | "last" | "center" | "random">("first");
 </script>
 
 <template>
-  <div class="w-[min(560px,70vw)] space-y-8 py-12">
+  <div class="w-full max-w-[560px] space-y-8 px-6 py-12">
     <div class="flex flex-wrap justify-center gap-4 text-sm">
       <label
         >Direction
@@ -30,7 +30,7 @@ const stagger = ref<"first" | "last" | "center" | "random">("first");
     </div>
     <Text3DFlip
       tabindex="0"
-      class="justify-center bg-background text-center font-serif text-3xl sm:text-5xl"
+      class="justify-center bg-background text-center font-serif text-3xl sm:text-4xl"
       text-class-name="bg-background text-foreground"
       flip-text-class-name="bg-background text-violet-500"
       :rotate-direction="direction"
