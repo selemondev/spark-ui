@@ -5,8 +5,10 @@ import TypingAnimation from "../../components/spark-ui/terminal/typing-animation
 </script>
 
 <template>
-  <div class="grid place-items-center w-full min-h-screen">
-    <Terminal>
+  <div class="flex size-full items-center justify-center p-4">
+    <Terminal
+      class-name="max-h-full overflow-hidden max-sm:[&_code>*]:text-xs max-sm:[&_pre]:whitespace-pre-wrap"
+    >
       <TypingAnimation>&gt; pnpm dlx shadcn-vue@latest init</TypingAnimation>
       <AnimatedSpan :delay="2500" class="text-green-500">
         <span>✔ Preflight checks.</span>
