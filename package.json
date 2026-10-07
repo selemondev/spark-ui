@@ -26,7 +26,7 @@
   "scripts": {
     "lint": "vp lint .",
     "lint:fix": "vp lint . --fix",
-    "build": "pnpm --filter @spark-ui/docs build",
+    "build": "bun run --filter @spark-ui/docs build",
     "typecheck": "vue-tsc -b docs/tsconfig.json && tsc --noEmit -p scripts/tsconfig.json",
     "typecheck:scripts": "tsc --noEmit -p scripts/tsconfig.json",
     "sync:magic-ui": "node scripts/clone-magic-ui.ts && node scripts/build-magic-ui-registry.ts && node scripts/build-spark-ui-registry.ts && node scripts/compare-registries.ts && node scripts/update-component-history.ts && node scripts/normalize-repository.ts",
@@ -35,16 +35,16 @@
     "normalize:repository": "node scripts/normalize-repository.ts",
     "normalize:repository:check": "node scripts/normalize-repository.ts --check",
     "clean": "rimraf docs/.vitepress/dist docs/.vitepress/cache",
-    "build:docs": "pnpm --filter @spark-ui/docs build",
+    "build:docs": "bun run --filter @spark-ui/docs build",
     "test": "vp test run",
     "test:watch": "vp test",
     "coverage": "vp test run --coverage",
-    "docs:dev": "nr --filter @spark-ui/docs dev",
-    "generate:release": "npx changelogen@latest --release",
+    "docs:dev": "bun run --filter @spark-ui/docs dev",
+    "generate:release": "bunx changelogen@latest --release",
     "release:major": "node scripts/release.ts --major",
     "postinstall": "simple-git-hooks",
-    "package-minor:updates": "npx taze@latest minor -r",
-    "package-major:updates": "npx taze@latest major -r"
+    "package-minor:updates": "bunx taze@latest minor -r",
+    "package-major:updates": "bunx taze@latest major -r"
   },
   "dependencies": {
     "@lucide/vue": "^1.23.0",
@@ -57,7 +57,6 @@
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "@antfu/ni": "^0.23.2",
     "@shikijs/transformers": "^3.23.0",
     "@tsconfig/node20": "^20.1.9",
     "@types/node": "^22.20.0",
@@ -90,5 +89,19 @@
   "simple-git-hooks": {
     "pre-commit": "vp staged"
   },
-  "packageManager": "pnpm@9.15.9"
+  "packageManager": "bun@1.4.2",
+  "workspaces": {
+    "packages": ["docs"],
+    "catalog": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@0.2.5",
+      "vitest": "npm:@voidzero-dev/vite-plus-test@0.1.24",
+      "vite-plus": "0.2.5"
+    }
+  },
+  "overrides": {
+    "vite": "catalog:",
+    "vitepress>vite": "npm:vite@5.4.21",
+    "@spark-ui/docs>vite": "npm:vite@5.4.21",
+    "@spark-ui/docs>@unocss/vite>vite": "npm:vite@5.4.21"
+  }
 }
