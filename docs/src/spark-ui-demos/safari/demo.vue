@@ -6,7 +6,7 @@ const simple = ref(false);
 </script>
 
 <template>
-  <div class="flex w-[min(760px,75vw)] flex-col items-center gap-5 py-6">
+  <div class="flex w-full max-w-[32rem] flex-col items-center gap-4 px-4 sm:px-6">
     <Safari
       url="mountains.example"
       image-src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85"
