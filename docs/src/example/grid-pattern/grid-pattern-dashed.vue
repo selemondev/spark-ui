@@ -5,7 +5,7 @@ import GridPattern from "./grid-pattern.vue";
 
 <template>
   <div
-    class="relative flex size-full items-center justify-center overflow-hidden rounded-lg border border-black/10 dark:border-white/10 h-[450px] w-[300px] md:w-[600px] lg:w-[850px] p-20"
+    class="relative flex h-[450px] max-h-full w-full items-center justify-center overflow-hidden rounded-lg border border-black/10 dark:border-white/10"
   >
     <GridPattern
       :width="30"
@@ -13,9 +13,7 @@ import GridPattern from "./grid-pattern.vue";
       :x="-1"
       :y="-1"
       stroke-dasharray="4 2"
-      :class="
-        cn('[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]')
-      "
+      :class="cn('[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]')"
     />
   </div>
 </template>
