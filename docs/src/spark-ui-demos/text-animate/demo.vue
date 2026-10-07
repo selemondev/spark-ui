@@ -20,7 +20,7 @@ const replay = ref(0);
 </script>
 
 <template>
-  <div class="w-[min(520px,70vw)] space-y-8 py-12">
+  <div class="w-full max-w-[520px] space-y-8 px-2 py-12">
     <div class="flex flex-wrap justify-center gap-3 text-sm">
       <label
         >Animation
@@ -44,7 +44,7 @@ const replay = ref(0);
       :animation="animation"
       :by="by"
       once
-      class="text-center text-3xl font-semibold sm:text-4xl"
+      class="text-center text-2xl font-semibold sm:text-4xl"
       >{{ "Bring your words to life.\nOne moment at a time." }}</TextAnimate
     >
   </div>
