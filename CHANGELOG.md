@@ -1,8 +1,10 @@
 # Changelog
 
-## Unreleased
+## v2.0.0
 
-### Fixes
+[compare changes](https://github.com/selemondev/spark-ui/compare/v1.0.0...v2.0.0)
+
+### ✨ Highlights
 
 - Restore maintenance-script type checking and explicit Node ESM imports.
 - Correct demo source utility imports to match the installation guide's `@/lib/utils` path.
@@ -13,7 +15,7 @@
 - Remove stray Markdown from the copied Animated Gradient Text Vue example.
 - Resolve registry paths correctly in checkouts whose names contain spaces or URL-escaped characters.
 - Align workspace commands and aliases with the existing docs package; remove the unused declaration-build dependency.
-- Remove the stale npm lockfile; the pnpm lockfile is the authoritative dependency graph.
+- Remove the stale npm lockfile in favor of the single workspace lockfile.
 - Apply compatible security updates to form-data, Immutable, brace-expansion, JS-YAML, Browserslist and the PostCSS selector parser.
 - Validate releases before creating them on GitHub; align CI with Node 22, current action runtimes and the existing typecheck/normalization gates.
 - Fail closed on missing or malformed issue registries, and let dry-run/stale-closure modes run without issue-generation prompts.
@@ -60,6 +62,189 @@
 - Contain every documentation demo inside its preview card and size demos to fit it at desktop, tablet and mobile widths.
 - Add optional `container` props to Cool Mode, Hero Video Dialog, Scroll Progress and Resizable Navbar, and `contained` props to Pointer and Smooth Cursor, so their effects can stay inside an element instead of the viewport.
 - Size Globe's cobe render buffer from the canvas width so small globes render centered.
+
+### 🚀 Enhancements
+
+- Port remaining MagicUI components with docs, examples and demos ([7905c2a](https://github.com/selemondev/spark-ui/commit/7905c2a))
+
+### 🩹 Fixes
+
+- **animated-beam:** Render on iOS Safari and Chrome ([dc5f926](https://github.com/selemondev/spark-ui/commit/dc5f926))
+- **animated-beam:** Animate gradient via SMIL for WebKit support ([a73a1cc](https://github.com/selemondev/spark-ui/commit/a73a1cc))
+- **animated-beam:** Apply WebKit fix to Multiple Outputs demo copy ([cdd376c](https://github.com/selemondev/spark-ui/commit/cdd376c))
+- **scripts:** Restore Node ESM resolution and type checking ([1ebc99a](https://github.com/selemondev/spark-ui/commit/1ebc99a))
+- **docs:** Align copied utility imports with installation ([6478813](https://github.com/selemondev/spark-ui/commit/6478813))
+- **scripts:** Stop requiring retired sync assets ([3ec5315](https://github.com/selemondev/spark-ui/commit/3ec5315))
+- **docs:** Confine Markdown requests to documentation root ([0754bc0](https://github.com/selemondev/spark-ui/commit/0754bc0))
+- **examples:** Remove Markdown from gradient text source ([b0d059c](https://github.com/selemondev/spark-ui/commit/b0d059c))
+- **registry:** Decode filesystem paths from module URLs ([0d4445a](https://github.com/selemondev/spark-ui/commit/0d4445a))
+- **tooling:** Target existing documentation workspace ([312c644](https://github.com/selemondev/spark-ui/commit/312c644))
+- **ci:** Validate before creating GitHub releases ([b60ea5d](https://github.com/selemondev/spark-ui/commit/b60ea5d))
+- **automation:** Validate issue inputs before remote mutations ([1efb4a0](https://github.com/selemondev/spark-ui/commit/1efb4a0))
+- **release:** Select the next major and reject duplicate versions ([999daf7](https://github.com/selemondev/spark-ui/commit/999daf7))
+- **typing-animation:** Restart current text and cancel stale timers ([89e6956](https://github.com/selemondev/spark-ui/commit/89e6956))
+- **cool-mode:** Isolate particles and stop held effects on unmount ([03279a1](https://github.com/selemondev/spark-ui/commit/03279a1))
+- **animated-grid-pattern:** Bound animations to current square generations ([6342804](https://github.com/selemondev/spark-ui/commit/6342804))
+- **animated-list:** Reveal reactive slots with cancellable timing ([7135566](https://github.com/selemondev/spark-ui/commit/7135566))
+- **code-comparison:** Remove VitePress coupling and stale highlights ([e3730ac](https://github.com/selemondev/spark-ui/commit/e3730ac))
+- **decorative-motion:** Keep static shadows and rays for reduced motion ([6e7d7f5](https://github.com/selemondev/spark-ui/commit/6e7d7f5))
+- **docs:** Generate configured Tailwind animations without resetting layout ([541b424](https://github.com/selemondev/spark-ui/commit/541b424))
+- **blur:** Honor reactive variants timing and viewport margins ([d15a696](https://github.com/selemondev/spark-ui/commit/d15a696))
+- **device-frames:** Preserve artwork coordinates and isolate screen masks ([9ff80c5](https://github.com/selemondev/spark-ui/commit/9ff80c5))
+- **hero-video-dialog:** Preserve modal focus through animated dismissal ([3430186](https://github.com/selemondev/spark-ui/commit/3430186))
+- **resizable-navbar:** Associate keyboard controls and restore menu focus ([6e5292a](https://github.com/selemondev/spark-ui/commit/6e5292a))
+- **file-tree:** Implement visible node keyboard traversal ([df58003](https://github.com/selemondev/spark-ui/commit/df58003))
+- **theme-toggle:** Serialize transitions and clean up skipped animations ([4d196ce](https://github.com/selemondev/spark-ui/commit/4d196ce))
+- **dia-text-reveal:** Reset stale cycles and resolve foreground colors ([251aae5](https://github.com/selemondev/spark-ui/commit/251aae5))
+- **globe:** Destroy renderers without changing host document styles ([ec39728](https://github.com/selemondev/spark-ui/commit/ec39728))
+- **terminal:** Track reactive slot text and cancel typing timers ([781b47c](https://github.com/selemondev/spark-ui/commit/781b47c))
+- **hyper-text:** Retain current prop and slot content through scrambling ([c47e967](https://github.com/selemondev/spark-ui/commit/c47e967))
+- **glyph-matrix:** Honor static cells and rebuild changed geometry ([005137c](https://github.com/selemondev/spark-ui/commit/005137c))
+- **flickering-grid:** Rebuild reactive geometry with one animation loop ([acd9c0f](https://github.com/selemondev/spark-ui/commit/acd9c0f))
+- **icon-cloud:** Align source selection and scaled pointer interaction ([94c4ad0](https://github.com/selemondev/spark-ui/commit/94c4ad0))
+- **confetti:** Preserve pending bursts and independent canvas ownership ([d1872b5](https://github.com/selemondev/spark-ui/commit/d1872b5))
+- **progress:** Expose bounded accessible values and finite geometry ([e613d56](https://github.com/selemondev/spark-ui/commit/e613d56))
+- **decorative-text:** React to class changes and complete copied examples ([f1a9f36](https://github.com/selemondev/spark-ui/commit/f1a9f36))
+- **avatar-circles:** Render optional counts without empty links ([44fa57b](https://github.com/selemondev/spark-ui/commit/44fa57b))
+- **bento-grid:** Keep declared layout classes reactive ([d89d317](https://github.com/selemondev/spark-ui/commit/d89d317))
+- **animated-tooltip:** Expose keyboard descriptions and dismissal ([3a14bf7](https://github.com/selemondev/spark-ui/commit/3a14bf7))
+- **letter-motion:** Preserve reactive phrases and heading semantics ([8c90504](https://github.com/selemondev/spark-ui/commit/8c90504))
+- **marquee:** Preserve reactive nonshrinking accessible tracks ([d59982b](https://github.com/selemondev/spark-ui/commit/d59982b))
+- **orbiting-circles:** Apply reactive animation reversal ([952702a](https://github.com/selemondev/spark-ui/commit/952702a))
+- **aurora:** React to gradient color and speed changes ([c8bd9d1](https://github.com/selemondev/spark-ui/commit/c8bd9d1))
+- **skewed-scroll:** Fill the loop with an inert following track ([53defa0](https://github.com/selemondev/spark-ui/commit/53defa0))
+- **docs:** Supply semantic color tokens for component previews ([125f1ca](https://github.com/selemondev/spark-ui/commit/125f1ca))
+- **docs:** Register the intended source alias ([ae770c3](https://github.com/selemondev/spark-ui/commit/ae770c3))
+- **components:** Align newer families with canonical source ownership ([ed5421d](https://github.com/selemondev/spark-ui/commit/ed5421d))
+- **dock:** Use viewport coordinates for pointer magnification ([3a841f3](https://github.com/selemondev/spark-ui/commit/3a841f3))
+- **interactive-hover-button:** Avoid form submission and duplicate accessible content ([58c73cc](https://github.com/selemondev/spark-ui/commit/58c73cc))
+- **lens:** Keep magnified content inert and hidden from accessibility ([cb9bad1](https://github.com/selemondev/spark-ui/commit/cb9bad1))
+- **particles:** Correct transparent layers and copied background examples ([75c301a](https://github.com/selemondev/spark-ui/commit/75c301a))
+- **retro-grid:** Retain reactive presentation classes ([eb05f0a](https://github.com/selemondev/spark-ui/commit/eb05f0a))
+- **ripple:** Resolve semantic border colors and reactive classes ([b111c49](https://github.com/selemondev/spark-ui/commit/b111c49))
+- **docs:** Expose keyboard demo controls and portable copied imports ([80482b7](https://github.com/selemondev/spark-ui/commit/80482b7))
+- **globe:** Center sphere and fill wrapper so it renders and rotates ([d0182f9](https://github.com/selemondev/spark-ui/commit/d0182f9))
+- **text-3d-flip:** Keep word spacing and type the Intl.Segmenter guard ([febd38f](https://github.com/selemondev/spark-ui/commit/febd38f))
+- **components:** Resolve motion-v type gaps in number-ticker, spinning-text, pointer, shiny-button, text-animate ([eb62e47](https://github.com/selemondev/spark-ui/commit/eb62e47))
+- **terminal:** Adapt surface, border and text to dark mode ([d0b382a](https://github.com/selemondev/spark-ui/commit/d0b382a))
+- **animated-list:** Use theme-safe dark styles for notification ([aa5023c](https://github.com/selemondev/spark-ui/commit/aa5023c))
+- **resizable-navbar:** Dark-mode hover pill for nav items ([81233c2](https://github.com/selemondev/spark-ui/commit/81233c2))
+- **animated-beam:** Recompute path via ResizeObserver and post-flush watch ([2bd823b](https://github.com/selemondev/spark-ui/commit/2bd823b))
+- **icon-cloud:** Correct depth-based scale and opacity ([979eff4](https://github.com/selemondev/spark-ui/commit/979eff4))
+- **letter-up:** Use millisecond stagger delay ([47eb394](https://github.com/selemondev/spark-ui/commit/47eb394))
+- **resizable-navbar:** Responsive width without fixed min-width ([6bfbb66](https://github.com/selemondev/spark-ui/commit/6bfbb66))
+- **lint:** Uppercase hex literal and rename dotted-map computed to avoid key collision ([e3bf526](https://github.com/selemondev/spark-ui/commit/e3bf526))
+- **docs:** Correct dead tweet-card link that failed the build ([680c43c](https://github.com/selemondev/spark-ui/commit/680c43c))
+- **lint:** Use decimal max code point to avoid hex-case/formatter conflict ([83a76d7](https://github.com/selemondev/spark-ui/commit/83a76d7))
+- **deps:** Pin framer-motion and motion-dom to the versions pnpm resolved ([eb1acc3](https://github.com/selemondev/spark-ui/commit/eb1acc3))
+- **text-animate:** Pass `once` through motion-v inViewOptions ([894c980](https://github.com/selemondev/spark-ui/commit/894c980))
+- **docs:** Keep VitePress prose styles out of demo previews ([1118c8b](https://github.com/selemondev/spark-ui/commit/1118c8b))
+- **file-tree:** Animate folder collapse from its measured height ([c6806dc](https://github.com/selemondev/spark-ui/commit/c6806dc))
+- **magic-card:** Use screen blending for the orb in dark mode ([28f3008](https://github.com/selemondev/spark-ui/commit/28f3008))
+- **shiny-button:** Scope dark-mode styles to the button ([46c5ca2](https://github.com/selemondev/spark-ui/commit/46c5ca2))
+- **resizable-navbar:** Show the scrolled background in dark mode ([65672ce](https://github.com/selemondev/spark-ui/commit/65672ce))
+- **text-reveal:** Reveal words across the scroll range in scroll containers ([c97eaba](https://github.com/selemondev/spark-ui/commit/c97eaba))
+- **animated-gradient-text:** Restore the moving gradient border in the demo ([521485d](https://github.com/selemondev/spark-ui/commit/521485d))
+- **terminal:** Sequence demo lines after the command finishes typing ([3416aa6](https://github.com/selemondev/spark-ui/commit/3416aa6))
+- **marquee:** Pause the reverse vertical column on hover in the demo ([b691275](https://github.com/selemondev/spark-ui/commit/b691275))
+- **docs:** Contain demos inside the preview card ([f290330](https://github.com/selemondev/spark-ui/commit/f290330))
+- **docs:** Keep dark-mode doc link colors out of demo previews ([95d0618](https://github.com/selemondev/spark-ui/commit/95d0618))
+- **docs:** Stop UnoCSS attributify from styling SVG attributes and props ([3af688d](https://github.com/selemondev/spark-ui/commit/3af688d))
+- **cool-mode:** Confine particles to an optional container ([264dad6](https://github.com/selemondev/spark-ui/commit/264dad6))
+- **hero-video-dialog:** Open the dialog inside an optional container ([c9fcf9b](https://github.com/selemondev/spark-ui/commit/c9fcf9b))
+- **scroll-progress:** Track an optional scroll container ([b65770d](https://github.com/selemondev/spark-ui/commit/b65770d))
+- **resizable-navbar:** Track an optional scroll container ([56b596e](https://github.com/selemondev/spark-ui/commit/56b596e))
+- **pointer:** Render the pointer inside its parent when contained ([f0794f9](https://github.com/selemondev/spark-ui/commit/f0794f9))
+- **smooth-cursor:** Render the cursor inside its parent when contained ([12640e8](https://github.com/selemondev/spark-ui/commit/12640e8))
+- **confetti:** Draw demo confetti inside the preview card ([e51557b](https://github.com/selemondev/spark-ui/commit/e51557b))
+- **globe:** Size the render buffer from the canvas and fit the demo ([30e7efb](https://github.com/selemondev/spark-ui/commit/30e7efb))
+- **text-animate:** Render line breaks and fit the demo ([6591227](https://github.com/selemondev/spark-ui/commit/6591227))
+- **animated-shiny-text:** Fit the demo in the preview ([0c6f8d3](https://github.com/selemondev/spark-ui/commit/0c6f8d3))
+- **avatar-circles:** Fit the demo in the preview ([a5d72e1](https://github.com/selemondev/spark-ui/commit/a5d72e1))
+- **gradual-spacing:** Fit the demo in the preview ([6694a96](https://github.com/selemondev/spark-ui/commit/6694a96))
+- **terminal:** Fit the demo in the preview ([1807dea](https://github.com/selemondev/spark-ui/commit/1807dea))
+- **tweet-card:** Fit the demo in the preview ([cc43b2c](https://github.com/selemondev/spark-ui/commit/cc43b2c))
+- **client-tweet-card:** Fit the demo in the preview ([77438f7](https://github.com/selemondev/spark-ui/commit/77438f7))
+- **particles:** Fit the demo in the preview ([52ef1ba](https://github.com/selemondev/spark-ui/commit/52ef1ba))
+- **safari:** Fit the demo in the preview ([a6a88e4](https://github.com/selemondev/spark-ui/commit/a6a88e4))
+- **pixel-image:** Fit the demo in the preview ([5bc167b](https://github.com/selemondev/spark-ui/commit/5bc167b))
+- **flickering-grid:** Fill the preview card ([8386ba2](https://github.com/selemondev/spark-ui/commit/8386ba2))
+- **floating-3d-particles:** Fill the preview card ([f24e761](https://github.com/selemondev/spark-ui/commit/f24e761))
+- **animated-grid-pattern:** Fill the preview card ([bf22cd9](https://github.com/selemondev/spark-ui/commit/bf22cd9))
+- **orbiting-circles:** Fit the demo in the preview ([b7a60c2](https://github.com/selemondev/spark-ui/commit/b7a60c2))
+- **iphone:** Fit the demo in the preview ([f297d64](https://github.com/selemondev/spark-ui/commit/f297d64))
+- **android:** Fit the demo in the preview ([7c44321](https://github.com/selemondev/spark-ui/commit/7c44321))
+- **code-comparison:** Fit the demo in the preview ([502b41a](https://github.com/selemondev/spark-ui/commit/502b41a))
+- **bento-grid:** Fit the demo in the preview ([d4f8be3](https://github.com/selemondev/spark-ui/commit/d4f8be3))
+- **letter-up:** Fit the demo in the preview ([29be80f](https://github.com/selemondev/spark-ui/commit/29be80f))
+- **border-beam:** Fit the demo in the preview ([05d82c1](https://github.com/selemondev/spark-ui/commit/05d82c1))
+- **backlight:** Fit the demo in the preview ([e882008](https://github.com/selemondev/spark-ui/commit/e882008))
+- **magic-card:** Fit the demo in the preview ([d55f7e6](https://github.com/selemondev/spark-ui/commit/d55f7e6))
+- **animated-beam:** Fit the demo in the preview ([91ef742](https://github.com/selemondev/spark-ui/commit/91ef742))
+- **marquee:** Fill the preview card ([22ef02b](https://github.com/selemondev/spark-ui/commit/22ef02b))
+- **hexagon-pattern:** Fill the preview card ([311993c](https://github.com/selemondev/spark-ui/commit/311993c))
+- **text-3d-flip:** Fit the demo in the preview ([fdb88e6](https://github.com/selemondev/spark-ui/commit/fdb88e6))
+- **warp-background:** Fit the demo in the preview ([e2a6592](https://github.com/selemondev/spark-ui/commit/e2a6592))
+- **animated-list:** Fit the demo in the preview ([c215f77](https://github.com/selemondev/spark-ui/commit/c215f77))
+- **aurora:** Fit the demo in the preview ([f686fef](https://github.com/selemondev/spark-ui/commit/f686fef))
+- **blur-fade:** Fit the demo in the preview ([64da6c0](https://github.com/selemondev/spark-ui/commit/64da6c0))
+- **comic-text:** Fit the demo in the preview ([db70418](https://github.com/selemondev/spark-ui/commit/db70418))
+- **dia-text-reveal:** Fit the demo in the preview ([c8a854c](https://github.com/selemondev/spark-ui/commit/c8a854c))
+- **dotted-map:** Fit the demo in the preview ([a920a16](https://github.com/selemondev/spark-ui/commit/a920a16))
+- **file-tree:** Fit the demo in the preview ([5bb15ac](https://github.com/selemondev/spark-ui/commit/5bb15ac))
+- **glare-hover:** Fit the demo in the preview ([8718193](https://github.com/selemondev/spark-ui/commit/8718193))
+- **grid-pattern:** Fill the preview card ([e732ef6](https://github.com/selemondev/spark-ui/commit/e732ef6))
+- **highlighter:** Fit the demo in the preview ([d18ed6e](https://github.com/selemondev/spark-ui/commit/d18ed6e))
+- **icon-cloud:** Fit the demo in the preview ([e36f395](https://github.com/selemondev/spark-ui/commit/e36f395))
+- **interactive-grid-pattern:** Fill the preview card ([7eef9d3](https://github.com/selemondev/spark-ui/commit/7eef9d3))
+- **lens:** Fit the demo in the preview ([e80c23d](https://github.com/selemondev/spark-ui/commit/e80c23d))
+- **light-rays:** Fit the demo in the preview ([4f5c0dd](https://github.com/selemondev/spark-ui/commit/4f5c0dd))
+- **meteors:** Fit the demo in the preview ([eac0fae](https://github.com/selemondev/spark-ui/commit/eac0fae))
+- **noise-texture:** Fit the demo in the preview ([2504045](https://github.com/selemondev/spark-ui/commit/2504045))
+- **retro-grid:** Fill the preview card ([f26ef00](https://github.com/selemondev/spark-ui/commit/f26ef00))
+- **ripple:** Fill the preview card ([3811772](https://github.com/selemondev/spark-ui/commit/3811772))
+- **striped-pattern:** Fill the preview card ([948eaa5](https://github.com/selemondev/spark-ui/commit/948eaa5))
+- **skewed-infinite-scroll:** Fit the demo in the preview ([bc9e1ae](https://github.com/selemondev/spark-ui/commit/bc9e1ae))
+- **animated-tooltip:** Keep tooltips inside the preview ([929276a](https://github.com/selemondev/spark-ui/commit/929276a))
+- **dock:** Fit the demo in the preview ([d4560d6](https://github.com/selemondev/spark-ui/commit/d4560d6))
+- **aurora:** Keep the space between the demo's words ([7b67aa0](https://github.com/selemondev/spark-ui/commit/7b67aa0))
+
+### 📖 Documentation
+
+- Pin installation to compatible Tailwind major versions ([3098ad8](https://github.com/selemondev/spark-ui/commit/3098ad8))
+- Complete copied examples and align installation prerequisites ([aa6e618](https://github.com/selemondev/spark-ui/commit/aa6e618))
+- Use bun commands in development and release instructions ([85ee4f6](https://github.com/selemondev/spark-ui/commit/85ee4f6))
+- **changelog:** Record bun migration, animation and preview-fit fixes ([cb58493](https://github.com/selemondev/spark-ui/commit/cb58493))
+
+### 📦 Build
+
+- Switch package manager from pnpm to bun ([0ff51be](https://github.com/selemondev/spark-ui/commit/0ff51be))
+- **scripts:** Run workspace scripts and one-off tools through bun ([294b4a5](https://github.com/selemondev/spark-ui/commit/294b4a5))
+
+### 🏡 Chore
+
+- Stop tracking skills-lock.json ([4f2370a](https://github.com/selemondev/spark-ui/commit/4f2370a))
+- **registry:** Refresh repaired canonical component inventory ([60aae0f](https://github.com/selemondev/spark-ui/commit/60aae0f))
+- **demos:** Use a scenic wallpaper for android and iphone previews ([e5123cc](https://github.com/selemondev/spark-ui/commit/e5123cc))
+- **registry:** Regenerate inventory for newly ported components ([46fd068](https://github.com/selemondev/spark-ui/commit/46fd068))
+- **agent-issues:** Require bun commands in component port criteria ([c24f051](https://github.com/selemondev/spark-ui/commit/c24f051))
+- **renovate:** Pin the bun toolchain instead of pnpm ([5151215](https://github.com/selemondev/spark-ui/commit/5151215))
+- **lint:** Exclude bun.lock from lint ([e26b4fc](https://github.com/selemondev/spark-ui/commit/e26b4fc))
+
+### ✅ Tests
+
+- Remove arithmetic placeholder unrelated to component behavior ([2679c1a](https://github.com/selemondev/spark-ui/commit/2679c1a))
+- **glare-hover:** Remove obsolete transition shorthand assertion ([bb5f064](https://github.com/selemondev/spark-ui/commit/bb5f064))
+- Provide a localStorage polyfill for jsdom specs ([4336a51](https://github.com/selemondev/spark-ui/commit/4336a51))
+
+### 🤖 CI
+
+- Install dependencies and run scripts with bun ([fc8cf14](https://github.com/selemondev/spark-ui/commit/fc8cf14))
+
+### ❤️ Contributors
+
+- Solomon Brahanu
+- Selemondev <selemondev19@gmail.com>
 
 ## v1.0.0
 
