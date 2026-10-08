@@ -243,7 +243,6 @@
 
 ### ❤️ Contributors
 
-- Solomon Brahanu
 - Selemondev <selemondev19@gmail.com>
 
 ## v1.0.0
