@@ -39,7 +39,7 @@ const images = slugs.map((slug) => `https://cdn.simpleicons.org/${slug}`);
 
 <template>
   <div
-    class="relative flex h-[400px] w-[300px] md:w-[500px] items-center justify-center overflow-hidden rounded-lg"
+    class="relative flex h-[400px] max-h-[calc(100%-2rem)] w-[calc(100%-2rem)] max-w-[500px] items-center justify-center overflow-hidden rounded-lg"
   >
     <IconCloud :images="images" />
   </div>

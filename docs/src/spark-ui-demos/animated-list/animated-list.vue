@@ -38,8 +38,10 @@ notifications = Array.from({ length: 10 }, () => notifications).flat();
 </script>
 
 <template>
-  <div class="grid place-items-center w-full min-h-screen">
-    <AnimatedList>
+  <div
+    class="relative flex size-full max-h-[420px] flex-col items-center justify-center overflow-hidden px-2 sm:px-4"
+  >
+    <AnimatedList class="h-full w-full max-w-[420px] md:w-full">
       <template #default>
         <Notification
           v-for="(item, index) in notifications"
@@ -52,5 +54,8 @@ notifications = Array.from({ length: 10 }, () => notifications).flat();
         />
       </template>
     </AnimatedList>
+    <div
+      class="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white dark:from-black"
+    />
   </div>
 </template>

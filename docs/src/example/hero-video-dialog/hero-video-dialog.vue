@@ -20,6 +20,8 @@ interface HeroVideoProps {
   thumbnailSrc: string;
   thumbnailAlt?: string;
   className?: string;
+  /** Positioned element to show the open dialog inside instead of the full viewport. */
+  container?: HTMLElement | null;
 }
 const props = withDefaults(defineProps<HeroVideoProps>(), {
   animationStyle: "from-center",
@@ -76,17 +78,22 @@ let restoreScroll: (() => void) | undefined;
 async function openVideo() {
   if (dialog.value?.open) return;
   previousFocus = document.activeElement as HTMLElement | null;
-  const style = document.documentElement.style;
-  const overflow = style.getPropertyValue("overflow");
-  const priority = style.getPropertyPriority("overflow");
-  restoreScroll = () => {
-    if (overflow) style.setProperty("overflow", overflow, priority);
-    else style.removeProperty("overflow");
-  };
-  style.setProperty("overflow", "hidden");
+  if (!props.container) {
+    const style = document.documentElement.style;
+    const overflow = style.getPropertyValue("overflow");
+    const priority = style.getPropertyPriority("overflow");
+    restoreScroll = () => {
+      if (overflow) style.setProperty("overflow", overflow, priority);
+      else style.removeProperty("overflow");
+    };
+    style.setProperty("overflow", "hidden");
+  }
+  // Open a contained dialog first: motion skips enter animations on hidden elements.
+  if (props.container) dialog.value?.show();
   isVideoOpen.value = true;
   await nextTick();
-  dialog.value?.showModal();
+  if (props.container) dialog.value?.querySelector<HTMLElement>("[autofocus]")?.focus();
+  else dialog.value?.showModal();
 }
 
 function closeVideo() {
@@ -144,69 +151,86 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </button>
-    <dialog
-      ref="dialog"
-      aria-modal="true"
-      :aria-label="thumbnailAlt"
-      class="m-0 h-dvh max-h-none w-screen max-w-none overflow-visible border-0 bg-transparent p-0 backdrop:bg-transparent"
-      @cancel.prevent="closeVideo"
-    >
-      <AnimatePresence :on-exit-complete="finishClose">
-        <motion.div
-          v-if="isVideoOpen"
-          key="video"
-          :initial="{
-            opacity: 0,
-          }"
-          :animate="{
-            opacity: 1,
-          }"
-          :exit="{
-            opacity: 0,
-          }"
-          class="fixed inset-0 z-50 flex items-center justify-center bg-gray-100/50 backdrop-blur-md"
-          @click.self="closeVideo"
-        >
+    <Teleport :to="container ?? undefined" :disabled="!container">
+      <dialog
+        ref="dialog"
+        :aria-modal="container ? undefined : 'true'"
+        :aria-label="thumbnailAlt"
+        :class="
+          container
+            ? 'absolute inset-0 z-50 m-0 size-full max-h-none max-w-none overflow-visible border-0 bg-transparent p-0'
+            : 'm-0 h-dvh max-h-none w-screen max-w-none overflow-visible border-0 bg-transparent p-0 backdrop:bg-transparent'
+        "
+        @cancel.prevent="closeVideo"
+        @keydown.esc="closeVideo"
+      >
+        <AnimatePresence :on-exit-complete="finishClose">
           <motion.div
-            v-bind="selectedAnimation"
-            :transition="{
-              type: 'spring',
-              damping: 30,
-              stiffness: 300,
+            v-if="isVideoOpen"
+            key="video"
+            :initial="{
+              opacity: 0,
             }"
-            class="relative mx-4 aspect-video w-full max-w-4xl md:mx-0"
+            :animate="{
+              opacity: 1,
+            }"
+            :exit="{
+              opacity: 0,
+            }"
+            :class="
+              cn(
+                'inset-0 z-50 flex items-center justify-center bg-gray-100/50 backdrop-blur-md',
+                container ? 'absolute' : 'fixed',
+              )
+            "
+            @click.self="closeVideo"
           >
-            <motion.button
-              type="button"
-              aria-label="Close video"
-              autofocus
-              @click="closeVideo"
-              class="absolute -top-16 right-0 rounded-full bg-neutral-900/50 p-2 text-xl text-white ring-1 backdrop-blur-md dark:bg-neutral-100/50 dark:text-black"
+            <motion.div
+              v-bind="selectedAnimation"
+              :transition="{
+                type: 'spring',
+                damping: 30,
+                stiffness: 300,
+              }"
+              :class="cn('relative mx-4 aspect-video w-full max-w-4xl', !container && 'md:mx-0')"
             >
-              <XIcon class="size-5" />
-            </motion.button>
-            <div
-              class="relative isolate z-[1] size-full overflow-hidden rounded-2xl border-2 border-white"
-            >
-              <iframe
-                :title="thumbnailAlt"
-                :src="videoSrc"
-                class="size-full rounded-2xl"
-                allowFullScreen
-                allow="
-                  accelerometer;
-                  autoplay;
-                  clipboard-write;
-                  encrypted-media;
-                  gyroscope;
-                  picture-in-picture;
-                  web-share;
+              <motion.button
+                type="button"
+                aria-label="Close video"
+                autofocus
+                @click="closeVideo"
+                :class="
+                  cn(
+                    'absolute right-0 rounded-full bg-neutral-900/50 p-2 text-xl text-white ring-1 backdrop-blur-md dark:bg-neutral-100/50 dark:text-black',
+                    container ? '-top-12' : '-top-16',
+                  )
                 "
-              />
-            </div>
+              >
+                <XIcon class="size-5" />
+              </motion.button>
+              <div
+                class="relative isolate z-[1] size-full overflow-hidden rounded-2xl border-2 border-white"
+              >
+                <iframe
+                  :title="thumbnailAlt"
+                  :src="videoSrc"
+                  class="size-full rounded-2xl"
+                  allowFullScreen
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                />
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </AnimatePresence>
-    </dialog>
+        </AnimatePresence>
+      </dialog>
+    </Teleport>
   </div>
 </template>

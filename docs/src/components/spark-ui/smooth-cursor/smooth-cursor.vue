@@ -12,10 +12,13 @@ const props = withDefaults(
   defineProps<{
     springConfig?: SpringConfig;
     scope?: "global" | "parent";
+    /** Render inside the positioned parent element instead of teleporting to body. */
+    contained?: boolean;
   }>(),
   {
     springConfig: () => ({ damping: 45, stiffness: 400, mass: 1, restDelta: 0.001 }),
     scope: "global",
+    contained: false,
   },
 );
 const anchor = ref<HTMLElement | null>(null);
@@ -77,12 +80,20 @@ function update() {
   const dx = event.clientX - lastX;
   const dy = event.clientY - lastY;
   const speed = lastTime && delta > 0 ? Math.hypot(dx, dy) / delta : 0;
+  let x = event.clientX;
+  let y = event.clientY;
+  const container = props.contained ? anchor.value?.parentElement : null;
+  if (container) {
+    const rect = container.getBoundingClientRect();
+    x += container.scrollLeft - rect.left - container.clientLeft;
+    y += container.scrollTop - rect.top - container.clientTop;
+  }
   if (!visible.value) {
-    cursorX.jump(event.clientX);
-    cursorY.jump(event.clientY);
+    cursorX.jump(x);
+    cursorY.jump(y);
   } else {
-    cursorX.set(event.clientX);
-    cursorY.set(event.clientY);
+    cursorX.set(x);
+    cursorY.set(y);
   }
   visible.value = true;
   if (cursorOwner && !cursorHidden && event.pointerType === "mouse") {
@@ -153,12 +164,12 @@ onBeforeUnmount(() => {
 
 <template>
   <span ref="anchor" hidden aria-hidden="true" />
-  <Teleport to="body">
+  <Teleport to="body" :disabled="contained">
     <motion.div
       v-if="visible"
       aria-hidden="true"
       :style="{
-        position: 'fixed',
+        position: contained ? 'absolute' : 'fixed',
         left: cursorX,
         top: cursorY,
         translateX: '-50%',

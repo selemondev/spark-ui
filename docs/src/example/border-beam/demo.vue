@@ -3,13 +3,15 @@ import BorderBeam from "./border-beam.vue";
 </script>
 
 <template>
-  <div class="flex items-center justify-center p-2">
+  <div class="flex w-full items-center justify-center p-4">
     <div
-      class="relative w-[350px] overflow-hidden rounded-xl border border-solid border-black/10 bg-white p-6 text-neutral-900 shadow-sm dark:border-white/15 dark:bg-neutral-950 dark:text-neutral-100"
+      class="relative w-full max-w-[350px] overflow-hidden rounded-xl border border-solid border-black/10 bg-white p-6 text-neutral-900 shadow-sm dark:border-white/15 dark:bg-neutral-950 dark:text-neutral-100"
     >
       <div class="space-y-1.5">
         <h3 class="text-lg font-semibold leading-none tracking-tight">Login</h3>
-        <p class="text-sm text-neutral-500 dark:text-neutral-400">Enter your credentials to access your account.</p>
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          Enter your credentials to access your account.
+        </p>
       </div>
       <div class="mt-6 grid gap-4">
         <div class="flex flex-col space-y-1.5">

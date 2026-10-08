@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onBeforeUnmount, onMounted, ref } from "vue";
 import ClientTweetCard from "./client-tweet-card.vue";
 import type { TweetData } from "../tweet-card/tweet-data";
 
@@ -86,18 +86,49 @@ const sampleTweet: TweetData = {
 };
 const enteredId = ref("1668408059125702661");
 const liveId = ref<string>();
+
+// Scale the tweet down (never up) so the whole card fits below the form. Below
+// MIN_SCALE the text gets too small, so the tweet area scrolls instead.
+const MAX_WIDTH = 480;
+const MIN_SCALE = 0.66;
+const frame = ref<HTMLElement>();
+const sizer = ref<HTMLElement>();
+const content = ref<HTMLElement>();
+let observer: ResizeObserver | undefined;
+
+function fit() {
+  const box = frame.value;
+  const slot = sizer.value;
+  const card = content.value;
+  if (!box || !slot || !card) return;
+  let scale = 1;
+  // A narrower card is taller, so settle width and scale together.
+  for (let i = 0; i < 4; i++) {
+    card.style.width = `${Math.min(MAX_WIDTH, box.clientWidth / scale)}px`;
+    scale = Math.min(1, box.clientHeight / card.offsetHeight, box.clientWidth / card.offsetWidth);
+  }
+  scale = Math.max(MIN_SCALE, scale);
+  card.style.width = `${Math.min(MAX_WIDTH, box.clientWidth / scale)}px`;
+  card.style.transform = `scale(${scale})`;
+  const rect = card.getBoundingClientRect();
+  slot.style.width = `${rect.width}px`;
+  slot.style.height = `${rect.height}px`;
+}
+
+onMounted(() => {
+  observer = new ResizeObserver(fit);
+  observer.observe(frame.value!);
+  observer.observe(content.value!);
+});
+onBeforeUnmount(() => observer?.disconnect());
 </script>
 
 <template>
-  <div class="w-[min(440px,70vw)] space-y-3">
-    <p class="text-center text-xs text-muted-foreground">
-      {{
-        liveId === undefined
-          ? "Saved sample of a public tweet. Select Load live tweet to fetch from the public API."
-          : "Live tweet data from the public API."
-      }}
-    </p>
-    <form class="flex flex-wrap gap-2" @submit.prevent="liveId = enteredId.trim()">
+  <div class="flex size-full flex-col items-center gap-3 p-4">
+    <form
+      class="flex w-full max-w-md shrink-0 flex-wrap gap-2"
+      @submit.prevent="liveId = enteredId.trim()"
+    >
       <label for="client-tweet-id" class="sr-only">Public tweet ID</label>
       <input
         id="client-tweet-id"
@@ -109,6 +140,7 @@ const liveId = ref<string>();
         Load live tweet
       </button>
       <button
+        v-if="liveId !== undefined"
         type="button"
         class="rounded-md border px-3 py-2 text-sm hover:bg-muted"
         @click="liveId = undefined"
@@ -116,6 +148,16 @@ const liveId = ref<string>();
         Show sample
       </button>
     </form>
-    <ClientTweetCard :id="liveId" :tweet="liveId === undefined ? sampleTweet : undefined" />
+    <div ref="frame" class="flex min-h-0 w-full flex-1 justify-center overflow-y-auto">
+      <div ref="sizer" class="my-auto shrink-0">
+        <div ref="content" class="origin-top-left">
+          <ClientTweetCard
+            :id="liveId"
+            :tweet="liveId === undefined ? sampleTweet : undefined"
+            class="[&_video]:max-h-40 [&_video]:object-cover"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>

@@ -4,10 +4,8 @@ import HeroParticles from "../../components/spark-ui/particles/particles.vue";
 </script>
 
 <template>
-  <div class="grid place-items-center w-full min-h-screen">
-    <div class="relative w-[300px] md:w-[550px] h-[400px]">
-      <HeroParticles :accelerate="true" class="absolute top-0" />
-      <HeroBackground />
-    </div>
+  <div class="relative h-[450px] w-full overflow-hidden">
+    <HeroParticles :accelerate="true" class="absolute top-0" />
+    <HeroBackground />
   </div>
 </template>

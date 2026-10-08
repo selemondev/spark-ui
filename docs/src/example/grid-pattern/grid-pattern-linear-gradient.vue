@@ -5,16 +5,14 @@ import GridPattern from "./grid-pattern.vue";
 
 <template>
   <div
-    class="relative flex size-full items-center justify-center overflow-hidden rounded-lg border border-black/10 dark:border-white/10 h-[450px] w-[300px] md:w-[600px] lg:w-[850px] p-20"
+    class="relative flex h-[450px] max-h-full w-full items-center justify-center overflow-hidden rounded-lg border border-black/10 dark:border-white/10"
   >
     <GridPattern
       :width="20"
       :height="20"
       :x="-1"
       :y="-1"
-      :class="
-        cn('[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]')
-      "
+      :class="cn('[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]')"
     />
   </div>
 </template>

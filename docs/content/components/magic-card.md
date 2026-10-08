@@ -131,7 +131,7 @@ onBeforeUnmount(() => {
     <motion.div
       v-else
       aria-hidden="true"
-      class="magic-card-orb pointer-events-none absolute left-0 top-0 z-30"
+      class="pointer-events-none absolute left-0 top-0 z-30 mix-blend-multiply dark:mix-blend-screen"
       :style="{
         width: glowSize,
         height: glowSize,
@@ -149,15 +149,6 @@ onBeforeUnmount(() => {
     <div class="relative z-40"><slot /></div>
   </motion.div>
 </template>
-
-<style scoped>
-.magic-card-orb {
-  mix-blend-mode: multiply;
-}
-:global(.dark) .magic-card-orb {
-  mix-blend-mode: screen;
-}
-</style>
 ```
 
 :::

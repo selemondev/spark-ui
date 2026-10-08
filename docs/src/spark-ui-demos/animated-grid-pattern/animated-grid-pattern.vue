@@ -4,27 +4,25 @@ import { cn } from "../../lib/utils";
 </script>
 
 <template>
-  <div class="grid place-items-center w-full min-h-screen">
-    <div
-      class="relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-lg border bg-background p-20"
+  <div
+    class="relative flex h-[450px] w-full items-center justify-center overflow-hidden rounded-lg border bg-background p-6 sm:p-10"
+  >
+    <p
+      class="z-10 whitespace-pre-wrap text-center text-4xl font-medium tracking-tighter text-black dark:text-white sm:text-5xl"
     >
-      <p
-        class="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white"
-      >
-        Animated Grid Pattern
-      </p>
-      <AnimatedGridPattern
-        :num-squares="30"
-        :max-opacity="0.1"
-        :duration="3"
-        :repeat-delay="1"
-        :class="
-          cn(
-            '[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]',
-            'inset-x-0 inset-y-[-30%] h-[200%] skew-y-12',
-          )
-        "
-      />
-    </div>
+      Animated Grid Pattern
+    </p>
+    <AnimatedGridPattern
+      :num-squares="30"
+      :max-opacity="0.1"
+      :duration="3"
+      :repeat-delay="1"
+      :class="
+        cn(
+          '[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]',
+          'inset-x-0 inset-y-[-30%] h-[200%] skew-y-12',
+        )
+      "
+    />
   </div>
 </template>

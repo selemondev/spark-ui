@@ -4,7 +4,7 @@ import { cn } from "../../lib/utils";
 </script>
 
 <template>
-  <div class="grid place-items-center min-h-screen w-full">
+  <div class="grid size-full place-items-center">
     <div class="z-10 flex min-h-[16rem] items-center justify-center">
       <div
         :class="

@@ -28,7 +28,7 @@ const currentTheme = computed(() => (isDark.value ? "#1f2937" : "#f3f4f6"));
           <div
             v-for="copy in 2"
             :key="copy"
-            class="mx-auto h-96 md:h-full grid grid-cols-1 gap-5 sm:grid-cols-2 pb-5"
+            class="mx-auto grid grid-cols-1 gap-5 sm:grid-cols-2 pb-5"
             :class="copy === 1 ? 'relative' : 'absolute left-0 top-full w-full'"
             :aria-hidden="copy > 1 ? true : undefined"
             :inert="copy > 1"

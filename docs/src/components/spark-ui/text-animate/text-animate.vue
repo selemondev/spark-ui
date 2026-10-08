@@ -338,7 +338,7 @@ export default defineComponent({
                 whileInView: props.startOnView ? "show" : undefined,
                 animate: props.startOnView ? undefined : "show",
                 exit: "exit",
-                viewport: { once: props.once },
+                inViewOptions: { once: props.once },
                 ...attrs,
                 class: cn("whitespace-pre-wrap", props.className, attrs.class as string),
               },
@@ -346,20 +346,22 @@ export default defineComponent({
                 default: () => [
                   ...(props.accessible ? [h("span", { class: "sr-only" }, text)] : []),
                   ...segments.map((segment, index) =>
-                    h(
-                      motion.span as any,
-                      {
-                        key: `${props.by}-${segment}-${index}`,
-                        variants: item,
-                        custom: index * staggerTimings[props.by],
-                        class: cn(
-                          props.by === "line" ? "block" : "inline-block whitespace-pre",
-                          props.segmentClassName,
+                    /^\s*\n\s*$/.test(segment)
+                      ? h("br", { key: `${props.by}-br-${index}` })
+                      : h(
+                          motion.span as any,
+                          {
+                            key: `${props.by}-${segment}-${index}`,
+                            variants: item,
+                            custom: index * staggerTimings[props.by],
+                            class: cn(
+                              props.by === "line" ? "block" : "inline-block whitespace-pre",
+                              props.segmentClassName,
+                            ),
+                            "aria-hidden": props.accessible ? true : undefined,
+                          },
+                          { default: () => segment },
                         ),
-                        "aria-hidden": props.accessible ? true : undefined,
-                      },
-                      { default: () => segment },
-                    ),
                   ),
                 ],
               },

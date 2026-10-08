@@ -4,7 +4,7 @@ import SmoothCursor from "./smooth-cursor.vue";
 
 <template>
   <div
-    class="relative flex h-80 w-[min(580px,75vw)] flex-col items-center justify-center overflow-hidden rounded-2xl border border-solid border-neutral-200 bg-gradient-to-br from-violet-100 to-sky-100 p-8 text-center dark:border-neutral-800 dark:from-violet-950 dark:to-slate-950"
+    class="relative flex h-80 max-h-[calc(100%-2rem)] w-[calc(100%-2rem)] max-w-[540px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-solid border-neutral-200 bg-gradient-to-br from-violet-100 to-sky-100 p-8 text-center dark:border-neutral-800 dark:from-violet-950 dark:to-slate-950"
   >
     <h3 class="text-2xl font-semibold">Move your mouse here</h3>
     <p class="mt-3 max-w-xs text-sm text-neutral-500">
@@ -13,6 +13,6 @@ import SmoothCursor from "./smooth-cursor.vue";
     <p class="mt-6 text-xs text-neutral-500">
       The effect stays inside this area. Touch input keeps its normal behavior.
     </p>
-    <SmoothCursor scope="parent" />
+    <SmoothCursor scope="parent" contained />
   </div>
 </template>

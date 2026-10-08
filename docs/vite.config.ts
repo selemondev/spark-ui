@@ -4,6 +4,7 @@ import autoprefixer from "autoprefixer";
 import tailwindcss from "tailwindcss";
 import UnoCSS from "unocss/vite";
 import { defineConfig, loadEnv } from "vite";
+import { postcssIsolateStyles } from "vitepress";
 
 export default ({ mode }: { mode: string }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
@@ -15,6 +16,8 @@ export default ({ mode }: { mode: string }) => {
             config: fileURLToPath(new URL("./tailwind.config.js", import.meta.url)),
           }),
           autoprefixer(),
+          // Keep VitePress prose styles (`.vp-doc h1`, `.vp-doc p`, …) out of `.vp-raw` demo areas.
+          postcssIsolateStyles({ includeFiles: [/vp-doc\.css/] }),
         ],
       },
     },

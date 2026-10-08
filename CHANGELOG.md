@@ -31,6 +31,7 @@
 - Make mobile navigation keyboard-operable with associated menu state, Escape dismissal and initial scroll measurement; align copied links with the router-free component.
 - Implement roving keyboard navigation and direction-aware expansion for File Tree while keeping collapsed descendants inert and initial-state APIs unchanged.
 - Replace the old Motion for Vue beta with stable `motion-v` 2.4.2; retain VueUse Motion for existing directives and verify modal, tooltip, terminal and scroll consumers.
+- Render line breaks in Text Animate's character and word modes instead of joining lines.
 - Serialize shared theme transitions, handle skipped promises, clean up owned animations on unmount and fully cover the viewport with star reveals.
 - Keep rotating reveal text valid after replacements, cancel stale repeat timers and interpret foreground tokens as HSL colors.
 - Destroy Globe renderers on unmount, preserve host-document styles and distinguish a zero-coordinate drag from no interaction.
@@ -53,6 +54,12 @@
 - Provide the documented semantic color tokens to live previews without changing VitePress's document reset or layout.
 - Register the intended `@` source alias instead of accidental `find` and `replacement` aliases in the documentation Vite configuration.
 - Place the six newer component families under canonical source ownership, preserving implementations while making registry discovery and copied usage imports consistent.
+- Switch the repository package manager from pnpm to bun and pin framer-motion/motion-dom to the versions motion-v 2.4.2 works with, restoring variant propagation to child motion components.
+- Fix broken animations: File Tree collapse, Magic Card dark-mode orb blending, Shiny Button dark-mode styles, Resizable Navbar scrolled background, Text Reveal progress inside scroll containers, Text Animate `once`, and the Animated Gradient Text, Terminal and Marquee demos.
+- Keep VitePress prose styles, dark-mode link colors and UnoCSS attributify rules for SVG attributes and component props out of demo previews.
+- Contain every documentation demo inside its preview card and size demos to fit it at desktop, tablet and mobile widths.
+- Add optional `container` props to Cool Mode, Hero Video Dialog, Scroll Progress and Resizable Navbar, and `contained` props to Pointer and Smooth Cursor, so their effects can stay inside an element instead of the viewport.
+- Size Globe's cobe render buffer from the canvas width so small globes render centered.
 
 ## v1.0.0
 

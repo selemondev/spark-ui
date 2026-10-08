@@ -3,7 +3,7 @@ import BorderBeam from "./border-beam.vue";
 </script>
 
 <template>
-  <div class="flex items-center justify-center p-2">
+  <div class="flex w-full items-center justify-center p-4">
     <button
       class="relative inline-flex h-11 items-center justify-center overflow-hidden rounded-md border border-solid border-black/15 dark:border-white/20 px-8 text-sm font-medium text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10"
     >

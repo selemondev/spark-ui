@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from "vue";
 import TweetCard from "./tweet-card.vue";
 import type { TweetData } from "./tweet-data";
 
@@ -83,13 +84,54 @@ const sampleTweet: TweetData = {
   favorite_count: 508,
   conversation_count: 42,
 };
+
+// Scale the tweet down (never up) so the whole card fits the preview area. Below
+// MIN_SCALE the text gets too small, so the preview scrolls instead.
+const MAX_WIDTH = 480;
+const MIN_SCALE = 0.66;
+const frame = ref<HTMLElement>();
+const sizer = ref<HTMLElement>();
+const content = ref<HTMLElement>();
+let observer: ResizeObserver | undefined;
+
+function fit() {
+  const box = frame.value;
+  const slot = sizer.value;
+  const card = content.value;
+  if (!box || !slot || !card) return;
+  const style = getComputedStyle(box);
+  const width =
+    box.clientWidth - Number.parseFloat(style.paddingLeft) - Number.parseFloat(style.paddingRight);
+  const height =
+    box.clientHeight - Number.parseFloat(style.paddingTop) - Number.parseFloat(style.paddingBottom);
+  let scale = 1;
+  // A narrower card is taller, so settle width and scale together.
+  for (let i = 0; i < 4; i++) {
+    card.style.width = `${Math.min(MAX_WIDTH, width / scale)}px`;
+    scale = Math.min(1, height / card.offsetHeight, width / card.offsetWidth);
+  }
+  scale = Math.max(MIN_SCALE, scale);
+  card.style.width = `${Math.min(MAX_WIDTH, width / scale)}px`;
+  card.style.transform = `scale(${scale})`;
+  const rect = card.getBoundingClientRect();
+  slot.style.width = `${rect.width}px`;
+  slot.style.height = `${rect.height}px`;
+}
+
+onMounted(() => {
+  observer = new ResizeObserver(fit);
+  observer.observe(frame.value!);
+  observer.observe(content.value!);
+});
+onBeforeUnmount(() => observer?.disconnect());
 </script>
 
 <template>
-  <div class="w-[min(440px,70vw)] space-y-3">
-    <p class="text-center text-xs text-muted-foreground">
-      Saved sample of a public tweet. Counts reflect the saved response.
-    </p>
-    <TweetCard :tweet="sampleTweet" />
+  <div ref="frame" class="flex size-full justify-center overflow-y-auto p-4">
+    <div ref="sizer" class="my-auto shrink-0">
+      <div ref="content" class="origin-top-left">
+        <TweetCard :tweet="sampleTweet" class="[&_video]:max-h-40 [&_video]:object-cover" />
+      </div>
+    </div>
   </div>
 </template>

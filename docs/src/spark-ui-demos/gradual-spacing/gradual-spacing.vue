@@ -3,9 +3,9 @@ import GradualSpacing from "../../components/spark-ui/gradual-spacing/gradual-sp
 </script>
 
 <template>
-  <div class="grid place-items-center w-full min-h-screen">
+  <div class="grid size-full place-items-center">
     <GradualSpacing
-      class="font-sans text-center text-4xl font-bold tracking-[-0.1em] text-black dark:text-white md:text-7xl md:leading-[5rem]"
+      class="font-sans text-center text-3xl font-bold tracking-[-0.1em] text-black dark:text-white sm:text-4xl md:text-6xl md:leading-[5rem] xl:text-7xl"
       text="Gradual Spacing"
     />
   </div>

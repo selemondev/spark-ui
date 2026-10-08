@@ -5,7 +5,7 @@ import BlurFade from "./blur-fade.vue";
 <template>
   <div class="flex flex-col space-y-2">
     <BlurFade in-view :delay="250">
-      <span class="text-[45px] font-bold tracking-tighter dark:text-white leading-1">
+      <span class="text-[36px] sm:text-[45px] font-bold tracking-tighter dark:text-white leading-1">
         Hello World 👋
       </span>
     </BlurFade>

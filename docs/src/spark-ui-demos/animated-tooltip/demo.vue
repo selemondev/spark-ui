@@ -48,7 +48,9 @@ const people = [
 </script>
 
 <template>
-  <div class="flex flex-row items-center justify-center mb-10 w-full">
+  <div
+    class="mb-10 flex w-full max-w-[152px] flex-row flex-wrap items-center justify-center gap-y-6 pr-4 sm:max-w-none"
+  >
     <AnimatedToolTip :items="people" />
   </div>
 </template>

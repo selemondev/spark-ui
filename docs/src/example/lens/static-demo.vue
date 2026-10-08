@@ -7,11 +7,17 @@ const image =
 
 <template>
   <div
-    class="relative w-[300px] md:w-[420px] overflow-hidden rounded-xl border border-black/10 bg-white text-black shadow-sm dark:border-white/10 dark:bg-neutral-950 dark:text-white"
+    class="relative w-[calc(100%-2rem)] max-w-[420px] overflow-hidden rounded-xl border border-black/10 bg-white text-black shadow-sm dark:border-white/10 dark:bg-neutral-950 dark:text-white"
   >
     <div class="p-4">
       <Lens is-static :position="{ x: 220, y: 150 }">
-        <img :src="image" alt="image placeholder" width="500" height="500" class="h-40 w-full object-cover" />
+        <img
+          :src="image"
+          alt="image placeholder"
+          width="500"
+          height="500"
+          class="h-40 w-full object-cover"
+        />
       </Lens>
     </div>
     <div class="px-6 pb-2">
