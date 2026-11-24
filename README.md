@@ -133,4 +133,4 @@ Contributions are welcome. Please read the [Code of Conduct](./CODE_OF_CONDUCT.m
 
 ## License
 
-[MIT](./LICENSE) © [Selemondev](https://github.com/selemondev)
+[MIT](./LICENSE) © [Selemon Brahanu](https://selemon.dev)

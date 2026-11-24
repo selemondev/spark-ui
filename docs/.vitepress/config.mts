@@ -200,7 +200,7 @@ export default defineConfig({
 		],
 		footer: {
 			message: "Released under the MIT License.",
-			copyright: `Copyright © ${new Date().getFullYear()}-PRESENT Selemon Brahanu.`,
+			copyright: `Copyright © ${new Date().getFullYear()}-PRESENT <a href="https://selemon.dev">Selemon Brahanu</a>.`,
 		},
 	},
 	markdown: {
